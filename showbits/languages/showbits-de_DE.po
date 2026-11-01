@@ -1,0 +1,270 @@
+# German translation of the ShowBits plugin.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "ShowBits did not answer with a file."
+msgstr "ShowBits hat keine Datei geliefert."
+
+msgid "ShowBits could not be reached."
+msgstr "ShowBits war nicht erreichbar."
+
+msgid "You may not connect this site."
+msgstr "Sie dürfen diese Website nicht verbinden."
+
+msgid "%s (thumbnail)"
+msgstr "%s (Vorschaubild)"
+
+msgid "“%s”"
+msgstr "„%s“"
+
+msgid "“%1$s” – %2$s"
+msgstr "„%1$s“ – %2$s"
+
+msgid "This is not a clip or a format ShowBits offers."
+msgstr "Diesen Clip oder dieses Format bietet ShowBits nicht an."
+
+msgid "The clip is no longer released in ShowBits."
+msgstr "Der Clip ist in ShowBits nicht mehr freigegeben."
+
+msgid "The embargo still holds: the file stays in ShowBits until it ends."
+msgstr "Das Embargo gilt noch: Die Datei bleibt bis zu seinem Ende in ShowBits."
+
+msgid "The file is not ready yet in ShowBits."
+msgstr "Die Datei ist in ShowBits noch nicht fertig."
+
+msgid "The file could not be downloaded."
+msgstr "Die Datei ließ sich nicht herunterladen."
+
+msgid "WordPress did not take the file into the media library."
+msgstr "WordPress hat die Datei nicht in die Mediathek übernommen."
+
+msgid "The import failed."
+msgstr "Der Import ist gescheitert."
+
+msgid "This site is not connected to ShowBits."
+msgstr "Diese Website ist nicht mit ShowBits verbunden."
+
+msgid "ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits."
+msgstr "ShowBits nimmt die Verbindung dieser Website nicht mehr an: unter Einstellungen → ShowBits neu verbinden."
+
+msgid "All"
+msgstr "Alle"
+
+msgid "Clips"
+msgstr "Clips"
+
+msgid "Quote cards"
+msgstr "Zitatkarten"
+
+msgid "Search titles"
+msgstr "Titel durchsuchen"
+
+msgid "Search the library"
+msgstr "Bibliothek durchsuchen"
+
+msgid "Import selected"
+msgstr "Auswahl importieren"
+
+msgid "Importing %1$d of %2$d …"
+msgstr "Importiere %1$d von %2$d …"
+
+msgid "Imported: %d"
+msgstr "Importiert: %d"
+
+msgid "Load more"
+msgstr "Mehr laden"
+
+msgid "Loading …"
+msgstr "Wird geladen …"
+
+msgid "No released clips or quote cards yet."
+msgstr "Noch keine freigegebenen Clips oder Zitatkarten."
+
+msgid "Embargo until %s"
+msgstr "Embargo bis %s"
+
+msgid "Not ready yet"
+msgstr "Noch nicht fertig"
+
+msgid "In the media library"
+msgstr "In der Mediathek"
+
+msgid "An older version is in the media library"
+msgstr "Eine ältere Fassung ist in der Mediathek"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Quote card"
+msgstr "Zitatkarte"
+
+msgid "Meme"
+msgstr "Meme"
+
+msgid "Failed: %s"
+msgstr "Gescheitert: %s"
+
+msgid "The library could not be loaded: %s"
+msgstr "Die Bibliothek ließ sich nicht laden: %s"
+
+msgid "This site is not connected to ShowBits yet."
+msgstr "Diese Website ist noch nicht mit ShowBits verbunden."
+
+msgid "Connect it in the settings."
+msgstr "In den Einstellungen verbinden."
+
+msgid "An administrator of this site connects it in the settings."
+msgstr "Ein Administrator dieser Website verbindet sie in den Einstellungen."
+
+msgid "Released clips and quote cards from the ShowBits workspace “%s”. What you import lands in the media library, ready for posts and pages."
+msgstr "Freigegebene Clips und Zitatkarten aus dem ShowBits-Arbeitsbereich „%s“. Was Sie importieren, liegt danach in der Mediathek, bereit für Beiträge und Seiten."
+
+msgid "The library needs JavaScript."
+msgstr "Die Bibliothek braucht JavaScript."
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "You may not change these settings."
+msgstr "Sie dürfen diese Einstellungen nicht ändern."
+
+msgid "Connection"
+msgstr "Verbindung"
+
+msgid "Connected to the workspace “%s”."
+msgstr "Verbunden mit dem Arbeitsbereich „%s“."
+
+msgid "The connection lasts until %s; renew it before then."
+msgstr "Die Verbindung gilt bis %s; erneuern Sie sie vorher."
+
+msgid "Connected by %1$s on %2$s, at %3$s."
+msgstr "Verbunden von %1$s am %2$s, mit %3$s."
+
+msgid "Renew the connection"
+msgstr "Verbindung erneuern"
+
+msgid "ShowBits (%s) cannot be reached right now. The connection stays; try again later."
+msgstr "ShowBits (%s) ist gerade nicht erreichbar. Die Verbindung bleibt; später erneut versuchen."
+
+msgid "ShowBits no longer accepts this site’s connection: the person who agreed has left the workspace, the year is over, it was disconnected in ShowBits, or this site’s keys changed. Connect it again."
+msgstr "ShowBits nimmt die Verbindung dieser Website nicht mehr an: Die Person, die zugestimmt hat, hat den Arbeitsbereich verlassen, das Jahr ist um, sie wurde in ShowBits getrennt, oder die Schlüssel dieser Website haben sich geändert. Bitte neu verbinden."
+
+msgid "Connect again"
+msgstr "Neu verbinden"
+
+msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace agrees in ShowBits. The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
+msgstr "Verbinden Sie diese Website mit einem ShowBits-Arbeitsbereich: Ein Admin oder Owner des Arbeitsbereichs stimmt in ShowBits zu. Danach kann die Website freigegebene Clips und Zitatkarten in ihre Mediathek übernehmen und bekommt, was Ihre ShowBits-Admins schicken."
+
+msgid "Connect with ShowBits"
+msgstr "Mit ShowBits verbinden"
+
+msgid "Imports"
+msgstr "Importe"
+
+msgid "Format of quote cards"
+msgstr "Format der Zitatkarten"
+
+msgid "4:5 (feeds, articles)"
+msgstr "4:5 (Feeds, Artikel)"
+
+msgid "1:1 (square)"
+msgstr "1:1 (quadratisch)"
+
+msgid "9:16 (stories)"
+msgstr "9:16 (Stories)"
+
+msgid "The picture pushes bring; in the library you choose for each card."
+msgstr "Das Bild, das geschickte Karten mitbringen; in der Bibliothek wählen Sie je Karte."
+
+msgid "Videos"
+msgstr "Videos"
+
+msgid "Import the thumbnail as the video’s poster image"
+msgstr "Vorschaubild als Poster des Videos importieren"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "ShowBits address"
+msgstr "Adresse von ShowBits"
+
+msgid "ShowBits Cloud: https://app.showbits.ai. OnPremise: the address of your installation."
+msgstr "ShowBits Cloud: https://app.showbits.ai. OnPremise: die Adresse Ihrer Installation."
+
+msgid "Disconnect"
+msgstr "Trennen"
+
+msgid "Disconnect this site from ShowBits? What is in the media library stays."
+msgstr "Diese Website von ShowBits trennen? Was in der Mediathek liegt, bleibt."
+
+msgid "waiting"
+msgstr "wartet"
+
+msgid "importing"
+msgstr "wird importiert"
+
+msgid "imported"
+msgstr "importiert"
+
+msgid "failed"
+msgstr "gescheitert"
+
+msgid "Recent imports"
+msgstr "Letzte Importe"
+
+msgid "When"
+msgstr "Wann"
+
+msgid "Clip"
+msgstr "Clip"
+
+msgid "How"
+msgstr "Wie"
+
+msgid "State"
+msgstr "Stand"
+
+msgid "sent from ShowBits"
+msgstr "aus ShowBits geschickt"
+
+msgid "picked here"
+msgstr "hier ausgewählt"
+
+msgid "Connected. The library is under Media → ShowBits."
+msgstr "Verbunden. Die Bibliothek finden Sie unter Medien → ShowBits."
+
+msgid "Disconnected. What is in the media library stays."
+msgstr "Getrennt. Was in der Mediathek liegt, bleibt."
+
+msgid "Saved."
+msgstr "Gespeichert."
+
+msgid "Connecting was cancelled in ShowBits."
+msgstr "Das Verbinden wurde in ShowBits abgebrochen."
+
+msgid "That way back from ShowBits did not belong to this attempt. Start again."
+msgstr "Dieser Rückweg aus ShowBits gehörte nicht zu diesem Versuch. Bitte neu beginnen."
+
+msgid "The ShowBits address must start with https://."
+msgstr "Die Adresse von ShowBits muss mit https:// beginnen."
+
+msgid "ShowBits did not take the code (it is only valid for ten minutes, once). Start again."
+msgstr "ShowBits hat den Code nicht angenommen (er gilt nur zehn Minuten und einmal). Bitte neu beginnen."
+
+msgid "The workspace has as many sites as it may, or the person who agreed has too many tokens."
+msgstr "Der Arbeitsbereich hat so viele Websites, wie er darf, oder die zustimmende Person hat zu viele Tokens."
+
+msgid "ShowBits could not be reached. Check the address and try again."
+msgstr "ShowBits war nicht erreichbar. Adresse prüfen und erneut versuchen."
+
+msgid "Connecting did not work. Try again, or ask your ShowBits contact."
+msgstr "Das Verbinden hat nicht geklappt. Bitte erneut versuchen oder Ihren ShowBits-Kontakt fragen."

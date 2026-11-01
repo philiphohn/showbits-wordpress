@@ -1,0 +1,25 @@
+{
+    "name": "showbits/wordpress-plugin",
+    "description": "The ShowBits plugin for WordPress: released clips and quote cards in the media library (docs/wordpress.md).",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload-dev": {
+        "classmap": ["showbits/includes/"]
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "find showbits bin tests -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n > /dev/null",
+        "i18n": "php bin/i18n.php",
+        "check": ["@lint", "php bin/i18n.php --check", "@test"],
+        "build": "bash bin/build.sh"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

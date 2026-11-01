@@ -1,0 +1,130 @@
+/* Media → ShowBits and Settings → ShowBits: WordPress' admin look, a grid of cards. */
+
+.showbits-intro {
+	max-width: 48rem;
+}
+
+.showbits-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 16px 0;
+}
+
+.showbits-kinds {
+	display: flex;
+	gap: 4px;
+}
+
+.showbits-search {
+	min-width: 16rem;
+}
+
+.showbits-progress {
+	color: #50575e;
+}
+
+.showbits-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 16px;
+	margin: 0;
+}
+
+.showbits-card {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	background: #fff;
+	overflow: hidden;
+}
+
+.showbits-card.is-selected {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
+.showbits-preview {
+	aspect-ratio: 9 / 16;
+	max-height: 260px;
+	background: #f0f0f1;
+	overflow: hidden;
+}
+
+.showbits-preview.is-quote {
+	aspect-ratio: 4 / 5;
+}
+
+.showbits-preview img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.showbits-body {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 12px;
+}
+
+.showbits-pick {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+}
+
+.showbits-pick input {
+	margin-top: 2px;
+}
+
+.showbits-meta,
+.showbits-caption {
+	margin: 0;
+	color: #50575e;
+}
+
+.showbits-caption {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+
+.showbits-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.showbits-badge {
+	padding: 2px 8px;
+	border-radius: 999px;
+	background: #f0f0f1;
+	color: #1d2327;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.showbits-badge.is-done {
+	background: #edfaef;
+	color: #00450c;
+}
+
+.showbits-badge.is-locked {
+	background: #fcf9e8;
+	color: #614200;
+}
+
+.showbits-badge.is-error {
+	background: #fcf0f1;
+	color: #8a2424;
+}
+
+.showbits-disconnect {
+	margin-top: 8px;
+}
