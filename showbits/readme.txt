@@ -2,7 +2,7 @@
 Contributors: showbits
 Tags: video, media library, clips, podcast, editorial
 Requires at least: 6.5
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 8.1
 Stable tag: 1.0.0
 License: GPLv2 or later

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# A throwaway WordPress for the checks in tests/e2e (sourced by run.sh and plugin-check.sh): WordPress 6.8 on PHP 8.3
+# A throwaway WordPress for the checks in tests/e2e (sourced by run.sh and plugin-check.sh): WordPress 7.1 on PHP 8.3
 # with MariaDB in Docker, on a network of its own, the plugin mounted read-only. wordpress_up [extra docker args …],
 # wordpress_down. Images from Google's mirror of Docker Hub unless E2E_IMAGE_REGISTRY says otherwise.
 
@@ -25,7 +25,7 @@ wordpress_up() {
   docker run -d --name showbits-wp-e2e-wp --network "$NET" -p "$HOST:$WP_PORT:80" \
     -e WORDPRESS_DB_HOST=showbits-wp-e2e-db -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress -e WORDPRESS_DB_NAME=wordpress \
     -v "$PWD/showbits:/var/www/html/wp-content/plugins/showbits:ro" \
-    "$@" "$REGISTRY/wordpress:6.8-php8.3-apache" >/dev/null
+    "$@" "$REGISTRY/wordpress:7.1-php8.3-apache" >/dev/null
   for _ in $(seq 1 60); do
     if bash tests/e2e/wp.sh db check >/dev/null 2>&1; then break; fi
     sleep 2

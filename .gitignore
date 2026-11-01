@@ -2,3 +2,4 @@
 /dist/
 /.phpunit.cache/
 /tests/e2e/shots/
+/tests/e2e/node_modules/
