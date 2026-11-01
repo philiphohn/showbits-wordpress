@@ -84,7 +84,7 @@ msgstr "Nid yw ShowBits yn danfon i’r wefan hon mwyach: mae cynllun y gweithle
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
-msgstr "Mae mewnforion y wefan ar gyfer heddiw wedi’u defnyddio i gyd. Rhowch gynnig arall arni yfory."
+msgstr "Mae mewnforion y wefan ar gyfer heddiw wedi’u defnyddio i gyd. Ceisiwch eto yfory."
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
@@ -151,7 +151,7 @@ msgstr "Llwytho rhagor"
 
 #: showbits/includes/class-library-page.php
 msgid "Loading …"
-msgstr "Wrthi’n llwytho…"
+msgstr "Llwytho…"
 
 #: showbits/includes/class-library-page.php
 msgid "No released clips or quote cards yet."
@@ -263,7 +263,7 @@ msgstr "Gydag allwedd gwefan newydd, mae’r wefan yn adnewyddu ei chysylltiad, 
 #. translators: %s: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits (%s) cannot be reached right now. The connection stays; try again later."
-msgstr "Nid oes modd cyrraedd ShowBits (%s) ar hyn o bryd. Mae’r cysylltiad yn aros; rhowch gynnig arall arni nes ymlaen."
+msgstr "Nid oes modd cyrraedd ShowBits (%s) ar hyn o bryd. Mae’r cysylltiad yn aros; ceisiwch eto nes ymlaen."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
@@ -348,7 +348,7 @@ msgstr "Datgysylltu’r wefan hon o ShowBits? Mae’r hyn sydd yn y llyfrgell cy
 
 #: showbits/includes/class-settings-page.php
 msgid "asked for"
-msgstr "wedi gofyn"
+msgstr "cais wedi’i anfon"
 
 #: showbits/includes/class-settings-page.php
 msgid "waiting"
@@ -436,7 +436,7 @@ msgstr "Nid oedd modd i ShowBits gyrraedd API REST y wefan hon (/wp-json/showbit
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
-msgstr "Nid atebodd y wefan hon wiriad ShowBits yn ôl y disgwyl. Rhowch gynnig arall arni; os yw’n methu eto, efallai fod ategyn storfa neu ddiogelwch yn ateb yn lle WordPress."
+msgstr "Nid atebodd y wefan hon wiriad ShowBits yn ôl y disgwyl. Ceisiwch eto; os yw’n methu unwaith eto, efallai fod ategyn storfa neu ddiogelwch yn ateb yn lle WordPress."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
@@ -444,7 +444,7 @@ msgstr "Mae cynllun y gweithle wedi dod i ben, neu ni chaiff pwy bynnag a greodd
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
-msgstr "Mae gan y gweithle gynifer o wefannau ag y mae ei gynllun yn ei ganiatáu."
+msgstr "Mae gan y gweithle eisoes gynifer o wefannau ag y mae ei gynllun yn ei ganiatáu."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
@@ -452,4 +452,4 @@ msgstr "Ni dderbyniodd ShowBits gyfeiriad y wefan hon. Rhaid i’r wefan gael ei
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."
-msgstr "Methodd y cysylltu. Rhowch gynnig arall arni, neu holwch eich cyswllt yn ShowBits."
+msgstr "Methodd y cysylltu. Ceisiwch eto, neu holwch eich cyswllt yn ShowBits."

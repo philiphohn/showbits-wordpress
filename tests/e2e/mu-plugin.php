@@ -59,8 +59,11 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 					} catch ( Exception $e ) {
 						$plurals = array();
 					}
+					// The same entries in any order: an MO file keeps them sorted, the PHP file in the .pot's order.
+					$entries = $file->entries();
+					ksort( $entries, SORT_STRING );
 					$read[ $format ] = array(
-						'entries'  => $file->entries(),
+						'entries'  => $entries,
 						'language' => $headers['language'] ?? '',
 						'plurals'  => $plurals && max( $plurals ) < $forms && min( $plurals ) >= 0 ? $plurals : null,
 					);

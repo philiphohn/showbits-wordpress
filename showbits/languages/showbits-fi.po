@@ -84,7 +84,7 @@ msgstr "ShowBits ei enää toimita tälle sivustolle: työtilan tilaus on päät
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
-msgstr "Sivuston tämän päivän tuontikiintiö on käytetty. Yritä uudelleen huomenna."
+msgstr "Sivuston tämän päivän tuontikiintiö on käytetty loppuun. Yritä uudelleen huomenna."
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
@@ -214,7 +214,7 @@ msgstr "Yhdistä se asetuksissa."
 
 #: showbits/includes/class-library-page.php
 msgid "An administrator of this site connects it in the settings."
-msgstr "Sivuston ylläpitäjä yhdistää sen asetuksissa."
+msgstr "Sivuston pääkäyttäjä yhdistää sen asetuksissa."
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-library-page.php
@@ -303,7 +303,7 @@ msgstr "Videot"
 
 #: showbits/includes/class-settings-page.php
 msgid "Import the thumbnail as the video’s poster image"
-msgstr "Tuo pienoiskuva videon julistekuvaksi"
+msgstr "Tuo pienoiskuva videon ruutukaappaukseksi"
 
 #: showbits/includes/class-settings-page.php
 msgid "Save"
@@ -432,7 +432,7 @@ msgstr "Sivustoavain on luotu toiselle osoitteelle. Luo sivustoavain tämän siv
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr "ShowBits ei tavoittanut tämän sivuston REST API -rajapintaa (/wp-json/showbits/v1/push), tai ShowBitsiin itseensä ei saatu yhteyttä. Sivuston on oltava julkisesti saatavilla HTTPS:n kautta; palomuurin tai tietoturvalisäosan on päästettävä ShowBits läpi."
+msgstr "ShowBits ei tavoittanut tämän sivuston REST API -rajapintaa (/wp-json/showbits/v1/push) tai ShowBitsiin itseensä ei saatu yhteyttä. Sivuston on oltava julkisesti saatavilla HTTPS:n kautta; palomuurin tai tietoturvalisäosan on päästettävä ShowBits läpi."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
@@ -440,7 +440,7 @@ msgstr "Tämä sivusto ei vastannut ShowBitsin tarkistukseen odotetulla tavalla.
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
-msgstr "Työtilan tilaus on päättynyt, tai sivustoavaimen luoneella henkilöllä ei ole enää oikeutta yhdistää sivustoja."
+msgstr "Työtilan tilaus on päättynyt tai sivustoavaimen luoneella henkilöllä ei ole enää oikeutta yhdistää sivustoja."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
@@ -448,7 +448,7 @@ msgstr "Työtilassa on jo niin monta sivustoa kuin sen tilaus sallii."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
-msgstr "ShowBits ei hyväksynyt tämän sivuston osoitetta. Sivuston on toimittava HTTPS:n kautta."
+msgstr "ShowBits ei hyväksynyt tämän sivuston osoitetta. Sivuston on oltava käytettävissä HTTPS:n kautta."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."

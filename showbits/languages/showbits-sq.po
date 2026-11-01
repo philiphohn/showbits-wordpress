@@ -8,7 +8,7 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr "Klipe dhe karta citimi të miratuara për botim nga ShowBits-i, në mediatekë: zgjidhini në WordPress, ose merrni ç’ju dërgojnë përgjegjësit tuaj në ShowBits."
+msgstr "Klipe dhe karta citimi të miratuara për botim në ShowBits, te mediateka juaj: zgjidhini në WordPress, ose merrni ç’ju dërgojnë përgjegjësit tuaj në ShowBits."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
@@ -56,7 +56,7 @@ msgstr "Klipi s’është më i miratuar për botim në ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr "Embargoja është ende në fuqi: kartela mbetet në ShowBits deri sa të mbarojë embargoja."
+msgstr "Embargoja është ende në fuqi: kartela mbetet në ShowBits derisa të mbarojë embargoja."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."
@@ -76,7 +76,7 @@ msgstr "Dërgesa nga ShowBits-i s’është më e vlefshme. Importojeni sërish 
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits."
-msgstr "ShowBits-i s’e pranon më lidhjen e këtij sajti: lidheni sërish që nga Rregullime → ShowBits."
+msgstr "ShowBits-i s’e pranon më lidhjen e këtij sajti: lidheni sërish te Rregullime → ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer delivers to this site: the workspace’s plan has ended."
@@ -303,7 +303,7 @@ msgstr "Video"
 
 #: showbits/includes/class-settings-page.php
 msgid "Import the thumbnail as the video’s poster image"
-msgstr "Importo miniaturën si figurë postere të videos"
+msgstr "Importo miniaturën si figurë afishe të videos"
 
 #: showbits/includes/class-settings-page.php
 msgid "Save"
@@ -412,7 +412,7 @@ msgstr "Lidhja u anulua në ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "That way back from ShowBits did not belong to this attempt. Start again."
-msgstr "Ky kthim nga ShowBits-i s’i përkiste kësaj përpjekjeje për lidhje. Fillojani nga e para."
+msgstr "Ky kthim nga ShowBits-i s’i përkiste kësaj përpjekjeje për lidhje. Filloni nga e para."
 
 #: showbits/includes/class-settings-page.php
 msgid "The ShowBits address must start with https://."

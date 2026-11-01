@@ -39,7 +39,17 @@
 		return node;
 	}
 
-	const format = ( template, ...values ) => values.reduce( ( text, value, i ) => text.replace( `%${ i + 1 }$d`, value ).replace( `%${ i + 1 }$s`, value ), template ).replace( '%d', values[ 0 ] ).replace( '%s', values[ 0 ] );
+	/** Text from ShowBits (titles, show and episode names) in its own direction, so it keeps its order and punctuation in a right-to-left admin. */
+	const isolated = ( text ) => el( 'bdi', { text } );
+
+	// A text from elsewhere (a reason, a date) in a translated sentence: in a right-to-left admin isolated in its own
+	// direction (FSI … PDI) so the translation's punctuation stays in place, as Plugin::isolate() does on the server.
+	const rtl = document.documentElement.dir === 'rtl';
+	const own = ( value ) => ( rtl && typeof value === 'string' ? `\u2068${ value }\u2069` : value );
+	const format = ( template, ...raw ) => {
+		const values = raw.map( own );
+		return values.reduce( ( text, value, i ) => text.replace( `%${ i + 1 }$d`, value ).replace( `%${ i + 1 }$s`, value ), template ).replace( '%d', values[ 0 ] ).replace( '%s', values[ 0 ] );
+	};
 	const when = ( iso ) => new Date( iso ).toLocaleString( config.locale || undefined, { dateStyle: 'medium', timeStyle: 'short' } );
 	const seconds = ( value ) => {
 		const total = Math.round( value );
@@ -171,7 +181,6 @@
 		const have = ( item.imported || {} )[ variant ];
 		const result = state.results.get( item.id );
 		const id = `showbits-${ item.id }`;
-		const meta = [ item.show.name, item.episode.title ].filter( Boolean ).join( ' · ' );
 		const badges = [];
 		if ( item.embargoUntil ) {
 			badges.push( el( 'span', { class: 'showbits-badge is-locked', text: format( s.embargo, when( item.embargoUntil ) ) } ) );
@@ -212,10 +221,16 @@
 						}
 						render();
 					} } ),
-					el( 'strong', { text: item.title } ),
+					el( 'strong', {}, [ isolated( item.title ) ] ),
 				] ),
-				el( 'p', { class: 'showbits-meta', text: [ quote ? s.quote : item.kind === 'meme' ? s.meme : s.video, quote ? '' : seconds( item.durationSec ), meta ].filter( Boolean ).join( ' · ' ) } ),
-				item.caption ? el( 'p', { class: 'showbits-caption', text: item.caption } ) : null,
+				el(
+					'p',
+					{ class: 'showbits-meta' },
+					[ quote ? s.quote : item.kind === 'meme' ? s.meme : s.video, quote ? '' : seconds( item.durationSec ), item.show.name, item.episode.title ]
+						.filter( Boolean )
+						.flatMap( ( part, i ) => ( i ? [ ' · ', isolated( part ) ] : [ isolated( part ) ] ) )
+				),
+				item.caption ? el( 'p', { class: 'showbits-caption' }, [ isolated( item.caption ) ] ) : null,
 				picker,
 				badges.length ? el( 'div', { class: 'showbits-badges' }, badges ) : null,
 			] ),

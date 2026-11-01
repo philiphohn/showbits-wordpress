@@ -54,6 +54,15 @@ final class Plugin {
 		return (string) apply_filters( 'showbits_capability', 'upload_files' );
 	}
 
+	/**
+	 * Text from elsewhere (a workspace's name, an address, a person, a date) inside a translated sentence: in a
+	 * right-to-left admin isolated in its own direction (Unicode FSI … PDI), so a name in Latin script does not pull the
+	 * translation's quotation marks and punctuation out of place. Left-to-right screens get it as it is.
+	 */
+	public static function isolate( string $text ): string {
+		return is_rtl() ? "\u{2068}{$text}\u{2069}" : $text;
+	}
+
 	/** The menu's name: ShowBits, or another for white-label setups (filter showbits_menu_label). */
 	public static function label(): string {
 		return (string) apply_filters( 'showbits_menu_label', 'ShowBits' );

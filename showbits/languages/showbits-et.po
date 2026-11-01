@@ -8,7 +8,7 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr "ShowBitsis avaldamiseks kinnitatud klipid ja tsitaadikaardid meediateeki: vali need WordPressis või võta vastu, mida sinu ShowBitsi administraatorid saadavad."
+msgstr "ShowBitsis avaldamiseks kinnitatud klipid ja tsitaadikaardid meediateeki: vali need WordPressis või võta vastu, mida sinu ShowBitsi haldurid saadavad."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
@@ -29,7 +29,7 @@ msgstr "ShowBits lükkas päringu tagasi (%1$s, HTTP %2$d)."
 
 #: showbits/includes/class-connection.php
 msgid "You may not connect this site."
-msgstr "Sul pole õigust seda saiti ühendada."
+msgstr "Sul pole õigust seda veebilehte ühendada."
 
 #. translators: %s: the clip's title
 #: showbits/includes/class-importer.php
@@ -76,15 +76,15 @@ msgstr "ShowBitsi saadetis ei kehti enam. Impordi klipp uuesti."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits."
-msgstr "ShowBits ei aktsepteeri enam selle saidi ühendust: ühenda sait uuesti menüüs Seaded → ShowBits."
+msgstr "ShowBits ei aktsepteeri enam selle veebilehe ühendust: ühenda veebileht uuesti menüüs Sätted → ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer delivers to this site: the workspace’s plan has ended."
-msgstr "ShowBits ei saada sellele saidile enam midagi: tööruumi tellimus on lõppenud."
+msgstr "ShowBits ei saada sellele veebilehele enam midagi: tööruumi tellimus on lõppenud."
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
-msgstr "Saidi tänane impordilimiit on täis. Proovi homme uuesti."
+msgstr "Veebilehe tänane impordilimiit on täis. Proovi homme uuesti."
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
@@ -96,7 +96,7 @@ msgstr "Import ebaõnnestus."
 
 #: showbits/includes/class-library-endpoint.php
 msgid "This site is not connected to ShowBits."
-msgstr "See sait ei ole ShowBitsiga ühendatud."
+msgstr "See veebileht ei ole ShowBitsiga ühendatud."
 
 #: showbits/includes/class-library-page.php
 msgid "All"
@@ -139,7 +139,7 @@ msgstr "Imporditud: %d"
 
 #: showbits/includes/class-library-page.php
 msgid "Not everything has arrived yet; it continues in the background. Settings → ShowBits lists the imports."
-msgstr "Kõik pole veel kohale jõudnud; import jätkub taustal. Impordid on näha menüüs Seaded → ShowBits."
+msgstr "Kõik pole veel kohale jõudnud; import jätkub taustal. Impordid on näha menüüs Sätted → ShowBits."
 
 #: showbits/includes/class-library-page.php
 msgid "On the way"
@@ -206,7 +206,7 @@ msgstr "Teeki ei õnnestunud laadida: %s"
 
 #: showbits/includes/class-library-page.php
 msgid "This site is not connected to ShowBits yet."
-msgstr "See sait pole veel ShowBitsiga ühendatud."
+msgstr "See veebileht pole veel ShowBitsiga ühendatud."
 
 #: showbits/includes/class-library-page.php
 msgid "Connect it in the settings."
@@ -214,7 +214,7 @@ msgstr "Ühenda see seadetes."
 
 #: showbits/includes/class-library-page.php
 msgid "An administrator of this site connects it in the settings."
-msgstr "Selle saidi administraator ühendab selle seadetes."
+msgstr "Veebilehe saab seadetes ühendada selle haldur."
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-library-page.php
@@ -227,7 +227,7 @@ msgstr "Teek vajab JavaScripti."
 
 #: showbits/includes/class-settings-page.php
 msgid "Settings"
-msgstr "Seaded"
+msgstr "Sätted"
 
 #: showbits/includes/class-settings-page.php
 msgid "You may not change these settings."
@@ -250,7 +250,7 @@ msgstr "Impordid täna: %1$d/%2$d."
 #. translators: 1: a person, 2: a date, 3: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "Connected by %1$s on %2$s, at %3$s."
-msgstr "%1$s ühendas saidi %2$s aadressiga %3$s."
+msgstr "%1$s ühendas veebilehe %2$s aadressiga %3$s."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect again"
@@ -258,7 +258,7 @@ msgstr "Ühenda uuesti"
 
 #: showbits/includes/class-settings-page.php
 msgid "With a new site key the site renews its connection, or moves to another workspace."
-msgstr "Uue saidivõtmega uuendab sait oma ühendust või kolib teise tööruumi."
+msgstr "Uue veebilehevõtmega uuendab veebileht oma ühendust või kolib teise tööruumi."
 
 #. translators: %s: ShowBits' address
 #: showbits/includes/class-settings-page.php
@@ -267,11 +267,11 @@ msgstr "ShowBits (%s) ei ole praegu kättesaadav. Ühendus jääb alles; proovi 
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
-msgstr "ShowBits ei aktsepteeri enam selle saidi ühendust: see katkestati ShowBitsis, tellimus lõppes või selle saidi võtmed muutusid. Ühenda sait uuesti uue saidivõtmega."
+msgstr "ShowBits ei aktsepteeri enam selle veebilehe ühendust: see katkestati ShowBitsis, tellimus lõppes või selle veebilehe võtmed muutusid. Ühenda veebileht uuesti uue veebilehevõtmega."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr "Ühenda see sait ShowBitsi tööruumiga: tööruumi administraator või omanik loob ShowBitsis selle saidi jaoks saidivõtme (Integrations → WordPress). Seejärel saab sait võtta avaldamiseks kinnitatud klippe ja tsitaadikaarte oma meediateeki ning võtta vastu, mida sinu ShowBitsi administraatorid saadavad."
+msgstr "Ühenda see veebileht ShowBitsi tööruumiga: tööruumi haldur või omanik loob ShowBitsis selle veebilehe jaoks veebilehevõtme (Integrations → WordPress). Seejärel saab veebileht võtta avaldamiseks kinnitatud klippe ja tsitaadikaarte oma meediateeki ning võtta vastu, mida sinu ShowBitsi haldurid saadavad."
 
 #: showbits/includes/class-settings-page.php
 msgid "Imports"
@@ -311,12 +311,12 @@ msgstr "Salvesta"
 
 #: showbits/includes/class-settings-page.php
 msgid "Site key"
-msgstr "Saidivõti"
+msgstr "Veebilehevõti"
 
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr "Luuakse ShowBitsis aadressi %s jaoks, kehtib 24 tundi ja ainult ühe korra. Seejärel kontrollib ShowBits, et suhtleb just selle saidiga."
+msgstr "Luuakse ShowBitsis aadressi %s jaoks, kehtib 24 tundi ja ainult ühe korra. Seejärel kontrollib ShowBits, et suhtleb just selle veebilehega."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"
@@ -324,7 +324,7 @@ msgstr "Ühenda"
 
 #: showbits/includes/class-settings-page.php
 msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
-msgstr "Oled ise tööruumi administraator või omanik? Siis logi ShowBitsi sisse ja anna seal nõusolek, ilma saidivõtmeta:"
+msgstr "Oled ise tööruumi haldur või omanik? Siis logi ShowBitsi sisse ja anna seal nõusolek, ilma veebilehevõtmeta:"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect through ShowBits"
@@ -344,7 +344,7 @@ msgstr "Katkesta ühendus"
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect this site from ShowBits? What is in the media library stays."
-msgstr "Kas katkestada selle saidi ühendus ShowBitsiga? Meediateegi sisu jääb alles."
+msgstr "Kas katkestada selle veebilehe ühendus ShowBitsiga? Meediateegi sisu jääb alles."
 
 #: showbits/includes/class-settings-page.php
 msgid "asked for"
@@ -420,35 +420,35 @@ msgstr "ShowBitsi aadress peab algama https://."
 
 #: showbits/includes/class-settings-page.php
 msgid "That is not a site key. Copy it from ShowBits (Integrations → WordPress) again."
-msgstr "See ei ole saidivõti. Kopeeri see uuesti ShowBitsist (Integrations → WordPress)."
+msgstr "See ei ole veebilehevõti. Kopeeri see uuesti ShowBitsist (Integrations → WordPress)."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
-msgstr "ShowBits ei võtnud saidivõtit vastu: see on tundmatu, juba kasutatud, tühistatud või aegunud (saidivõti kehtib 24 tundi, nõusolek kümme minutit). Loo uus saidivõti."
+msgstr "ShowBits ei võtnud veebilehevõtit vastu: see on tundmatu, juba kasutatud, tühistatud või aegunud (veebilehevõti kehtib 24 tundi, nõusolek kümme minutit). Loo uus veebilehevõti."
 
 #: showbits/includes/class-settings-page.php
 msgid "The site key was made for another address. Make one for this site’s address."
-msgstr "Saidivõti loodi teise aadressi jaoks. Loo saidivõti selle saidi aadressi jaoks."
+msgstr "Veebilehevõti loodi teise aadressi jaoks. Loo veebilehevõti selle veebilehe aadressi jaoks."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr "ShowBits ei jõudnud selle saidi REST API-ni (/wp-json/showbits/v1/push) või ei saanud ShowBitsiga endaga ühendust. Sait peab olema avalikult kättesaadav HTTPS-i kaudu; tulemüür või turvaplugin peab ShowBitsi läbi laskma."
+msgstr "ShowBits ei jõudnud selle veebilehe REST API-ni (/wp-json/showbits/v1/push) või ei saanud ShowBitsiga endaga ühendust. Veebileht peab olema avalikult kättesaadav HTTPS-i kaudu; tulemüür või turvaplugin peab ShowBitsi läbi laskma."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
-msgstr "See sait ei vastanud ShowBitsi kontrollile ootuspäraselt. Proovi uuesti; kui see jälle ebaõnnestub, võib WordPressi asemel vastata vahemälu- või turvaplugin."
+msgstr "See veebileht ei vastanud ShowBitsi kontrollile ootuspäraselt. Proovi uuesti; kui see jälle ebaõnnestub, võib WordPressi asemel vastata vahemälu- või turvaplugin."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
-msgstr "Tööruumi tellimus on lõppenud või saidivõtme loojal pole enam õigust saite ühendada."
+msgstr "Tööruumi tellimus on lõppenud või veebilehevõtme loojal pole enam õigust veebilehti ühendada."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
-msgstr "Tööruumis on juba nii palju saite, kui selle tellimus lubab."
+msgstr "Tööruumis on juba nii palju veebilehti, kui selle tellimus lubab."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
-msgstr "ShowBits ei aktsepteerinud selle saidi aadressi. Sait peab olema kättesaadav HTTPS-i kaudu."
+msgstr "ShowBits ei aktsepteerinud selle veebilehe aadressi. Veebileht peab olema kättesaadav HTTPS-i kaudu."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."

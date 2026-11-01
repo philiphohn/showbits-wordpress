@@ -91,7 +91,7 @@ final class Library_Page {
 		}
 		echo '<p class="showbits-intro">';
 		/* translators: %s: the ShowBits workspace's name */
-		echo esc_html( sprintf( __( 'Released clips and quote cards from the ShowBits workspace “%s”. What you import lands in the media library, ready for posts and pages.', 'showbits' ), $connected['workspace_name'] ) );
+		echo esc_html( sprintf( __( 'Released clips and quote cards from the ShowBits workspace “%s”. What you import lands in the media library, ready for posts and pages.', 'showbits' ), Plugin::isolate( (string) $connected['workspace_name'] ) ) );
 		echo '</p>';
 		echo '<div id="showbits-library" class="showbits-library" aria-live="polite"></div>';
 		echo '<noscript><p>' . esc_html__( 'The library needs JavaScript.', 'showbits' ) . '</p></noscript>';

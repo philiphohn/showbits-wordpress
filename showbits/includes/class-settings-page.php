@@ -67,7 +67,7 @@ final class Settings_Page {
 		if ( 'connected' === $status['state'] && $stored ) {
 			echo '<p>';
 			/* translators: %s: the ShowBits workspace's name */
-			echo esc_html( sprintf( __( 'Connected to the workspace “%s”.', 'showbits' ), $status['workspace'] ?? $stored['workspace_name'] ) ) . ' ';
+			echo esc_html( sprintf( __( 'Connected to the workspace “%s”.', 'showbits' ), Plugin::isolate( (string) ( $status['workspace'] ?? $stored['workspace_name'] ) ) ) ) . ' ';
 			if ( ! empty( $status['pushes_per_day'] ) ) {
 				/* translators: 1: imports today, 2: imports a day the plan allows */
 				echo esc_html( sprintf( __( 'Imports today: %1$d of %2$d.', 'showbits' ), (int) $status['pushes_today'], (int) $status['pushes_per_day'] ) );
@@ -76,7 +76,7 @@ final class Settings_Page {
 			$by = get_userdata( $stored['connected_by'] );
 			if ( $by ) {
 				/* translators: 1: a person, 2: a date, 3: ShowBits' address */
-				echo '<p class="description">' . esc_html( sprintf( __( 'Connected by %1$s on %2$s, at %3$s.', 'showbits' ), $by->display_name, self::date( $stored['connected_at'] ), $stored['app_url'] ) ) . '</p>';
+				echo '<p class="description">' . esc_html( sprintf( __( 'Connected by %1$s on %2$s, at %3$s.', 'showbits' ), Plugin::isolate( $by->display_name ), Plugin::isolate( self::date( $stored['connected_at'] ) ), Plugin::isolate( $stored['app_url'] ) ) ) . '</p>';
 			}
 			self::disconnect_form();
 			echo '<h3>' . esc_html__( 'Connect again', 'showbits' ) . '</h3>';
@@ -84,7 +84,7 @@ final class Settings_Page {
 			self::connect_forms( $settings['app_url'], false );
 		} elseif ( 'unreachable' === $status['state'] && $stored ) {
 			/* translators: %s: ShowBits' address */
-			echo '<div class="notice notice-warning inline"><p>' . esc_html( sprintf( __( 'ShowBits (%s) cannot be reached right now. The connection stays; try again later.', 'showbits' ), $stored['app_url'] ) ) . '</p></div>';
+			echo '<div class="notice notice-warning inline"><p>' . esc_html( sprintf( __( 'ShowBits (%s) cannot be reached right now. The connection stays; try again later.', 'showbits' ), Plugin::isolate( $stored['app_url'] ) ) ) . '</p></div>';
 			self::disconnect_form();
 		} elseif ( 'ended' === $status['state'] ) {
 			echo '<div class="notice notice-warning inline"><p>' . esc_html__( 'ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key.', 'showbits' ) . '</p></div>';
@@ -134,7 +134,7 @@ final class Settings_Page {
 		echo '<p><label for="showbits-site-key">' . esc_html__( 'Site key', 'showbits' ) . '</label><br>';
 		echo '<input type="password" class="regular-text code" id="showbits-site-key" name="site_key" autocomplete="off" spellcheck="false" required pattern="sbsk_[A-Za-z0-9_\-]{43}"></p>';
 		/* translators: %s: this site's address */
-		echo '<p class="description">' . esc_html( sprintf( __( 'Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site.', 'showbits' ), Connection::site_url() ) ) . '</p>';
+		echo '<p class="description">' . esc_html( sprintf( __( 'Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site.', 'showbits' ), Plugin::isolate( Connection::site_url() ) ) ) . '</p>';
 		submit_button( __( 'Connect', 'showbits' ), 'primary', 'submit', false );
 		echo '</form>';
 
@@ -187,7 +187,8 @@ final class Settings_Page {
 			$title = '' !== (string) $row['title'] ? (string) $row['title'] : (string) $row['clip_id'];
 			$link  = $row['attachment_id'] ? get_edit_post_link( (int) $row['attachment_id'] ) : null;
 			echo '<tr><td>' . esc_html( self::date( (string) $row['created_at'] . ' UTC' ) ) . '</td>';
-			echo '<td>' . ( $link ? '<a href="' . esc_url( $link ) . '">' . esc_html( $title ) . '</a>' : esc_html( $title ) ) . '</td>';
+			// The clip's title in its own direction (bdi), as in the library: it keeps its order in a right-to-left admin.
+			echo '<td>' . ( $link ? '<a href="' . esc_url( $link ) . '"><bdi>' . esc_html( $title ) . '</bdi></a>' : '<bdi>' . esc_html( $title ) . '</bdi>' ) . '</td>';
 			echo '<td>' . esc_html( 'push' === $row['source'] ? __( 'sent from ShowBits', 'showbits' ) : __( 'picked here', 'showbits' ) ) . '</td>';
 			echo '<td>' . esc_html( $states[ (string) $row['status'] ] ?? (string) $row['status'] );
 			if ( $row['error'] ) {

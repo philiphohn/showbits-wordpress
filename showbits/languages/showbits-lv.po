@@ -8,7 +8,7 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr "ShowBits publicēšanai apstiprinātie klipi un citātu kartītes multivides bibliotēkā: izvēlieties tos WordPress pusē vai saņemiet to, ko sūta jūsu ShowBits administratori."
+msgstr "ShowBits publicēšanai apstiprinātie klipi un citātu kartītes datņu bibliotēkā: izvēlieties tos WordPress pusē vai saņemiet to, ko sūta jūsu ShowBits administratori."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
@@ -16,7 +16,7 @@ msgstr "ShowBits neatbildēja, kā gaidīts."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer with a file."
-msgstr "ShowBits neatsūtīja failu."
+msgstr "ShowBits neatsūtīja datni."
 
 #: showbits/includes/class-api-client.php showbits/includes/class-importer.php
 msgid "ShowBits could not be reached."
@@ -56,19 +56,19 @@ msgstr "Klips pakalpojumā ShowBits vairs nav apstiprināts publicēšanai."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr "Embargo joprojām ir spēkā: fails paliek pakalpojumā ShowBits, līdz embargo beigsies."
+msgstr "Embargo joprojām ir spēkā: datne paliek pakalpojumā ShowBits, līdz embargo beigsies."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."
-msgstr "Fails pakalpojumā ShowBits vēl nav gatavs."
+msgstr "Datne pakalpojumā ShowBits vēl nav gatava."
 
 #: showbits/includes/class-importer.php
 msgid "The file could not be downloaded."
-msgstr "Failu neizdevās lejupielādēt."
+msgstr "Datni neizdevās lejupielādēt."
 
 #: showbits/includes/class-importer.php
 msgid "WordPress did not take the file into the media library."
-msgstr "WordPress nepievienoja failu multivides bibliotēkai."
+msgstr "WordPress nepievienoja datni datņu bibliotēkai."
 
 #: showbits/includes/class-importer.php
 msgid "The delivery from ShowBits is no longer valid. Import the clip again."
@@ -168,15 +168,15 @@ msgstr "Vēl nav gatavs"
 
 #: showbits/includes/class-library-page.php
 msgid "In the media library"
-msgstr "Multivides bibliotēkā"
+msgstr "Datņu bibliotēkā"
 
 #: showbits/includes/class-library-page.php
 msgid "An older version is in the media library"
-msgstr "Multivides bibliotēkā ir vecāka versija"
+msgstr "Datņu bibliotēkā ir vecāka versija"
 
 #: showbits/includes/class-library-page.php
 msgid "Edit"
-msgstr "Rediģēt"
+msgstr "Labot"
 
 #: showbits/includes/class-library-page.php
 msgid "Format"
@@ -219,7 +219,7 @@ msgstr "Vietni iestatījumos var savienot tās administrators."
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-library-page.php
 msgid "Released clips and quote cards from the ShowBits workspace “%s”. What you import lands in the media library, ready for posts and pages."
-msgstr "Publicēšanai apstiprinātie klipi un citātu kartītes no ShowBits darbvietas “%s”. Tas, ko importējat, nonāk multivides bibliotēkā, gatavs izmantošanai rakstos un lapās."
+msgstr "Publicēšanai apstiprinātie klipi un citātu kartītes no ShowBits darbvietas “%s”. Tas, ko importējat, nonāk datņu bibliotēkā, gatavs izmantošanai rakstos un lapās."
 
 #: showbits/includes/class-library-page.php
 msgid "The library needs JavaScript."
@@ -271,7 +271,7 @@ msgstr "ShowBits vairs nepieņem šīs vietnes savienojumu: tas tika atvienots p
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr "Savienojiet šo vietni ar ShowBits darbvietu: darbvietas administrators vai īpašnieks pakalpojumā ShowBits izveido šai vietnei vietnes atslēgu (Integrations → WordPress). Pēc tam vietne var pievienot publicēšanai apstiprinātos klipus un citātu kartītes savai multivides bibliotēkai un saņemt to, ko sūta jūsu ShowBits administratori."
+msgstr "Savienojiet šo vietni ar ShowBits darbvietu: darbvietas administrators vai īpašnieks pakalpojumā ShowBits izveido šai vietnei vietnes atslēgu (Integrations → WordPress). Pēc tam vietne var pievienot publicēšanai apstiprinātos klipus un citātu kartītes savai datņu bibliotēkai un saņemt to, ko sūta jūsu ShowBits administratori."
 
 #: showbits/includes/class-settings-page.php
 msgid "Imports"
@@ -344,7 +344,7 @@ msgstr "Atvienot"
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect this site from ShowBits? What is in the media library stays."
-msgstr "Atvienot šo vietni no ShowBits? Multivides bibliotēkas saturs paliek."
+msgstr "Atvienot šo vietni no ShowBits? Datņu bibliotēkas saturs paliek."
 
 #: showbits/includes/class-settings-page.php
 msgid "asked for"
@@ -396,11 +396,11 @@ msgstr "izvēlēts šeit"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connected. The library is under Media → ShowBits."
-msgstr "Savienots. Bibliotēka atrodas sadaļā Multivide → ShowBits."
+msgstr "Savienots. Bibliotēka atrodas sadaļā Datnes → ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnected. What is in the media library stays."
-msgstr "Atvienots. Multivides bibliotēkas saturs paliek."
+msgstr "Atvienots. Datņu bibliotēkas saturs paliek."
 
 #: showbits/includes/class-settings-page.php
 msgid "Saved."
