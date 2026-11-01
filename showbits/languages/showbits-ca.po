@@ -432,7 +432,7 @@ msgstr "La clau del lloc web es va crear per a una altra adreça. Creeu-ne una p
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr "ShowBits no ha pogut accedir a aquest lloc web a través de la seva API REST (/wp-json/showbits/v1/push), o bé no s'ha pogut contactar amb ShowBits. El lloc web ha de ser públic per HTTPS; un tallafoc o una extensió de seguretat ha de deixar passar ShowBits."
+msgstr "ShowBits no ha pogut accedir a aquest lloc web a través de la seva API REST (/wp-json/showbits/v1/push), o bé no s'ha pogut contactar amb ShowBits. El lloc web ha de ser accessible públicament per HTTPS; un tallafoc o una extensió de seguretat ha de deixar passar ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."

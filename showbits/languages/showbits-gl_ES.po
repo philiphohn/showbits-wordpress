@@ -432,7 +432,7 @@ msgstr "A clave do sitio creouse para outro enderezo. Crea unha para o enderezo 
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr "ShowBits non puido acceder a este sitio a través da súa API REST (/wp-json/showbits/v1/push), ou non se puido contactar co propio ShowBits. O sitio debe ser público a través de HTTPS; unha devasa ou un plugin de seguranza debe deixar pasar a ShowBits."
+msgstr "ShowBits non puido acceder a este sitio a través da súa API REST (/wp-json/showbits/v1/push), ou non se puido contactar co propio ShowBits. O sitio debe ser accesible publicamente a través de HTTPS; unha devasa ou un plugin de seguranza debe deixar pasar ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
@@ -448,7 +448,7 @@ msgstr "O espazo de traballo xa ten tantos sitios como permite o seu plan."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
-msgstr "ShowBits non aceptou o enderezo deste sitio. Debe servirse a través de HTTPS."
+msgstr "ShowBits non aceptou o enderezo deste sitio. O sitio debe servirse a través de HTTPS."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."

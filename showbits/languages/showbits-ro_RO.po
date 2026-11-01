@@ -48,7 +48,7 @@ msgstr "„%1$s” – %2$s"
 
 #: showbits/includes/class-importer.php
 msgid "This is not a clip or a format ShowBits offers."
-msgstr "Acesta nu este un clip sau un format oferit de ShowBits."
+msgstr "Acesta nu este nici un clip, nici un format oferit de ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "The clip is no longer released in ShowBits."
@@ -316,7 +316,7 @@ msgstr "Cheie de site"
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr "Creată în ShowBits pentru %s, valabilă 24 de ore și o singură dată. Apoi ShowBits verifică dacă vorbește cu acest site."
+msgstr "Creată în ShowBits pentru %s, valabilă 24 de ore și o singură dată. Apoi ShowBits verifică dacă vorbește chiar cu acest site."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"
@@ -432,7 +432,7 @@ msgstr "Cheia de site a fost creată pentru o altă adresă. Creează una pentru
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr "ShowBits nu a putut accesa acest site prin API-ul REST (/wp-json/showbits/v1/push) sau ShowBits însuși nu a putut fi contactat. Site-ul trebuie să fie public prin HTTPS; un firewall sau un modul de securitate trebuie să lase ShowBits să treacă."
+msgstr "ShowBits nu a putut accesa acest site prin API-ul REST (/wp-json/showbits/v1/push) sau ShowBits însuși nu a putut fi contactat. Site-ul trebuie să fie accesibil public prin HTTPS; un firewall sau un modul de securitate trebuie să lase ShowBits să treacă."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."

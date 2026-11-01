@@ -432,11 +432,11 @@ msgstr "La chiave del sito è stata creata per un altro indirizzo. Creane una pe
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr "ShowBits non è riuscito a raggiungere questo sito tramite la sua API REST (/wp-json/showbits/v1/push), oppure ShowBits stesso non era raggiungibile. Il sito deve essere pubblico tramite HTTPS; un firewall o un plugin di sicurezza deve lasciar passare ShowBits."
+msgstr "ShowBits non è riuscito a raggiungere questo sito tramite la sua API REST (/wp-json/showbits/v1/push), oppure ShowBits stesso non era raggiungibile. Il sito deve essere raggiungibile pubblicamente tramite HTTPS; un firewall o un plugin di sicurezza deve lasciar passare ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
-msgstr "Questo sito non ha risposto come previsto alla verifica di ShowBits. Riprova; se non riesce di nuovo, forse un plugin di cache o di sicurezza risponde al posto di WordPress."
+msgstr "Questo sito non ha risposto come previsto alla verifica di ShowBits. Riprova; se l'errore si ripete, forse un plugin di cache o di sicurezza risponde al posto di WordPress."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."

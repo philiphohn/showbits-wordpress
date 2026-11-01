@@ -452,4 +452,4 @@ msgstr "ShowBits n’a pas accepté l’adresse de ce site. Le site doit être s
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."
-msgstr "La connexion a échoué. Réessayez ou contactez votre interlocuteur ShowBits."
+msgstr "La connexion a échoué. Réessayez ou contactez votre interlocuteur chez ShowBits."
