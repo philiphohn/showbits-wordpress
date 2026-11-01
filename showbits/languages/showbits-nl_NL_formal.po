@@ -271,7 +271,7 @@ msgstr "ShowBits accepteert de verbinding van deze site niet meer: de verbinding
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr "Verbind deze site met een ShowBits-werkruimte: een admin of eigenaar van de werkruimte maakt in ShowBits een sitesleutel voor deze site aan (Integrations → WordPress). Daarna kan de site vrijgegeven clips en citaatkaarten in de mediabibliotheek opnemen en ontvangen wat uw ShowBits-admins sturen."
+msgstr "Verbind deze site met een ShowBits-werkruimte: een admin of eigenaar van de werkruimte maakt een sitesleutel voor deze site aan in ShowBits (Integrations → WordPress). Daarna kan de site vrijgegeven clips en citaatkaarten in de mediabibliotheek opnemen en ontvangen wat uw ShowBits-admins sturen."
 
 #: showbits/includes/class-settings-page.php
 msgid "Imports"
