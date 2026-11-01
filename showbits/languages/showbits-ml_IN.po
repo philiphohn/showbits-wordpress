@@ -8,448 +8,448 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr ""
+msgstr "ShowBits-ൽ നിന്ന് അംഗീകരിച്ച ക്ലിപ്പുകളും ഉദ്ധരണി കാർഡുകളും മീഡിയ ലൈബ്രറിയിൽ: അവ WordPress-ൽ തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ നിങ്ങളുടെ ShowBits അഡ്മിൻമാർ അയയ്ക്കുന്നവ സ്വീകരിക്കുക."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
-msgstr ""
+msgstr "ShowBits പ്രതീക്ഷിച്ച രീതിയിൽ മറുപടി നൽകിയില്ല."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer with a file."
-msgstr ""
+msgstr "ShowBits ഒരു ഫയൽ ഉപയോഗിച്ച് മറുപടി നൽകിയില്ല."
 
 #: showbits/includes/class-api-client.php showbits/includes/class-importer.php
 msgid "ShowBits could not be reached."
-msgstr ""
+msgstr "ShowBits-ൽ എത്താൻ കഴിഞ്ഞില്ല."
 
 #. translators: 1: ShowBits' reason, 2: the HTTP status
 #: showbits/includes/class-api-client.php
 msgid "ShowBits refused (%1$s, HTTP %2$d)."
-msgstr ""
+msgstr "ShowBits നിരസിച്ചു (%1$s, HTTP %2$d)."
 
 #: showbits/includes/class-connection.php
 msgid "You may not connect this site."
-msgstr ""
+msgstr "ഈ സൈറ്റ് കണക്റ്റ് ചെയ്യാൻ നിങ്ങൾക്ക് അനുമതിയില്ല."
 
 #. translators: %s: the clip's title
 #: showbits/includes/class-importer.php
 msgid "%s (thumbnail)"
-msgstr ""
+msgstr "%s (തംബ്‌നെയിൽ)"
 
 #. translators: %s: a quote (the alternative text of a quote card's picture)
 #: showbits/includes/class-importer.php
 msgid "“%s”"
-msgstr ""
+msgstr "“%s”"
 
 #. translators: 1: a quote, 2: who said it (the alternative text of a quote card's picture)
 #: showbits/includes/class-importer.php
 msgid "“%1$s” – %2$s"
-msgstr ""
+msgstr "“%1$s” – %2$s"
 
 #: showbits/includes/class-importer.php
 msgid "This is not a clip or a format ShowBits offers."
-msgstr ""
+msgstr "ഇതൊരു ക്ലിപ്പോ ShowBits നൽകുന്ന ഫോർമാറ്റോ അല്ല."
 
 #: showbits/includes/class-importer.php
 msgid "The clip is no longer released in ShowBits."
-msgstr ""
+msgstr "ഈ ക്ലിപ്പ് ShowBits-ൽ ഇനി അംഗീകരിച്ചതല്ല."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr ""
+msgstr "പ്രസിദ്ധീകരണ വിലക്ക് ഇപ്പോഴും നിലവിലുണ്ട്: അത് അവസാനിക്കുന്നതുവരെ ഫയൽ ShowBits-ൽ തന്നെ തുടരും."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."
-msgstr ""
+msgstr "ഫയൽ ShowBits-ൽ ഇതുവരെ തയ്യാറായിട്ടില്ല."
 
 #: showbits/includes/class-importer.php
 msgid "The file could not be downloaded."
-msgstr ""
+msgstr "ഫയൽ ഡൗൺലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
 
 #: showbits/includes/class-importer.php
 msgid "WordPress did not take the file into the media library."
-msgstr ""
+msgstr "WordPress ഫയൽ മീഡിയ ലൈബ്രറിയിൽ ചേർത്തില്ല."
 
 #: showbits/includes/class-importer.php
 msgid "The delivery from ShowBits is no longer valid. Import the clip again."
-msgstr ""
+msgstr "ShowBits-ൽ നിന്നുള്ള ഡെലിവറി ഇനി സാധുവല്ല. ക്ലിപ്പ് വീണ്ടും ഇംപോർട്ട് ചെയ്യുക."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits."
-msgstr ""
+msgstr "ShowBits ഈ സൈറ്റിന്റെ കണക്ഷൻ ഇനി സ്വീകരിക്കുന്നില്ല: ക്രമീകരണങ്ങൾ → ShowBits എന്നതിൽ അത് വീണ്ടും കണക്റ്റ് ചെയ്യുക."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer delivers to this site: the workspace’s plan has ended."
-msgstr ""
+msgstr "ShowBits ഈ സൈറ്റിലേക്ക് ഇനി ഒന്നും അയയ്ക്കുന്നില്ല: വർക്ക്‌സ്‌പേസിന്റെ പ്ലാൻ അവസാനിച്ചു."
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
-msgstr ""
+msgstr "ഇന്നത്തേക്കുള്ള ഈ സൈറ്റിന്റെ ഇംപോർട്ടുകൾ തീർന്നു. നാളെ വീണ്ടും ശ്രമിക്കുക."
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
-msgstr ""
+msgstr "ഇംപോർട്ട് പാതിവഴിയിൽ നിലച്ചു."
 
 #: showbits/includes/class-importer.php
 msgid "The import failed."
-msgstr ""
+msgstr "ഇംപോർട്ട് പരാജയപ്പെട്ടു."
 
 #: showbits/includes/class-library-endpoint.php
 msgid "This site is not connected to ShowBits."
-msgstr ""
+msgstr "ഈ സൈറ്റ് ShowBits-മായി കണക്റ്റ് ചെയ്തിട്ടില്ല."
 
 #: showbits/includes/class-library-page.php
 msgid "All"
-msgstr ""
+msgstr "എല്ലാം"
 
 #: showbits/includes/class-library-page.php
 msgid "Clips"
-msgstr ""
+msgstr "ക്ലിപ്പുകൾ"
 
 #: showbits/includes/class-library-page.php showbits/includes/class-settings-page.php
 msgid "Quote cards"
-msgstr ""
+msgstr "ഉദ്ധരണി കാർഡുകൾ"
 
 #: showbits/includes/class-library-page.php
 msgid "Search titles"
-msgstr ""
+msgstr "തലക്കെട്ടുകൾ തിരയുക"
 
 #: showbits/includes/class-library-page.php
 msgid "Search the library"
-msgstr ""
+msgstr "ലൈബ്രറിയിൽ തിരയുക"
 
 #: showbits/includes/class-library-page.php
 msgid "Import selected"
-msgstr ""
+msgstr "തിരഞ്ഞെടുത്തവ ഇംപോർട്ട് ചെയ്യുക"
 
 #. translators: 1: which one, 2: how many in all
 #: showbits/includes/class-library-page.php
 msgid "Asking ShowBits for %1$d of %2$d …"
-msgstr ""
+msgstr "%2$d-ൽ %1$d എണ്ണം ShowBits-നോട് ആവശ്യപ്പെടുന്നു …"
 
 #. translators: %d: how many clips are still on their way
 #: showbits/includes/class-library-page.php
 msgid "On the way from ShowBits: %d …"
-msgstr ""
+msgstr "ShowBits-ൽ നിന്ന് വഴിയിൽ: %d …"
 
 #. translators: %d: how many clips were imported
 #: showbits/includes/class-library-page.php
 msgid "Imported: %d"
-msgstr ""
+msgstr "ഇംപോർട്ട് ചെയ്തു: %d"
 
 #: showbits/includes/class-library-page.php
 msgid "Not everything has arrived yet; it continues in the background. Settings → ShowBits lists the imports."
-msgstr ""
+msgstr "എല്ലാം ഇതുവരെ എത്തിയിട്ടില്ല; ഇംപോർട്ട് പശ്ചാത്തലത്തിൽ തുടരുന്നു. ക്രമീകരണങ്ങൾ → ShowBits എന്നതിൽ ഇംപോർട്ടുകളുടെ പട്ടിക കാണാം."
 
 #: showbits/includes/class-library-page.php
 msgid "On the way"
-msgstr ""
+msgstr "വഴിയിൽ"
 
 #: showbits/includes/class-library-page.php
 msgid "Load more"
-msgstr ""
+msgstr "കൂടുതൽ ലോഡ് ചെയ്യുക"
 
 #: showbits/includes/class-library-page.php
 msgid "Loading …"
-msgstr ""
+msgstr "ലോഡ് ചെയ്യുന്നു …"
 
 #: showbits/includes/class-library-page.php
 msgid "No released clips or quote cards yet."
-msgstr ""
+msgstr "അംഗീകരിച്ച ക്ലിപ്പുകളോ ഉദ്ധരണി കാർഡുകളോ ഇതുവരെ ഇല്ല."
 
 #. translators: %s: date and time the embargo ends
 #: showbits/includes/class-library-page.php
 msgid "Embargo until %s"
-msgstr ""
+msgstr "%s വരെ പ്രസിദ്ധീകരണ വിലക്ക്"
 
 #: showbits/includes/class-library-page.php
 msgid "Not ready yet"
-msgstr ""
+msgstr "ഇതുവരെ തയ്യാറായിട്ടില്ല"
 
 #: showbits/includes/class-library-page.php
 msgid "In the media library"
-msgstr ""
+msgstr "മീഡിയ ലൈബ്രറിയിലുണ്ട്"
 
 #: showbits/includes/class-library-page.php
 msgid "An older version is in the media library"
-msgstr ""
+msgstr "ഒരു പഴയ പതിപ്പ് മീഡിയ ലൈബ്രറിയിലുണ്ട്"
 
 #: showbits/includes/class-library-page.php
 msgid "Edit"
-msgstr ""
+msgstr "തിരുത്തുക"
 
 #: showbits/includes/class-library-page.php
 msgid "Format"
-msgstr ""
+msgstr "ഫോർമാറ്റ്"
 
 #: showbits/includes/class-library-page.php
 msgid "Video"
-msgstr ""
+msgstr "വീഡിയോ"
 
 #: showbits/includes/class-library-page.php
 msgid "Quote card"
-msgstr ""
+msgstr "ഉദ്ധരണി കാർഡ്"
 
 #: showbits/includes/class-library-page.php
 msgid "Meme"
-msgstr ""
+msgstr "മീം"
 
 #. translators: %s: why it failed
 #: showbits/includes/class-library-page.php
 msgid "Failed: %s"
-msgstr ""
+msgstr "പരാജയപ്പെട്ടു: %s"
 
 #. translators: %s: why it failed
 #: showbits/includes/class-library-page.php
 msgid "The library could not be loaded: %s"
-msgstr ""
+msgstr "ലൈബ്രറി ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല: %s"
 
 #: showbits/includes/class-library-page.php
 msgid "This site is not connected to ShowBits yet."
-msgstr ""
+msgstr "ഈ സൈറ്റ് ഇതുവരെ ShowBits-മായി കണക്റ്റ് ചെയ്തിട്ടില്ല."
 
 #: showbits/includes/class-library-page.php
 msgid "Connect it in the settings."
-msgstr ""
+msgstr "ക്രമീകരണങ്ങളിൽ ഇത് കണക്റ്റ് ചെയ്യുക."
 
 #: showbits/includes/class-library-page.php
 msgid "An administrator of this site connects it in the settings."
-msgstr ""
+msgstr "ഈ സൈറ്റിന്റെ ഒരു അഡ്മിനിസ്ട്രേറ്റർ ക്രമീകരണങ്ങളിൽ ഇത് കണക്റ്റ് ചെയ്യും."
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-library-page.php
 msgid "Released clips and quote cards from the ShowBits workspace “%s”. What you import lands in the media library, ready for posts and pages."
-msgstr ""
+msgstr "ShowBits വർക്ക്‌സ്‌പേസ് “%s”-ൽ നിന്ന് അംഗീകരിച്ച ക്ലിപ്പുകളും ഉദ്ധരണി കാർഡുകളും. നിങ്ങൾ ഇംപോർട്ട് ചെയ്യുന്നവ മീഡിയ ലൈബ്രറിയിൽ എത്തും, പോസ്റ്റുകൾക്കും പേജുകൾക്കും ഉപയോഗിക്കാൻ തയ്യാറായി."
 
 #: showbits/includes/class-library-page.php
 msgid "The library needs JavaScript."
-msgstr ""
+msgstr "ലൈബ്രറിക്ക് JavaScript ആവശ്യമാണ്."
 
 #: showbits/includes/class-settings-page.php
 msgid "Settings"
-msgstr ""
+msgstr "ക്രമീകരണങ്ങൾ"
 
 #: showbits/includes/class-settings-page.php
 msgid "You may not change these settings."
-msgstr ""
+msgstr "ഈ ക്രമീകരണങ്ങൾ മാറ്റാൻ നിങ്ങൾക്ക് അനുമതിയില്ല."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connection"
-msgstr ""
+msgstr "കണക്ഷൻ"
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."
-msgstr ""
+msgstr "“%s” എന്ന വർക്ക്‌സ്‌പേസുമായി കണക്റ്റ് ചെയ്തിരിക്കുന്നു."
 
 #. translators: 1: imports today, 2: imports a day the plan allows
 #: showbits/includes/class-settings-page.php
 msgid "Imports today: %1$d of %2$d."
-msgstr ""
+msgstr "ഇന്നത്തെ ഇംപോർട്ടുകൾ: %2$d-ൽ %1$d."
 
 #. translators: 1: a person, 2: a date, 3: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "Connected by %1$s on %2$s, at %3$s."
-msgstr ""
+msgstr "%2$s-ന് %1$s %3$s-മായി കണക്റ്റ് ചെയ്തു."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect again"
-msgstr ""
+msgstr "വീണ്ടും കണക്റ്റ് ചെയ്യുക"
 
 #: showbits/includes/class-settings-page.php
 msgid "With a new site key the site renews its connection, or moves to another workspace."
-msgstr ""
+msgstr "ഒരു പുതിയ സൈറ്റ് കീ ഉപയോഗിച്ച് സൈറ്റ് അതിന്റെ കണക്ഷൻ പുതുക്കുന്നു, അല്ലെങ്കിൽ മറ്റൊരു വർക്ക്‌സ്‌പേസിലേക്ക് മാറുന്നു."
 
 #. translators: %s: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits (%s) cannot be reached right now. The connection stays; try again later."
-msgstr ""
+msgstr "ShowBits (%s)-ൽ ഇപ്പോൾ എത്താൻ കഴിയുന്നില്ല. കണക്ഷൻ നിലനിൽക്കും; പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
-msgstr ""
+msgstr "ShowBits ഈ സൈറ്റിന്റെ കണക്ഷൻ ഇനി സ്വീകരിക്കുന്നില്ല: ShowBits-ൽ അത് വിച്ഛേദിക്കപ്പെട്ടു, പ്ലാൻ അവസാനിച്ചു, അല്ലെങ്കിൽ ഈ സൈറ്റിന്റെ കീകൾ മാറി. ഒരു പുതിയ സൈറ്റ് കീ ഉപയോഗിച്ച് അത് വീണ്ടും കണക്റ്റ് ചെയ്യുക."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr ""
+msgstr "ഈ സൈറ്റ് ഒരു ShowBits വർക്ക്‌സ്‌പേസുമായി കണക്റ്റ് ചെയ്യുക: വർക്ക്‌സ്‌പേസിന്റെ ഒരു അഡ്മിനോ ഉടമയോ ShowBits-ൽ (Integrations → WordPress) ഈ സൈറ്റിനായി ഒരു സൈറ്റ് കീ സൃഷ്ടിക്കുന്നു. തുടർന്ന് സൈറ്റിന് അംഗീകരിച്ച ക്ലിപ്പുകളും ഉദ്ധരണി കാർഡുകളും അതിന്റെ മീഡിയ ലൈബ്രറിയിലേക്ക് എടുക്കാനും, നിങ്ങളുടെ ShowBits അഡ്മിൻമാർ അയയ്ക്കുന്നവ സ്വീകരിക്കാനും കഴിയും."
 
 #: showbits/includes/class-settings-page.php
 msgid "Imports"
-msgstr ""
+msgstr "ഇംപോർട്ടുകൾ"
 
 #: showbits/includes/class-settings-page.php
 msgid "Format of quote cards"
-msgstr ""
+msgstr "ഉദ്ധരണി കാർഡുകളുടെ ഫോർമാറ്റ്"
 
 #: showbits/includes/class-settings-page.php
 msgid "4:5 (feeds, articles)"
-msgstr ""
+msgstr "4:5 (ഫീഡുകൾ, ലേഖനങ്ങൾ)"
 
 #: showbits/includes/class-settings-page.php
 msgid "1:1 (square)"
-msgstr ""
+msgstr "1:1 (ചതുരം)"
 
 #: showbits/includes/class-settings-page.php
 msgid "9:16 (stories)"
-msgstr ""
+msgstr "9:16 (സ്റ്റോറികൾ)"
 
 #: showbits/includes/class-settings-page.php
 msgid "The picture pushes bring; in the library you choose for each card."
-msgstr ""
+msgstr "അയച്ചുകിട്ടുന്ന കാർഡുകൾ ഈ ഫോർമാറ്റിൽ വരും; ലൈബ്രറിയിൽ ഓരോ കാർഡിനും നിങ്ങൾ വെവ്വേറെ തിരഞ്ഞെടുക്കുന്നു."
 
 #: showbits/includes/class-settings-page.php
 msgid "Videos"
-msgstr ""
+msgstr "വീഡിയോകൾ"
 
 #: showbits/includes/class-settings-page.php
 msgid "Import the thumbnail as the video’s poster image"
-msgstr ""
+msgstr "തംബ്‌നെയിൽ വീഡിയോയുടെ പോസ്റ്റർ ചിത്രമായി ഇംപോർട്ട് ചെയ്യുക"
 
 #: showbits/includes/class-settings-page.php
 msgid "Save"
-msgstr ""
+msgstr "സംരക്ഷിക്കുക"
 
 #: showbits/includes/class-settings-page.php
 msgid "Site key"
-msgstr ""
+msgstr "സൈറ്റ് കീ"
 
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr ""
+msgstr "ShowBits-ൽ %s-നായി സൃഷ്ടിച്ചത്, 24 മണിക്കൂർ സാധുവാണ്, ഒരു തവണ മാത്രം. തുടർന്ന് ShowBits ഇതേ സൈറ്റുമായാണോ സംസാരിക്കുന്നത് എന്ന് പരിശോധിക്കുന്നു."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"
-msgstr ""
+msgstr "കണക്റ്റ് ചെയ്യുക"
 
 #: showbits/includes/class-settings-page.php
 msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
-msgstr ""
+msgstr "നിങ്ങൾ തന്നെ വർക്ക്‌സ്‌പേസിന്റെ അഡ്മിനോ ഉടമയോ ആണോ? എങ്കിൽ ShowBits-ൽ സൈൻ ഇൻ ചെയ്ത് അവിടെ സമ്മതം നൽകുക, സൈറ്റ് കീ ഇല്ലാതെ:"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect through ShowBits"
-msgstr ""
+msgstr "ShowBits വഴി കണക്റ്റ് ചെയ്യുക"
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits address"
-msgstr ""
+msgstr "ShowBits വിലാസം"
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits Cloud: https://app.showbits.ai. OnPremise: the address of your installation."
-msgstr ""
+msgstr "ShowBits Cloud: https://app.showbits.ai. OnPremise: നിങ്ങളുടെ ഇൻസ്റ്റലേഷന്റെ വിലാസം."
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect"
-msgstr ""
+msgstr "വിച്ഛേദിക്കുക"
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect this site from ShowBits? What is in the media library stays."
-msgstr ""
+msgstr "ഈ സൈറ്റ് ShowBits-ൽ നിന്ന് വിച്ഛേദിക്കണോ? മീഡിയ ലൈബ്രറിയിലുള്ളവ അവിടെത്തന്നെ നിലനിൽക്കും."
 
 #: showbits/includes/class-settings-page.php
 msgid "asked for"
-msgstr ""
+msgstr "ആവശ്യപ്പെട്ടു"
 
 #: showbits/includes/class-settings-page.php
 msgid "waiting"
-msgstr ""
+msgstr "കാത്തിരിക്കുന്നു"
 
 #: showbits/includes/class-settings-page.php
 msgid "importing"
-msgstr ""
+msgstr "ഇംപോർട്ട് ചെയ്യുന്നു"
 
 #: showbits/includes/class-settings-page.php
 msgid "imported"
-msgstr ""
+msgstr "ഇംപോർട്ട് ചെയ്തു"
 
 #: showbits/includes/class-settings-page.php
 msgid "failed"
-msgstr ""
+msgstr "പരാജയപ്പെട്ടു"
 
 #: showbits/includes/class-settings-page.php
 msgid "Recent imports"
-msgstr ""
+msgstr "സമീപകാല ഇംപോർട്ടുകൾ"
 
 #: showbits/includes/class-settings-page.php
 msgid "When"
-msgstr ""
+msgstr "എപ്പോൾ"
 
 #: showbits/includes/class-settings-page.php
 msgid "Clip"
-msgstr ""
+msgstr "ക്ലിപ്പ്"
 
 #: showbits/includes/class-settings-page.php
 msgid "How"
-msgstr ""
+msgstr "എങ്ങനെ"
 
 #: showbits/includes/class-settings-page.php
 msgid "State"
-msgstr ""
+msgstr "നില"
 
 #: showbits/includes/class-settings-page.php
 msgid "sent from ShowBits"
-msgstr ""
+msgstr "ShowBits-ൽ നിന്ന് അയച്ചത്"
 
 #: showbits/includes/class-settings-page.php
 msgid "picked here"
-msgstr ""
+msgstr "ഇവിടെ തിരഞ്ഞെടുത്തത്"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connected. The library is under Media → ShowBits."
-msgstr ""
+msgstr "കണക്റ്റ് ചെയ്തു. ലൈബ്രറി മീഡിയ → ShowBits എന്നതിലാണ്."
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnected. What is in the media library stays."
-msgstr ""
+msgstr "വിച്ഛേദിച്ചു. മീഡിയ ലൈബ്രറിയിലുള്ളവ അവിടെത്തന്നെ നിലനിൽക്കും."
 
 #: showbits/includes/class-settings-page.php
 msgid "Saved."
-msgstr ""
+msgstr "സംരക്ഷിച്ചു."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting was cancelled in ShowBits."
-msgstr ""
+msgstr "ShowBits-ൽ കണക്റ്റ് ചെയ്യൽ റദ്ദാക്കി."
 
 #: showbits/includes/class-settings-page.php
 msgid "That way back from ShowBits did not belong to this attempt. Start again."
-msgstr ""
+msgstr "ShowBits-ൽ നിന്നുള്ള ഈ മടക്കവഴി ഈ ശ്രമത്തിന്റേതല്ല. വീണ്ടും ആരംഭിക്കുക."
 
 #: showbits/includes/class-settings-page.php
 msgid "The ShowBits address must start with https://."
-msgstr ""
+msgstr "ShowBits വിലാസം https:// എന്നതിൽ ആരംഭിക്കണം."
 
 #: showbits/includes/class-settings-page.php
 msgid "That is not a site key. Copy it from ShowBits (Integrations → WordPress) again."
-msgstr ""
+msgstr "ഇതൊരു സൈറ്റ് കീ അല്ല. ShowBits-ൽ (Integrations → WordPress) നിന്ന് അത് വീണ്ടും പകർത്തുക."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
-msgstr ""
+msgstr "ShowBits സൈറ്റ് കീ സ്വീകരിച്ചില്ല: അത് അജ്ഞാതമാണ്, ഉപയോഗിച്ചതാണ്, പിൻവലിച്ചതാണ്, അല്ലെങ്കിൽ കാലഹരണപ്പെട്ടതാണ് (ഒരു സൈറ്റ് കീ 24 മണിക്കൂറും ഒരു സമ്മതം പത്ത് മിനിറ്റും നിലനിൽക്കും). പുതിയൊരെണ്ണം സൃഷ്ടിക്കുക."
 
 #: showbits/includes/class-settings-page.php
 msgid "The site key was made for another address. Make one for this site’s address."
-msgstr ""
+msgstr "സൈറ്റ് കീ മറ്റൊരു വിലാസത്തിനായി സൃഷ്ടിച്ചതാണ്. ഈ സൈറ്റിന്റെ വിലാസത്തിനായി ഒന്ന് സൃഷ്ടിക്കുക."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr ""
+msgstr "ShowBits-ന് ഈ സൈറ്റിൽ അതിന്റെ REST API (/wp-json/showbits/v1/push) വഴി എത്താൻ കഴിഞ്ഞില്ല, അല്ലെങ്കിൽ ShowBits-ൽ തന്നെ എത്താൻ കഴിഞ്ഞില്ല. സൈറ്റ് HTTPS വഴി പൊതുവായി ലഭ്യമായിരിക്കണം; ഒരു ഫയർവാളോ സുരക്ഷാ പ്ലഗിനോ ShowBits-നെ അകത്തേക്ക് കടത്തിവിടണം."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
-msgstr ""
+msgstr "ShowBits-ന്റെ പരിശോധനയ്ക്ക് ഈ സൈറ്റ് പ്രതീക്ഷിച്ച രീതിയിൽ മറുപടി നൽകിയില്ല. വീണ്ടും ശ്രമിക്കുക; വീണ്ടും പരാജയപ്പെട്ടാൽ, WordPress-ന് പകരം ഒരു കാഷെ അല്ലെങ്കിൽ സുരക്ഷാ പ്ലഗിൻ മറുപടി നൽകുന്നുണ്ടാകാം."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
-msgstr ""
+msgstr "വർക്ക്‌സ്‌പേസിന്റെ പ്ലാൻ അവസാനിച്ചു, അല്ലെങ്കിൽ സൈറ്റ് കീ സൃഷ്ടിച്ചയാൾക്ക് ഇനി സൈറ്റുകൾ കണക്റ്റ് ചെയ്യാൻ അനുമതിയില്ല."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
-msgstr ""
+msgstr "വർക്ക്‌സ്‌പേസിന് അതിന്റെ പ്ലാൻ അനുവദിക്കുന്നത്രയും സൈറ്റുകൾ ഇതിനകം ഉണ്ട്."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
-msgstr ""
+msgstr "ShowBits ഈ സൈറ്റിന്റെ വിലാസം സ്വീകരിച്ചില്ല. അത് HTTPS വഴി ലഭ്യമാക്കണം."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."
-msgstr ""
+msgstr "കണക്റ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല. വീണ്ടും ശ്രമിക്കുക, അല്ലെങ്കിൽ ShowBits-ലെ നിങ്ങളുടെ ബന്ധപ്പെട്ട വ്യക്തിയോട് ചോദിക്കുക."
