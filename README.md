@@ -1,6 +1,6 @@
 # ShowBits für WordPress
 
-Das WordPress-Plugin von ShowBits: freigegebene Clips und Zitatkarten eines Workspace in der Mediathek – in WordPress ausgewählt oder von Admins und Ownern aus ShowBits geschickt. Plan, Sicherheitsmodell und Entscheidungen: [`docs/wordpress.md`](../docs/wordpress.md) (D-Int-14).
+Das WordPress-Plugin von ShowBits: freigegebene Clips und Zitatkarten eines Workspace in der Mediathek – in WordPress ausgewählt oder von Admins und Ownern aus ShowBits geschickt. Plan, Sicherheitsmodell und Entscheidungen: [`docs/wordpress.md`](../docs/wordpress.md) (D-Int-15).
 
 Ein eigenes Teil-Repository dieses Repos: eigene Tests, eigener CI-Job (`wordpress`), eigenes ZIP. Abspalten, wenn es ein eigenes Repository werden soll:
 
