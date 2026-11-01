@@ -192,6 +192,21 @@ function current_time( string $type, bool $gmt = false ): string {
 	return gmdate( 'Y-m-d H:i:s' );
 }
 
+/** As WordPress' wp_strip_all_tags: no tags, scripts and styles with their content. */
+function wp_strip_all_tags( string $text ): string {
+	return strip_tags( (string) preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $text ) );
+}
+
+/** As WordPress' (enough for the tests): no tags, one line, trimmed. */
+function sanitize_text_field( string $str ): string {
+	return trim( (string) preg_replace( '/[\r\n\t ]+/', ' ', wp_strip_all_tags( $str ) ) );
+}
+
+/** As WordPress' (enough for the tests): no tags, line breaks kept, trimmed. */
+function sanitize_textarea_field( string $str ): string {
+	return trim( wp_strip_all_tags( $str ) );
+}
+
 function sanitize_title( string $title ): string {
 	$title = strtolower( (string) iconv( 'UTF-8', 'ASCII//TRANSLIT', $title ) );
 	return trim( (string) preg_replace( '/[^a-z0-9]+/', '-', $title ), '-' );

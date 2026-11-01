@@ -173,7 +173,6 @@ final class Imports {
 		$stale = gmdate( 'Y-m-d H:i:s', time() - self::STALE );
 		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- the queue is read fresh: a cached row could hand one push to two processes
 		$wpdb->query( $wpdb->prepare( "UPDATE %i SET status = 'queued', updated_at = %s WHERE status = 'running' AND updated_at < %s AND attempts < 3", $table, $now, $stale ) );
-		$wpdb->query( $wpdb->prepare( "UPDATE %i SET status = 'failed', error = 'interrupted', updated_at = %s WHERE status = 'running' AND updated_at < %s", $table, $now, $stale ) );
 		$claimed = null;
 		for ( $tries = 0; $tries < 3 && null === $claimed; $tries++ ) {
 			$row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM %i WHERE status = 'queued' ORDER BY id LIMIT 1", $table ), ARRAY_A );
@@ -188,6 +187,48 @@ final class Imports {
 		// phpcs:enable
 		wp_cache_delete( 'recent', self::CACHE );
 		return $claimed;
+	}
+
+	/**
+	 * Imports whose request died three times (stuck in running): failed, as interrupted. Returns their pushes, each
+	 * once, so ShowBits learns of it (the process whose update took the row tells it).
+	 *
+	 * @return array<int, string>
+	 */
+	public static function give_up_interrupted(): array {
+		global $wpdb;
+		$table  = self::table();
+		$now    = current_time( 'mysql', true );
+		$stale  = gmdate( 'Y-m-d H:i:s', time() - self::STALE );
+		$pushes = array();
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- the queue is read fresh
+		$rows = $wpdb->get_results( $wpdb->prepare( "SELECT id, push_id FROM %i WHERE status = 'running' AND updated_at < %s AND attempts >= 3", $table, $stale ), ARRAY_A );
+		foreach ( is_array( $rows ) ? $rows : array() as $row ) {
+			$taken = $wpdb->query( $wpdb->prepare( "UPDATE %i SET status = 'failed', error = 'interrupted', ticket = NULL, updated_at = %s WHERE id = %d AND status = 'running'", $table, $now, $row['id'] ) );
+			if ( 1 === $taken && $row['push_id'] ) {
+				$pushes[] = (string) $row['push_id'];
+			}
+		}
+		// phpcs:enable
+		if ( $pushes ) {
+			wp_cache_delete( 'recent', self::CACHE );
+		}
+		return $pushes;
+	}
+
+	/**
+	 * An import of this clip and format under way here (queued or running): asking ShowBits again would only bring
+	 * the clip twice. Null when there is none.
+	 *
+	 * @param string $clip_id The clip.
+	 * @param string $variant A quote card's format, '' for a video.
+	 * @return array{id: int, push_id: string}|null
+	 */
+	public static function under_way( string $clip_id, string $variant ): ?array {
+		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- the queue is read fresh
+		$row = $wpdb->get_row( $wpdb->prepare( "SELECT id, push_id FROM %i WHERE clip_id = %s AND variant = %s AND status IN ('queued', 'running') ORDER BY id DESC LIMIT 1", self::table(), $clip_id, $variant ), ARRAY_A );
+		return $row ? array( 'id' => (int) $row['id'], 'push_id' => (string) $row['push_id'] ) : null;
 	}
 
 	/**

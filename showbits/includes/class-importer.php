@@ -52,6 +52,15 @@ final class Importer {
 		if ( ! self::has_file( $item, $variant ) ) {
 			return self::error( 'noFile' );
 		}
+		// Already on its way into the library: ShowBits would send it again (a delivered push is not answered twice).
+		$under_way = Imports::under_way( $clip_id, $quote ? $variant : '' );
+		if ( $under_way ) {
+			return array(
+				'id'      => $under_way['id'],
+				'push'    => $under_way['push_id'],
+				'variant' => $variant,
+			);
+		}
 		$push = $client->request_import( $clip_id, $quote ? $variant : null );
 		if ( is_wp_error( $push ) ) {
 			return $push;
@@ -100,6 +109,10 @@ final class Importer {
 	private static function work( Api_Client $client, array $connection, int $budget ): void {
 		$started = time();
 		$more    = false;
+		// ShowBits hears of imports that died, so the site can ask for the clip again.
+		foreach ( Imports::give_up_interrupted() as $push ) {
+			$client->report( $push, array( 'state' => 'failed', 'reason' => 'interrupted' ) );
+		}
 		while ( true ) {
 			if ( time() - $started >= $budget ) {
 				$more = true;
@@ -372,13 +385,16 @@ final class Importer {
 	 * @return array<string, mixed>
 	 */
 	public static function attachment_post( array $item, string $variant, int $user_id ): array {
-		$title  = (string) ( $item['title'] ?? '' );
-		$source = trim( implode( ' · ', array_filter( array( (string) ( $item['show']['name'] ?? '' ), (string) ( $item['episode']['title'] ?? '' ) ) ) ) );
+		// ShowBits' texts are plain text. WordPress filters HTML out of what is saved only for people who may not post
+		// it: an import that runs on an admin's library page would keep a tag in a title or caption as it is and show
+		// it on the site.
+		$title  = sanitize_text_field( (string) ( $item['title'] ?? '' ) );
+		$source = trim( implode( ' · ', array_filter( array( sanitize_text_field( (string) ( $item['show']['name'] ?? '' ) ), sanitize_text_field( (string) ( $item['episode']['title'] ?? '' ) ) ) ) ) );
 		$poster = 'video' !== $variant && 'quote' !== ( $item['kind'] ?? '' );
 		return array(
 			/* translators: %s: the clip's title */
 			'post_title'   => $poster ? sprintf( __( '%s (thumbnail)', 'showbits' ), $title ) : $title,
-			'post_excerpt' => $poster ? '' : (string) ( $item['caption'] ?? '' ),
+			'post_excerpt' => $poster ? '' : sanitize_textarea_field( (string) ( $item['caption'] ?? '' ) ),
 			'post_content' => $source,
 			'post_author'  => $user_id,
 		);
@@ -413,8 +429,8 @@ final class Importer {
 		if ( 'quote' !== ( $item['kind'] ?? '' ) || 'video' === $variant ) {
 			return null;
 		}
-		$text = trim( (string) ( $item['caption'] ?? '' ) );
-		$name = trim( (string) ( $item['quote']['name'] ?? '' ) );
+		$text = sanitize_text_field( (string) ( $item['caption'] ?? '' ) );
+		$name = sanitize_text_field( (string) ( $item['quote']['name'] ?? '' ) );
 		if ( '' === $name ) {
 			/* translators: %s: a quote (the alternative text of a quote card's picture) */
 			return sprintf( __( '“%s”', 'showbits' ), $text );

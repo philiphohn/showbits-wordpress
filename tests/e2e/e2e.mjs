@@ -56,7 +56,8 @@ const item = (id, kind, title, extra = {}) => ({
   preview: null, ...extra,
 });
 const LIBRARY = [
-  item(CLIP, "highlight", "Warum Lokaljournalismus gewinnt"),
+  // Markup in ShowBits' texts must reach WordPress as plain text, even when an admin's library page imports it.
+  item(CLIP, "highlight", "Warum <b>Lokaljournalismus</b> gewinnt", { caption: 'Ehrlich gesagt: <img src=x onerror="document.title=1">Lokales wird geteilt.' }),
   item(CARD, "quote", "Lokales wird geteilt"),
   item(LOCKED, "highlight", "Noch unter Embargo", { embargoUntil: "2027-01-01T06:00:00Z" }),
   item(PUSHED, "meme", "Der Moment danach"),
@@ -145,10 +146,12 @@ const server = https.createServer({ cert: readFileSync(E2E_CERT), key: readFileS
     res.writeHead(204);
     return res.end();
   }
-  if (route === "/library") return json(res, 200, { data: LIBRARY, nextCursor: null });
+  // As ShowBits: a clip under embargo is not in the library at all, not even by its id.
+  const listed = LIBRARY.filter((i) => !i.embargoUntil);
+  if (route === "/library") return json(res, 200, { data: listed, nextCursor: null });
   const one = route.match(/^\/library\/([^/]+)$/);
   if (one) {
-    const found = LIBRARY.find((i) => i.id === one[1]);
+    const found = listed.find((i) => i.id === one[1]);
     return found ? json(res, 200, found) : refuse(res, 404, "notFound");
   }
   if (route === "/imports" && req.method === "POST") {
@@ -242,10 +245,10 @@ try {
 
   await page.goto(`${WP}/wp-admin/upload.php?page=showbits`);
   await page.waitForSelector(".showbits-card");
-  check(await page.locator(".showbits-card").count() === 4, "the library lists the released clips");
+  check(await page.locator(".showbits-card").count() === 3, "the library lists the released clips");
   const cardOf = (id) => page.locator(".showbits-card").filter({ has: page.locator(`#showbits-${id}`) });
-  const locked = cardOf(LOCKED);
-  check(await locked.locator("text=Embargo bis").count() > 0 && (await locked.locator("input[type=checkbox]").isDisabled()), "a clip under embargo says so and cannot be picked");
+  check(await cardOf(LOCKED).count() === 0, "a clip under embargo is not in the library at all");
+  check(await page.locator(".showbits-card", { hasText: "<b>Lokaljournalismus</b>" }).count() === 1 && await page.locator(".showbits-card b").count() === 0, "markup in a title shows as text in the library, never as markup");
   await page.locator(`#showbits-${CLIP}`).check();
   await cardOf(CARD).locator("select").selectOption("1x1");
   await page.locator(`#showbits-${CARD}`).check();
@@ -259,7 +262,7 @@ try {
   // Attachment texts are in the site's language (English here: WordPress' German language pack is not installed).
   const poster = attachments.find((a) => a.post_title.endsWith("(thumbnail)"));
   const picture = attachments.find((a) => a.post_title === "Lokales wird geteilt");
-  check(!!video && video.post_title === "Warum Lokaljournalismus gewinnt" && video.post_excerpt.startsWith("Ehrlich gesagt"), "the clip is a video attachment with its title and caption");
+  check(!!video && video.post_title === "Warum Lokaljournalismus gewinnt" && video.post_excerpt === "Ehrlich gesagt: Lokales wird geteilt.", "the clip is a video attachment with its title and caption, as plain text (imported by an admin)");
   check(!!poster && wp("post", "meta", "get", String(video?.ID), "_thumbnail_id") === String(poster?.ID), "its thumbnail is the video's poster image");
   check(!!picture && wp("post", "meta", "get", String(picture?.ID), "_wp_attachment_image_alt") === "“Lokale Nachrichten werden wirklich geteilt.” – Lena Hoffmann", "the quote card's picture has the quote as alternative text, in the site's language");
   check(wp("post", "meta", "get", String(picture?.ID), "_showbits_variant") === "1x1" && wp("post", "meta", "get", String(video?.ID), "_showbits_clip_id") === CLIP, "attachments remember clip and variant");

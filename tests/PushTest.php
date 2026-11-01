@@ -128,6 +128,23 @@ final class PushTest extends TestCase {
 		$this->assertSame( 'Lokales wird geteilt.', Importer::attachment_post( $card, '4x5', 1 )['post_excerpt'] );
 	}
 
+	public function test_texts_from_showbits_arrive_as_plain_text(): void {
+		$clip = array(
+			'id'      => 'c1',
+			'kind'    => 'highlight',
+			'title'   => 'Warum <img src=x onerror=alert(1)>Wohnen',
+			'caption' => "Erste Zeile<script>alert(1)</script>\nZweite Zeile",
+			'show'    => array( 'name' => '<b>Talk</b> am Abend' ),
+			'episode' => array( 'title' => 'Folge <i>141</i>' ),
+		);
+		$post = Importer::attachment_post( $clip, 'video', 3 );
+		$this->assertSame( 'Warum Wohnen', $post['post_title'] );
+		$this->assertSame( "Erste Zeile\nZweite Zeile", $post['post_excerpt'] );
+		$this->assertSame( 'Talk am Abend · Folge 141', $post['post_content'] );
+		$card = array( 'kind' => 'quote', 'caption' => 'Gesagt<svg onload=alert(1)>', 'quote' => array( 'name' => '<a href="https://x">Lena</a>' ) ) + $clip;
+		$this->assertSame( '“Gesagt” – Lena', Importer::alt_text( $card, '4x5' ) );
+	}
+
 	public function test_failures_reach_showbits_as_known_reasons_only(): void {
 		$this->assertSame( 'embargo', Importer::reason_of( new WP_Error( 'showbits_embargo', '', array( 'reason' => 'embargo' ) ) ) );
 		$this->assertSame( 'download', Importer::reason_of( new WP_Error( 'showbits_download', '', array( 'reason' => 'download' ) ) ) );
@@ -138,7 +155,7 @@ final class PushTest extends TestCase {
 	public function test_every_reason_the_import_log_keeps_has_its_own_translatable_message(): void {
 		$generic  = Importer::message_of( 'failed' );
 		$messages = array();
-		// What reason_of() lets through, and what Imports::claim() writes for a run that never finished.
+		// What reason_of() lets through, and what Imports::give_up_interrupted() writes for a run that never finished.
 		foreach ( array( 'embargo', 'notReleased', 'noFile', 'download', 'media', 'invalid', 'unauthorized', 'unreachable', 'ticket', 'inactive', 'limit', 'interrupted' ) as $reason ) {
 			$messages[ $reason ] = Importer::message_of( $reason );
 			$this->assertNotSame( $generic, $messages[ $reason ], $reason );
