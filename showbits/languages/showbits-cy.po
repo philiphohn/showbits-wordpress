@@ -8,448 +8,448 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr ""
+msgstr "Clipiau a chardiau dyfyniad wedi’u rhyddhau o ShowBits yn y llyfrgell cyfryngau: dewiswch nhw yn WordPress, neu derbyniwch yr hyn y mae eich gweinyddwyr ShowBits yn ei anfon."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
-msgstr ""
+msgstr "Nid atebodd ShowBits yn ôl y disgwyl."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer with a file."
-msgstr ""
+msgstr "Nid anfonodd ShowBits ffeil."
 
 #: showbits/includes/class-api-client.php showbits/includes/class-importer.php
 msgid "ShowBits could not be reached."
-msgstr ""
+msgstr "Nid oedd modd cyrraedd ShowBits."
 
 #. translators: 1: ShowBits' reason, 2: the HTTP status
 #: showbits/includes/class-api-client.php
 msgid "ShowBits refused (%1$s, HTTP %2$d)."
-msgstr ""
+msgstr "Gwrthododd ShowBits y cais (%1$s, HTTP %2$d)."
 
 #: showbits/includes/class-connection.php
 msgid "You may not connect this site."
-msgstr ""
+msgstr "Nid oes gennych hawl i gysylltu’r wefan hon."
 
 #. translators: %s: the clip's title
 #: showbits/includes/class-importer.php
 msgid "%s (thumbnail)"
-msgstr ""
+msgstr "%s (llun bach)"
 
 #. translators: %s: a quote (the alternative text of a quote card's picture)
 #: showbits/includes/class-importer.php
 msgid "“%s”"
-msgstr ""
+msgstr "‘%s’"
 
 #. translators: 1: a quote, 2: who said it (the alternative text of a quote card's picture)
 #: showbits/includes/class-importer.php
 msgid "“%1$s” – %2$s"
-msgstr ""
+msgstr "‘%1$s’ – %2$s"
 
 #: showbits/includes/class-importer.php
 msgid "This is not a clip or a format ShowBits offers."
-msgstr ""
+msgstr "Nid yw hwn yn glip nac yn fformat y mae ShowBits yn ei gynnig."
 
 #: showbits/includes/class-importer.php
 msgid "The clip is no longer released in ShowBits."
-msgstr ""
+msgstr "Nid yw’r clip wedi’i ryddhau yn ShowBits mwyach."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr ""
+msgstr "Mae’r embargo’n dal mewn grym: mae’r ffeil yn aros yn ShowBits nes iddo ddod i ben."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."
-msgstr ""
+msgstr "Nid yw’r ffeil yn barod yn ShowBits eto."
 
 #: showbits/includes/class-importer.php
 msgid "The file could not be downloaded."
-msgstr ""
+msgstr "Nid oedd modd llwytho’r ffeil i lawr."
 
 #: showbits/includes/class-importer.php
 msgid "WordPress did not take the file into the media library."
-msgstr ""
+msgstr "Nid ychwanegodd WordPress y ffeil at y llyfrgell cyfryngau."
 
 #: showbits/includes/class-importer.php
 msgid "The delivery from ShowBits is no longer valid. Import the clip again."
-msgstr ""
+msgstr "Nid yw’r danfoniad o ShowBits yn ddilys mwyach. Mewnforiwch y clip eto."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits."
-msgstr ""
+msgstr "Nid yw ShowBits yn derbyn cysylltiad y wefan hon mwyach: cysylltwch hi eto drwy’r ddewislen Gosodiadau → ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer delivers to this site: the workspace’s plan has ended."
-msgstr ""
+msgstr "Nid yw ShowBits yn danfon i’r wefan hon mwyach: mae cynllun y gweithle wedi dod i ben."
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
-msgstr ""
+msgstr "Mae mewnforion y wefan ar gyfer heddiw wedi’u defnyddio i gyd. Rhowch gynnig arall arni yfory."
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
-msgstr ""
+msgstr "Cafodd y mewnforio ei dorri ar draws."
 
 #: showbits/includes/class-importer.php
 msgid "The import failed."
-msgstr ""
+msgstr "Methodd y mewnforio."
 
 #: showbits/includes/class-library-endpoint.php
 msgid "This site is not connected to ShowBits."
-msgstr ""
+msgstr "Nid yw’r wefan hon wedi’i chysylltu â ShowBits."
 
 #: showbits/includes/class-library-page.php
 msgid "All"
-msgstr ""
+msgstr "Y cyfan"
 
 #: showbits/includes/class-library-page.php
 msgid "Clips"
-msgstr ""
+msgstr "Clipiau"
 
 #: showbits/includes/class-library-page.php showbits/includes/class-settings-page.php
 msgid "Quote cards"
-msgstr ""
+msgstr "Cardiau dyfyniad"
 
 #: showbits/includes/class-library-page.php
 msgid "Search titles"
-msgstr ""
+msgstr "Chwilio teitlau"
 
 #: showbits/includes/class-library-page.php
 msgid "Search the library"
-msgstr ""
+msgstr "Chwilio’r llyfrgell"
 
 #: showbits/includes/class-library-page.php
 msgid "Import selected"
-msgstr ""
+msgstr "Mewnforio’r dewis"
 
 #. translators: 1: which one, 2: how many in all
 #: showbits/includes/class-library-page.php
 msgid "Asking ShowBits for %1$d of %2$d …"
-msgstr ""
+msgstr "Wrthi’n gofyn i ShowBits am %1$d o %2$d…"
 
 #. translators: %d: how many clips are still on their way
 #: showbits/includes/class-library-page.php
 msgid "On the way from ShowBits: %d …"
-msgstr ""
+msgstr "Ar y ffordd o ShowBits: %d…"
 
 #. translators: %d: how many clips were imported
 #: showbits/includes/class-library-page.php
 msgid "Imported: %d"
-msgstr ""
+msgstr "Wedi’u mewnforio: %d"
 
 #: showbits/includes/class-library-page.php
 msgid "Not everything has arrived yet; it continues in the background. Settings → ShowBits lists the imports."
-msgstr ""
+msgstr "Nid yw popeth wedi cyrraedd eto; mae’n parhau yn y cefndir. Mae’r ddewislen Gosodiadau → ShowBits yn rhestru’r mewnforion."
 
 #: showbits/includes/class-library-page.php
 msgid "On the way"
-msgstr ""
+msgstr "Ar y ffordd"
 
 #: showbits/includes/class-library-page.php
 msgid "Load more"
-msgstr ""
+msgstr "Llwytho rhagor"
 
 #: showbits/includes/class-library-page.php
 msgid "Loading …"
-msgstr ""
+msgstr "Wrthi’n llwytho…"
 
 #: showbits/includes/class-library-page.php
 msgid "No released clips or quote cards yet."
-msgstr ""
+msgstr "Dim clipiau na chardiau dyfyniad wedi’u rhyddhau eto."
 
 #. translators: %s: date and time the embargo ends
 #: showbits/includes/class-library-page.php
 msgid "Embargo until %s"
-msgstr ""
+msgstr "Embargo tan %s"
 
 #: showbits/includes/class-library-page.php
 msgid "Not ready yet"
-msgstr ""
+msgstr "Ddim yn barod eto"
 
 #: showbits/includes/class-library-page.php
 msgid "In the media library"
-msgstr ""
+msgstr "Yn y llyfrgell cyfryngau"
 
 #: showbits/includes/class-library-page.php
 msgid "An older version is in the media library"
-msgstr ""
+msgstr "Mae fersiwn hŷn yn y llyfrgell cyfryngau"
 
 #: showbits/includes/class-library-page.php
 msgid "Edit"
-msgstr ""
+msgstr "Golygu"
 
 #: showbits/includes/class-library-page.php
 msgid "Format"
-msgstr ""
+msgstr "Fformat"
 
 #: showbits/includes/class-library-page.php
 msgid "Video"
-msgstr ""
+msgstr "Fideo"
 
 #: showbits/includes/class-library-page.php
 msgid "Quote card"
-msgstr ""
+msgstr "Cerdyn dyfyniad"
 
 #: showbits/includes/class-library-page.php
 msgid "Meme"
-msgstr ""
+msgstr "Meme"
 
 #. translators: %s: why it failed
 #: showbits/includes/class-library-page.php
 msgid "Failed: %s"
-msgstr ""
+msgstr "Wedi methu: %s"
 
 #. translators: %s: why it failed
 #: showbits/includes/class-library-page.php
 msgid "The library could not be loaded: %s"
-msgstr ""
+msgstr "Nid oedd modd llwytho’r llyfrgell: %s"
 
 #: showbits/includes/class-library-page.php
 msgid "This site is not connected to ShowBits yet."
-msgstr ""
+msgstr "Nid yw’r wefan hon wedi’i chysylltu â ShowBits eto."
 
 #: showbits/includes/class-library-page.php
 msgid "Connect it in the settings."
-msgstr ""
+msgstr "Cysylltwch hi yn y gosodiadau."
 
 #: showbits/includes/class-library-page.php
 msgid "An administrator of this site connects it in the settings."
-msgstr ""
+msgstr "Gweinyddwr y wefan hon sy’n ei chysylltu yn y gosodiadau."
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-library-page.php
 msgid "Released clips and quote cards from the ShowBits workspace “%s”. What you import lands in the media library, ready for posts and pages."
-msgstr ""
+msgstr "Clipiau a chardiau dyfyniad wedi’u rhyddhau o weithle ShowBits ‘%s’. Mae’r hyn rydych chi’n ei fewnforio yn mynd i’r llyfrgell cyfryngau, yn barod ar gyfer cofnodion a thudalennau."
 
 #: showbits/includes/class-library-page.php
 msgid "The library needs JavaScript."
-msgstr ""
+msgstr "Mae angen JavaScript ar y llyfrgell."
 
 #: showbits/includes/class-settings-page.php
 msgid "Settings"
-msgstr ""
+msgstr "Gosodiadau"
 
 #: showbits/includes/class-settings-page.php
 msgid "You may not change these settings."
-msgstr ""
+msgstr "Nid oes gennych hawl i newid y gosodiadau hyn."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connection"
-msgstr ""
+msgstr "Cysylltiad"
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."
-msgstr ""
+msgstr "Wedi cysylltu â’r gweithle ‘%s’."
 
 #. translators: 1: imports today, 2: imports a day the plan allows
 #: showbits/includes/class-settings-page.php
 msgid "Imports today: %1$d of %2$d."
-msgstr ""
+msgstr "Mewnforion heddiw: %1$d o %2$d."
 
 #. translators: 1: a person, 2: a date, 3: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "Connected by %1$s on %2$s, at %3$s."
-msgstr ""
+msgstr "Cysylltwyd gan %1$s ar %2$s, yn %3$s."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect again"
-msgstr ""
+msgstr "Cysylltu eto"
 
 #: showbits/includes/class-settings-page.php
 msgid "With a new site key the site renews its connection, or moves to another workspace."
-msgstr ""
+msgstr "Gydag allwedd gwefan newydd, mae’r wefan yn adnewyddu ei chysylltiad, neu’n symud i weithle arall."
 
 #. translators: %s: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits (%s) cannot be reached right now. The connection stays; try again later."
-msgstr ""
+msgstr "Nid oes modd cyrraedd ShowBits (%s) ar hyn o bryd. Mae’r cysylltiad yn aros; rhowch gynnig arall arni nes ymlaen."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
-msgstr ""
+msgstr "Nid yw ShowBits yn derbyn cysylltiad y wefan hon mwyach: cafodd ei ddatgysylltu yn ShowBits, daeth y cynllun i ben, neu newidiodd allweddi’r wefan hon. Cysylltwch hi eto gydag allwedd gwefan newydd."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr ""
+msgstr "Cysylltwch y wefan hon â gweithle ShowBits: mae gweinyddwr neu berchennog y gweithle yn creu allwedd gwefan ar gyfer y wefan hon yn ShowBits (Integrations → WordPress). Wedyn gall y wefan gymryd clipiau a chardiau dyfyniad wedi’u rhyddhau i’w llyfrgell cyfryngau, a derbyn yr hyn y mae eich gweinyddwyr ShowBits yn ei anfon."
 
 #: showbits/includes/class-settings-page.php
 msgid "Imports"
-msgstr ""
+msgstr "Mewnforion"
 
 #: showbits/includes/class-settings-page.php
 msgid "Format of quote cards"
-msgstr ""
+msgstr "Fformat cardiau dyfyniad"
 
 #: showbits/includes/class-settings-page.php
 msgid "4:5 (feeds, articles)"
-msgstr ""
+msgstr "4:5 (ffrydiau, erthyglau)"
 
 #: showbits/includes/class-settings-page.php
 msgid "1:1 (square)"
-msgstr ""
+msgstr "1:1 (sgwâr)"
 
 #: showbits/includes/class-settings-page.php
 msgid "9:16 (stories)"
-msgstr ""
+msgstr "9:16 (straeon)"
 
 #: showbits/includes/class-settings-page.php
 msgid "The picture pushes bring; in the library you choose for each card."
-msgstr ""
+msgstr "Y fformat a ddaw gyda chardiau a anfonir; yn y llyfrgell, rydych yn dewis ar gyfer pob cerdyn."
 
 #: showbits/includes/class-settings-page.php
 msgid "Videos"
-msgstr ""
+msgstr "Fideos"
 
 #: showbits/includes/class-settings-page.php
 msgid "Import the thumbnail as the video’s poster image"
-msgstr ""
+msgstr "Mewnforio’r llun bach fel delwedd poster y fideo"
 
 #: showbits/includes/class-settings-page.php
 msgid "Save"
-msgstr ""
+msgstr "Cadw"
 
 #: showbits/includes/class-settings-page.php
 msgid "Site key"
-msgstr ""
+msgstr "Allwedd gwefan"
 
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr ""
+msgstr "Wedi’i chreu yn ShowBits ar gyfer %s, yn ddilys am 24 awr ac unwaith yn unig. Yna mae ShowBits yn gwirio ei fod yn siarad â’r wefan hon."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"
-msgstr ""
+msgstr "Cysylltu"
 
 #: showbits/includes/class-settings-page.php
 msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
-msgstr ""
+msgstr "Ydych chi’n weinyddwr neu’n berchennog y gweithle eich hun? Yna mewngofnodwch i ShowBits a chytunwch yno, heb allwedd gwefan:"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect through ShowBits"
-msgstr ""
+msgstr "Cysylltu drwy ShowBits"
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits address"
-msgstr ""
+msgstr "Cyfeiriad ShowBits"
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits Cloud: https://app.showbits.ai. OnPremise: the address of your installation."
-msgstr ""
+msgstr "ShowBits Cloud: https://app.showbits.ai. OnPremise: cyfeiriad eich gosodiad."
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect"
-msgstr ""
+msgstr "Datgysylltu"
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect this site from ShowBits? What is in the media library stays."
-msgstr ""
+msgstr "Datgysylltu’r wefan hon o ShowBits? Mae’r hyn sydd yn y llyfrgell cyfryngau yn aros."
 
 #: showbits/includes/class-settings-page.php
 msgid "asked for"
-msgstr ""
+msgstr "wedi gofyn"
 
 #: showbits/includes/class-settings-page.php
 msgid "waiting"
-msgstr ""
+msgstr "yn aros"
 
 #: showbits/includes/class-settings-page.php
 msgid "importing"
-msgstr ""
+msgstr "yn mewnforio"
 
 #: showbits/includes/class-settings-page.php
 msgid "imported"
-msgstr ""
+msgstr "wedi mewnforio"
 
 #: showbits/includes/class-settings-page.php
 msgid "failed"
-msgstr ""
+msgstr "wedi methu"
 
 #: showbits/includes/class-settings-page.php
 msgid "Recent imports"
-msgstr ""
+msgstr "Mewnforion diweddar"
 
 #: showbits/includes/class-settings-page.php
 msgid "When"
-msgstr ""
+msgstr "Pryd"
 
 #: showbits/includes/class-settings-page.php
 msgid "Clip"
-msgstr ""
+msgstr "Clip"
 
 #: showbits/includes/class-settings-page.php
 msgid "How"
-msgstr ""
+msgstr "Sut"
 
 #: showbits/includes/class-settings-page.php
 msgid "State"
-msgstr ""
+msgstr "Statws"
 
 #: showbits/includes/class-settings-page.php
 msgid "sent from ShowBits"
-msgstr ""
+msgstr "wedi’i anfon o ShowBits"
 
 #: showbits/includes/class-settings-page.php
 msgid "picked here"
-msgstr ""
+msgstr "wedi’i ddewis yma"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connected. The library is under Media → ShowBits."
-msgstr ""
+msgstr "Wedi cysylltu. Mae’r llyfrgell yn y ddewislen Cyfryngau → ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnected. What is in the media library stays."
-msgstr ""
+msgstr "Wedi datgysylltu. Mae’r hyn sydd yn y llyfrgell cyfryngau yn aros."
 
 #: showbits/includes/class-settings-page.php
 msgid "Saved."
-msgstr ""
+msgstr "Wedi cadw."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting was cancelled in ShowBits."
-msgstr ""
+msgstr "Cafodd y cysylltu ei ganslo yn ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "That way back from ShowBits did not belong to this attempt. Start again."
-msgstr ""
+msgstr "Nid oedd y llwybr yn ôl o ShowBits yn perthyn i’r ymgais hon. Dechreuwch eto."
 
 #: showbits/includes/class-settings-page.php
 msgid "The ShowBits address must start with https://."
-msgstr ""
+msgstr "Rhaid i gyfeiriad ShowBits ddechrau gyda https://."
 
 #: showbits/includes/class-settings-page.php
 msgid "That is not a site key. Copy it from ShowBits (Integrations → WordPress) again."
-msgstr ""
+msgstr "Nid allwedd gwefan yw hon. Copïwch hi o ShowBits (Integrations → WordPress) eto."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
-msgstr ""
+msgstr "Ni dderbyniodd ShowBits yr allwedd gwefan: mae’n anhysbys, wedi’i defnyddio, wedi’i thynnu’n ôl neu wedi dod i ben (mae allwedd gwefan yn para 24 awr, caniatâd am ddeg munud). Crëwch un newydd."
 
 #: showbits/includes/class-settings-page.php
 msgid "The site key was made for another address. Make one for this site’s address."
-msgstr ""
+msgstr "Cafodd yr allwedd gwefan ei chreu ar gyfer cyfeiriad arall. Crëwch un ar gyfer cyfeiriad y wefan hon."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr ""
+msgstr "Nid oedd modd i ShowBits gyrraedd API REST y wefan hon (/wp-json/showbits/v1/push), neu nid oedd modd cyrraedd ShowBits ei hun. Rhaid i’r wefan fod yn gyhoeddus dros HTTPS; rhaid i fur cadarn neu ategyn diogelwch adael i ShowBits ddod i mewn."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
-msgstr ""
+msgstr "Nid atebodd y wefan hon wiriad ShowBits yn ôl y disgwyl. Rhowch gynnig arall arni; os yw’n methu eto, efallai fod ategyn storfa neu ddiogelwch yn ateb yn lle WordPress."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
-msgstr ""
+msgstr "Mae cynllun y gweithle wedi dod i ben, neu ni chaiff pwy bynnag a greodd yr allwedd gwefan gysylltu gwefannau mwyach."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
-msgstr ""
+msgstr "Mae gan y gweithle gynifer o wefannau ag y mae ei gynllun yn ei ganiatáu."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
-msgstr ""
+msgstr "Ni dderbyniodd ShowBits gyfeiriad y wefan hon. Rhaid i’r wefan gael ei gweini dros HTTPS."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."
-msgstr ""
+msgstr "Methodd y cysylltu. Rhowch gynnig arall arni, neu holwch eich cyswllt yn ShowBits."

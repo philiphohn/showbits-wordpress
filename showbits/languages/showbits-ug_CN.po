@@ -8,448 +8,448 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr ""
+msgstr "ShowBits تىكى تەستىقلانغان كىلىپلار ۋە نەقىل كارتىلىرى ۋاسىتە ئامبىرىدا: ئۇلارنى WordPress ئىچىدە تاللاڭ ياكى ShowBits باشقۇرغۇچىلىرىڭىز ئەۋەتكەنلىرىنى قوبۇل قىلىڭ."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
-msgstr ""
+msgstr "ShowBits كۈتۈلگەندەك جاۋاب قايتۇرمىدى."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer with a file."
-msgstr ""
+msgstr "ShowBits جاۋاب سۈپىتىدە ھۆججەت ئەۋەتمىدى."
 
 #: showbits/includes/class-api-client.php showbits/includes/class-importer.php
 msgid "ShowBits could not be reached."
-msgstr ""
+msgstr "ShowBits قا يەتكىلى بولمىدى."
 
 #. translators: 1: ShowBits' reason, 2: the HTTP status
 #: showbits/includes/class-api-client.php
 msgid "ShowBits refused (%1$s, HTTP %2$d)."
-msgstr ""
+msgstr "ShowBits رەت قىلدى (%1$s، HTTP %2$d)."
 
 #: showbits/includes/class-connection.php
 msgid "You may not connect this site."
-msgstr ""
+msgstr "سىزنىڭ بۇ تور بېكەتنى ئۇلاش ھوقۇقىڭىز يوق."
 
 #. translators: %s: the clip's title
 #: showbits/includes/class-importer.php
 msgid "%s (thumbnail)"
-msgstr ""
+msgstr "%s (كىچىك سۈرەت)"
 
 #. translators: %s: a quote (the alternative text of a quote card's picture)
 #: showbits/includes/class-importer.php
 msgid "“%s”"
-msgstr ""
+msgstr "«%s»"
 
 #. translators: 1: a quote, 2: who said it (the alternative text of a quote card's picture)
 #: showbits/includes/class-importer.php
 msgid "“%1$s” – %2$s"
-msgstr ""
+msgstr "«%1$s» – %2$s"
 
 #: showbits/includes/class-importer.php
 msgid "This is not a clip or a format ShowBits offers."
-msgstr ""
+msgstr "بۇ كىلىپ ئەمەس ياكى ShowBits تەمىنلەيدىغان فورمات ئەمەس."
 
 #: showbits/includes/class-importer.php
 msgid "The clip is no longer released in ShowBits."
-msgstr ""
+msgstr "كىلىپ ShowBits تا ئەمدى تەستىقلانغان ھالەتتە ئەمەس."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr ""
+msgstr "ئېلان قىلىش چەكلىمىسى تېخى كۈچكە ئىگە: ھۆججەت چەكلىمە ئاخىرلاشقۇچە ShowBits تا تۇرىدۇ."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."
-msgstr ""
+msgstr "ھۆججەت ShowBits تا تېخى تەييار ئەمەس."
 
 #: showbits/includes/class-importer.php
 msgid "The file could not be downloaded."
-msgstr ""
+msgstr "ھۆججەتنى چۈشۈرگىلى بولمىدى."
 
 #: showbits/includes/class-importer.php
 msgid "WordPress did not take the file into the media library."
-msgstr ""
+msgstr "WordPress ھۆججەتنى ۋاسىتە ئامبىرىغا قوبۇل قىلمىدى."
 
 #: showbits/includes/class-importer.php
 msgid "The delivery from ShowBits is no longer valid. Import the clip again."
-msgstr ""
+msgstr "ShowBits تىن كەلگەن يەتكۈزۈش ئەمدى ئىناۋەتسىز. كىلىپنى قايتا ئەكىرىڭ."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits."
-msgstr ""
+msgstr "ShowBits بۇ تور بېكەتنىڭ ئۇلىنىشىنى ئەمدى قوبۇل قىلمايدۇ: ئۇنى تەڭشەكلەر ← ShowBits بېتىدە قايتا ئۇلاڭ."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer delivers to this site: the workspace’s plan has ended."
-msgstr ""
+msgstr "ShowBits بۇ تور بېكەتكە ئەمدى يەتكۈزمەيدۇ: خىزمەت بوشلۇقىنىڭ پىلانى ئاخىرلاشتى."
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
-msgstr ""
+msgstr "بۇ تور بېكەتنىڭ بۈگۈنكى ئەكىرىش سانى تۈگىدى. ئەتە قايتا سىناڭ."
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
-msgstr ""
+msgstr "ئەكىرىش ئوتتۇرىدا ئۈزۈلۈپ قالدى."
 
 #: showbits/includes/class-importer.php
 msgid "The import failed."
-msgstr ""
+msgstr "ئەكىرىش مەغلۇپ بولدى."
 
 #: showbits/includes/class-library-endpoint.php
 msgid "This site is not connected to ShowBits."
-msgstr ""
+msgstr "بۇ تور بېكەت ShowBits قا ئۇلانمىغان."
 
 #: showbits/includes/class-library-page.php
 msgid "All"
-msgstr ""
+msgstr "ھەممىسى"
 
 #: showbits/includes/class-library-page.php
 msgid "Clips"
-msgstr ""
+msgstr "كىلىپلار"
 
 #: showbits/includes/class-library-page.php showbits/includes/class-settings-page.php
 msgid "Quote cards"
-msgstr ""
+msgstr "نەقىل كارتىلىرى"
 
 #: showbits/includes/class-library-page.php
 msgid "Search titles"
-msgstr ""
+msgstr "ماۋزۇلارنى ئىزدەش"
 
 #: showbits/includes/class-library-page.php
 msgid "Search the library"
-msgstr ""
+msgstr "كۇتۇپخانىدىن ئىزدەش"
 
 #: showbits/includes/class-library-page.php
 msgid "Import selected"
-msgstr ""
+msgstr "تاللانغانلارنى ئەكىرىش"
 
 #. translators: 1: which one, 2: how many in all
 #: showbits/includes/class-library-page.php
 msgid "Asking ShowBits for %1$d of %2$d …"
-msgstr ""
+msgstr "ShowBits تىن سوراۋاتىدۇ: %1$d / %2$d…"
 
 #. translators: %d: how many clips are still on their way
 #: showbits/includes/class-library-page.php
 msgid "On the way from ShowBits: %d …"
-msgstr ""
+msgstr "ShowBits تىن يولدا: %d…"
 
 #. translators: %d: how many clips were imported
 #: showbits/includes/class-library-page.php
 msgid "Imported: %d"
-msgstr ""
+msgstr "ئەكىرىلدى: %d"
 
 #: showbits/includes/class-library-page.php
 msgid "Not everything has arrived yet; it continues in the background. Settings → ShowBits lists the imports."
-msgstr ""
+msgstr "ھەممىسى تېخى يېتىپ كەلمىدى؛ جەريان ئارقا سۇپىدا داۋاملىشىدۇ. ئەكىرىشلەر تىزىملىكى تەڭشەكلەر ← ShowBits بېتىدە."
 
 #: showbits/includes/class-library-page.php
 msgid "On the way"
-msgstr ""
+msgstr "يولدا"
 
 #: showbits/includes/class-library-page.php
 msgid "Load more"
-msgstr ""
+msgstr "تېخىمۇ كۆپ يۈكلەش"
 
 #: showbits/includes/class-library-page.php
 msgid "Loading …"
-msgstr ""
+msgstr "يۈكلەۋاتىدۇ…"
 
 #: showbits/includes/class-library-page.php
 msgid "No released clips or quote cards yet."
-msgstr ""
+msgstr "تېخى تەستىقلانغان كىلىپ ياكى نەقىل كارتىسى يوق."
 
 #. translators: %s: date and time the embargo ends
 #: showbits/includes/class-library-page.php
 msgid "Embargo until %s"
-msgstr ""
+msgstr "ئېلان قىلىش چەكلىمىسى (ئاخىرلىشىشى: %s)"
 
 #: showbits/includes/class-library-page.php
 msgid "Not ready yet"
-msgstr ""
+msgstr "تېخى تەييار ئەمەس"
 
 #: showbits/includes/class-library-page.php
 msgid "In the media library"
-msgstr ""
+msgstr "ۋاسىتە ئامبىرىدا بار"
 
 #: showbits/includes/class-library-page.php
 msgid "An older version is in the media library"
-msgstr ""
+msgstr "ۋاسىتە ئامبىرىدا كونا نەشرى بار"
 
 #: showbits/includes/class-library-page.php
 msgid "Edit"
-msgstr ""
+msgstr "تەھرىرلەش"
 
 #: showbits/includes/class-library-page.php
 msgid "Format"
-msgstr ""
+msgstr "فورمات"
 
 #: showbits/includes/class-library-page.php
 msgid "Video"
-msgstr ""
+msgstr "سىن"
 
 #: showbits/includes/class-library-page.php
 msgid "Quote card"
-msgstr ""
+msgstr "نەقىل كارتىسى"
 
 #: showbits/includes/class-library-page.php
 msgid "Meme"
-msgstr ""
+msgstr "مېم"
 
 #. translators: %s: why it failed
 #: showbits/includes/class-library-page.php
 msgid "Failed: %s"
-msgstr ""
+msgstr "مەغلۇپ بولدى: %s"
 
 #. translators: %s: why it failed
 #: showbits/includes/class-library-page.php
 msgid "The library could not be loaded: %s"
-msgstr ""
+msgstr "كۇتۇپخانىنى يۈكلىگىلى بولمىدى: %s"
 
 #: showbits/includes/class-library-page.php
 msgid "This site is not connected to ShowBits yet."
-msgstr ""
+msgstr "بۇ تور بېكەت تېخى ShowBits قا ئۇلانمىغان."
 
 #: showbits/includes/class-library-page.php
 msgid "Connect it in the settings."
-msgstr ""
+msgstr "تەڭشەكلەردە ئۇلاڭ."
 
 #: showbits/includes/class-library-page.php
 msgid "An administrator of this site connects it in the settings."
-msgstr ""
+msgstr "بۇ تور بېكەتنىڭ باشقۇرغۇچىسى ئۇنى تەڭشەكلەردە ئۇلايدۇ."
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-library-page.php
 msgid "Released clips and quote cards from the ShowBits workspace “%s”. What you import lands in the media library, ready for posts and pages."
-msgstr ""
+msgstr "«%s» ناملىق ShowBits خىزمەت بوشلۇقىدىكى تەستىقلانغان كىلىپلار ۋە نەقىل كارتىلىرى. سىز ئەكىرگەنلەر ۋاسىتە ئامبىرىغا كىرىدۇ ۋە يازمىلار ھەم بەتلەر ئۈچۈن تەييار بولىدۇ."
 
 #: showbits/includes/class-library-page.php
 msgid "The library needs JavaScript."
-msgstr ""
+msgstr "كۇتۇپخانىغا JavaScript كېرەك."
 
 #: showbits/includes/class-settings-page.php
 msgid "Settings"
-msgstr ""
+msgstr "تەڭشەكلەر"
 
 #: showbits/includes/class-settings-page.php
 msgid "You may not change these settings."
-msgstr ""
+msgstr "سىزنىڭ بۇ تەڭشەكلەرنى ئۆزگەرتىش ھوقۇقىڭىز يوق."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connection"
-msgstr ""
+msgstr "ئۇلىنىش"
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."
-msgstr ""
+msgstr "«%s» ناملىق خىزمەت بوشلۇقىغا ئۇلانغان."
 
 #. translators: 1: imports today, 2: imports a day the plan allows
 #: showbits/includes/class-settings-page.php
 msgid "Imports today: %1$d of %2$d."
-msgstr ""
+msgstr "بۈگۈنكى ئەكىرىشلەر: %1$d / %2$d."
 
 #. translators: 1: a person, 2: a date, 3: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "Connected by %1$s on %2$s, at %3$s."
-msgstr ""
+msgstr "ئۇلىغۇچى: %1$s، ۋاقىت: %2$s، ئادرېس: %3$s."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect again"
-msgstr ""
+msgstr "قايتا ئۇلاش"
 
 #: showbits/includes/class-settings-page.php
 msgid "With a new site key the site renews its connection, or moves to another workspace."
-msgstr ""
+msgstr "يېڭى تور بېكەت ئاچقۇچى بىلەن تور بېكەت ئۇلىنىشىنى يېڭىلايدۇ ياكى باشقا خىزمەت بوشلۇقىغا يۆتكىلىدۇ."
 
 #. translators: %s: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits (%s) cannot be reached right now. The connection stays; try again later."
-msgstr ""
+msgstr "ھازىر ShowBits قا (%s) يەتكىلى بولمايدۇ. ئۇلىنىش ساقلىنىدۇ؛ كېيىن قايتا سىناڭ."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
-msgstr ""
+msgstr "ShowBits بۇ تور بېكەتنىڭ ئۇلىنىشىنى ئەمدى قوبۇل قىلمايدۇ: ئۇلىنىش ShowBits تا ئۈزۈلگەن، پىلان ئاخىرلاشقان ياكى بۇ تور بېكەتنىڭ ئاچقۇچلىرى ئۆزگەرگەن. ئۇنى يېڭى تور بېكەت ئاچقۇچى بىلەن قايتا ئۇلاڭ."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr ""
+msgstr "بۇ تور بېكەتنى ShowBits خىزمەت بوشلۇقىغا ئۇلاڭ: خىزمەت بوشلۇقىنىڭ باشقۇرغۇچىسى ياكى ئىگىسى ShowBits تا (Integrations → WordPress) بۇ تور بېكەت ئۈچۈن تور بېكەت ئاچقۇچى قۇرىدۇ. ئاندىن تور بېكەت تەستىقلانغان كىلىپلار ۋە نەقىل كارتىلىرىنى ئۆز ۋاسىتە ئامبىرىغا ئالالايدۇ ھەمدە ShowBits باشقۇرغۇچىلىرىڭىز ئەۋەتكەنلىرىنى قوبۇل قىلالايدۇ."
 
 #: showbits/includes/class-settings-page.php
 msgid "Imports"
-msgstr ""
+msgstr "ئەكىرىشلەر"
 
 #: showbits/includes/class-settings-page.php
 msgid "Format of quote cards"
-msgstr ""
+msgstr "نەقىل كارتىلىرىنىڭ فورماتى"
 
 #: showbits/includes/class-settings-page.php
 msgid "4:5 (feeds, articles)"
-msgstr ""
+msgstr "4:5 (ئۇچۇر ئېقىمى، ماقالىلەر)"
 
 #: showbits/includes/class-settings-page.php
 msgid "1:1 (square)"
-msgstr ""
+msgstr "1:1 (چاسا)"
 
 #: showbits/includes/class-settings-page.php
 msgid "9:16 (stories)"
-msgstr ""
+msgstr "9:16 (ھېكايىلەر)"
 
 #: showbits/includes/class-settings-page.php
 msgid "The picture pushes bring; in the library you choose for each card."
-msgstr ""
+msgstr "ئەۋەتىلگەن تۈرلەر ئېلىپ كېلىدىغان رەسىم فورماتى؛ كۇتۇپخانىدا ھەر بىر كارتا ئۈچۈن فورماتنى ئۆزىڭىز تاللايسىز."
 
 #: showbits/includes/class-settings-page.php
 msgid "Videos"
-msgstr ""
+msgstr "سىنلار"
 
 #: showbits/includes/class-settings-page.php
 msgid "Import the thumbnail as the video’s poster image"
-msgstr ""
+msgstr "كىچىك سۈرەتنى سىننىڭ مۇقاۋا رەسىمى قىلىپ ئەكىرىش"
 
 #: showbits/includes/class-settings-page.php
 msgid "Save"
-msgstr ""
+msgstr "ساقلاش"
 
 #: showbits/includes/class-settings-page.php
 msgid "Site key"
-msgstr ""
+msgstr "تور بېكەت ئاچقۇچى"
 
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr ""
+msgstr "ShowBits تا %s ئۈچۈن قۇرۇلىدۇ، 24 سائەت ئىچىدە پەقەت بىر قېتىم ئىشلىتىشكە بولىدۇ. ئاندىن ShowBits ئۆزىنىڭ راستتىنلا مۇشۇ تور بېكەت بىلەن ئالاقىلىشىۋاتقانلىقىنى تەكشۈرىدۇ."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"
-msgstr ""
+msgstr "ئۇلاش"
 
 #: showbits/includes/class-settings-page.php
 msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
-msgstr ""
+msgstr "سىز ئۆزىڭىز خىزمەت بوشلۇقىنىڭ باشقۇرغۇچىسى ياكى ئىگىسىمۇ؟ ئۇنداقتا ShowBits قا كىرىپ، تور بېكەت ئاچقۇچى ئىشلەتمەيلا شۇ يەردە قوشۇلۇڭ:"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect through ShowBits"
-msgstr ""
+msgstr "ShowBits ئارقىلىق ئۇلاش"
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits address"
-msgstr ""
+msgstr "ShowBits ئادرېسى"
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits Cloud: https://app.showbits.ai. OnPremise: the address of your installation."
-msgstr ""
+msgstr "ShowBits Cloud: https://app.showbits.ai. OnPremise: ئۆزىڭىز ئورناتقان سىستېمىنىڭ ئادرېسى."
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect"
-msgstr ""
+msgstr "ئۇلىنىشنى ئۈزۈش"
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect this site from ShowBits? What is in the media library stays."
-msgstr ""
+msgstr "بۇ تور بېكەتنىڭ ShowBits بىلەن ئۇلىنىشىنى ئۈزەمسىز؟ ۋاسىتە ئامبىرىدىكىلەر ساقلىنىپ قالىدۇ."
 
 #: showbits/includes/class-settings-page.php
 msgid "asked for"
-msgstr ""
+msgstr "سورالدى"
 
 #: showbits/includes/class-settings-page.php
 msgid "waiting"
-msgstr ""
+msgstr "كۈتۈۋاتىدۇ"
 
 #: showbits/includes/class-settings-page.php
 msgid "importing"
-msgstr ""
+msgstr "ئەكىرىلىۋاتىدۇ"
 
 #: showbits/includes/class-settings-page.php
 msgid "imported"
-msgstr ""
+msgstr "ئەكىرىلدى"
 
 #: showbits/includes/class-settings-page.php
 msgid "failed"
-msgstr ""
+msgstr "مەغلۇپ بولدى"
 
 #: showbits/includes/class-settings-page.php
 msgid "Recent imports"
-msgstr ""
+msgstr "يېقىنقى ئەكىرىشلەر"
 
 #: showbits/includes/class-settings-page.php
 msgid "When"
-msgstr ""
+msgstr "ۋاقىت"
 
 #: showbits/includes/class-settings-page.php
 msgid "Clip"
-msgstr ""
+msgstr "كىلىپ"
 
 #: showbits/includes/class-settings-page.php
 msgid "How"
-msgstr ""
+msgstr "ئۇسۇل"
 
 #: showbits/includes/class-settings-page.php
 msgid "State"
-msgstr ""
+msgstr "ھالەت"
 
 #: showbits/includes/class-settings-page.php
 msgid "sent from ShowBits"
-msgstr ""
+msgstr "ShowBits تىن ئەۋەتىلگەن"
 
 #: showbits/includes/class-settings-page.php
 msgid "picked here"
-msgstr ""
+msgstr "بۇ يەردە تاللانغان"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connected. The library is under Media → ShowBits."
-msgstr ""
+msgstr "ئۇلاندى. كۇتۇپخانا ۋاسىتە ← ShowBits بېتىدە."
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnected. What is in the media library stays."
-msgstr ""
+msgstr "ئۇلىنىش ئۈزۈلدى. ۋاسىتە ئامبىرىدىكىلەر ساقلىنىپ قالىدۇ."
 
 #: showbits/includes/class-settings-page.php
 msgid "Saved."
-msgstr ""
+msgstr "ساقلاندى."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting was cancelled in ShowBits."
-msgstr ""
+msgstr "ئۇلاش ShowBits تا بىكار قىلىندى."
 
 #: showbits/includes/class-settings-page.php
 msgid "That way back from ShowBits did not belong to this attempt. Start again."
-msgstr ""
+msgstr "ShowBits تىن بۇ قايتىش بۇ تور بېكەت باشلىغان ئۇلاش ئۇرۇنۇشىغا تەۋە ئەمەس. قايتا باشلاڭ."
 
 #: showbits/includes/class-settings-page.php
 msgid "The ShowBits address must start with https://."
-msgstr ""
+msgstr "ShowBits ئادرېسى https:// بىلەن باشلىنىشى كېرەك."
 
 #: showbits/includes/class-settings-page.php
 msgid "That is not a site key. Copy it from ShowBits (Integrations → WordPress) again."
-msgstr ""
+msgstr "بۇ تور بېكەت ئاچقۇچى ئەمەس. ئۇنى ShowBits تىن (Integrations → WordPress) قايتا كۆچۈرۈڭ."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
-msgstr ""
+msgstr "ShowBits تور بېكەت ئاچقۇچىنى قوبۇل قىلمىدى: ئۇ نامەلۇم، ئىشلىتىلگەن، قايتۇرۇۋېلىنغان ياكى ۋاقتى ئۆتكەن (تور بېكەت ئاچقۇچى 24 سائەت، قوشۇلۇش ئون مىنۇت ئىناۋەتلىك). يېڭىسىنى قۇرۇڭ."
 
 #: showbits/includes/class-settings-page.php
 msgid "The site key was made for another address. Make one for this site’s address."
-msgstr ""
+msgstr "تور بېكەت ئاچقۇچى باشقا ئادرېس ئۈچۈن قۇرۇلغان. بۇ تور بېكەتنىڭ ئادرېسى ئۈچۈن بىرنى قۇرۇڭ."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr ""
+msgstr "ShowBits بۇ تور بېكەتكە ئۇنىڭ REST API ئارقىلىق (/wp-json/showbits/v1/push) يېتەلمىدى ياكى ShowBits نىڭ ئۆزىگە يەتكىلى بولمىدى. تور بېكەت HTTPS ئارقىلىق ئاممىۋى ئېچىلغان بولۇشى كېرەك؛ مۇداپىئە تېمى ياكى بىخەتەرلىك قىستۇرمىسى ShowBits نى ئۆتكۈزۈشى كېرەك."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
-msgstr ""
+msgstr "بۇ تور بېكەت ShowBits نىڭ تەكشۈرۈشىگە كۈتۈلگەندەك جاۋاب بەرمىدى. قايتا سىناڭ؛ يەنە مەغلۇپ بولسا، WordPress نىڭ ئورنىدا غەملەك ياكى بىخەتەرلىك قىستۇرمىسى جاۋاب بېرىۋاتقان بولۇشى مۇمكىن."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
-msgstr ""
+msgstr "خىزمەت بوشلۇقىنىڭ پىلانى ئاخىرلاشقان ياكى تور بېكەت ئاچقۇچىنى قۇرغان كىشى ئەمدى تور بېكەت ئۇلىيالمايدۇ."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
-msgstr ""
+msgstr "خىزمەت بوشلۇقىدا پىلانى رۇخسەت قىلغان مىقداردىكى تور بېكەت ئاللىقاچان بار."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
-msgstr ""
+msgstr "ShowBits بۇ تور بېكەتنىڭ ئادرېسىنى قوبۇل قىلمىدى. تور بېكەت HTTPS ئارقىلىق تەمىنلىنىشى كېرەك."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."
-msgstr ""
+msgstr "ئۇلاش مەغلۇپ بولدى. قايتا سىناڭ ياكى ShowBits تىكى ئالاقىلاشقۇچىڭىزدىن سوراڭ."
