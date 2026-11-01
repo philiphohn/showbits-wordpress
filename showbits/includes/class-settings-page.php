@@ -189,7 +189,11 @@ final class Settings_Page {
 			echo '<tr><td>' . esc_html( self::date( (string) $row['created_at'] . ' UTC' ) ) . '</td>';
 			echo '<td>' . ( $link ? '<a href="' . esc_url( $link ) . '">' . esc_html( $title ) . '</a>' : esc_html( $title ) ) . '</td>';
 			echo '<td>' . esc_html( 'push' === $row['source'] ? __( 'sent from ShowBits', 'showbits' ) : __( 'picked here', 'showbits' ) ) . '</td>';
-			echo '<td>' . esc_html( ( $states[ (string) $row['status'] ] ?? (string) $row['status'] ) . ( $row['error'] ? ' (' . $row['error'] . ')' : '' ) ) . '</td></tr>';
+			echo '<td>' . esc_html( $states[ (string) $row['status'] ] ?? (string) $row['status'] );
+			if ( $row['error'] ) {
+				echo '<br><span class="description">' . esc_html( Importer::message_of( (string) $row['error'] ) ) . '</span>';
+			}
+			echo '</td></tr>';
 		}
 		echo '</tbody></table>';
 	}

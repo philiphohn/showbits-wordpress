@@ -172,7 +172,7 @@ final class Library_Endpoint {
 				'clipId'  => (string) $row['clip_id'],
 				'variant' => '' === (string) $row['variant'] ? 'video' : (string) $row['variant'],
 				'status'  => (string) $row['status'],
-				'error'   => $row['error'] ? (string) $row['error'] : null,
+				'error'   => $row['error'] ? Importer::message_of( (string) $row['error'] ) : null,
 				'editUrl' => $attachment ? (string) get_edit_post_link( $attachment, 'raw' ) : null,
 			);
 		}
@@ -199,7 +199,7 @@ final class Library_Endpoint {
 		);
 		return new \WP_Error(
 			'showbits_' . $reason,
-			'unauthorized' === $reason ? __( 'ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits.', 'showbits' ) : $error->get_error_message(),
+			'unauthorized' === $reason ? Importer::message_of( 'unauthorized' ) : $error->get_error_message(),
 			array(
 				'status' => $status[ $reason ] ?? 502,
 				'reason' => $reason,

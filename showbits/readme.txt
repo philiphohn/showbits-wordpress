@@ -47,6 +47,10 @@ The plugin works in every ShowBits plan (Creator, Business, Enterprise) and with
 
 They stay as they are. A new cut or a redrawn card is a new version: importing it again adds a new attachment, so posts that show the old one do not break.
 
+= In which languages is the plugin? =
+
+English and 68 other languages and variants of WordPress, from Albanian to Yorùbá, including formal and informal German and Dutch, and European Portuguese in both spellings. The translations come with the plugin: WordPress shows it in the language of your profile, and imported files get their titles and alternative texts in the site's language.
+
 = What does ShowBits learn about my site? =
 
 Its address and name, the address pushes go to, the plugin's version, when the plugin last asked, and for each push whether it was imported (with the attachment's address) or why not.
@@ -55,3 +59,4 @@ Its address and name, the address pushes go to, the plugin's version, when the p
 
 = 1.0.0 =
 * Connect to a ShowBits workspace with a site key (or through ShowBits with PKCE), library of released clips and quote cards, imports with poster and alternative text as signed pushes with a ticket, pushes from ShowBits.
+* Translations into 68 languages and variants.

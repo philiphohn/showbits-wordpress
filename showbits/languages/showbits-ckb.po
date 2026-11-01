@@ -1,0 +1,455 @@
+# Kurdish (Sorani) translation of the ShowBits plugin.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ckb\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. Description of the plugin
+#: showbits/showbits.php
+msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
+msgstr ""
+
+#: showbits/includes/class-api-client.php
+msgid "ShowBits did not answer as expected."
+msgstr ""
+
+#: showbits/includes/class-api-client.php
+msgid "ShowBits did not answer with a file."
+msgstr ""
+
+#: showbits/includes/class-api-client.php showbits/includes/class-importer.php
+msgid "ShowBits could not be reached."
+msgstr ""
+
+#. translators: 1: ShowBits' reason, 2: the HTTP status
+#: showbits/includes/class-api-client.php
+msgid "ShowBits refused (%1$s, HTTP %2$d)."
+msgstr ""
+
+#: showbits/includes/class-connection.php
+msgid "You may not connect this site."
+msgstr ""
+
+#. translators: %s: the clip's title
+#: showbits/includes/class-importer.php
+msgid "%s (thumbnail)"
+msgstr ""
+
+#. translators: %s: a quote (the alternative text of a quote card's picture)
+#: showbits/includes/class-importer.php
+msgid "“%s”"
+msgstr ""
+
+#. translators: 1: a quote, 2: who said it (the alternative text of a quote card's picture)
+#: showbits/includes/class-importer.php
+msgid "“%1$s” – %2$s"
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "This is not a clip or a format ShowBits offers."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "The clip is no longer released in ShowBits."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "The embargo still holds: the file stays in ShowBits until it ends."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "The file is not ready yet in ShowBits."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "The file could not be downloaded."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "WordPress did not take the file into the media library."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "The delivery from ShowBits is no longer valid. Import the clip again."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "ShowBits no longer delivers to this site: the workspace’s plan has ended."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "The site’s imports for today are used up. Try again tomorrow."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "The import was interrupted."
+msgstr ""
+
+#: showbits/includes/class-importer.php
+msgid "The import failed."
+msgstr ""
+
+#: showbits/includes/class-library-endpoint.php
+msgid "This site is not connected to ShowBits."
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "All"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Clips"
+msgstr ""
+
+#: showbits/includes/class-library-page.php showbits/includes/class-settings-page.php
+msgid "Quote cards"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Search titles"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Search the library"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Import selected"
+msgstr ""
+
+#. translators: 1: which one, 2: how many in all
+#: showbits/includes/class-library-page.php
+msgid "Asking ShowBits for %1$d of %2$d …"
+msgstr ""
+
+#. translators: %d: how many clips are still on their way
+#: showbits/includes/class-library-page.php
+msgid "On the way from ShowBits: %d …"
+msgstr ""
+
+#. translators: %d: how many clips were imported
+#: showbits/includes/class-library-page.php
+msgid "Imported: %d"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Not everything has arrived yet; it continues in the background. Settings → ShowBits lists the imports."
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "On the way"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Load more"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Loading …"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "No released clips or quote cards yet."
+msgstr ""
+
+#. translators: %s: date and time the embargo ends
+#: showbits/includes/class-library-page.php
+msgid "Embargo until %s"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Not ready yet"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "In the media library"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "An older version is in the media library"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Edit"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Format"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Video"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Quote card"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Meme"
+msgstr ""
+
+#. translators: %s: why it failed
+#: showbits/includes/class-library-page.php
+msgid "Failed: %s"
+msgstr ""
+
+#. translators: %s: why it failed
+#: showbits/includes/class-library-page.php
+msgid "The library could not be loaded: %s"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "This site is not connected to ShowBits yet."
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Connect it in the settings."
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "An administrator of this site connects it in the settings."
+msgstr ""
+
+#. translators: %s: the ShowBits workspace's name
+#: showbits/includes/class-library-page.php
+msgid "Released clips and quote cards from the ShowBits workspace “%s”. What you import lands in the media library, ready for posts and pages."
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "The library needs JavaScript."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Settings"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "You may not change these settings."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Connection"
+msgstr ""
+
+#. translators: %s: the ShowBits workspace's name
+#: showbits/includes/class-settings-page.php
+msgid "Connected to the workspace “%s”."
+msgstr ""
+
+#. translators: 1: imports today, 2: imports a day the plan allows
+#: showbits/includes/class-settings-page.php
+msgid "Imports today: %1$d of %2$d."
+msgstr ""
+
+#. translators: 1: a person, 2: a date, 3: ShowBits' address
+#: showbits/includes/class-settings-page.php
+msgid "Connected by %1$s on %2$s, at %3$s."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Connect again"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "With a new site key the site renews its connection, or moves to another workspace."
+msgstr ""
+
+#. translators: %s: ShowBits' address
+#: showbits/includes/class-settings-page.php
+msgid "ShowBits (%s) cannot be reached right now. The connection stays; try again later."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Imports"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Format of quote cards"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "4:5 (feeds, articles)"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "1:1 (square)"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "9:16 (stories)"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "The picture pushes bring; in the library you choose for each card."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Videos"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Import the thumbnail as the video’s poster image"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Save"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Site key"
+msgstr ""
+
+#. translators: %s: this site's address
+#: showbits/includes/class-settings-page.php
+msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Connect"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Connect through ShowBits"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "ShowBits address"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "ShowBits Cloud: https://app.showbits.ai. OnPremise: the address of your installation."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Disconnect"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Disconnect this site from ShowBits? What is in the media library stays."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "asked for"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "waiting"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "importing"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "imported"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "failed"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Recent imports"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "When"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Clip"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "How"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "State"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "sent from ShowBits"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "picked here"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Connected. The library is under Media → ShowBits."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Disconnected. What is in the media library stays."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Saved."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Connecting was cancelled in ShowBits."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "That way back from ShowBits did not belong to this attempt. Start again."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "The ShowBits address must start with https://."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "That is not a site key. Copy it from ShowBits (Integrations → WordPress) again."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "The site key was made for another address. Make one for this site’s address."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "The workspace has as many sites as its plan allows."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Connecting did not work. Try again, or ask your ShowBits contact."
+msgstr ""

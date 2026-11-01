@@ -14,7 +14,7 @@ git subtree split --prefix=wordpress -b wordpress-plugin
 |---|---|
 | `showbits/` | das Plugin, so wie es ins ZIP geht (`showbits.php`, `includes/`, `assets/`, `languages/`, `uninstall.php`, `readme.txt`) |
 | `tests/` | PHPUnit gegen schlanke WordPress-Stubs (`tests/bootstrap.php`): Signatur, PKCE, Verschlüsselung, Adressen, API-Aufrufe, Push-Endpunkt, Import-Texte |
-| `bin/i18n.php` | sammelt die Texte in `languages/showbits.pot` und macht aus den `.po` die PHP-Übersetzungen (`*.l10n.php`, WordPress 6.5+); scheitert bei fehlender Übersetzung |
+| `bin/i18n.php` | sammelt die Texte (auch die Beschreibung im Kopf von `showbits.php`) in `languages/showbits.pot`, bringt jede `showbits-<locale>.po` auf diesen Stand und macht daraus `*.l10n.php` (WordPress 6.5+) und `*.mo`; prüft jede Übersetzung (Platzhalter, Namen, Adressen, Pfeile, Kopf mit den Pluralformen von translate.wordpress.org) und scheitert, solange etwas fehlt oder nicht stimmt |
 | `bin/build.sh` | prüft (Versionen, Syntax, Übersetzungen, Tests) und schreibt `dist/showbits-<version>.zip` |
 
 ## Befehle
@@ -35,7 +35,13 @@ composer i18n
 composer build
 ```
 
-`composer check` = `php -l` über alle Dateien, Übersetzungen aktuell und vollständig, PHPUnit. Neue Texte: `__( '…', 'showbits' )` im Code, `composer i18n`, die deutsche Übersetzung in `showbits/languages/showbits-de_DE.po` ergänzen, noch einmal `composer i18n`.
+`composer check` = `php -l` über alle Dateien, Übersetzungen aktuell, vollständig und heil, PHPUnit.
+
+**Übersetzungen:** 68 Sprachen und Varianten mit den Locale-Codes von WordPress, je eine `showbits/languages/showbits-<locale>.po` ([`docs/wordpress.md`](../docs/wordpress.md) §5.4: Anrede, Menüpfade, Schreibweisen). Neue Texte: `__( '…', 'showbits' )` im Code, `composer i18n` (der neue Text steht dann leer in jeder `.po`), in allen `.po` übersetzen, noch einmal `composer i18n`. Eine einzelne Datei prüfen, ohne etwas zu schreiben:
+
+```bash
+php bin/i18n.php --lint showbits/languages/showbits-fr_FR.po
+```
 
 **Version:** an drei Stellen gleich, sonst bricht `build.sh` ab: Kopf von `showbits.php` (`Version:`), `SHOWBITS_VERSION` dort, `Stable tag` in `readme.txt`.
 
@@ -61,7 +67,7 @@ Jeder Tarif (Creator, Business, Enterprise, OnPremise) hat das Plugin, ohne Zuga
 
 Die Unit-Tests ersetzen WordPress. Zwei Durchläufe gegen ein echtes WordPress (Docker: WordPress, MariaDB, WP-CLI; beide räumen hinterher alles weg):
 
-- `bash tests/e2e/run.sh` mit einem nachgebauten ShowBits (braucht zusätzlich openssl, ffmpeg und Node mit Playwright): aktivieren, Tabelle, Seiten, Verbinden mit Site-Key und über die Zustimmungsseite (PKCE), jeweils mit der Prüfung an der Push-Adresse, Bibliothek, Import als Push mit Ticket, Poster und Alt-Text, signierter Push über WP-Cron mit Rückmeldung, Trennen (33 Prüfungen). Bildschirmfotos in `tests/e2e/shots/`.
+- `bash tests/e2e/run.sh` mit einem nachgebauten ShowBits (braucht zusätzlich openssl, ffmpeg und Node mit Playwright): aktivieren, Tabelle, Seiten, Verbinden mit Site-Key und über die Zustimmungsseite (PKCE), jeweils mit der Prüfung an der Push-Adresse, Bibliothek, Import als Push mit Ticket, Poster und Alt-Text, signierter Push über WP-Cron mit Rückmeldung, alle Übersetzungen so, wie WordPress sie liest (`.l10n.php` und `.mo` gleich, Sprache, Pluralformen), Einstellungen und Bibliothek in Sprachen von rechts nach links und mit langen Texten, breit und schmal, Trennen (35 Prüfungen). Bildschirmfotos in `tests/e2e/shots/`.
 - `bash tests/e2e/plugin-check.sh [Pfad]` – [Plugin Check](https://wordpress.org/plugins/plugin-check/), die Prüfung des WordPress-Verzeichnisses (ohne Pfad lädt es Version 2.1.0 aus dem GitHub-Release): alle Kategorien, auch niedrige Schwere, statisch und zur Laufzeit; scheitert bei jedem Fehler und jeder Warnung. Läuft in CI.
 
 Bilder kommen standardmäßig von Googles Spiegel des Docker Hub (`mirror.gcr.io/library`); `E2E_IMAGE_REGISTRY=docker.io/library` nimmt den Docker Hub selbst.

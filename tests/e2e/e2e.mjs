@@ -4,7 +4,8 @@
 // of its pairing value, the library with the site's own key, imports that come as signed pushes with a ticket, file
 // links only with that ticket (files from a "bucket" that must never see the key), reports and the disconnect. A
 // browser signs into WordPress, connects both ways, imports from the library; then ShowBits pushes, WP-Cron imports,
-// and the plugin reports back.
+// and the plugin reports back. Last, WordPress reads every translation the plugin brings, and the settings and the
+// library are looked at in right-to-left and long-text languages.
 
 import { createHash, createHmac, randomBytes } from "node:crypto";
 import { execFileSync } from "node:child_process";
@@ -283,6 +284,39 @@ try {
   const report = state.results.find((r) => r.push === pushId);
   check(report?.state === "imported" && /^https:\/\//.test(report.attachmentUrl ?? ""), "after WP-Cron the plugin reported the import with the attachment's https address");
   check(wp("db", "query", "SELECT status FROM wp_showbits_imports WHERE push_id = '" + pushId + "'", "--skip-column-names") === "imported", "the import log shows the push as imported");
+
+  // Translations: WordPress reads every catalog the plugin brings, as .l10n.php and as .mo, alike; right-to-left
+  // locales lay out right to left, and long texts keep the settings and the library in shape, wide and narrow.
+  const catalogs = JSON.parse(wp("showbits-e2e-translations"));
+  const locales = Object.keys(catalogs.locales);
+  const unread = locales.filter((locale) => !catalogs.locales[locale].complete || !catalogs.locales[locale].language || !catalogs.locales[locale].plurals);
+  check(locales.length > 1 && unread.length === 0, `WordPress reads all ${locales.length} translations (${catalogs.strings} strings each) from .l10n.php and .mo alike, with their language and plural forms` + (unread.length ? `: not ${unread.join(", ")}` : ""));
+  const overflows = () =>
+    page.evaluate(() => {
+      const wide = (el) => el.scrollWidth > el.clientWidth + 1;
+      return wide(document.documentElement) || [...document.querySelectorAll(".showbits-card, .showbits-toolbar, .showbits-badges, .form-table td")].some(wide);
+    });
+  const RTL = ["ar", "fa_IR", "ckb", "ug_CN"];
+  const misshapen = [];
+  for (const locale of [...RTL, "fi", "el", "ru_RU", "ml_IN", "my_MM", "ja"]) {
+    wp("user", "meta", "update", "admin", "locale", locale);
+    const { Connection: heading, "Import selected": button } = catalogs.locales[locale].samples;
+    for (const width of [1280, 600]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(`${WP}/wp-admin/options-general.php?page=showbits-settings`);
+      const dir = await page.evaluate(() => document.documentElement.dir || "ltr");
+      const settings = (await page.locator("h2", { hasText: heading }).count()) > 0 && dir === (RTL.includes(locale) ? "rtl" : "ltr") && !(await overflows());
+      await page.screenshot({ path: `${E2E_SHOTS}/settings-${locale}-${width}.png`, fullPage: true });
+      await page.goto(`${WP}/wp-admin/upload.php?page=showbits`);
+      await page.waitForSelector(".showbits-card");
+      const library = (await page.locator("button", { hasText: button }).count()) > 0 && !(await overflows());
+      await page.screenshot({ path: `${E2E_SHOTS}/library-${locale}-${width}.png`, fullPage: true });
+      if (!settings || !library) misshapen.push(`${locale} at ${width}px (${settings ? "" : "settings "}${library ? "" : "library"})`);
+    }
+  }
+  check(misshapen.length === 0, "settings and library translated and in shape at 1280 and 600 px in Arabic, Persian, Kurdish, Uyghur (right to left), Finnish, Greek, Russian, Malayalam, Burmese and Japanese" + (misshapen.length ? `: not ${misshapen.join(", ")}` : ""));
+  wp("user", "meta", "update", "admin", "locale", "de_DE");
+  await page.setViewportSize({ width: 1280, height: 720 });
 
   await page.goto(`${WP}/wp-admin/options-general.php?page=showbits-settings`);
   page.once("dialog", (dialog) => dialog.accept());

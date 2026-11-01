@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # The plugin in a real WordPress (tests/e2e/wordpress.sh) against a stand-in ShowBits (tests/e2e/e2e.mjs): activate,
 # connect with PKCE, the library, imports with poster and alternative text, a signed push imported by WP-Cron and
-# reported, disconnect. Needs Docker, openssl, ffmpeg and Node with Playwright.
+# reported, the translations as WordPress reads them and laid out (right to left, long texts), disconnect. Needs Docker,
+# openssl, ffmpeg and Node with Playwright.
 #
 #   bash tests/e2e/run.sh                 (from wordpress/)
 #   E2E_IMAGE_REGISTRY=docker.io/library  images from Docker Hub instead of Google's mirror of it

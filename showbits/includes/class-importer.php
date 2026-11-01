@@ -415,8 +415,12 @@ final class Importer {
 		}
 		$text = trim( (string) ( $item['caption'] ?? '' ) );
 		$name = trim( (string) ( $item['quote']['name'] ?? '' ) );
-		/* translators: 1: a quote, 2: who said it */
-		return '' === $name ? sprintf( __( '“%s”', 'showbits' ), $text ) : sprintf( __( '“%1$s” – %2$s', 'showbits' ), $text, $name );
+		if ( '' === $name ) {
+			/* translators: %s: a quote (the alternative text of a quote card's picture) */
+			return sprintf( __( '“%s”', 'showbits' ), $text );
+		}
+		/* translators: 1: a quote, 2: who said it (the alternative text of a quote card's picture) */
+		return sprintf( __( '“%1$s” – %2$s', 'showbits' ), $text, $name );
 	}
 
 	/** The file's name in the media library: the title as a slug, the format for pictures. */
@@ -426,16 +430,31 @@ final class Importer {
 		return 'video' === $variant ? "{$slug}.mp4" : "{$slug}-{$variant}.jpg";
 	}
 
-	private static function error( string $reason, string $detail = '' ): \WP_Error {
+	/**
+	 * What a failed import's reason means, for people (the import log on the settings page, the library page).
+	 *
+	 * @param string $reason The reason (reason_of(), or interrupted for an import whose request died).
+	 */
+	public static function message_of( string $reason ): string {
 		$messages = array(
-			'invalid'     => __( 'This is not a clip or a format ShowBits offers.', 'showbits' ),
-			'notReleased' => __( 'The clip is no longer released in ShowBits.', 'showbits' ),
-			'embargo'     => __( 'The embargo still holds: the file stays in ShowBits until it ends.', 'showbits' ),
-			'noFile'      => __( 'The file is not ready yet in ShowBits.', 'showbits' ),
-			'download'    => __( 'The file could not be downloaded.', 'showbits' ),
-			'media'       => __( 'WordPress did not take the file into the media library.', 'showbits' ),
+			'invalid'      => __( 'This is not a clip or a format ShowBits offers.', 'showbits' ),
+			'notReleased'  => __( 'The clip is no longer released in ShowBits.', 'showbits' ),
+			'embargo'      => __( 'The embargo still holds: the file stays in ShowBits until it ends.', 'showbits' ),
+			'noFile'       => __( 'The file is not ready yet in ShowBits.', 'showbits' ),
+			'download'     => __( 'The file could not be downloaded.', 'showbits' ),
+			'media'        => __( 'WordPress did not take the file into the media library.', 'showbits' ),
+			'ticket'       => __( 'The delivery from ShowBits is no longer valid. Import the clip again.', 'showbits' ),
+			'unauthorized' => __( 'ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits.', 'showbits' ),
+			'unreachable'  => __( 'ShowBits could not be reached.', 'showbits' ),
+			'inactive'     => __( 'ShowBits no longer delivers to this site: the workspace’s plan has ended.', 'showbits' ),
+			'limit'        => __( 'The site’s imports for today are used up. Try again tomorrow.', 'showbits' ),
+			'interrupted'  => __( 'The import was interrupted.', 'showbits' ),
 		);
-		$message = $messages[ $reason ] ?? __( 'The import failed.', 'showbits' );
+		return $messages[ $reason ] ?? __( 'The import failed.', 'showbits' );
+	}
+
+	private static function error( string $reason, string $detail = '' ): \WP_Error {
+		$message = self::message_of( $reason );
 		return new \WP_Error( 'showbits_' . $reason, '' === $detail ? $message : $message . ' ' . $detail, array( 'reason' => $reason ) );
 	}
 }

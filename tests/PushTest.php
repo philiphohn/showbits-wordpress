@@ -134,4 +134,17 @@ final class PushTest extends TestCase {
 		$this->assertSame( 'failed', Importer::reason_of( new WP_Error( 'x', '', array( 'reason' => 'something else' ) ) ) );
 		$this->assertSame( 'failed', Importer::reason_of( new WP_Error( 'x', '' ) ) );
 	}
+
+	public function test_every_reason_the_import_log_keeps_has_its_own_translatable_message(): void {
+		$generic  = Importer::message_of( 'failed' );
+		$messages = array();
+		// What reason_of() lets through, and what Imports::claim() writes for a run that never finished.
+		foreach ( array( 'embargo', 'notReleased', 'noFile', 'download', 'media', 'invalid', 'unauthorized', 'unreachable', 'ticket', 'inactive', 'limit', 'interrupted' ) as $reason ) {
+			$messages[ $reason ] = Importer::message_of( $reason );
+			$this->assertNotSame( $generic, $messages[ $reason ], $reason );
+		}
+		$this->assertCount( count( $messages ), array_unique( $messages ) );
+		$this->assertSame( 'The import failed.', $generic );
+		$this->assertSame( $generic, Importer::message_of( 'something else' ) );
+	}
 }
