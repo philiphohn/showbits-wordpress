@@ -8,448 +8,448 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr ""
+msgstr "Εγκεκριμένα για δημοσίευση κλιπ και κάρτες παράθεσης από το ShowBits στη βιβλιοθήκη πολυμέσων: επιλέξτε τα στο WordPress ή λάβετε ό,τι στέλνουν οι διαχειριστές σας στο ShowBits."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
-msgstr ""
+msgstr "Το ShowBits δεν απάντησε όπως αναμενόταν."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer with a file."
-msgstr ""
+msgstr "Το ShowBits δεν έστειλε αρχείο."
 
 #: showbits/includes/class-api-client.php showbits/includes/class-importer.php
 msgid "ShowBits could not be reached."
-msgstr ""
+msgstr "Το ShowBits δεν ήταν προσβάσιμο."
 
 #. translators: 1: ShowBits' reason, 2: the HTTP status
 #: showbits/includes/class-api-client.php
 msgid "ShowBits refused (%1$s, HTTP %2$d)."
-msgstr ""
+msgstr "Το ShowBits απέρριψε το αίτημα (%1$s, HTTP %2$d)."
 
 #: showbits/includes/class-connection.php
 msgid "You may not connect this site."
-msgstr ""
+msgstr "Δεν έχετε δικαίωμα να συνδέσετε αυτόν τον ιστότοπο."
 
 #. translators: %s: the clip's title
 #: showbits/includes/class-importer.php
 msgid "%s (thumbnail)"
-msgstr ""
+msgstr "%s (μικρογραφία)"
 
 #. translators: %s: a quote (the alternative text of a quote card's picture)
 #: showbits/includes/class-importer.php
 msgid "“%s”"
-msgstr ""
+msgstr "«%s»"
 
 #. translators: 1: a quote, 2: who said it (the alternative text of a quote card's picture)
 #: showbits/includes/class-importer.php
 msgid "“%1$s” – %2$s"
-msgstr ""
+msgstr "«%1$s» – %2$s"
 
 #: showbits/includes/class-importer.php
 msgid "This is not a clip or a format ShowBits offers."
-msgstr ""
+msgstr "Αυτό δεν είναι κλιπ ή μορφή που προσφέρει το ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "The clip is no longer released in ShowBits."
-msgstr ""
+msgstr "Το κλιπ δεν είναι πλέον εγκεκριμένο για δημοσίευση στο ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr ""
+msgstr "Το εμπάργκο ισχύει ακόμη: το αρχείο παραμένει στο ShowBits μέχρι να λήξει."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."
-msgstr ""
+msgstr "Το αρχείο δεν είναι ακόμη έτοιμο στο ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "The file could not be downloaded."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η λήψη του αρχείου."
 
 #: showbits/includes/class-importer.php
 msgid "WordPress did not take the file into the media library."
-msgstr ""
+msgstr "Το WordPress δεν πρόσθεσε το αρχείο στη βιβλιοθήκη πολυμέσων."
 
 #: showbits/includes/class-importer.php
 msgid "The delivery from ShowBits is no longer valid. Import the clip again."
-msgstr ""
+msgstr "Η αποστολή από το ShowBits δεν ισχύει πλέον. Κάντε ξανά εισαγωγή του κλιπ."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits."
-msgstr ""
+msgstr "Το ShowBits δεν αποδέχεται πλέον τη σύνδεση αυτού του ιστότοπου: συνδέστε τον ξανά από το μενού Ρυθμίσεις → ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer delivers to this site: the workspace’s plan has ended."
-msgstr ""
+msgstr "Το ShowBits δεν στέλνει πλέον σε αυτόν τον ιστότοπο: η συνδρομή του χώρου εργασίας έληξε."
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
-msgstr ""
+msgstr "Οι σημερινές εισαγωγές του ιστότοπου εξαντλήθηκαν. Δοκιμάστε ξανά αύριο."
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
-msgstr ""
+msgstr "Η εισαγωγή διακόπηκε."
 
 #: showbits/includes/class-importer.php
 msgid "The import failed."
-msgstr ""
+msgstr "Η εισαγωγή απέτυχε."
 
 #: showbits/includes/class-library-endpoint.php
 msgid "This site is not connected to ShowBits."
-msgstr ""
+msgstr "Αυτός ο ιστότοπος δεν είναι συνδεδεμένος με το ShowBits."
 
 #: showbits/includes/class-library-page.php
 msgid "All"
-msgstr ""
+msgstr "Όλα"
 
 #: showbits/includes/class-library-page.php
 msgid "Clips"
-msgstr ""
+msgstr "Κλιπ"
 
 #: showbits/includes/class-library-page.php showbits/includes/class-settings-page.php
 msgid "Quote cards"
-msgstr ""
+msgstr "Κάρτες παράθεσης"
 
 #: showbits/includes/class-library-page.php
 msgid "Search titles"
-msgstr ""
+msgstr "Αναζήτηση τίτλων"
 
 #: showbits/includes/class-library-page.php
 msgid "Search the library"
-msgstr ""
+msgstr "Αναζήτηση στη βιβλιοθήκη"
 
 #: showbits/includes/class-library-page.php
 msgid "Import selected"
-msgstr ""
+msgstr "Εισαγωγή επιλεγμένων"
 
 #. translators: 1: which one, 2: how many in all
 #: showbits/includes/class-library-page.php
 msgid "Asking ShowBits for %1$d of %2$d …"
-msgstr ""
+msgstr "Αίτημα στο ShowBits: %1$d από %2$d…"
 
 #. translators: %d: how many clips are still on their way
 #: showbits/includes/class-library-page.php
 msgid "On the way from ShowBits: %d …"
-msgstr ""
+msgstr "Καθ’ οδόν από το ShowBits: %d…"
 
 #. translators: %d: how many clips were imported
 #: showbits/includes/class-library-page.php
 msgid "Imported: %d"
-msgstr ""
+msgstr "Εισήχθησαν: %d"
 
 #: showbits/includes/class-library-page.php
 msgid "Not everything has arrived yet; it continues in the background. Settings → ShowBits lists the imports."
-msgstr ""
+msgstr "Δεν έχουν φτάσει ακόμη όλα. Η εισαγωγή συνεχίζεται στο παρασκήνιο. Οι εισαγωγές εμφανίζονται στο μενού Ρυθμίσεις → ShowBits."
 
 #: showbits/includes/class-library-page.php
 msgid "On the way"
-msgstr ""
+msgstr "Καθ’ οδόν"
 
 #: showbits/includes/class-library-page.php
 msgid "Load more"
-msgstr ""
+msgstr "Φόρτωση περισσότερων"
 
 #: showbits/includes/class-library-page.php
 msgid "Loading …"
-msgstr ""
+msgstr "Φόρτωση…"
 
 #: showbits/includes/class-library-page.php
 msgid "No released clips or quote cards yet."
-msgstr ""
+msgstr "Δεν υπάρχουν ακόμη εγκεκριμένα για δημοσίευση κλιπ ή κάρτες παράθεσης."
 
 #. translators: %s: date and time the embargo ends
 #: showbits/includes/class-library-page.php
 msgid "Embargo until %s"
-msgstr ""
+msgstr "Εμπάργκο έως %s"
 
 #: showbits/includes/class-library-page.php
 msgid "Not ready yet"
-msgstr ""
+msgstr "Δεν είναι ακόμη έτοιμο"
 
 #: showbits/includes/class-library-page.php
 msgid "In the media library"
-msgstr ""
+msgstr "Στη βιβλιοθήκη πολυμέσων"
 
 #: showbits/includes/class-library-page.php
 msgid "An older version is in the media library"
-msgstr ""
+msgstr "Μια παλαιότερη έκδοση υπάρχει στη βιβλιοθήκη πολυμέσων"
 
 #: showbits/includes/class-library-page.php
 msgid "Edit"
-msgstr ""
+msgstr "Επεξεργασία"
 
 #: showbits/includes/class-library-page.php
 msgid "Format"
-msgstr ""
+msgstr "Μορφή"
 
 #: showbits/includes/class-library-page.php
 msgid "Video"
-msgstr ""
+msgstr "Βίντεο"
 
 #: showbits/includes/class-library-page.php
 msgid "Quote card"
-msgstr ""
+msgstr "Κάρτα παράθεσης"
 
 #: showbits/includes/class-library-page.php
 msgid "Meme"
-msgstr ""
+msgstr "Meme"
 
 #. translators: %s: why it failed
 #: showbits/includes/class-library-page.php
 msgid "Failed: %s"
-msgstr ""
+msgstr "Απέτυχε: %s"
 
 #. translators: %s: why it failed
 #: showbits/includes/class-library-page.php
 msgid "The library could not be loaded: %s"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η φόρτωση της βιβλιοθήκης: %s"
 
 #: showbits/includes/class-library-page.php
 msgid "This site is not connected to ShowBits yet."
-msgstr ""
+msgstr "Αυτός ο ιστότοπος δεν έχει συνδεθεί ακόμη με το ShowBits."
 
 #: showbits/includes/class-library-page.php
 msgid "Connect it in the settings."
-msgstr ""
+msgstr "Συνδέστε τον στις ρυθμίσεις."
 
 #: showbits/includes/class-library-page.php
 msgid "An administrator of this site connects it in the settings."
-msgstr ""
+msgstr "Τη σύνδεση την κάνει ένας διαχειριστής του ιστότοπου στις ρυθμίσεις."
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-library-page.php
 msgid "Released clips and quote cards from the ShowBits workspace “%s”. What you import lands in the media library, ready for posts and pages."
-msgstr ""
+msgstr "Εγκεκριμένα για δημοσίευση κλιπ και κάρτες παράθεσης από τον χώρο εργασίας «%s» του ShowBits. Ό,τι εισάγετε καταλήγει στη βιβλιοθήκη πολυμέσων, έτοιμο για άρθρα και σελίδες."
 
 #: showbits/includes/class-library-page.php
 msgid "The library needs JavaScript."
-msgstr ""
+msgstr "Η βιβλιοθήκη χρειάζεται JavaScript."
 
 #: showbits/includes/class-settings-page.php
 msgid "Settings"
-msgstr ""
+msgstr "Ρυθμίσεις"
 
 #: showbits/includes/class-settings-page.php
 msgid "You may not change these settings."
-msgstr ""
+msgstr "Δεν έχετε δικαίωμα να αλλάξετε αυτές τις ρυθμίσεις."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connection"
-msgstr ""
+msgstr "Σύνδεση"
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."
-msgstr ""
+msgstr "Ο ιστότοπος είναι συνδεδεμένος με τον χώρο εργασίας «%s»."
 
 #. translators: 1: imports today, 2: imports a day the plan allows
 #: showbits/includes/class-settings-page.php
 msgid "Imports today: %1$d of %2$d."
-msgstr ""
+msgstr "Εισαγωγές σήμερα: %1$d από %2$d."
 
 #. translators: 1: a person, 2: a date, 3: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "Connected by %1$s on %2$s, at %3$s."
-msgstr ""
+msgstr "Σύνδεση από: %1$s, %2$s, στη διεύθυνση %3$s."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect again"
-msgstr ""
+msgstr "Επανασύνδεση"
 
 #: showbits/includes/class-settings-page.php
 msgid "With a new site key the site renews its connection, or moves to another workspace."
-msgstr ""
+msgstr "Με ένα νέο κλειδί ιστότοπου, ο ιστότοπος ανανεώνει τη σύνδεσή του ή μεταφέρεται σε άλλον χώρο εργασίας."
 
 #. translators: %s: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits (%s) cannot be reached right now. The connection stays; try again later."
-msgstr ""
+msgstr "Το ShowBits (%s) δεν είναι προσβάσιμο αυτή τη στιγμή. Η σύνδεση διατηρείται. Δοκιμάστε ξανά αργότερα."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
-msgstr ""
+msgstr "Το ShowBits δεν αποδέχεται πλέον τη σύνδεση αυτού του ιστότοπου: αποσυνδέθηκε στο ShowBits, η συνδρομή έληξε ή άλλαξαν τα κλειδιά αυτού του ιστότοπου. Συνδέστε τον ξανά με νέο κλειδί ιστότοπου."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr ""
+msgstr "Συνδέστε αυτόν τον ιστότοπο με έναν χώρο εργασίας του ShowBits: ένας διαχειριστής ή ιδιοκτήτης του χώρου εργασίας δημιουργεί στο ShowBits ένα κλειδί ιστότοπου για αυτόν τον ιστότοπο (Integrations → WordPress). Έπειτα ο ιστότοπος μπορεί να φέρνει εγκεκριμένα για δημοσίευση κλιπ και κάρτες παράθεσης στη βιβλιοθήκη πολυμέσων του και να λαμβάνει ό,τι στέλνουν οι διαχειριστές σας στο ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "Imports"
-msgstr ""
+msgstr "Εισαγωγές"
 
 #: showbits/includes/class-settings-page.php
 msgid "Format of quote cards"
-msgstr ""
+msgstr "Μορφή καρτών παράθεσης"
 
 #: showbits/includes/class-settings-page.php
 msgid "4:5 (feeds, articles)"
-msgstr ""
+msgstr "4:5 (ροές, άρθρα)"
 
 #: showbits/includes/class-settings-page.php
 msgid "1:1 (square)"
-msgstr ""
+msgstr "1:1 (τετράγωνο)"
 
 #: showbits/includes/class-settings-page.php
 msgid "9:16 (stories)"
-msgstr ""
+msgstr "9:16 (ιστορίες)"
 
 #: showbits/includes/class-settings-page.php
 msgid "The picture pushes bring; in the library you choose for each card."
-msgstr ""
+msgstr "Η μορφή με την οποία φτάνουν οι κάρτες που αποστέλλονται. Στη βιβλιοθήκη επιλέγετε μορφή για κάθε κάρτα χωριστά."
 
 #: showbits/includes/class-settings-page.php
 msgid "Videos"
-msgstr ""
+msgstr "Βίντεο"
 
 #: showbits/includes/class-settings-page.php
 msgid "Import the thumbnail as the video’s poster image"
-msgstr ""
+msgstr "Εισαγωγή της μικρογραφίας ως εικόνας αφίσας του βίντεο"
 
 #: showbits/includes/class-settings-page.php
 msgid "Save"
-msgstr ""
+msgstr "Αποθήκευση"
 
 #: showbits/includes/class-settings-page.php
 msgid "Site key"
-msgstr ""
+msgstr "Κλειδί ιστότοπου"
 
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr ""
+msgstr "Δημιουργείται στο ShowBits για τη διεύθυνση %s, ισχύει για 24 ώρες και μόνο μία φορά. Στη συνέχεια το ShowBits ελέγχει ότι επικοινωνεί με αυτόν ακριβώς τον ιστότοπο."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"
-msgstr ""
+msgstr "Σύνδεση"
 
 #: showbits/includes/class-settings-page.php
 msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
-msgstr ""
+msgstr "Είστε εσείς διαχειριστής ή ιδιοκτήτης του χώρου εργασίας; Τότε συνδεθείτε στο ShowBits και δώστε εκεί τη συγκατάθεσή σας, χωρίς κλειδί ιστότοπου:"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect through ShowBits"
-msgstr ""
+msgstr "Σύνδεση μέσω ShowBits"
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits address"
-msgstr ""
+msgstr "Διεύθυνση ShowBits"
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits Cloud: https://app.showbits.ai. OnPremise: the address of your installation."
-msgstr ""
+msgstr "ShowBits Cloud: https://app.showbits.ai. OnPremise: η διεύθυνση της εγκατάστασής σας."
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect"
-msgstr ""
+msgstr "Αποσύνδεση"
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect this site from ShowBits? What is in the media library stays."
-msgstr ""
+msgstr "Αποσύνδεση αυτού του ιστότοπου από το ShowBits; Ό,τι υπάρχει στη βιβλιοθήκη πολυμέσων παραμένει."
 
 #: showbits/includes/class-settings-page.php
 msgid "asked for"
-msgstr ""
+msgstr "ζητήθηκε"
 
 #: showbits/includes/class-settings-page.php
 msgid "waiting"
-msgstr ""
+msgstr "σε αναμονή"
 
 #: showbits/includes/class-settings-page.php
 msgid "importing"
-msgstr ""
+msgstr "εισάγεται"
 
 #: showbits/includes/class-settings-page.php
 msgid "imported"
-msgstr ""
+msgstr "εισήχθη"
 
 #: showbits/includes/class-settings-page.php
 msgid "failed"
-msgstr ""
+msgstr "απέτυχε"
 
 #: showbits/includes/class-settings-page.php
 msgid "Recent imports"
-msgstr ""
+msgstr "Πρόσφατες εισαγωγές"
 
 #: showbits/includes/class-settings-page.php
 msgid "When"
-msgstr ""
+msgstr "Πότε"
 
 #: showbits/includes/class-settings-page.php
 msgid "Clip"
-msgstr ""
+msgstr "Κλιπ"
 
 #: showbits/includes/class-settings-page.php
 msgid "How"
-msgstr ""
+msgstr "Τρόπος"
 
 #: showbits/includes/class-settings-page.php
 msgid "State"
-msgstr ""
+msgstr "Κατάσταση"
 
 #: showbits/includes/class-settings-page.php
 msgid "sent from ShowBits"
-msgstr ""
+msgstr "στάλθηκε από το ShowBits"
 
 #: showbits/includes/class-settings-page.php
 msgid "picked here"
-msgstr ""
+msgstr "επιλέχθηκε εδώ"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connected. The library is under Media → ShowBits."
-msgstr ""
+msgstr "Συνδέθηκε. Η βιβλιοθήκη βρίσκεται στο μενού Πολυμέσα → ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnected. What is in the media library stays."
-msgstr ""
+msgstr "Αποσυνδέθηκε. Ό,τι υπάρχει στη βιβλιοθήκη πολυμέσων παραμένει."
 
 #: showbits/includes/class-settings-page.php
 msgid "Saved."
-msgstr ""
+msgstr "Αποθηκεύτηκε."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting was cancelled in ShowBits."
-msgstr ""
+msgstr "Η σύνδεση ακυρώθηκε στο ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "That way back from ShowBits did not belong to this attempt. Start again."
-msgstr ""
+msgstr "Αυτή η επιστροφή από το ShowBits δεν αντιστοιχούσε σε αυτή την προσπάθεια σύνδεσης. Ξεκινήστε από την αρχή."
 
 #: showbits/includes/class-settings-page.php
 msgid "The ShowBits address must start with https://."
-msgstr ""
+msgstr "Η διεύθυνση του ShowBits πρέπει να ξεκινά με https://."
 
 #: showbits/includes/class-settings-page.php
 msgid "That is not a site key. Copy it from ShowBits (Integrations → WordPress) again."
-msgstr ""
+msgstr "Αυτό δεν είναι κλειδί ιστότοπου. Αντιγράψτε το ξανά από το ShowBits (Integrations → WordPress)."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
-msgstr ""
+msgstr "Το ShowBits δεν δέχτηκε το κλειδί ιστότοπου: είναι άγνωστο, χρησιμοποιημένο, ανακλημένο ή ληγμένο (ένα κλειδί ιστότοπου ισχύει 24 ώρες, μια συγκατάθεση δέκα λεπτά). Δημιουργήστε ένα νέο."
 
 #: showbits/includes/class-settings-page.php
 msgid "The site key was made for another address. Make one for this site’s address."
-msgstr ""
+msgstr "Το κλειδί ιστότοπου δημιουργήθηκε για άλλη διεύθυνση. Δημιουργήστε ένα για τη διεύθυνση αυτού του ιστότοπου."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr ""
+msgstr "Το ShowBits δεν μπόρεσε να φτάσει σε αυτόν τον ιστότοπο μέσω του REST API του (/wp-json/showbits/v1/push) ή το ίδιο το ShowBits δεν ήταν προσβάσιμο. Ο ιστότοπος πρέπει να είναι δημόσια προσβάσιμος μέσω HTTPS. Ένα τείχος προστασίας ή πρόσθετο ασφαλείας πρέπει να επιτρέπει την πρόσβαση στο ShowBits."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
-msgstr ""
+msgstr "Αυτός ο ιστότοπος δεν απάντησε στον έλεγχο του ShowBits όπως αναμενόταν. Δοκιμάστε ξανά. Αν αποτύχει πάλι, ίσως ένα πρόσθετο προσωρινής μνήμης ή ασφαλείας απαντά στη θέση του WordPress."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
-msgstr ""
+msgstr "Η συνδρομή του χώρου εργασίας έληξε ή όποιος δημιούργησε το κλειδί ιστότοπου δεν μπορεί πλέον να συνδέει ιστότοπους."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
-msgstr ""
+msgstr "Ο χώρος εργασίας έχει ήδη τόσους ιστότοπους όσους επιτρέπει η συνδρομή του."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
-msgstr ""
+msgstr "Το ShowBits δεν αποδέχτηκε τη διεύθυνση αυτού του ιστότοπου. Ο ιστότοπος πρέπει να εξυπηρετείται μέσω HTTPS."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."
-msgstr ""
+msgstr "Η σύνδεση δεν ολοκληρώθηκε. Δοκιμάστε ξανά ή ρωτήστε τον υπεύθυνο επικοινωνίας σας στο ShowBits."
