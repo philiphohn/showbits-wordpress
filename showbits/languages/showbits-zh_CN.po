@@ -72,7 +72,7 @@ msgstr "WordPress 未能将文件添加到媒体库。"
 
 #: showbits/includes/class-importer.php
 msgid "The delivery from ShowBits is no longer valid. Import the clip again."
-msgstr "来自 ShowBits 的交付已失效。请重新导入该片段。"
+msgstr "ShowBits 的此次交付已失效。请重新导入该片段。"
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits."
@@ -88,7 +88,7 @@ msgstr "此站点今天的导入次数已用完。请明天再试。"
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
-msgstr "导入被中断。"
+msgstr "导入已中断。"
 
 #: showbits/includes/class-importer.php
 msgid "The import failed."
@@ -130,7 +130,7 @@ msgstr "正在向 ShowBits 请求第 %1$d 项，共 %2$d 项…"
 #. translators: %d: how many clips are still on their way
 #: showbits/includes/class-library-page.php
 msgid "On the way from ShowBits: %d …"
-msgstr "正从 ShowBits 传送：%d 项…"
+msgstr "ShowBits 正在传送：%d 项…"
 
 #. translators: %d: how many clips were imported
 #: showbits/includes/class-library-page.php
@@ -324,7 +324,7 @@ msgstr "连接"
 
 #: showbits/includes/class-settings-page.php
 msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
-msgstr "您本人就是该工作区的管理员或所有者？那么请登录 ShowBits 并在那里授权，无需站点密钥："
+msgstr "您本人是该工作区的管理员或所有者吗？那么请登录 ShowBits，在那里授权即可，无需站点密钥："
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect through ShowBits"

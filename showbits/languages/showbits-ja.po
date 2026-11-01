@@ -25,7 +25,7 @@ msgstr "ShowBits にアクセスできませんでした。"
 #. translators: 1: ShowBits' reason, 2: the HTTP status
 #: showbits/includes/class-api-client.php
 msgid "ShowBits refused (%1$s, HTTP %2$d)."
-msgstr "ShowBits に拒否されました (%1$s, HTTP %2$d)。"
+msgstr "ShowBits がリクエストを拒否しました (%1$s, HTTP %2$d)。"
 
 #: showbits/includes/class-connection.php
 msgid "You may not connect this site."
@@ -412,7 +412,7 @@ msgstr "ShowBits で接続がキャンセルされました。"
 
 #: showbits/includes/class-settings-page.php
 msgid "That way back from ShowBits did not belong to this attempt. Start again."
-msgstr "ShowBits からの戻りが今回の接続の試みと一致しませんでした。最初からやり直してください。"
+msgstr "ShowBits から戻ってきたリクエストが、今回の接続手続きと一致しません。最初からやり直してください。"
 
 #: showbits/includes/class-settings-page.php
 msgid "The ShowBits address must start with https://."
@@ -424,7 +424,7 @@ msgstr "サイトキーではありません。ShowBits (Integrations → WordPr
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
-msgstr "ShowBits がサイトキーを受け付けませんでした。不明なキー、使用済み、取り消し済み、または期限切れです (サイトキーの有効期間は24時間、同意は10分)。新しいサイトキーを作成してください。"
+msgstr "ShowBits がサイトキーを受け付けませんでした。キーが不明、使用済み、取り消し済み、または期限切れです (サイトキーの有効期間は24時間、同意は10分です)。新しいサイトキーを作成してください。"
 
 #: showbits/includes/class-settings-page.php
 msgid "The site key was made for another address. Make one for this site’s address."

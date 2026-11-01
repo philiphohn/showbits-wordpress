@@ -84,7 +84,7 @@ msgstr "ShowBits ບໍ່ຈັດສົ່ງໃຫ້ເວັບໄຊນີ
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
-msgstr "ການນຳເຂົ້າຂອງເວັບໄຊນີ້ສຳລັບມື້ນີ້ໝົດແລ້ວ. ກະລຸນາລອງໃໝ່ມື້ອື່ນ."
+msgstr "ມື້ນີ້ເວັບໄຊນີ້ນຳເຂົ້າຄົບຈຳນວນທີ່ອະນຸຍາດແລ້ວ. ກະລຸນາລອງໃໝ່ມື້ອື່ນ."
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
@@ -424,7 +424,7 @@ msgstr "ນັ້ນບໍ່ແມ່ນກະແຈເວັບໄຊ. ກະ�
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
-msgstr "ShowBits ບໍ່ຍອມຮັບກະແຈເວັບໄຊ: ກະແຈບໍ່ຮູ້ຈັກ, ຖືກໃຊ້ແລ້ວ, ຖືກຖອນຄືນ ຫຼື ໝົດອາຍຸ (ກະແຈເວັບໄຊໃຊ້ໄດ້ 24 ຊົ່ວໂມງ, ການຍິນຍອມໃຊ້ໄດ້ສິບນາທີ). ກະລຸນາສ້າງອັນໃໝ່."
+msgstr "ShowBits ບໍ່ຍອມຮັບກະແຈເວັບໄຊ: ກະແຈນີ້ບໍ່ມີໃນລະບົບ, ຖືກໃຊ້ແລ້ວ, ຖືກຖອນຄືນ ຫຼື ໝົດອາຍຸ (ກະແຈເວັບໄຊໃຊ້ໄດ້ 24 ຊົ່ວໂມງ, ການຍິນຍອມໃຊ້ໄດ້ສິບນາທີ). ກະລຸນາສ້າງອັນໃໝ່."
 
 #: showbits/includes/class-settings-page.php
 msgid "The site key was made for another address. Make one for this site’s address."

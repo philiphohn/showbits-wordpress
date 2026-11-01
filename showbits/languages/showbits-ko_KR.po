@@ -444,7 +444,7 @@ msgstr "워크스페이스의 요금제가 종료되었거나, 사이트 키를 
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
-msgstr "워크스페이스에 요금제에서 허용하는 최대 수의 사이트가 이미 있습니다."
+msgstr "워크스페이스의 사이트 수가 이미 요금제 한도에 도달했습니다."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
