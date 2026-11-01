@@ -436,7 +436,7 @@ msgstr "ShowBits-მა ვერ მიაღწია ამ საიტს �
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
-msgstr "ამ საიტმა ShowBits-ის შემოწმებას მოსალოდნელი პასუხი არ გასცა. სცადეთ ხელახლა; თუ ისევ ვერ მოხერხდა, შესაძლოა WordPress-ის ნაცვლად ქეშირების ან უსაფრთხოების პლაგინი პასუხობს."
+msgstr "ამ საიტმა ShowBits-ის შემოწმებას მოსალოდნელი პასუხი არ გასცა. სცადეთ ხელახლა; თუ ისევ ვერ მოხერხდა, შესაძლოა WordPress-ის ნაცვლად ქეშირების ან უსაფრთხოების პლაგინი პასუხობდეს."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."

@@ -16,7 +16,7 @@ msgstr "لم يستجب ShowBits بالشكل المتوقع."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer with a file."
-msgstr "لم يرد ShowBits بملف."
+msgstr "لم يُرسل ShowBits ملفًا في رده."
 
 #: showbits/includes/class-api-client.php showbits/includes/class-importer.php
 msgid "ShowBits could not be reached."
@@ -80,7 +80,7 @@ msgstr "لم يعد ShowBits يقبل اتصال هذا الموقع: يُرجى
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer delivers to this site: the workspace’s plan has ended."
-msgstr "لم يعد ShowBits يسلّم إلى هذا الموقع: انتهت خطة مساحة العمل."
+msgstr "لم يعد ShowBits يسلّم أي شيء إلى هذا الموقع: انتهت خطة مساحة العمل."
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
@@ -424,7 +424,7 @@ msgstr "هذا ليس مفتاح موقع. يُرجى نسخه مرة أخرى �
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
-msgstr "لم يقبل ShowBits مفتاح الموقع: فهو غير معروف أو مستخدَم أو مسحوب أو منتهي الصلاحية (مفتاح الموقع صالح لمدة 24 ساعة، والموافقة لعشر دقائق). يُرجى إنشاء مفتاح جديد."
+msgstr "لم يقبل ShowBits مفتاح الموقع: فهو غير معروف، أو سبق استخدامه، أو سُحب، أو انتهت صلاحيته (مفتاح الموقع صالح لمدة 24 ساعة، والموافقة لعشر دقائق). يُرجى إنشاء مفتاح جديد."
 
 #: showbits/includes/class-settings-page.php
 msgid "The site key was made for another address. Make one for this site’s address."

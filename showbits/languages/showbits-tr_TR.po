@@ -68,7 +68,7 @@ msgstr "Dosya indirilemedi."
 
 #: showbits/includes/class-importer.php
 msgid "WordPress did not take the file into the media library."
-msgstr "WordPress dosyayı ortam kütüphanesine almadı."
+msgstr "WordPress dosyayı ortam kütüphanesine eklemedi."
 
 #: showbits/includes/class-importer.php
 msgid "The delivery from ShowBits is no longer valid. Import the clip again."
@@ -214,12 +214,12 @@ msgstr "Ayarlardan bağlayın."
 
 #: showbits/includes/class-library-page.php
 msgid "An administrator of this site connects it in the settings."
-msgstr "Siteyi ayarlardan bu sitenin bir yöneticisi bağlayabilir."
+msgstr "Bu siteyi, yöneticilerinden biri ayarlardan bağlayabilir."
 
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-library-page.php
 msgid "Released clips and quote cards from the ShowBits workspace “%s”. What you import lands in the media library, ready for posts and pages."
-msgstr "“%s” ShowBits çalışma alanındaki onaylı klipler ve alıntı kartları. İçe aktardıklarınız ortam kütüphanesine gelir ve yazılarda ve sayfalarda kullanıma hazırdır."
+msgstr "“%s” ShowBits çalışma alanındaki onaylı klipler ve alıntı kartları. İçe aktardıklarınız ortam kütüphanesine gelir; yazılarda ve sayfalarda kullanılmaya hazırdır."
 
 #: showbits/includes/class-library-page.php
 msgid "The library needs JavaScript."
@@ -436,7 +436,7 @@ msgstr "ShowBits bu siteye REST API’si (/wp-json/showbits/v1/push) üzerinden 
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
-msgstr "Bu site, ShowBits’in denetimine beklendiği gibi yanıt vermedi. Yeniden deneyin; yine olmazsa WordPress yerine bir önbellek veya güvenlik eklentisi yanıt veriyor olabilir."
+msgstr "Bu site, ShowBits’in kontrolüne beklendiği gibi yanıt vermedi. Yeniden deneyin; yine olmazsa WordPress yerine bir önbellek veya güvenlik eklentisi yanıt veriyor olabilir."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."

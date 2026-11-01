@@ -8,7 +8,7 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr "کلیپ‌ها و کارت‌های نقل‌قول تأییدشده از ShowBits در کتابخانه رسانه: آن‌ها را در WordPress انتخاب کنید یا آنچه مدیران ShowBits شما می‌فرستند را دریافت کنید."
+msgstr "کلیپ‌ها و کارت‌های نقل‌قول تأییدشده از ShowBits در کتابخانه رسانه: آن‌ها را در WordPress انتخاب کنید یا آنچه را مدیران ShowBits شما می‌فرستند دریافت کنید."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
@@ -271,7 +271,7 @@ msgstr "ShowBits دیگر اتصال این سایت را نمی‌پذیرد: �
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr "این سایت را به یک فضای کاری ShowBits وصل کنید: یکی از مدیران یا مالکان فضای کاری در ShowBits یک کلید سایت برای این سایت می‌سازد (Integrations → WordPress). سپس سایت می‌تواند کلیپ‌ها و کارت‌های نقل‌قول تأییدشده را به کتابخانه رسانه خود بیاورد و آنچه مدیران ShowBits شما می‌فرستند را دریافت کند."
+msgstr "این سایت را به یک فضای کاری ShowBits وصل کنید: یکی از مدیران یا مالکان فضای کاری در ShowBits یک کلید سایت برای این سایت می‌سازد (Integrations → WordPress). سپس سایت می‌تواند کلیپ‌ها و کارت‌های نقل‌قول تأییدشده را به کتابخانه رسانه خود بیاورد و آنچه را مدیران ShowBits شما می‌فرستند دریافت کند."
 
 #: showbits/includes/class-settings-page.php
 msgid "Imports"
