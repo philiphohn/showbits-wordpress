@@ -56,7 +56,7 @@ msgstr "Klip už nie je v ShowBits schválený."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr "Embargo stále platí: súbor zostáva v ShowBits, kým sa neskončí."
+msgstr "Embargo stále platí: až do jeho skončenia zostáva súbor v ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."
@@ -316,7 +316,7 @@ msgstr "Kľúč webu"
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr "Vytvára sa v ShowBits pre %s, platí 24 hodín a len raz. ShowBits potom overí, že komunikuje práve s týmto webom."
+msgstr "Vytvára sa v ShowBits pre %s; platí 24 hodín a dá sa použiť len raz. ShowBits potom overí, že komunikuje práve s týmto webom."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"
@@ -444,7 +444,7 @@ msgstr "Plán pracovného priestoru sa skončil alebo ten, kto vytvoril kľúč 
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
-msgstr "Pracovný priestor už má toľko webov, koľko mu jeho plán povoľuje."
+msgstr "Pracovný priestor už má toľko webov, koľko povoľuje jeho plán."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."

@@ -316,7 +316,7 @@ msgstr "Кључ веб места"
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr "Прави се у ShowBits-у за %s, важи 24 сата и само једном. ShowBits затим проверава да ли комуницира баш са овим веб местом."
+msgstr "Прави се у ShowBits-у за %s; важи 24 сата и може да се употреби само једном. ShowBits затим проверава да ли комуницира баш са овим веб местом."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"

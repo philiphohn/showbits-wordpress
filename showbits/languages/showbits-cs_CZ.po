@@ -8,7 +8,7 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr "Schválené klipy a obrázky s citáty ze ShowBits přímo v knihovně médií: vybírejte je ve WordPressu, nebo přijímejte to, co posílají vaši administrátoři ShowBits."
+msgstr "Schválené klipy a obrázky s citáty ze ShowBits přímo v knihovně médií: vybírejte je ve WordPressu nebo přijímejte to, co posílají vaši administrátoři ShowBits."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
@@ -56,7 +56,7 @@ msgstr "Klip už není v ShowBits schválený."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr "Embargo stále platí: soubor zůstává v ShowBits, dokud neskončí."
+msgstr "Embargo stále platí: do jeho skončení zůstává soubor v ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."
@@ -258,7 +258,7 @@ msgstr "Opětovné připojení"
 
 #: showbits/includes/class-settings-page.php
 msgid "With a new site key the site renews its connection, or moves to another workspace."
-msgstr "Novým klíčem webu obnovíte připojení, nebo web přesunete do jiného pracovního prostoru."
+msgstr "Novým klíčem webu obnovíte připojení nebo web přesunete do jiného pracovního prostoru."
 
 #. translators: %s: ShowBits' address
 #: showbits/includes/class-settings-page.php
@@ -267,7 +267,7 @@ msgstr "ShowBits (%s) je momentálně nedostupný. Připojení zůstává zachov
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
-msgstr "ShowBits už nepřijímá připojení tohoto webu: bylo odpojeno v ShowBits, tarif skončil, nebo se změnily klíče tohoto webu. Připojte web znovu pomocí nového klíče webu."
+msgstr "ShowBits už nepřijímá připojení tohoto webu: bylo odpojeno v ShowBits, tarif skončil nebo se změnily klíče tohoto webu. Připojte web znovu pomocí nového klíče webu."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
@@ -316,7 +316,7 @@ msgstr "Klíč webu"
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr "Vytváří se v ShowBits pro %s, platí 24 hodin a jen jednou. ShowBits pak ověří, že komunikuje právě s tímto webem."
+msgstr "Vytváří se v ShowBits pro %s; platí 24 hodin a lze ho použít jen jednou. ShowBits pak ověří, že komunikuje právě s tímto webem."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"
@@ -432,7 +432,7 @@ msgstr "Klíč webu byl vytvořen pro jinou adresu. Vytvořte klíč pro adresu 
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
-msgstr "ShowBits se k tomuto webu nedostal přes jeho REST API (/wp-json/showbits/v1/push), nebo byl nedostupný samotný ShowBits. Web musí být veřejně dostupný přes HTTPS; firewall nebo bezpečnostní plugin musí ShowBits propustit."
+msgstr "ShowBits se k tomuto webu nedostal přes jeho REST API (/wp-json/showbits/v1/push) nebo byl nedostupný samotný ShowBits. Web musí být veřejně dostupný přes HTTPS; firewall nebo bezpečnostní plugin musí ShowBits propustit."
 
 #: showbits/includes/class-settings-page.php
 msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
@@ -440,7 +440,7 @@ msgstr "Tento web neodpověděl na kontrolu ShowBits podle očekávání. Zkuste
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
-msgstr "Tarif pracovního prostoru skončil, nebo ten, kdo vytvořil klíč webu, už nesmí připojovat weby."
+msgstr "Tarif pracovního prostoru skončil nebo ten, kdo vytvořil klíč webu, už nesmí připojovat weby."
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
@@ -452,4 +452,4 @@ msgstr "ShowBits nepřijal adresu tohoto webu. Web musí běžet přes HTTPS."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."
-msgstr "Připojení se nezdařilo. Zkuste to znovu, nebo se obraťte na svou kontaktní osobu v ShowBits."
+msgstr "Připojení se nezdařilo. Zkuste to znovu nebo se obraťte na svou kontaktní osobu v ShowBits."

@@ -29,7 +29,7 @@ msgstr "ShowBits je zavrnil zahtevo (%1$s, HTTP %2$d)."
 
 #: showbits/includes/class-connection.php
 msgid "You may not connect this site."
-msgstr "Nimate dovoljenja za povezavo tega spletišča."
+msgstr "Nimate dovoljenja za povezovanje tega spletišča."
 
 #. translators: %s: the clip's title
 #: showbits/includes/class-importer.php
@@ -56,7 +56,7 @@ msgstr "Izrezek v ShowBitsu ni več odobren."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr "Embargo še velja: datoteka ostane v ShowBitsu, dokler se ne izteče."
+msgstr "Embargo še velja: do njegovega izteka datoteka ostane v ShowBitsu."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."
@@ -316,7 +316,7 @@ msgstr "Ključ spletišča"
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr "Ustvarjen v ShowBitsu za %s; velja 24 ur in le enkrat. ShowBits nato preveri, ali komunicira prav s tem spletiščem."
+msgstr "Ustvarjen v ShowBitsu za %s; velja 24 ur in ga je mogoče uporabiti le enkrat. ShowBits nato preveri, ali komunicira prav s tem spletiščem."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"

@@ -267,7 +267,7 @@ msgstr "ShowBits (%s) сейчас недоступен. Подключение 
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
-msgstr "ShowBits больше не принимает подключение этого сайта: его отключили в ShowBits, срок действия тарифа истёк или ключи этого сайта изменились. Подключите сайт заново с новым ключом сайта."
+msgstr "ShowBits больше не принимает подключение этого сайта: его отключили в ShowBits, срок действия тарифа истёк, или ключи этого сайта изменились. Подключите сайт заново с новым ключом сайта."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
@@ -316,7 +316,7 @@ msgstr "Ключ сайта"
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr "Создаётся в ShowBits для %s, действует 24 часа и только один раз. Затем ShowBits проверяет, что связывается именно с этим сайтом."
+msgstr "Создаётся в ShowBits для %s; одноразовый, действует 24 часа. Затем ShowBits проверяет, что связывается именно с этим сайтом."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"

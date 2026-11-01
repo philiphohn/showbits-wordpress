@@ -56,7 +56,7 @@ msgstr "Isječak više nije odobren u ShowBitsu."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr "Embargo još vrijedi: datoteka ostaje u ShowBitsu dok ne istekne."
+msgstr "Embargo još vrijedi: do njegova isteka datoteka ostaje u ShowBitsu."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."
@@ -72,7 +72,7 @@ msgstr "WordPress nije primio datoteku u zbirku medija."
 
 #: showbits/includes/class-importer.php
 msgid "The delivery from ShowBits is no longer valid. Import the clip again."
-msgstr "Isporuka iz ShowBitsa više nije valjana. Ponovno uvezite isječak."
+msgstr "Isporuka iz ShowBitsa više nije važeća. Ponovno uvezite isječak."
 
 #: showbits/includes/class-importer.php
 msgid "ShowBits no longer accepts this site’s connection: connect it again under Settings → ShowBits."
@@ -84,7 +84,7 @@ msgstr "ShowBits više ništa ne isporučuje ovoj web stranici: paket radnog pro
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
-msgstr "Dnevno ograničenje uvoza za ovu web stranicu je dosegnuto. Pokušajte ponovno sutra."
+msgstr "Dosegnuto je dnevno ograničenje uvoza za ovu web stranicu. Pokušajte ponovno sutra."
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
@@ -172,7 +172,7 @@ msgstr "U zbirci medija"
 
 #: showbits/includes/class-library-page.php
 msgid "An older version is in the media library"
-msgstr "Starija inačica je u zbirci medija"
+msgstr "U zbirci medija nalazi se starija inačica"
 
 #: showbits/includes/class-library-page.php
 msgid "Edit"
@@ -316,7 +316,7 @@ msgstr "Ključ web stranice"
 #. translators: %s: this site's address
 #: showbits/includes/class-settings-page.php
 msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
-msgstr "Izrađuje se u ShowBitsu za %s, vrijedi 24 sata i samo jednom. ShowBits zatim provjerava komunicira li baš s ovom web stranicom."
+msgstr "Izrađuje se u ShowBitsu za %s; vrijedi 24 sata i može se upotrijebiti samo jednom. ShowBits zatim provjerava komunicira li baš s ovom web stranicom."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect"
