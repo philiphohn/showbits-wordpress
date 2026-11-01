@@ -21,5 +21,6 @@ if ( $showbits_client ) {
 delete_option( ShowBits\WordPress\Options::SETTINGS );
 delete_option( ShowBits\WordPress\Options::CONNECTION );
 delete_transient( 'showbits_status' );
+delete_transient( 'showbits_pairing' );
 wp_clear_scheduled_hook( 'showbits_process_imports' );
 ShowBits\WordPress\Imports::drop();

@@ -11,7 +11,9 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * The browser on Media → ShowBits talks to these (WordPress' cookie and nonce, like the block editor): the library
- * from ShowBits with what this site has of it, and an import. The token never reaches the browser.
+ * from ShowBits with what this site has of it, an import (asked of ShowBits, which pushes the clip here), and where
+ * imports stand (asking works the queue, so imports finish without waiting for WP-Cron). The key never reaches the
+ * browser.
  */
 final class Library_Endpoint {
 	public static function register(): void {
@@ -54,7 +56,23 @@ final class Library_Endpoint {
 					),
 					'variant' => array(
 						'type' => 'string',
-						'enum' => array( 'video', '16x9', '9x16', '4x5', '1x1' ),
+						'enum' => array( 'video', '4x5', '9x16', '1x1' ),
+					),
+				),
+			)
+		);
+		register_rest_route(
+			'showbits/v1',
+			'/imports',
+			array(
+				'methods'             => 'GET',
+				'callback'            => array( self::class, 'imports' ),
+				'permission_callback' => array( self::class, 'allowed' ),
+				'args'                => array(
+					'ids' => array(
+						'type'     => 'string',
+						'required' => true,
+						'pattern'  => '^[0-9]+(,[0-9]+){0,49}$',
 					),
 				),
 			)
@@ -112,7 +130,7 @@ final class Library_Endpoint {
 	}
 
 	/**
-	 * Imports one clip now, for the person who asked.
+	 * Asks ShowBits for one clip, for the person who asked: ShowBits pushes it here with the ticket for its files.
 	 *
 	 * @param \WP_REST_Request $request The request.
 	 * @return \WP_REST_Response|\WP_Error
@@ -122,35 +140,43 @@ final class Library_Endpoint {
 		if ( ! $client ) {
 			return new \WP_Error( 'showbits_not_connected', __( 'This site is not connected to ShowBits.', 'showbits' ), array( 'status' => 409 ) );
 		}
-		if ( function_exists( 'set_time_limit' ) ) {
-			set_time_limit( 300 ); // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged -- downloads of videos
-		}
-		$clip    = (string) $request->get_param( 'clipId' );
 		$variant = $request->get_param( 'variant' );
-		$result  = Importer::import( $client, $clip, is_string( $variant ) && '' !== $variant ? $variant : null, get_current_user_id() );
-		Imports::record(
-			array(
-				'clip_id'       => $clip,
-				'variant'       => is_wp_error( $result ) ? ( is_string( $variant ) ? $variant : '' ) : $result['variant'],
-				'title'         => is_wp_error( $result ) ? '' : $result['title'],
-				'status'        => is_wp_error( $result ) ? 'failed' : 'imported',
-				'attachment_id' => is_wp_error( $result ) ? null : $result['attachment_id'],
-				'error'         => is_wp_error( $result ) ? Importer::reason_of( $result ) : null,
-				'user_id'       => get_current_user_id(),
-			)
-		);
+		$result  = Importer::request( $client, (string) $request->get_param( 'clipId' ), is_string( $variant ) && '' !== $variant && 'video' !== $variant ? $variant : null, get_current_user_id() );
 		if ( is_wp_error( $result ) ) {
 			return self::failure( $result );
 		}
 		return new \WP_REST_Response(
 			array(
-				'attachmentId' => $result['attachment_id'],
-				'editUrl'      => $result['edit_url'],
-				'url'          => $result['url'],
-				'existing'     => $result['existing'],
-				'variant'      => $result['variant'],
-			)
+				'id'      => $result['id'],
+				'variant' => $result['variant'],
+				'status'  => 'requested',
+			),
+			202
 		);
+	}
+
+	/**
+	 * Where imports stand. Imports that arrived are worked first, a few seconds' worth.
+	 *
+	 * @param \WP_REST_Request $request The request.
+	 */
+	public static function imports( \WP_REST_Request $request ): \WP_REST_Response {
+		if ( Imports::waiting() ) {
+			Importer::process_queue( 20 );
+		}
+		$out = array();
+		foreach ( Imports::states( array_map( 'intval', explode( ',', (string) $request->get_param( 'ids' ) ) ) ) as $row ) {
+			$attachment = $row['attachment_id'] ? (int) $row['attachment_id'] : null;
+			$out[]      = array(
+				'id'      => (int) $row['id'],
+				'clipId'  => (string) $row['clip_id'],
+				'variant' => '' === (string) $row['variant'] ? 'video' : (string) $row['variant'],
+				'status'  => (string) $row['status'],
+				'error'   => $row['error'] ? (string) $row['error'] : null,
+				'editUrl' => $attachment ? (string) get_edit_post_link( $attachment, 'raw' ) : null,
+			);
+		}
+		return new \WP_REST_Response( array( 'imports' => $out ) );
 	}
 
 	/**
@@ -162,9 +188,12 @@ final class Library_Endpoint {
 		$reason = Api_Client::reason( $error );
 		$status = array(
 			'unauthorized' => 401,
+			'inactive'     => 403,
 			'embargo'      => 409,
 			'notReleased'  => 409,
 			'noFile'       => 404,
+			'limit'        => 429,
+			'tooMany'      => 429,
 			'unreachable'  => 502,
 			'invalid'      => 422,
 		);

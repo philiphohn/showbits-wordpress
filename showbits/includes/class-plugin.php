@@ -23,6 +23,7 @@ final class Plugin {
 
 		add_action( 'admin_menu', array( Library_Page::class, 'menu' ) );
 		add_action( 'admin_menu', array( Settings_Page::class, 'menu' ) );
+		add_action( 'admin_post_showbits_paste', array( Connection::class, 'paste' ) );
 		add_action( 'admin_post_showbits_connect', array( Connection::class, 'start' ) );
 		add_action( 'admin_post_showbits_callback', array( Connection::class, 'callback' ) );
 		add_action( 'admin_post_showbits_disconnect', array( Connection::class, 'disconnect' ) );

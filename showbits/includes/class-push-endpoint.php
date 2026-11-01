@@ -1,6 +1,6 @@
 <?php
 /**
- * Where ShowBits pushes released clips.
+ * Where ShowBits pushes released clips, and asks while connecting.
  *
  * @package ShowBits
  */
@@ -10,9 +10,13 @@ namespace ShowBits\WordPress;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * POST /wp-json/showbits/v1/push (docs/wordpress.md §4): open to anyone, so it believes only what ShowBits signed
- * with this site's secret, within five minutes, for this site and workspace. A push is taken once (by its id) and
- * imported by WP-Cron; the answer comes at once (202), the result goes to ShowBits through the API.
+ * POST /wp-json/showbits/v1/push (docs/wordpress.md §2, §4), open to anyone, so it believes nothing unproven:
+ *
+ * - `site.verify` while this site connects: ShowBits sends a challenge and gets the HMAC of it under the pairing value
+ *   the connect request carried. Only this site has that value, and only for a few seconds; nothing changes here.
+ * - `clip.push`: only what ShowBits signed with this site's secret, within five minutes, for this site and workspace,
+ *   each push once (by its id; a later delivery brings a new ticket). It comes with a ticket for the clip's files; the
+ *   answer comes at once (202), the import in the background, the result goes to ShowBits.
  */
 final class Push_Endpoint {
 	private const MAX_BODY = 8192;
@@ -24,22 +28,26 @@ final class Push_Endpoint {
 			array(
 				'methods'             => 'POST',
 				'callback'            => array( self::class, 'receive' ),
-				// The signature is the check (handle() below); WordPress' session has no part in it.
+				// The pairing value or the signature is the check (handle() below); WordPress' session has no part in it.
 				'permission_callback' => '__return_true',
 			)
 		);
 	}
 
 	/**
-	 * Answers a push.
+	 * Answers a push or a check.
 	 *
 	 * @param \WP_REST_Request $request The request.
 	 */
 	public static function receive( \WP_REST_Request $request ): \WP_REST_Response {
-		$result = self::handle( $request->get_body(), (string) $request->get_header( 'showbits_signature' ), Options::connection() );
+		$pairing = get_transient( Connection::PAIRING );
+		$result  = self::handle( $request->get_body(), (string) $request->get_header( 'showbits_signature' ), Options::connection(), is_string( $pairing ) ? $pairing : null );
+		if ( isset( $result['proof'] ) ) {
+			return new \WP_REST_Response( array( 'proof' => $result['proof'] ), 200 );
+		}
 		if ( 202 === $result['status'] && ! empty( $result['queued'] ) ) {
-			if ( ! wp_next_scheduled( 'showbits_process_imports' ) ) {
-				wp_schedule_single_event( time(), 'showbits_process_imports' );
+			if ( ! wp_next_scheduled( Plugin::CRON ) ) {
+				wp_schedule_single_event( time(), Plugin::CRON );
 			}
 			spawn_cron();
 		}
@@ -52,9 +60,20 @@ final class Push_Endpoint {
 	 * @param string                    $body       The raw body, as signed.
 	 * @param string                    $header     ShowBits-Signature.
 	 * @param array<string, mixed>|null $connection The stored connection.
-	 * @return array{status: int, reason?: string, queued?: bool}
+	 * @param string|null               $pairing    The pairing value while this site connects.
+	 * @return array{status: int, reason?: string, queued?: bool, proof?: string}
 	 */
-	public static function handle( string $body, string $header, ?array $connection ): array {
+	public static function handle( string $body, string $header, ?array $connection, ?string $pairing = null ): array {
+		if ( strlen( $body ) > self::MAX_BODY ) {
+			return array(
+				'status' => 413,
+				'reason' => 'size',
+			);
+		}
+		$message = json_decode( $body, true );
+		if ( is_array( $message ) && 'site.verify' === ( $message['type'] ?? '' ) ) {
+			return self::verify( $message, $pairing );
+		}
 		// Not (or no longer) connected: ShowBits stops trying.
 		if ( ! $connection ) {
 			return array(
@@ -62,24 +81,26 @@ final class Push_Endpoint {
 				'reason' => 'notConnected',
 			);
 		}
-		if ( strlen( $body ) > self::MAX_BODY || ! Signature::verify( $header, (string) $connection['push_secret'], $body ) ) {
+		if ( ! Signature::verify( $header, (string) $connection['push_secret'], $body ) ) {
 			return array(
 				'status' => 401,
 				'reason' => 'signature',
 			);
 		}
-		$push = json_decode( $body, true );
-		$id   = is_array( $push ) ? (string) ( $push['id'] ?? '' ) : '';
-		$clip = is_array( $push ) ? (string) ( $push['object']['id'] ?? '' ) : '';
-		if ( ! is_array( $push ) || 'clip.push' !== ( $push['type'] ?? '' ) || 'clip' !== ( $push['object']['type'] ?? '' )
-			|| ! preg_match( '/^[A-Za-z0-9-]{1,64}$/', $id ) || ! preg_match( '/^[A-Za-z0-9-]{1,64}$/', $clip ) ) {
+		$id      = is_array( $message ) ? (string) ( $message['id'] ?? '' ) : '';
+		$clip    = is_array( $message ) ? (string) ( $message['object']['id'] ?? '' ) : '';
+		$ticket  = is_array( $message ) ? (string) ( $message['ticket'] ?? '' ) : '';
+		$variant = is_array( $message ) ? ( $message['variant'] ?? null ) : null;
+		if ( ! is_array( $message ) || 'clip.push' !== ( $message['type'] ?? '' ) || 'clip' !== ( $message['object']['type'] ?? '' )
+			|| ! preg_match( '/^[A-Za-z0-9-]{1,64}$/', $id ) || ! preg_match( '/^[A-Za-z0-9-]{1,64}$/', $clip ) || ! preg_match( '/^[0-9a-f]{64}$/', $ticket )
+			|| ( null !== $variant && ! in_array( $variant, Importer::QUOTE_VARIANTS, true ) ) ) {
 			return array(
 				'status' => 422,
 				'reason' => 'invalid',
 			);
 		}
 		// Signed for another site or workspace (a reconnect elsewhere): not ours to take.
-		if ( ( $push['site']['id'] ?? '' ) !== $connection['site_id'] || ( $push['workspace']['id'] ?? '' ) !== $connection['workspace_id'] ) {
+		if ( ( $message['site']['id'] ?? '' ) !== $connection['site_id'] || ( $message['workspace']['id'] ?? '' ) !== $connection['workspace_id'] ) {
 			return array(
 				'status' => 410,
 				'reason' => 'otherSite',
@@ -87,7 +108,39 @@ final class Push_Endpoint {
 		}
 		return array(
 			'status' => 202,
-			'queued' => Imports::enqueue_push( $id, $clip, (int) $connection['connected_by'] ),
+			'queued' => Imports::enqueue_push( $id, $clip, (int) $connection['connected_by'], $ticket, is_string( $variant ) ? $variant : '' ),
 		);
+	}
+
+	/**
+	 * ShowBits' check while connecting: the HMAC of its challenge under the pairing value, or nothing (no attempt here).
+	 *
+	 * @param array<string, mixed> $message The check.
+	 * @param string|null          $pairing The pairing value, while this site connects.
+	 * @return array{status: int, reason?: string, proof?: string}
+	 */
+	private static function verify( array $message, ?string $pairing ): array {
+		$challenge = (string) ( $message['challenge'] ?? '' );
+		if ( ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $challenge ) ) {
+			return array(
+				'status' => 422,
+				'reason' => 'invalid',
+			);
+		}
+		if ( null === $pairing || ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $pairing ) ) {
+			return array(
+				'status' => 404,
+				'reason' => 'notConnecting',
+			);
+		}
+		return array(
+			'status' => 200,
+			'proof'  => self::proof( $pairing, $challenge ),
+		);
+	}
+
+	/** base64url(HMAC-SHA256(pairing, "showbits-site-verify:" . challenge)), as ShowBits expects (lib/wordpress-verify.ts). */
+	public static function proof( string $pairing, string $challenge ): string {
+		return rtrim( strtr( base64_encode( hash_hmac( 'sha256', 'showbits-site-verify:' . $challenge, $pairing, true ) ), '+/', '-_' ), '=' ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- base64url of an HMAC, not obfuscation
 	}
 }

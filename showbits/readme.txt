@@ -16,23 +16,23 @@ ShowBits turns podcast and TV episodes into clips, subtitles and quote cards; yo
 
 * **Media → ShowBits** lists the released clips and quote cards of the connected ShowBits workspace, newest first. Pick some and import them: a clip's video (with its thumbnail as the poster image), a quote card's picture in 4:5, 1:1 or 9:16 (with the quote as alternative text).
 * Admins and owners in ShowBits can **send a released clip to this site**; it lands in the media library by itself.
+* Files reach only this site: ShowBits sends each one as a signed push with a ticket that is good for that clip alone.
 * Nothing leaves ShowBits before the episode's embargo ends, and only released clips at all: ShowBits checks it for every file.
 
 Everyone who may upload media can use the library; people who manage the site connect it.
 
 = Connecting =
 
-Settings → ShowBits → Connect with ShowBits. You are taken to ShowBits, where an admin or owner of the workspace agrees. ShowBits sends you back with a one-time code that only this site can exchange (OAuth 2.1 authorization code with PKCE). No token is copied anywhere.
+In ShowBits, an admin or owner of the workspace makes a site key for this site's address (Integrations → WordPress) and passes it on. Here, under Settings → ShowBits, paste it and connect. The key is valid for 24 hours and only once. If you are an admin or owner in ShowBits yourself, you can instead connect through ShowBits: sign in there and agree (OAuth 2.1 style, with PKCE).
 
-The site gets a token that can only read the workspace's released clips, and a secret ShowBits signs its pushes with. Both are stored encrypted with a key from wp-config.php (`SHOWBITS_ENCRYPTION_KEY`, or the site's salts). The connection belongs to the person who agreed in ShowBits; it ends after a year, when they leave the workspace, or when someone disconnects it in ShowBits or here.
+While connecting, ShowBits checks at this site's REST API that it is talking to the plugin that asked, so a site key copied anywhere else connects nothing. The site then gets a key of its own that only opens this plugin's routes (not ShowBits' REST API), and a secret ShowBits signs its pushes with. Both are stored encrypted with a key from wp-config.php (`SHOWBITS_ENCRYPTION_KEY`, or the site's salts). The connection belongs to the workspace; it lasts until someone disconnects it in ShowBits or here.
 
-ShowBits is available in the Enterprise plan and in ShowBits OnPremise (enter your installation's address before connecting).
+The plugin works in every ShowBits plan (Creator, Business, Enterprise) and with ShowBits OnPremise (enter your installation's address before connecting). Each plan allows a number of sites per workspace and of imports a day.
 
 = Requirements =
 
-* The site is served over HTTPS (ShowBits sends pushes only to https addresses).
-* WP-Cron runs (pushes are imported in the background); a real cron job calling wp-cron.php is best.
-* To receive pushes, ShowBits must reach the site's REST API (`/wp-json/showbits/v1/push`). Behind a firewall, importing from the library still works.
+* The site is served over HTTPS and ShowBits can reach its REST API (`/wp-json/showbits/v1/push`): every file comes to the site as a push from ShowBits, also the ones picked in the library.
+* WP-Cron runs for what ShowBits sends on its own (imports picked in the library finish while the page is open); a real cron job calling wp-cron.php is best.
 
 = Filters =
 
@@ -49,9 +49,9 @@ They stay as they are. A new cut or a redrawn card is a new version: importing i
 
 = What does ShowBits learn about my site? =
 
-Its address and name, the address pushes go to, the plugin's version, and for each push whether it was imported (with the attachment's address) or why not.
+Its address and name, the address pushes go to, the plugin's version, when the plugin last asked, and for each push whether it was imported (with the attachment's address) or why not.
 
 == Changelog ==
 
 = 1.0.0 =
-* Connect to a ShowBits workspace (authorization code with PKCE), library of released clips and quote cards, imports with poster and alternative text, pushes from ShowBits.
+* Connect to a ShowBits workspace with a site key (or through ShowBits with PKCE), library of released clips and quote cards, imports with poster and alternative text as signed pushes with a ticket, pushes from ShowBits.

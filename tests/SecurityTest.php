@@ -66,17 +66,17 @@ final class SecurityTest extends TestCase {
 		Options::save_connection(
 			array(
 				'app_url'      => 'https://app.showbits.ai',
-				'api'          => 'https://app.showbits.ai/api',
+				'api'          => 'https://app.showbits.ai/api/wordpress/v1',
 				'site_id'      => 'site-1',
 				'workspace_id' => 'ws-1',
-				'token'        => 'sbk_token',
+				'key'          => 'sbwp_site-key',
 				'push_secret'  => 'whsec_push',
 			)
 		);
 		$stored = Stubs::$options[ Options::CONNECTION ];
-		$this->assertStringNotContainsString( 'sbk_token', serialize( $stored ) );
+		$this->assertStringNotContainsString( 'sbwp_site-key', serialize( $stored ) );
 		$this->assertStringNotContainsString( 'whsec_push', serialize( $stored ) );
-		$this->assertSame( 'sbk_token', Options::connection()['token'] );
+		$this->assertSame( 'sbwp_site-key', Options::connection()['key'] );
 		$this->assertSame( 'whsec_push', Options::connection()['push_secret'] );
 		Stubs::$salt = 'salt-two';
 		$this->assertNull( Options::connection() );

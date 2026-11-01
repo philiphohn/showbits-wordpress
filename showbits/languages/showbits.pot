@@ -5,11 +5,20 @@ msgstr ""
 "X-Domain: showbits\n"
 
 #: showbits/includes/class-api-client.php
+msgid "ShowBits did not answer as expected."
+msgstr ""
+
+#: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer with a file."
 msgstr ""
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits could not be reached."
+msgstr ""
+
+#. translators: 1: ShowBits' reason, 2: the HTTP status
+#: showbits/includes/class-api-client.php
+msgid "ShowBits refused (%1$s, HTTP %2$d)."
 msgstr ""
 
 #: showbits/includes/class-connection.php
@@ -90,14 +99,27 @@ msgstr ""
 msgid "Import selected"
 msgstr ""
 
-#. translators: 1: how many are done, 2: how many in all
+#. translators: 1: which one, 2: how many in all
 #: showbits/includes/class-library-page.php
-msgid "Importing %1$d of %2$d …"
+msgid "Asking ShowBits for %1$d of %2$d …"
+msgstr ""
+
+#. translators: %d: how many clips are still on their way
+#: showbits/includes/class-library-page.php
+msgid "On the way from ShowBits: %d …"
 msgstr ""
 
 #. translators: %d: how many clips were imported
 #: showbits/includes/class-library-page.php
 msgid "Imported: %d"
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "Not everything has arrived yet; it continues in the background. Settings → ShowBits lists the imports."
+msgstr ""
+
+#: showbits/includes/class-library-page.php
+msgid "On the way"
 msgstr ""
 
 #: showbits/includes/class-library-page.php
@@ -197,9 +219,9 @@ msgstr ""
 msgid "Connected to the workspace “%s”."
 msgstr ""
 
-#. translators: %s: a date
+#. translators: 1: imports today, 2: imports a day the plan allows
 #: showbits/includes/class-settings-page.php
-msgid "The connection lasts until %s; renew it before then."
+msgid "Imports today: %1$d of %2$d."
 msgstr ""
 
 #. translators: 1: a person, 2: a date, 3: ShowBits' address
@@ -208,7 +230,11 @@ msgid "Connected by %1$s on %2$s, at %3$s."
 msgstr ""
 
 #: showbits/includes/class-settings-page.php
-msgid "Renew the connection"
+msgid "Connect again"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "With a new site key the site renews its connection, or moves to another workspace."
 msgstr ""
 
 #. translators: %s: ShowBits' address
@@ -217,19 +243,11 @@ msgid "ShowBits (%s) cannot be reached right now. The connection stays; try agai
 msgstr ""
 
 #: showbits/includes/class-settings-page.php
-msgid "ShowBits no longer accepts this site’s connection: the person who agreed has left the workspace, the year is over, it was disconnected in ShowBits, or this site’s keys changed. Connect it again."
+msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
 msgstr ""
 
 #: showbits/includes/class-settings-page.php
-msgid "Connect again"
-msgstr ""
-
-#: showbits/includes/class-settings-page.php
-msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace agrees in ShowBits. The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr ""
-
-#: showbits/includes/class-settings-page.php
-msgid "Connect with ShowBits"
+msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
 msgstr ""
 
 #: showbits/includes/class-settings-page.php
@@ -269,6 +287,27 @@ msgid "Save"
 msgstr ""
 
 #: showbits/includes/class-settings-page.php
+msgid "Site key"
+msgstr ""
+
+#. translators: %s: this site's address
+#: showbits/includes/class-settings-page.php
+msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Connect"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "Connect through ShowBits"
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
 msgid "ShowBits address"
 msgstr ""
 
@@ -282,6 +321,10 @@ msgstr ""
 
 #: showbits/includes/class-settings-page.php
 msgid "Disconnect this site from ShowBits? What is in the media library stays."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "asked for"
 msgstr ""
 
 #: showbits/includes/class-settings-page.php
@@ -353,15 +396,35 @@ msgid "The ShowBits address must start with https://."
 msgstr ""
 
 #: showbits/includes/class-settings-page.php
-msgid "ShowBits did not take the code (it is only valid for ten minutes, once). Start again."
+msgid "That is not a site key. Copy it from ShowBits (Integrations → WordPress) again."
 msgstr ""
 
 #: showbits/includes/class-settings-page.php
-msgid "The workspace has as many sites as it may, or the person who agreed has too many tokens."
+msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
 msgstr ""
 
 #: showbits/includes/class-settings-page.php
-msgid "ShowBits could not be reached. Check the address and try again."
+msgid "The site key was made for another address. Make one for this site’s address."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "The workspace has as many sites as its plan allows."
+msgstr ""
+
+#: showbits/includes/class-settings-page.php
+msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
 msgstr ""
 
 #: showbits/includes/class-settings-page.php

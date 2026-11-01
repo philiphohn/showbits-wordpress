@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Two options, neither loaded on every request: `showbits_settings` (where ShowBits is, the defaults for imports) and
- * `showbits_connection` (the workspace, the site's id in ShowBits, the token and the push secret, both sealed).
+ * `showbits_connection` (the workspace, the site's id in ShowBits, the site's own key and the push secret, both sealed).
  */
 final class Options {
 	public const SETTINGS   = 'showbits_settings';
@@ -71,16 +71,16 @@ final class Options {
 	 * The connection with its secrets opened, or null: not connected, or the secrets can no longer be opened (the
 	 * salts changed).
 	 *
-	 * @return array{app_url: string, api: string, site_id: string, workspace_id: string, workspace_slug: string, workspace_name: string, token: string, push_secret: string, expires_at: string, connected_at: string, connected_by: int}|null
+	 * @return array{app_url: string, api: string, site_id: string, workspace_id: string, workspace_slug: string, workspace_name: string, key: string, push_secret: string, connected_at: string, connected_by: int}|null
 	 */
 	public static function connection(): ?array {
 		$stored = get_option( self::CONNECTION );
-		if ( ! is_array( $stored ) || empty( $stored['token'] ) || empty( $stored['push_secret'] ) ) {
+		if ( ! is_array( $stored ) || empty( $stored['key'] ) || empty( $stored['push_secret'] ) ) {
 			return null;
 		}
-		$token  = Crypto::open( (string) $stored['token'] );
+		$key    = Crypto::open( (string) $stored['key'] );
 		$secret = Crypto::open( (string) $stored['push_secret'] );
-		if ( null === $token || null === $secret ) {
+		if ( null === $key || null === $secret ) {
 			return null;
 		}
 		return array(
@@ -90,9 +90,8 @@ final class Options {
 			'workspace_id'   => (string) ( $stored['workspace_id'] ?? '' ),
 			'workspace_slug' => (string) ( $stored['workspace_slug'] ?? '' ),
 			'workspace_name' => (string) ( $stored['workspace_name'] ?? '' ),
-			'token'          => $token,
+			'key'            => $key,
 			'push_secret'    => $secret,
-			'expires_at'     => (string) ( $stored['expires_at'] ?? '' ),
 			'connected_at'   => (string) ( $stored['connected_at'] ?? '' ),
 			'connected_by'   => (int) ( $stored['connected_by'] ?? 0 ),
 		);
@@ -109,7 +108,7 @@ final class Options {
 	 * @param array<string, mixed> $connection What the exchange answered, plus where ShowBits is and who connected.
 	 */
 	public static function save_connection( array $connection ): void {
-		$connection['token']       = Crypto::seal( (string) $connection['token'] );
+		$connection['key']         = Crypto::seal( (string) $connection['key'] );
 		$connection['push_secret'] = Crypto::seal( (string) $connection['push_secret'] );
 		update_option( self::CONNECTION, $connection, false );
 	}

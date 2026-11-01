@@ -11,7 +11,8 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * The library: released clips and quote cards of the connected workspace, newest release first, searchable; pick some
- * and import them into the media library (assets/library.js). For everyone who may upload media.
+ * and import them into the media library (assets/library.js): ShowBits sends each to this site. For everyone who may
+ * upload media.
  */
 final class Library_Page {
 	public const SLUG = 'showbits';
@@ -44,10 +45,14 @@ final class Library_Page {
 				'search'      => __( 'Search titles', 'showbits' ),
 				'searchLabel' => __( 'Search the library', 'showbits' ),
 				'import'      => __( 'Import selected', 'showbits' ),
-				/* translators: 1: how many are done, 2: how many in all */
-				'importing'   => __( 'Importing %1$d of %2$d …', 'showbits' ),
+				/* translators: 1: which one, 2: how many in all */
+				'importing'   => __( 'Asking ShowBits for %1$d of %2$d …', 'showbits' ),
+				/* translators: %d: how many clips are still on their way */
+				'waiting'     => __( 'On the way from ShowBits: %d …', 'showbits' ),
 				/* translators: %d: how many clips were imported */
 				'done'        => __( 'Imported: %d', 'showbits' ),
+				'later'       => __( 'Not everything has arrived yet; it continues in the background. Settings → ShowBits lists the imports.', 'showbits' ),
+				'pending'     => __( 'On the way', 'showbits' ),
 				'loadMore'    => __( 'Load more', 'showbits' ),
 				'loading'     => __( 'Loading …', 'showbits' ),
 				'empty'       => __( 'No released clips or quote cards yet.', 'showbits' ),

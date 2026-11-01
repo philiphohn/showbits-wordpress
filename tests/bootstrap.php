@@ -2,7 +2,7 @@
 /**
  * Unit tests of the plugin without a WordPress install: the plugin's classes against small stand-ins for the parts of
  * WordPress they call (options, HTTP, the database for the import log). What needs a real WordPress (sideloading,
- * redirects, REST routing, WP-Cron) runs in a real one in tests/e2e/run.sh.
+ * redirects, REST routing, WP-Cron, ShowBits' check at the push address) runs in a real one in tests/e2e/run.sh.
  */
 
 declare( strict_types=1 );
@@ -71,10 +71,10 @@ class WP_Error {
 	}
 }
 
-/** The import log's table, in memory: INSERT IGNORE keeps push ids unique. */
+/** The import log's table, in memory: a push id is one row; a delivery again with a new ticket changes it. */
 final class Fake_Wpdb {
 	public string $prefix = 'wp_';
-	/** @var array<string, true> */
+	/** @var array<string, string> push id → ticket */
 	public array $push_ids = array();
 
 	/** @param mixed ...$args */
@@ -83,12 +83,16 @@ final class Fake_Wpdb {
 	}
 
 	public function query( string $sql ): int {
-		if ( preg_match( "/^INSERT IGNORE INTO \S+ \(clip_id, source, push_id.*VALUES \('[^']*', 'push', '([^']+)'/", $sql, $m ) ) {
-			if ( isset( $this->push_ids[ $m[1] ] ) ) {
+		if ( preg_match( "/^INSERT INTO \S+ \(clip_id, variant, source, push_id, ticket, .*VALUES \('[^']*', '[^']*', 'push', '([^']+)', '([0-9a-f]+)'/s", $sql, $m ) ) {
+			if ( ! isset( $this->push_ids[ $m[1] ] ) ) {
+				$this->push_ids[ $m[1] ] = $m[2];
+				return 1;
+			}
+			if ( $this->push_ids[ $m[1] ] === $m[2] ) {
 				return 0;
 			}
-			$this->push_ids[ $m[1] ] = true;
-			return 1;
+			$this->push_ids[ $m[1] ] = $m[2];
+			return 2;
 		}
 		return 0;
 	}

@@ -16,10 +16,11 @@
  * @package ShowBits
  */
 
-// The plugin's way into ShowBits (docs/wordpress.md in the showbits-app repository): connected with an authorization
-// code and PKCE, it reads the workspace's released clips through the REST API with a token that can do nothing else,
-// and takes pushes signed by ShowBits. No file leaves ShowBits unreleased or before its embargo ends: ShowBits checks
-// that on every file, this plugin only asks.
+// The plugin's way into ShowBits (docs/wordpress.md in the showbits-app repository): connected with a site key made in
+// ShowBits (or through ShowBits' consent page), it has a key of its own that opens only the plugin's routes (not
+// ShowBits' REST API), lists the workspace's released clips, and takes their files when ShowBits pushes them to this
+// site, signed and with a ticket. No file leaves ShowBits unreleased or before its embargo ends: ShowBits checks that on
+// every file, this plugin only asks.
 
 defined( 'ABSPATH' ) || exit;
 

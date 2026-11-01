@@ -1,7 +1,8 @@
 /**
  * Media → ShowBits: the released clips and quote cards of the connected workspace, newest release first. Pick some,
- * choose a quote card's format, import: one after the other, each into the media library. Talks only to this site's
- * own REST routes (showbits/v1), with WordPress' nonce; ShowBits' token stays on the server.
+ * choose a quote card's format, import: each is asked of ShowBits, which sends it to this site; the page waits and
+ * shows when it is in the media library. Talks only to this site's own REST routes (showbits/v1), with WordPress'
+ * nonce; ShowBits' key stays on the server.
  *
  * @package ShowBits
  */
@@ -75,28 +76,57 @@
 		render();
 	}
 
+	const sleep = ( ms ) => new Promise( ( resolve ) => setTimeout( resolve, ms ) );
+
 	async function importSelected() {
 		const chosen = state.items.filter( ( item ) => state.selected.has( item.id ) && available( item ) );
 		if ( ! chosen.length || state.busy ) {
 			return;
 		}
 		state.busy = true;
-		let done = 0;
-		for ( const item of chosen ) {
-			state.progress = format( s.importing, done + 1, chosen.length );
+		// Ask ShowBits for each; it sends them to this site with the ticket for their files.
+		const waiting = new Map();
+		for ( const [ i, item ] of chosen.entries() ) {
+			state.progress = format( s.importing, i + 1, chosen.length );
 			render();
 			try {
-				const result = await apiFetch( { path: '/showbits/v1/import', method: 'POST', data: { clipId: item.id, variant: variantOf( item ) } } );
-				item.imported = Object.assign( {}, item.imported, { [ result.variant ]: { id: result.attachmentId, editUrl: result.editUrl, current: true } } );
-				state.results.set( item.id, { ok: true } );
+				const request = await apiFetch( { path: '/showbits/v1/import', method: 'POST', data: { clipId: item.id, variant: variantOf( item ) } } );
+				waiting.set( request.id, item );
+				state.results.set( item.id, { ok: true, pending: true } );
 				state.selected.delete( item.id );
-				done++;
 			} catch ( error ) {
 				state.results.set( item.id, { ok: false, message: error.message || '' } );
 			}
 		}
+		// Then wait until they are in the media library (asking also works the queue on the server).
+		let done = 0;
+		const until = Date.now() + 180000;
+		while ( waiting.size && Date.now() < until ) {
+			state.progress = format( s.waiting, waiting.size );
+			render();
+			await sleep( 2000 );
+			try {
+				const answer = await apiFetch( { path: `/showbits/v1/imports?ids=${ [ ...waiting.keys() ].join( ',' ) }` } );
+				for ( const row of answer.imports ) {
+					const item = waiting.get( row.id );
+					if ( ! item || ( row.status !== 'imported' && row.status !== 'failed' ) ) {
+						continue;
+					}
+					waiting.delete( row.id );
+					if ( row.status === 'imported' ) {
+						item.imported = Object.assign( {}, item.imported, { [ row.variant ]: { editUrl: row.editUrl, current: true } } );
+						state.results.set( item.id, { ok: true } );
+						done++;
+					} else {
+						state.results.set( item.id, { ok: false, message: row.error || '' } );
+					}
+				}
+			} catch {
+				// The next round asks again.
+			}
+		}
 		state.busy = false;
-		state.progress = format( s.done, done );
+		state.progress = waiting.size ? s.later : format( s.done, done );
 		render();
 	}
 
@@ -150,6 +180,9 @@
 		}
 		if ( have ) {
 			badges.push( el( 'a', { class: `showbits-badge ${ have.current ? 'is-done' : '' }`, href: have.editUrl, text: `${ have.current ? s.inLibrary : s.outdated } · ${ s.edit }` } ) );
+		}
+		if ( result && result.pending ) {
+			badges.push( el( 'span', { class: 'showbits-badge', text: s.pending } ) );
 		}
 		if ( result && ! result.ok ) {
 			badges.push( el( 'span', { class: 'showbits-badge is-error', role: 'alert', text: format( s.failed, result.message ) } ) );

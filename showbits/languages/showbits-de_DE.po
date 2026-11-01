@@ -5,11 +5,17 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "ShowBits did not answer as expected."
+msgstr "ShowBits hat nicht wie erwartet geantwortet."
+
 msgid "ShowBits did not answer with a file."
 msgstr "ShowBits hat keine Datei geliefert."
 
 msgid "ShowBits could not be reached."
 msgstr "ShowBits war nicht erreichbar."
+
+msgid "ShowBits refused (%1$s, HTTP %2$d)."
+msgstr "ShowBits hat abgelehnt (%1$s, HTTP %2$d)."
 
 msgid "You may not connect this site."
 msgstr "Sie dürfen diese Website nicht verbinden."
@@ -68,11 +74,20 @@ msgstr "Bibliothek durchsuchen"
 msgid "Import selected"
 msgstr "Auswahl importieren"
 
-msgid "Importing %1$d of %2$d …"
-msgstr "Importiere %1$d von %2$d …"
+msgid "Asking ShowBits for %1$d of %2$d …"
+msgstr "Bei ShowBits angefragt: %1$d von %2$d …"
+
+msgid "On the way from ShowBits: %d …"
+msgstr "Unterwegs von ShowBits: %d …"
 
 msgid "Imported: %d"
 msgstr "Importiert: %d"
+
+msgid "Not everything has arrived yet; it continues in the background. Settings → ShowBits lists the imports."
+msgstr "Noch ist nicht alles da; es geht im Hintergrund weiter. Einstellungen → ShowBits zeigt die Importe."
+
+msgid "On the way"
+msgstr "Unterwegs"
 
 msgid "Load more"
 msgstr "Mehr laden"
@@ -143,29 +158,26 @@ msgstr "Verbindung"
 msgid "Connected to the workspace “%s”."
 msgstr "Verbunden mit dem Arbeitsbereich „%s“."
 
-msgid "The connection lasts until %s; renew it before then."
-msgstr "Die Verbindung gilt bis %s; erneuern Sie sie vorher."
+msgid "Imports today: %1$d of %2$d."
+msgstr "Importe heute: %1$d von %2$d."
 
 msgid "Connected by %1$s on %2$s, at %3$s."
 msgstr "Verbunden von %1$s am %2$s, mit %3$s."
 
-msgid "Renew the connection"
-msgstr "Verbindung erneuern"
+msgid "Connect again"
+msgstr "Neu verbinden"
+
+msgid "With a new site key the site renews its connection, or moves to another workspace."
+msgstr "Mit einem neuen Site-Key erneuert die Website ihre Verbindung oder wechselt in einen anderen Arbeitsbereich."
 
 msgid "ShowBits (%s) cannot be reached right now. The connection stays; try again later."
 msgstr "ShowBits (%s) ist gerade nicht erreichbar. Die Verbindung bleibt; später erneut versuchen."
 
-msgid "ShowBits no longer accepts this site’s connection: the person who agreed has left the workspace, the year is over, it was disconnected in ShowBits, or this site’s keys changed. Connect it again."
-msgstr "ShowBits nimmt die Verbindung dieser Website nicht mehr an: Die Person, die zugestimmt hat, hat den Arbeitsbereich verlassen, das Jahr ist um, sie wurde in ShowBits getrennt, oder die Schlüssel dieser Website haben sich geändert. Bitte neu verbinden."
+msgid "ShowBits no longer accepts this site’s connection: it was disconnected in ShowBits, the plan ended, or this site’s keys changed. Connect it again with a new site key."
+msgstr "ShowBits nimmt die Verbindung dieser Website nicht mehr an: Sie wurde in ShowBits getrennt, der Tarif ist ausgelaufen, oder die Schlüssel dieser Website haben sich geändert. Verbinden Sie sie mit einem neuen Site-Key erneut."
 
-msgid "Connect again"
-msgstr "Neu verbinden"
-
-msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace agrees in ShowBits. The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr "Verbinden Sie diese Website mit einem ShowBits-Arbeitsbereich: Ein Admin oder Owner des Arbeitsbereichs stimmt in ShowBits zu. Danach kann die Website freigegebene Clips und Zitatkarten in ihre Mediathek übernehmen und bekommt, was Ihre ShowBits-Admins schicken."
-
-msgid "Connect with ShowBits"
-msgstr "Mit ShowBits verbinden"
+msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
+msgstr "Verbinden Sie diese Website mit einem ShowBits-Arbeitsbereich: Ein Admin oder Owner des Arbeitsbereichs erzeugt in ShowBits einen Site-Key für diese Website (Integrationen → WordPress). Danach übernimmt die Website freigegebene Clips und Zitatkarten in ihre Mediathek und bekommt, was Ihre ShowBits-Admins schicken."
 
 msgid "Imports"
 msgstr "Importe"
@@ -194,6 +206,21 @@ msgstr "Vorschaubild als Poster des Videos importieren"
 msgid "Save"
 msgstr "Speichern"
 
+msgid "Site key"
+msgstr "Site-Key"
+
+msgid "Made in ShowBits for %s, valid for 24 hours and only once. ShowBits then checks that it is talking to this site."
+msgstr "In ShowBits für %s erzeugt, 24 Stunden und nur einmal gültig. ShowBits prüft dann, dass es mit dieser Website spricht."
+
+msgid "Connect"
+msgstr "Verbinden"
+
+msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
+msgstr "Sind Sie selbst Admin oder Owner des Arbeitsbereichs? Dann melden Sie sich bei ShowBits an und stimmen dort zu, ohne Site-Key:"
+
+msgid "Connect through ShowBits"
+msgstr "Über ShowBits verbinden"
+
 msgid "ShowBits address"
 msgstr "Adresse von ShowBits"
 
@@ -205,6 +232,9 @@ msgstr "Trennen"
 
 msgid "Disconnect this site from ShowBits? What is in the media library stays."
 msgstr "Diese Website von ShowBits trennen? Was in der Mediathek liegt, bleibt."
+
+msgid "asked for"
+msgstr "angefragt"
 
 msgid "waiting"
 msgstr "wartet"
@@ -257,14 +287,29 @@ msgstr "Dieser Rückweg aus ShowBits gehörte nicht zu diesem Versuch. Bitte neu
 msgid "The ShowBits address must start with https://."
 msgstr "Die Adresse von ShowBits muss mit https:// beginnen."
 
-msgid "ShowBits did not take the code (it is only valid for ten minutes, once). Start again."
-msgstr "ShowBits hat den Code nicht angenommen (er gilt nur zehn Minuten und einmal). Bitte neu beginnen."
+msgid "That is not a site key. Copy it from ShowBits (Integrations → WordPress) again."
+msgstr "Das ist kein Site-Key. Kopieren Sie ihn noch einmal aus ShowBits (Integrationen → WordPress)."
 
-msgid "The workspace has as many sites as it may, or the person who agreed has too many tokens."
-msgstr "Der Arbeitsbereich hat so viele Websites, wie er darf, oder die zustimmende Person hat zu viele Tokens."
+msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
+msgstr "ShowBits hat den Site-Key nicht angenommen: Er ist unbekannt, schon benutzt, zurückgezogen oder abgelaufen (ein Site-Key gilt 24 Stunden, eine Zustimmung zehn Minuten). Erzeugen Sie einen neuen."
 
-msgid "ShowBits could not be reached. Check the address and try again."
-msgstr "ShowBits war nicht erreichbar. Adresse prüfen und erneut versuchen."
+msgid "The site key was made for another address. Make one for this site’s address."
+msgstr "Der Site-Key wurde für eine andere Adresse erzeugt. Erzeugen Sie einen für die Adresse dieser Website."
+
+msgid "ShowBits could not reach this site at its REST API (/wp-json/showbits/v1/push), or ShowBits itself could not be reached. The site must be public over HTTPS; a firewall or security plugin must let ShowBits in."
+msgstr "ShowBits hat diese Website über ihre REST-API (/wp-json/showbits/v1/push) nicht erreicht, oder ShowBits selbst war nicht erreichbar. Die Website muss öffentlich über HTTPS erreichbar sein; eine Firewall oder ein Sicherheits-Plugin muss ShowBits durchlassen."
+
+msgid "This site did not answer ShowBits’ check as expected. Try again; if it fails again, a cache or security plugin may answer for WordPress."
+msgstr "Diese Website hat die Prüfung von ShowBits nicht wie erwartet beantwortet. Versuchen Sie es noch einmal; klappt es wieder nicht, antwortet vielleicht ein Cache- oder Sicherheits-Plugin an Stelle von WordPress."
+
+msgid "The workspace’s plan has ended, or whoever made the site key may no longer connect sites."
+msgstr "Der Tarif des Arbeitsbereichs ist ausgelaufen, oder wer den Site-Key erzeugt hat, darf keine Websites mehr verbinden."
+
+msgid "The workspace has as many sites as its plan allows."
+msgstr "Der Arbeitsbereich hat so viele Websites, wie sein Tarif erlaubt."
+
+msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
+msgstr "ShowBits hat die Adresse dieser Website nicht angenommen. Sie muss über HTTPS ausgeliefert werden."
 
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."
 msgstr "Das Verbinden hat nicht geklappt. Bitte erneut versuchen oder Ihren ShowBits-Kontakt fragen."

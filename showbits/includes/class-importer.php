@@ -10,10 +10,12 @@ namespace ShowBits\WordPress;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Imports a released clip or quote card (docs/wordpress.md §5.3): asks ShowBits for the file's link (refused before
- * the embargo ends), downloads it without the token, and sideloads it: a clip's video with its thumbnail as the video's
- * featured image (the poster in the video block), a quote card's picture with the quote as alternative text. A clip,
- * variant and version already in the library stay the one attachment; a new cut (a new version) becomes a new one.
+ * Imports a released clip or quote card (docs/wordpress.md §5.3). Every import comes as a push from ShowBits with a
+ * ticket for the clip's files, whether it was picked here (request) or sent from ShowBits: the files go only to this
+ * site. Asks ShowBits for each file's link with the ticket (refused before the embargo ends), downloads it without the
+ * key, and sideloads it: a clip's video with its thumbnail as the video's featured image (the poster in the video
+ * block), a quote card's picture with the quote as alternative text. A clip, variant and version already in the
+ * library stay the one attachment; a new cut (a new version) becomes a new one.
  */
 final class Importer {
 	public const CLIP_VARIANTS  = array( 'video', '16x9', '9x16' );
@@ -22,15 +24,15 @@ final class Importer {
 	private const MAX_BYTES = 2 * GB_IN_BYTES;
 
 	/**
-	 * Imports one clip.
+	 * An import picked here: ShowBits checks the clip (released, embargo over, file there) and pushes it to this site.
 	 *
 	 * @param Api_Client  $client  The connection.
 	 * @param string      $clip_id The clip.
-	 * @param string|null $variant Which file; null: the video, or the quote card's default format.
-	 * @param int         $user_id The attachment's author.
-	 * @return array{attachment_id: int, url: string, edit_url: string, existing: bool, title: string, variant: string}|\WP_Error
+	 * @param string|null $variant A quote card's format; null: the video, or the quote card's default format.
+	 * @param int         $user_id Who asked (the attachment's author).
+	 * @return array{id: int, push: string, variant: string}|\WP_Error
 	 */
-	public static function import( Api_Client $client, string $clip_id, ?string $variant, int $user_id ) {
+	public static function request( Api_Client $client, string $clip_id, ?string $variant, int $user_id ) {
 		if ( ! preg_match( '/^[A-Za-z0-9-]{1,64}$/', $clip_id ) ) {
 			return self::error( 'invalid' );
 		}
@@ -40,8 +42,8 @@ final class Importer {
 			return 'notFound' === Api_Client::reason( $item ) ? self::error( 'notReleased' ) : $item;
 		}
 		$quote   = 'quote' === ( $item['kind'] ?? '' );
-		$variant = $variant ?? ( $quote ? Options::settings()['card_format'] : 'video' );
-		if ( ! in_array( $variant, $quote ? self::QUOTE_VARIANTS : self::CLIP_VARIANTS, true ) ) {
+		$variant = $quote ? ( $variant ?? Options::settings()['card_format'] ) : 'video';
+		if ( ! in_array( $variant, $quote ? self::QUOTE_VARIANTS : array( 'video' ), true ) ) {
 			return self::error( 'invalid' );
 		}
 		if ( ! empty( $item['embargoUntil'] ) ) {
@@ -50,37 +52,24 @@ final class Importer {
 		if ( ! self::has_file( $item, $variant ) ) {
 			return self::error( 'noFile' );
 		}
-		$version  = (string) ( $item['version'] ?? '' );
-		$existing = self::existing( $clip_id, $variant, $version );
-		$id       = $existing ?? self::fetch( $client, $item, $variant, $user_id );
-		if ( is_wp_error( $id ) ) {
-			return $id;
-		}
-		if ( 'video' === $variant && Options::settings()['import_poster'] && ! has_post_thumbnail( $id ) ) {
-			$poster = '16x9' === ( $item['format'] ?? '' ) ? '16x9' : '9x16';
-			if ( self::has_file( $item, $poster ) ) {
-				$poster_id = self::existing( $clip_id, $poster, $version ) ?? self::fetch( $client, $item, $poster, $user_id );
-				// The video counts without its poster.
-				if ( ! is_wp_error( $poster_id ) ) {
-					set_post_thumbnail( $id, $poster_id );
-				}
-			}
+		$push = $client->request_import( $clip_id, $quote ? $variant : null );
+		if ( is_wp_error( $push ) ) {
+			return $push;
 		}
 		return array(
-			'attachment_id' => $id,
-			'url'           => (string) wp_get_attachment_url( $id ),
-			'edit_url'      => (string) get_edit_post_link( $id, 'raw' ),
-			'existing'      => null !== $existing,
-			'title'         => (string) ( $item['title'] ?? '' ),
-			'variant'       => $variant,
+			'id'      => Imports::request( $push, $clip_id, $quote ? $variant : '', $user_id, (string) ( $item['title'] ?? '' ) ),
+			'push'    => $push,
+			'variant' => $variant,
 		);
 	}
 
 	/**
-	 * Works the queue of pushes (WP-Cron, showbits_process_imports): imports what ShowBits pushed and tells ShowBits
-	 * how it went. A minute's work per run; what is left comes in the next one.
+	 * Works the queue (WP-Cron, showbits_process_imports, and the library page while it waits): imports what arrived
+	 * with its ticket and tells ShowBits how it went. `$budget` seconds' work per run; what is left comes in the next.
+	 *
+	 * @param int $budget Seconds to work.
 	 */
-	public static function process_queue(): void {
+	public static function process_queue( int $budget = MINUTE_IN_SECONDS ): void {
 		$connection = Options::connection();
 		$client     = Api_Client::connected();
 		if ( ! $connection || ! $client ) {
@@ -89,11 +78,30 @@ final class Importer {
 		if ( function_exists( 'set_time_limit' ) ) {
 			set_time_limit( 300 ); // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged -- downloads of videos
 		}
+		// Titles and alternative texts are content for the site's visitors: in the site's language, whoever's request
+		// (or WP-Cron) does the work.
+		$switched = switch_to_locale( get_locale() );
+		try {
+			self::work( $client, $connection, $budget );
+		} finally {
+			if ( $switched ) {
+				restore_previous_locale();
+			}
+		}
+	}
+
+	/**
+	 * The queue's work for one run.
+	 *
+	 * @param Api_Client           $client     The connection.
+	 * @param array<string, mixed> $connection The stored connection.
+	 * @param int                  $budget     Seconds to work.
+	 */
+	private static function work( Api_Client $client, array $connection, int $budget ): void {
 		$started = time();
 		$more    = false;
 		while ( true ) {
-			// A minute's work per run: what is left comes in the next one.
-			if ( time() - $started >= MINUTE_IN_SECONDS ) {
+			if ( time() - $started >= $budget ) {
 				$more = true;
 				break;
 			}
@@ -101,8 +109,8 @@ final class Importer {
 			if ( ! $row ) {
 				break;
 			}
-			$user   = (int) $row['user_id'] ? (int) $row['user_id'] : $connection['connected_by'];
-			$result = self::import( $client, (string) $row['clip_id'], null, $user );
+			$user   = (int) $row['user_id'] ? (int) $row['user_id'] : (int) $connection['connected_by'];
+			$result = self::import_push( $client, $row, $user );
 			if ( is_wp_error( $result ) ) {
 				$reason = self::reason_of( $result );
 				Imports::finish(
@@ -127,9 +135,59 @@ final class Importer {
 			$url = set_url_scheme( $result['url'], 'https' );
 			$client->report( (string) $row['push_id'], str_starts_with( $url, 'https://' ) ? array( 'state' => 'imported', 'attachmentUrl' => $url ) : array( 'state' => 'failed', 'reason' => 'media' ) );
 		}
-		if ( $more && ! wp_next_scheduled( 'showbits_process_imports' ) ) {
-			wp_schedule_single_event( time() + 10, 'showbits_process_imports' );
+		if ( $more && ! wp_next_scheduled( Plugin::CRON ) ) {
+			wp_schedule_single_event( time() + 10, Plugin::CRON );
 		}
+	}
+
+	/**
+	 * Imports one push: the clip's details from the library, its files with the push's ticket.
+	 *
+	 * @param Api_Client           $client  The connection.
+	 * @param array<string, mixed> $row     The import log's row (push_id, ticket, clip_id, variant).
+	 * @param int                  $user_id The attachment's author.
+	 * @return array{attachment_id: int, url: string, existing: bool, title: string, variant: string}|\WP_Error
+	 */
+	public static function import_push( Api_Client $client, array $row, int $user_id ) {
+		$clip_id = (string) $row['clip_id'];
+		$push    = (string) $row['push_id'];
+		$ticket  = (string) ( $row['ticket'] ?? '' );
+		if ( ! preg_match( '/^[A-Za-z0-9-]{1,64}$/', $clip_id ) || ! preg_match( '/^[0-9a-f]{64}$/', $ticket ) ) {
+			return self::error( 'invalid' );
+		}
+		$item = $client->item( $clip_id );
+		if ( is_wp_error( $item ) ) {
+			return 'notFound' === Api_Client::reason( $item ) ? self::error( 'notReleased' ) : $item;
+		}
+		$quote   = 'quote' === ( $item['kind'] ?? '' );
+		$picked  = (string) ( $row['variant'] ?? '' );
+		$variant = $quote ? ( in_array( $picked, self::QUOTE_VARIANTS, true ) ? $picked : Options::settings()['card_format'] ) : 'video';
+		if ( ! self::has_file( $item, $variant ) ) {
+			return self::error( 'noFile' );
+		}
+		$version  = (string) ( $item['version'] ?? '' );
+		$existing = self::existing( $clip_id, $variant, $version );
+		$id       = $existing ?? self::fetch( $client, $item, $variant, $user_id, $push, $ticket );
+		if ( is_wp_error( $id ) ) {
+			return $id;
+		}
+		if ( 'video' === $variant && Options::settings()['import_poster'] && ! has_post_thumbnail( $id ) ) {
+			$poster = '16x9' === ( $item['format'] ?? '' ) ? '16x9' : '9x16';
+			if ( self::has_file( $item, $poster ) ) {
+				$poster_id = self::existing( $clip_id, $poster, $version ) ?? self::fetch( $client, $item, $poster, $user_id, $push, $ticket );
+				// The video counts without its poster.
+				if ( ! is_wp_error( $poster_id ) ) {
+					set_post_thumbnail( $id, $poster_id );
+				}
+			}
+		}
+		return array(
+			'attachment_id' => $id,
+			'url'           => (string) wp_get_attachment_url( $id ),
+			'existing'      => null !== $existing,
+			'title'         => (string) ( $item['title'] ?? '' ),
+			'variant'       => $variant,
+		);
 	}
 
 	/**
@@ -182,7 +240,7 @@ final class Importer {
 	 */
 	public static function reason_of( \WP_Error $error ): string {
 		$reason = Api_Client::reason( $error );
-		$known  = array( 'embargo', 'notReleased', 'noFile', 'download', 'media', 'invalid', 'unauthorized', 'unreachable' );
+		$known  = array( 'embargo', 'notReleased', 'noFile', 'download', 'media', 'invalid', 'unauthorized', 'unreachable', 'ticket', 'inactive', 'limit' );
 		return in_array( $reason, $known, true ) ? $reason : 'failed';
 	}
 
@@ -236,15 +294,17 @@ final class Importer {
 	 * @param array<string, mixed> $item    The library's entry.
 	 * @param string               $variant Which file.
 	 * @param int                  $user_id The author.
+	 * @param string               $push    The push that brought the ticket.
+	 * @param string               $ticket  Its ticket for the clip's files.
 	 * @return int|\WP_Error The attachment.
 	 */
-	private static function fetch( Api_Client $client, array $item, string $variant, int $user_id ) {
+	private static function fetch( Api_Client $client, array $item, string $variant, int $user_id, string $push, string $ticket ) {
 		// The admin's file and media functions (wp_tempnam, media_handle_sideload): REST requests and WP-Cron do not
 		// load them.
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 		require_once ABSPATH . 'wp-admin/includes/media.php';
 		require_once ABSPATH . 'wp-admin/includes/image.php';
-		$location = $client->file_location( (string) $item['id'], $variant );
+		$location = $client->file( $push, $ticket, $variant );
 		if ( is_wp_error( $location ) ) {
 			return $location;
 		}
