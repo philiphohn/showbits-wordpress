@@ -8,7 +8,7 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr "ShowBits ನಿಂದ ಅನುಮೋದಿತ ಕ್ಲಿಪ್‌ಗಳು ಮತ್ತು ಉಲ್ಲೇಖ ಕಾರ್ಡ್‌ಗಳು ಮಾಧ್ಯಮ ಲೈಬ್ರರಿಯಲ್ಲಿ: ಅವುಗಳನ್ನು WordPress ನಲ್ಲಿ ಆಯ್ಕೆಮಾಡಿ, ಅಥವಾ ನಿಮ್ಮ ShowBits ನಿರ್ವಾಹಕರು ಕಳುಹಿಸುವುದನ್ನು ಸ್ವೀಕರಿಸಿ."
+msgstr "ShowBits ನಿಂದ ಅನುಮೋದಿತ ಕ್ಲಿಪ್‌ಗಳು ಮತ್ತು ಉಲ್ಲೇಖ ಕಾರ್ಡ್‌ಗಳು ಮಾಧ್ಯಮ ಲೈಬ್ರರಿಯಲ್ಲಿ: ಅವುಗಳನ್ನು WordPress ನಲ್ಲಿ ಆಯ್ಕೆಮಾಡಿ, ಅಥವಾ ನಿಮ್ಮ ShowBits ಅಡ್ಮಿನ್‌ಗಳು ಕಳುಹಿಸುವುದನ್ನು ಸ್ವೀಕರಿಸಿ."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
@@ -84,7 +84,7 @@ msgstr "ShowBits ಇನ್ನು ಮುಂದೆ ಈ ಸೈಟ್‌ಗೆ ಏ�
 
 #: showbits/includes/class-importer.php
 msgid "The site’s imports for today are used up. Try again tomorrow."
-msgstr "ಇಂದಿನ ಈ ಸೈಟ್‌ನ ಆಮದುಗಳು ಮುಗಿದಿವೆ. ನಾಳೆ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+msgstr "ಈ ಸೈಟ್‌ನ ಇಂದಿನ ಆಮದುಗಳು ಮುಗಿದಿವೆ. ನಾಳೆ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
 #: showbits/includes/class-importer.php
 msgid "The import was interrupted."
@@ -271,7 +271,7 @@ msgstr "ShowBits ಇನ್ನು ಮುಂದೆ ಈ ಸೈಟ್‌ನ ಸಂ�
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect this site to a ShowBits workspace: an admin or owner of the workspace makes a site key for this site in ShowBits (Integrations → WordPress). The site can then take released clips and quote cards into its media library, and receive what your ShowBits admins send."
-msgstr "ಈ ಸೈಟ್ ಅನ್ನು ShowBits ವರ್ಕ್‌ಸ್ಪೇಸ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ: ವರ್ಕ್‌ಸ್ಪೇಸ್‌ನ ನಿರ್ವಾಹಕರು ಅಥವಾ ಮಾಲೀಕರು ShowBits ನಲ್ಲಿ (Integrations → WordPress) ಈ ಸೈಟ್‌ಗಾಗಿ ಸೈಟ್ ಕೀ ರಚಿಸುತ್ತಾರೆ. ನಂತರ ಸೈಟ್ ಅನುಮೋದಿತ ಕ್ಲಿಪ್‌ಗಳು ಮತ್ತು ಉಲ್ಲೇಖ ಕಾರ್ಡ್‌ಗಳನ್ನು ತನ್ನ ಮಾಧ್ಯಮ ಲೈಬ್ರರಿಗೆ ತೆಗೆದುಕೊಳ್ಳಬಹುದು, ಮತ್ತು ನಿಮ್ಮ ShowBits ನಿರ್ವಾಹಕರು ಕಳುಹಿಸುವುದನ್ನು ಸ್ವೀಕರಿಸಬಹುದು."
+msgstr "ಈ ಸೈಟ್ ಅನ್ನು ShowBits ವರ್ಕ್‌ಸ್ಪೇಸ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ: ವರ್ಕ್‌ಸ್ಪೇಸ್‌ನ ಅಡ್ಮಿನ್ ಅಥವಾ ಮಾಲೀಕರು ShowBits ನಲ್ಲಿ (Integrations → WordPress) ಈ ಸೈಟ್‌ಗಾಗಿ ಸೈಟ್ ಕೀ ರಚಿಸುತ್ತಾರೆ. ನಂತರ ಸೈಟ್ ಅನುಮೋದಿತ ಕ್ಲಿಪ್‌ಗಳು ಮತ್ತು ಉಲ್ಲೇಖ ಕಾರ್ಡ್‌ಗಳನ್ನು ತನ್ನ ಮಾಧ್ಯಮ ಲೈಬ್ರರಿಗೆ ತೆಗೆದುಕೊಳ್ಳಬಹುದು, ಮತ್ತು ನಿಮ್ಮ ShowBits ಅಡ್ಮಿನ್‌ಗಳು ಕಳುಹಿಸುವುದನ್ನು ಸ್ವೀಕರಿಸಬಹುದು."
 
 #: showbits/includes/class-settings-page.php
 msgid "Imports"
@@ -324,7 +324,7 @@ msgstr "ಸಂಪರ್ಕಿಸಿ"
 
 #: showbits/includes/class-settings-page.php
 msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
-msgstr "ನೀವೇ ವರ್ಕ್‌ಸ್ಪೇಸ್‌ನ ನಿರ್ವಾಹಕರು ಅಥವಾ ಮಾಲೀಕರೇ? ಹಾಗಾದರೆ ShowBits ಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ ಮತ್ತು ಅಲ್ಲಿ ಸಮ್ಮತಿಸಿ, ಸೈಟ್ ಕೀ ಇಲ್ಲದೆ:"
+msgstr "ನೀವೇ ವರ್ಕ್‌ಸ್ಪೇಸ್‌ನ ಅಡ್ಮಿನ್ ಅಥವಾ ಮಾಲೀಕರೇ? ಹಾಗಾದರೆ ShowBits ಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ ಮತ್ತು ಅಲ್ಲಿ ಸಮ್ಮತಿಸಿ, ಸೈಟ್ ಕೀ ಇಲ್ಲದೆ:"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect through ShowBits"
@@ -412,7 +412,7 @@ msgstr "ShowBits ನಲ್ಲಿ ಸಂಪರ್ಕಿಸುವುದನ್ನ�
 
 #: showbits/includes/class-settings-page.php
 msgid "That way back from ShowBits did not belong to this attempt. Start again."
-msgstr "ShowBits ನಿಂದ ಹಿಂತಿರುಗಿದ ಈ ಮಾರ್ಗ ಈ ಪ್ರಯತ್ನಕ್ಕೆ ಸೇರಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ."
+msgstr "ShowBits ನಿಂದ ಹಿಂತಿರುಗಿದ ಈ ಮಾರ್ಗ ಈ ಸಂಪರ್ಕ ಪ್ರಯತ್ನಕ್ಕೆ ಸೇರಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ."
 
 #: showbits/includes/class-settings-page.php
 msgid "The ShowBits address must start with https://."

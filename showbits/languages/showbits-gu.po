@@ -412,7 +412,7 @@ msgstr "ShowBits માં કનેક્ટ કરવાનું રદ ક�
 
 #: showbits/includes/class-settings-page.php
 msgid "That way back from ShowBits did not belong to this attempt. Start again."
-msgstr "ShowBits થી પાછા આવવાનો આ માર્ગ આ પ્રયાસનો ભાગ ન હતો. ફરીથી શરૂ કરો."
+msgstr "ShowBits થી પાછા ફરવાનો આ માર્ગ આ કનેક્શન પ્રયાસ સાથે સંબંધિત ન હતો. ફરીથી શરૂ કરો."
 
 #: showbits/includes/class-settings-page.php
 msgid "The ShowBits address must start with https://."
@@ -444,7 +444,7 @@ msgstr "વર્કસ્પેસનો પ્લાન પૂરો થયો
 
 #: showbits/includes/class-settings-page.php
 msgid "The workspace has as many sites as its plan allows."
-msgstr "વર્કસ્પેસમાં તેના પ્લાનની મંજૂરી જેટલી સાઇટ્સ પહેલેથી છે."
+msgstr "વર્કસ્પેસમાં તેનો પ્લાન મંજૂરી આપે તેટલી સાઇટ્સ પહેલેથી જ છે."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."

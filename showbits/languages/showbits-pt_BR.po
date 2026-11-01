@@ -56,7 +56,7 @@ msgstr "O clipe não está mais aprovado no ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "The embargo still holds: the file stays in ShowBits until it ends."
-msgstr "O embargo ainda está em vigor: o arquivo permanece no ShowBits até que ele termine."
+msgstr "O embargo ainda está em vigor: até ele terminar, o arquivo permanece no ShowBits."
 
 #: showbits/includes/class-importer.php
 msgid "The file is not ready yet in ShowBits."

@@ -8,7 +8,7 @@ msgstr ""
 #. Description of the plugin
 #: showbits/showbits.php
 msgid "Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send."
-msgstr "ShowBits मधील मंजूर क्लिप्स आणि अवतरण कार्ड्स मीडिया लायब्ररीमध्ये: त्या WordPress मध्ये निवडा, किंवा तुमचे ShowBits ॲडमिन जे पाठवतात ते स्वीकारा."
+msgstr "ShowBits मधील मंजूर क्लिप्स आणि अवतरण कार्ड्स मीडिया लायब्ररीमध्ये: ते WordPress मध्ये निवडा, किंवा तुमचे ShowBits ॲडमिन जे पाठवतात ते स्वीकारा."
 
 #: showbits/includes/class-api-client.php
 msgid "ShowBits did not answer as expected."
@@ -324,7 +324,7 @@ msgstr "कनेक्ट करा"
 
 #: showbits/includes/class-settings-page.php
 msgid "Are you an admin or owner of the workspace yourself? Then sign in to ShowBits and agree there, without a site key:"
-msgstr "तुम्ही स्वतः वर्कस्पेसचे ॲडमिन किंवा मालक आहात का? तर ShowBits मध्ये साइन इन करा आणि तिथे संमती द्या, साइट की शिवाय:"
+msgstr "तुम्ही स्वतः वर्कस्पेसचे ॲडमिन किंवा मालक आहात का? मग ShowBits मध्ये साइन इन करा आणि तिथे संमती द्या, साइट की शिवाय:"
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect through ShowBits"
@@ -448,7 +448,7 @@ msgstr "वर्कस्पेसमध्ये तिच्या प्ल�
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not accept this site’s address. It must be served over HTTPS."
-msgstr "ShowBits ने या साइटचा पत्ता स्वीकारला नाही. ती HTTPS वरून दिली जाणे आवश्यक आहे."
+msgstr "ShowBits ने या साइटचा पत्ता स्वीकारला नाही. साइट HTTPS वरून उपलब्ध असणे आवश्यक आहे."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connecting did not work. Try again, or ask your ShowBits contact."

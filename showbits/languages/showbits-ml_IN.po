@@ -125,7 +125,7 @@ msgstr "തിരഞ്ഞെടുത്തവ ഇംപോർട്ട് ച�
 #. translators: 1: which one, 2: how many in all
 #: showbits/includes/class-library-page.php
 msgid "Asking ShowBits for %1$d of %2$d …"
-msgstr "%2$d-ൽ %1$d എണ്ണം ShowBits-നോട് ആവശ്യപ്പെടുന്നു …"
+msgstr "ShowBits-നോട് ആവശ്യപ്പെടുന്നു: %2$d-ൽ %1$d …"
 
 #. translators: %d: how many clips are still on their way
 #: showbits/includes/class-library-page.php
@@ -250,7 +250,7 @@ msgstr "ഇന്നത്തെ ഇംപോർട്ടുകൾ: %2$d-ൽ %1$
 #. translators: 1: a person, 2: a date, 3: ShowBits' address
 #: showbits/includes/class-settings-page.php
 msgid "Connected by %1$s on %2$s, at %3$s."
-msgstr "%2$s-ന് %1$s %3$s-മായി കണക്റ്റ് ചെയ്തു."
+msgstr "%1$s %2$s-ന് %3$s-മായി കണക്റ്റ് ചെയ്തു."
 
 #: showbits/includes/class-settings-page.php
 msgid "Connect again"
@@ -420,7 +420,7 @@ msgstr "ShowBits വിലാസം https:// എന്നതിൽ ആരംഭ�
 
 #: showbits/includes/class-settings-page.php
 msgid "That is not a site key. Copy it from ShowBits (Integrations → WordPress) again."
-msgstr "ഇതൊരു സൈറ്റ് കീ അല്ല. ShowBits-ൽ (Integrations → WordPress) നിന്ന് അത് വീണ്ടും പകർത്തുക."
+msgstr "ഇതൊരു സൈറ്റ് കീ അല്ല. ShowBits-ൽ നിന്ന് (Integrations → WordPress) അത് വീണ്ടും പകർത്തുക."
 
 #: showbits/includes/class-settings-page.php
 msgid "ShowBits did not take the site key: it is unknown, used, withdrawn or expired (a site key lasts 24 hours, a consent ten minutes). Make a new one."
