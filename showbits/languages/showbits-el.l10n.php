@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Ρυθμίσεις',
     'You may not change these settings.' => 'Δεν έχετε δικαίωμα να αλλάξετε αυτές τις ρυθμίσεις.',
     'Connection' => 'Σύνδεση',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Τα κλειδιά ασφαλείας του ιστότοπού σας δεν βρίσκονται στο %2$s, οπότε το κλειδί που προστατεύει τη σύνδεση με το ShowBits αποθηκεύεται στη βάση δεδομένων. Προσθέστε το %1$s με μια μεγάλη τυχαία τιμή στο %2$s· αν ο ιστότοπος είναι ήδη συνδεδεμένος, συνδέστε τον ξανά στη συνέχεια.',
     'Connected to the workspace “%s”.' => 'Ο ιστότοπος είναι συνδεδεμένος με τον χώρο εργασίας «%s».',
     'Imports today: %1$d of %2$d.' => 'Εισαγωγές σήμερα: %1$d από %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Σύνδεση από: %1$s, %2$s, στη διεύθυνση %3$s.',

@@ -62,6 +62,24 @@ final class SecurityTest extends TestCase {
 		$this->assertNull( Crypto::open( $sealed ), 'new salts: the site connects again' );
 	}
 
+	public function test_the_key_counts_as_in_wp_config_only_with_salts_of_its_own(): void {
+		$salts = array(
+			'AUTH_KEY'         => 'k1',
+			'AUTH_SALT'        => 's1',
+			'SECURE_AUTH_KEY'  => 'k2',
+			'SECURE_AUTH_SALT' => 's2',
+			'LOGGED_IN_KEY'    => 'k3',
+		);
+		$this->assertTrue( Crypto::salts_usable( $salts ) );
+		// What makes wp_salt() keep salts of its own in the database: one missing, the sample's phrase, a duplicate.
+		$this->assertFalse( Crypto::salts_usable( array_diff_key( $salts, array( 'SECURE_AUTH_SALT' => true ) ) ) );
+		$this->assertFalse( Crypto::salts_usable( array( 'AUTH_KEY' => 'put your unique phrase here' ) + $salts ) );
+		$this->assertFalse( Crypto::salts_usable( array( 'LOGGED_IN_KEY' => 'k1' ) + $salts ) );
+		$this->assertFalse( Crypto::salts_usable( array( 'AUTH_SALT' => '' ) + $salts ) );
+		// The tests define none, as a site whose wp-config.php has no salts.
+		$this->assertFalse( Crypto::key_in_config() );
+	}
+
 	public function test_the_connection_is_stored_sealed(): void {
 		Options::save_connection(
 			array(

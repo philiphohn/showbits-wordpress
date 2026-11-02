@@ -237,6 +237,11 @@ msgstr "تۆ مۆڵەتی گۆڕینی ئەم ڕێکخستنانەت نییە."
 msgid "Connection"
 msgstr "پەیوەندی"
 
+#. translators: 1: the constant SHOWBITS_ENCRYPTION_KEY, 2: the file wp-config.php (both stay as they are)
+#: showbits/includes/class-settings-page.php
+msgid "Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards."
+msgstr "کلیلە ئاسایشییەکانی ماڵپەڕەکەت لە %2$s دا نین، بۆیە ئەو کلیلەی پەیوەندی لەگەڵ ShowBits دەپارێزێت لە بنکەدراوەدا هەڵدەگیرێت. %1$s بە بەهایەکی هەڕەمەکیی درێژ بۆ %2$s زیاد بکە؛ ئەگەر ماڵپەڕەکە پێشتر پەیوەست کرابێت، دواتر دووبارە پەیوەستی بکەرەوە."
+
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."

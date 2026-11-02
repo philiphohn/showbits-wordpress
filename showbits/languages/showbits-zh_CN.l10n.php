@@ -61,6 +61,7 @@ return array (
     'Settings' => '设置',
     'You may not change these settings.' => '您无权更改这些设置。',
     'Connection' => '连接',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => '您网站的安全密钥不在 %2$s 中，因此保护与 ShowBits 连接的密钥存储在数据库中。请在 %2$s 中添加带有较长随机值的 %1$s；如果站点已经连接，请在此之后重新连接。',
     'Connected to the workspace “%s”.' => '已连接到工作区“%s”。',
     'Imports today: %1$d of %2$d.' => '今日导入次数：%1$d / %2$d。',
     'Connected by %1$s on %2$s, at %3$s.' => '由 %1$s 于 %2$s 连接到 %3$s。',

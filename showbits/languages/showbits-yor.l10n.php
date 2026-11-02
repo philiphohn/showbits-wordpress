@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Ètò',
     'You may not change these settings.' => 'Ẹ kò ní àṣẹ láti yí ètò wọ̀nyí padà.',
     'Connection' => 'Ìsopọ̀',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Àwọn kọ́kọ́rọ́ ààbò ìkànnì yín kò sí nínú %2$s, nítorí náà kọ́kọ́rọ́ tí ó ń dáàbò bo ìsopọ̀ sí ShowBits wà nínú ibi ìpamọ́ dátà. Ẹ fi %1$s pẹ̀lú iye àìròtẹ́lẹ̀ tó gùn kún %2$s; bí ìkànnì náà bá ti so pọ̀ tẹ́lẹ̀, ẹ tún so ó pọ̀ lẹ́yìn náà.',
     'Connected to the workspace “%s”.' => 'Ó ti sopọ̀ mọ́ àyè iṣẹ́ “%s”.',
     'Imports today: %1$d of %2$d.' => 'Ìgbéwọlé lónìí: %1$d nínú %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => '%1$s ló so ó pọ̀ ní %2$s, sí %3$s.',

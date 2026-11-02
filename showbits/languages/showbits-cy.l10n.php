@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Gosodiadau',
     'You may not change these settings.' => 'Nid oes gennych hawl i newid y gosodiadau hyn.',
     'Connection' => 'Cysylltiad',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Nid yw allweddi diogelwch eich gwefan yn %2$s, felly mae’r allwedd sy’n diogelu’r cysylltiad â ShowBits wedi’i chadw yn y gronfa ddata. Ychwanegwch %1$s gyda gwerth hap hir at %2$s; os yw’r wefan eisoes wedi’i chysylltu, cysylltwch hi eto wedyn.',
     'Connected to the workspace “%s”.' => 'Wedi cysylltu â’r gweithle ‘%s’.',
     'Imports today: %1$d of %2$d.' => 'Mewnforion heddiw: %1$d o %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Cysylltwyd gan %1$s ar %2$s, yn %3$s.',

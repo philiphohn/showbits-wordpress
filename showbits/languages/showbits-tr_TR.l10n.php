@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Ayarlar',
     'You may not change these settings.' => 'Bu ayarları değiştirme yetkiniz yok.',
     'Connection' => 'Bağlantı',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Sitenizin güvenlik anahtarları %2$s içinde değil, bu yüzden ShowBits bağlantısını koruyan anahtar veritabanında saklanıyor. %2$s dosyasına uzun ve rastgele bir değerle %1$s ekleyin; site zaten bağlıysa ardından yeniden bağlayın.',
     'Connected to the workspace “%s”.' => '“%s” çalışma alanına bağlı.',
     'Imports today: %1$d of %2$d.' => 'Bugünkü içe aktarmalar: %1$d / %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => '%1$s tarafından %2$s tarihinde %3$s adresine bağlandı.',

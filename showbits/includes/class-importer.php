@@ -15,13 +15,18 @@ defined( 'ABSPATH' ) || exit;
  * site. Asks ShowBits for each file's link with the ticket (refused before the embargo ends), downloads it without the
  * key, and sideloads it: a clip's video with its thumbnail as the video's featured image (the poster in the video
  * block), a quote card's picture with the quote as alternative text. A clip, variant and version already in the
- * library stay the one attachment; a new cut (a new version) becomes a new one.
+ * library stay the one attachment; a new cut (a new version) becomes a new one. One process at a time imports a clip
+ * (a lock): a push from ShowBits and an import picked here at the same moment do not make two attachments.
  */
 final class Importer {
 	public const CLIP_VARIANTS  = array( 'video', '16x9', '9x16' );
 	public const QUOTE_VARIANTS = array( '4x5', '9x16', '1x1' );
 	/** No file ShowBits makes is near this; filterable for sites that know better (showbits_max_download_bytes). */
 	private const MAX_BYTES = 2 * GB_IN_BYTES;
+	/** A clip's lock held this long belongs to a request that died (two downloads of five minutes at most, and more). */
+	private const LOCK_SECONDS = 15 * MINUTE_IN_SECONDS;
+	/** When a run that put imports back, or could not report, tries again. */
+	private const AGAIN_SECONDS = 30;
 
 	/**
 	 * An import picked here: ShowBits checks the clip (released, embargo over, file there) and pushes it to this site.
@@ -109,21 +114,25 @@ final class Importer {
 	private static function work( Api_Client $client, array $connection, int $budget ): void {
 		$started = time();
 		$more    = false;
-		// ShowBits hears of imports that died, so the site can ask for the clip again.
-		foreach ( Imports::give_up_interrupted() as $push ) {
-			$client->report( $push, array( 'state' => 'failed', 'reason' => 'interrupted' ) );
-		}
+		$later   = array();
+		// Imports that died: ShowBits hears of them with the reports below, so the site can ask for the clip again.
+		Imports::give_up_interrupted();
 		while ( true ) {
 			if ( time() - $started >= $budget ) {
 				$more = true;
 				break;
 			}
-			$row = Imports::claim();
+			$row = Imports::claim( $later );
 			if ( ! $row ) {
 				break;
 			}
 			$user   = (int) $row['user_id'] ? (int) $row['user_id'] : (int) $connection['connected_by'];
 			$result = self::import_push( $client, $row, $user );
+			if ( is_wp_error( $result ) && self::again( $result, $row ) ) {
+				Imports::requeue( (int) $row['id'] );
+				$later[] = (int) $row['id'];
+				continue;
+			}
 			if ( is_wp_error( $result ) ) {
 				$reason = self::reason_of( $result );
 				Imports::finish(
@@ -131,11 +140,15 @@ final class Importer {
 					array(
 						'status' => 'failed',
 						'error'  => $reason,
+						'report' => array(
+							'state'  => 'failed',
+							'reason' => $reason,
+						),
 					)
 				);
-				$client->report( (string) $row['push_id'], array( 'state' => 'failed', 'reason' => $reason ) );
 				continue;
 			}
+			$url = set_url_scheme( $result['url'], 'https' );
 			Imports::finish(
 				(int) $row['id'],
 				array(
@@ -143,14 +156,61 @@ final class Importer {
 					'attachment_id' => $result['attachment_id'],
 					'title'         => $result['title'],
 					'variant'       => $result['variant'],
+					'report'        => str_starts_with( $url, 'https://' ) ? array(
+						'state'         => 'imported',
+						'attachmentUrl' => $url,
+					) : array(
+						'state'  => 'failed',
+						'reason' => 'media',
+					),
 				)
 			);
-			$url = set_url_scheme( $result['url'], 'https' );
-			$client->report( (string) $row['push_id'], str_starts_with( $url, 'https://' ) ? array( 'state' => 'imported', 'attachmentUrl' => $url ) : array( 'state' => 'failed', 'reason' => 'media' ) );
 		}
-		if ( $more && ! wp_next_scheduled( Plugin::CRON ) ) {
-			wp_schedule_single_event( time() + 10, Plugin::CRON );
+		$reported = self::send_reports( $client );
+		if ( ( $more || $later || ! $reported ) && ! wp_next_scheduled( Plugin::CRON ) ) {
+			wp_schedule_single_event( time() + ( $more ? 10 : self::AGAIN_SECONDS ), Plugin::CRON );
 		}
+	}
+
+	/**
+	 * Whether a failed import goes back into the queue instead: another process imports the clip right now, or ShowBits
+	 * delivered the push again while it ran (a new ticket; the one it used no longer opens anything).
+	 *
+	 * @param \WP_Error            $error What went wrong.
+	 * @param array<string, mixed> $row   The import log's row as claimed.
+	 */
+	private static function again( \WP_Error $error, array $row ): bool {
+		$reason = Api_Client::reason( $error );
+		if ( 'busy' === $reason ) {
+			return true;
+		}
+		if ( 'ticket' !== $reason ) {
+			return false;
+		}
+		$now = Imports::ticket_of( (int) $row['id'] );
+		return null !== $now && $now !== (string) ( $row['ticket'] ?? '' );
+	}
+
+	/**
+	 * Tells ShowBits what became of the pushes it has not heard of yet, a report lost on the way included. Stops at the
+	 * first ShowBits cannot take now (unreachable, busy, failing): false then, and the next run sends them.
+	 *
+	 * @param Api_Client $client The connection.
+	 */
+	private static function send_reports( Api_Client $client ): bool {
+		foreach ( Imports::pending_reports() as $pending ) {
+			$answer = $client->report( $pending['push_id'], $pending['report'] );
+			if ( is_wp_error( $answer ) ) {
+				$data   = $answer->get_error_data();
+				$status = is_array( $data ) ? (int) ( $data['status'] ?? 0 ) : 0;
+				if ( 0 === $status || 429 === $status || $status >= 500 ) {
+					return false;
+				}
+			}
+			// Taken, or refused for good (the push is gone, the connection ended): it waits no longer.
+			Imports::reported( $pending['id'] );
+		}
+		return true;
 	}
 
 	/**
@@ -163,12 +223,35 @@ final class Importer {
 	 */
 	public static function import_push( Api_Client $client, array $row, int $user_id ) {
 		$clip_id = (string) $row['clip_id'];
-		$push    = (string) $row['push_id'];
 		$ticket  = (string) ( $row['ticket'] ?? '' );
 		if ( ! preg_match( '/^[A-Za-z0-9-]{1,64}$/', $clip_id ) || ! preg_match( '/^[0-9a-f]{64}$/', $ticket ) ) {
 			return self::error( 'invalid' );
 		}
-		$item = $client->item( $clip_id );
+		// One lock per clip, whichever file: a card's default format and the one picked here can be the same.
+		$lock = md5( $clip_id );
+		if ( ! self::lock( $lock ) ) {
+			return self::error( 'busy' );
+		}
+		try {
+			return self::import_locked( $client, $row, $user_id );
+		} finally {
+			self::unlock( $lock );
+		}
+	}
+
+	/**
+	 * The import itself, while this process holds the clip's lock.
+	 *
+	 * @param Api_Client           $client  The connection.
+	 * @param array<string, mixed> $row     The import log's row.
+	 * @param int                  $user_id The attachment's author.
+	 * @return array{attachment_id: int, url: string, existing: bool, title: string, variant: string}|\WP_Error
+	 */
+	private static function import_locked( Api_Client $client, array $row, int $user_id ) {
+		$clip_id = (string) $row['clip_id'];
+		$push    = (string) $row['push_id'];
+		$ticket  = (string) $row['ticket'];
+		$item    = $client->item( $clip_id );
 		if ( is_wp_error( $item ) ) {
 			return 'notFound' === Api_Client::reason( $item ) ? self::error( 'notReleased' ) : $item;
 		}
@@ -272,6 +355,39 @@ final class Importer {
 		return false;
 	}
 
+	/**
+	 * Takes a clip's lock: a row in the options table, inserted only if it is not there (as WordPress' upgrader locks
+	 * itself). A lock older than LOCK_SECONDS is taken over, by one process only.
+	 *
+	 * @param string $name The clip's lock.
+	 */
+	private static function lock( string $name ): bool {
+		global $wpdb;
+		$option = 'showbits_lock_' . $name;
+		$now    = (string) time();
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- a lock is read and written fresh, never through the options cache
+		if ( 1 === $wpdb->query( $wpdb->prepare( "INSERT IGNORE INTO %i (option_name, option_value, autoload) VALUES (%s, %s, 'no')", $wpdb->options, $option, $now ) ) ) {
+			return true;
+		}
+		$since = $wpdb->get_var( $wpdb->prepare( 'SELECT option_value FROM %i WHERE option_name = %s', $wpdb->options, $option ) );
+		if ( ! is_string( $since ) || (int) $since > time() - self::LOCK_SECONDS ) {
+			return false;
+		}
+		$taken = $wpdb->query( $wpdb->prepare( 'UPDATE %i SET option_value = %s WHERE option_name = %s AND option_value = %s', $wpdb->options, $now, $option, $since ) );
+		// phpcs:enable
+		return 1 === $taken;
+	}
+
+	/**
+	 * Gives a clip's lock back.
+	 *
+	 * @param string $name The clip's lock.
+	 */
+	private static function unlock( string $name ): void {
+		global $wpdb;
+		$wpdb->delete( $wpdb->options, array( 'option_name' => 'showbits_lock_' . $name ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- the lock's row, never cached
+	}
+
 	/** The attachment of this clip, variant and version, if the library has it. */
 	private static function existing( string $clip_id, string $variant, string $version ): ?int {
 		$ids = get_posts(
@@ -361,19 +477,38 @@ final class Importer {
 		if ( ! $file ) {
 			return self::error( 'download' );
 		}
+		$limit    = (int) apply_filters( 'showbits_max_download_bytes', self::MAX_BYTES );
 		$args     = array(
 			'timeout'             => 300,
 			'stream'              => true,
 			'filename'            => $file,
 			'redirection'         => 0,
-			'limit_response_size' => (int) apply_filters( 'showbits_max_download_bytes', self::MAX_BYTES ),
+			'limit_response_size' => $limit,
 		);
 		$response = apply_filters( 'showbits_allow_private_media', false ) ? wp_remote_get( $url, $args ) : wp_safe_remote_get( $url, $args );
-		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) || ! filesize( $file ) ) {
+		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) || ! self::complete( $file, $response, $limit ) ) {
 			wp_delete_file( $file );
 			return self::error( 'download', is_wp_error( $response ) ? $response->get_error_message() : '' );
 		}
 		return $file;
+	}
+
+	/**
+	 * Whether a download arrived whole: WordPress stops writing at the size limit and still answers 200, and a
+	 * connection that breaks off leaves less than the Content-Length said.
+	 *
+	 * @param string               $file     The temporary file.
+	 * @param array<string, mixed> $response The answer.
+	 * @param int                  $limit    The size limit.
+	 */
+	public static function complete( string $file, array $response, int $limit ): bool {
+		clearstatcache( true, $file );
+		$size   = (int) filesize( $file );
+		$length = wp_remote_retrieve_header( $response, 'content-length' );
+		if ( $size <= 0 || $size >= $limit ) {
+			return false;
+		}
+		return ! is_numeric( $length ) || (int) $length === $size;
 	}
 
 	/**

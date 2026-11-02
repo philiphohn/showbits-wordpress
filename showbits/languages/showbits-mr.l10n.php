@@ -61,6 +61,7 @@ return array (
     'Settings' => 'सेटिंग्ज',
     'You may not change these settings.' => 'तुम्ही ही सेटिंग्ज बदलू शकत नाही.',
     'Connection' => 'कनेक्शन',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'तुमच्या साइटच्या सुरक्षा की %2$s मध्ये नाहीत, त्यामुळे ShowBits शी असलेल्या कनेक्शनचे संरक्षण करणारी की डेटाबेसमध्ये साठवली जाते. %2$s मध्ये लांब यादृच्छिक मूल्यासह %1$s जोडा; साइट आधीच कनेक्ट केलेली असल्यास, त्यानंतर ती पुन्हा कनेक्ट करा.',
     'Connected to the workspace “%s”.' => '“%s” वर्कस्पेसशी कनेक्ट केले आहे.',
     'Imports today: %1$d of %2$d.' => 'आजच्या आयाती: %2$d पैकी %1$d.',
     'Connected by %1$s on %2$s, at %3$s.' => '%1$s यांनी %2$s रोजी %3$s शी कनेक्ट केले.',

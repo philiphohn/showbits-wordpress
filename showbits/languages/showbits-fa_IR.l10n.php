@@ -61,6 +61,7 @@ return array (
     'Settings' => 'تنظیمات',
     'You may not change these settings.' => 'شما اجازه ندارید این تنظیمات را تغییر دهید.',
     'Connection' => 'اتصال',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'کلیدهای امنیتی سایت شما در %2$s نیستند، بنابراین کلیدی که از اتصال به ShowBits محافظت می‌کند در پایگاه داده ذخیره می‌شود. %1$s را با یک مقدار تصادفی طولانی به %2$s اضافه کنید؛ اگر سایت از قبل متصل است، پس از آن دوباره وصلش کنید.',
     'Connected to the workspace “%s”.' => 'متصل به فضای کاری «%s».',
     'Imports today: %1$d of %2$d.' => 'درون‌ریزی‌های امروز: %1$d از %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => '%1$s در %2$s این سایت را به %3$s وصل کرد.',

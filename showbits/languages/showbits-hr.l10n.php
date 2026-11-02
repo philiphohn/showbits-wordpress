@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Postavke',
     'You may not change these settings.' => 'Nemate dopuštenje za promjenu ovih postavki.',
     'Connection' => 'Veza',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Sigurnosni ključevi vaše web stranice nisu u %2$s, pa je ključ koji štiti vezu sa ShowBitsom spremljen u bazi podataka. Dodajte %1$s s dugom nasumičnom vrijednošću u %2$s; ako je web stranica već povezana, nakon toga je ponovno povežite.',
     'Connected to the workspace “%s”.' => 'Povezano s radnim prostorom „%s“.',
     'Imports today: %1$d of %2$d.' => 'Današnji uvozi: %1$d od %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Vezu s %3$s uspostavio je korisnik %1$s, %2$s.',

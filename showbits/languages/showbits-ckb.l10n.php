@@ -61,6 +61,7 @@ return array (
     'Settings' => 'ڕێکخستنەکان',
     'You may not change these settings.' => 'تۆ مۆڵەتی گۆڕینی ئەم ڕێکخستنانەت نییە.',
     'Connection' => 'پەیوەندی',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'کلیلە ئاسایشییەکانی ماڵپەڕەکەت لە %2$s دا نین، بۆیە ئەو کلیلەی پەیوەندی لەگەڵ ShowBits دەپارێزێت لە بنکەدراوەدا هەڵدەگیرێت. %1$s بە بەهایەکی هەڕەمەکیی درێژ بۆ %2$s زیاد بکە؛ ئەگەر ماڵپەڕەکە پێشتر پەیوەست کرابێت، دواتر دووبارە پەیوەستی بکەرەوە.',
     'Connected to the workspace “%s”.' => 'پەیوەستە بە شوێنی کاری «%s».',
     'Imports today: %1$d of %2$d.' => 'هاوردەکردنەکانی ئەمڕۆ: %1$d لە %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'لەلایەن %1$s لە %2$s پەیوەستکرا بە %3$s.',

@@ -61,6 +61,7 @@ return array (
     'Settings' => 'პარამეტრები',
     'You may not change these settings.' => 'თქვენ არ გაქვთ ამ პარამეტრების შეცვლის უფლება.',
     'Connection' => 'კავშირი',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'თქვენი საიტის უსაფრთხოების გასაღებები %2$s-ში არ არის, ამიტომ ShowBits-თან კავშირის დამცავი გასაღები მონაცემთა ბაზაშია შენახული. დაამატეთ %1$s გრძელი შემთხვევითი მნიშვნელობით %2$s-ში; თუ საიტი უკვე დაკავშირებულია, ამის შემდეგ ხელახლა დააკავშირეთ.',
     'Connected to the workspace “%s”.' => 'დაკავშირებულია სამუშაო სივრცესთან „%s“.',
     'Imports today: %1$d of %2$d.' => 'დღევანდელი იმპორტები: %1$d / %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'დაკავშირებულია მომხმარებლის %1$s მიერ, %2$s, მისამართზე %3$s.',

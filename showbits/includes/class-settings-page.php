@@ -64,6 +64,11 @@ final class Settings_Page {
 		self::notice();
 
 		echo '<h2>' . esc_html__( 'Connection', 'showbits' ) . '</h2>';
+		// wp_salt() keeps salts it makes up in the database, next to the sealed secrets (Crypto).
+		if ( ! Crypto::key_in_config() ) {
+			/* translators: 1: the constant SHOWBITS_ENCRYPTION_KEY, 2: the file wp-config.php (both stay as they are) */
+			echo '<div class="notice notice-warning inline"><p>' . esc_html( sprintf( __( 'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.', 'showbits' ), 'SHOWBITS_ENCRYPTION_KEY', 'wp-config.php' ) ) . '</p></div>';
+		}
 		if ( 'connected' === $status['state'] && $stored ) {
 			echo '<p>';
 			/* translators: %s: the ShowBits workspace's name */

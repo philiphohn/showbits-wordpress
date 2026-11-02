@@ -237,6 +237,11 @@ msgstr "Jo hawwe gjin tastimming om dizze ynstellingen te wizigjen."
 msgid "Connection"
 msgstr "Ferbining"
 
+#. translators: 1: the constant SHOWBITS_ENCRYPTION_KEY, 2: the file wp-config.php (both stay as they are)
+#: showbits/includes/class-settings-page.php
+msgid "Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards."
+msgstr "De befeiligingskaaien fan jo webside steane net yn %2$s, dêrom wurdt de kaai dy't de ferbining mei ShowBits beskermet yn de databank bewarre. Foegje %1$s mei in lange willekeurige wearde ta oan %2$s; as de webside al ferbûn is, ferbyn him dêrnei opnij."
+
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."

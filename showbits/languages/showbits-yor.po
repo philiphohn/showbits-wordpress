@@ -237,6 +237,11 @@ msgstr "Ẹ kò ní àṣẹ láti yí ètò wọ̀nyí padà."
 msgid "Connection"
 msgstr "Ìsopọ̀"
 
+#. translators: 1: the constant SHOWBITS_ENCRYPTION_KEY, 2: the file wp-config.php (both stay as they are)
+#: showbits/includes/class-settings-page.php
+msgid "Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards."
+msgstr "Àwọn kọ́kọ́rọ́ ààbò ìkànnì yín kò sí nínú %2$s, nítorí náà kọ́kọ́rọ́ tí ó ń dáàbò bo ìsopọ̀ sí ShowBits wà nínú ibi ìpamọ́ dátà. Ẹ fi %1$s pẹ̀lú iye àìròtẹ́lẹ̀ tó gùn kún %2$s; bí ìkànnì náà bá ti so pọ̀ tẹ́lẹ̀, ẹ tún so ó pọ̀ lẹ́yìn náà."
+
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."

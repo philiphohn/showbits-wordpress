@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Iestatījumi',
     'You may not change these settings.' => 'Jums nav tiesību mainīt šos iestatījumus.',
     'Connection' => 'Savienojums',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Jūsu vietnes drošības atslēgas nav failā %2$s, tāpēc atslēga, kas aizsargā savienojumu ar ShowBits, tiek glabāta datubāzē. Pievienojiet failam %2$s %1$s ar garu nejaušu vērtību; ja vietne jau ir savienota, pēc tam savienojiet to vēlreiz.',
     'Connected to the workspace “%s”.' => 'Savienots ar darbvietu “%s”.',
     'Imports today: %1$d of %2$d.' => 'Importi šodien: %1$d no %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Savienojumu izveidoja %1$s (%2$s), adrese: %3$s.',

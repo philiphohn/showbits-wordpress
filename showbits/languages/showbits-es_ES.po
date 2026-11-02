@@ -237,6 +237,11 @@ msgstr "No tienes permiso para cambiar estos ajustes."
 msgid "Connection"
 msgstr "Conexión"
 
+#. translators: 1: the constant SHOWBITS_ENCRYPTION_KEY, 2: the file wp-config.php (both stay as they are)
+#: showbits/includes/class-settings-page.php
+msgid "Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards."
+msgstr "Las claves de seguridad de tu sitio no están en %2$s, así que la clave que protege la conexión con ShowBits se guarda en la base de datos. Añade %1$s con un valor aleatorio largo a %2$s; si el sitio ya está conectado, vuelve a conectarlo después."
+
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."

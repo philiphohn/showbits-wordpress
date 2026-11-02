@@ -16,6 +16,14 @@ add_filter(
 	2
 );
 add_filter( 'showbits_allow_private_media', '__return_true' );
+// The site's download limit, for the check of a download cut short (wp option update showbits_e2e_max_bytes).
+add_filter(
+	'showbits_max_download_bytes',
+	static function ( int $bytes ): int {
+		$limit = (int) get_option( 'showbits_e2e_max_bytes', 0 );
+		return $limit > 0 ? $limit : $bytes;
+	}
+);
 
 // WordPress' language packs are not installed here, so WordPress would lay out a right-to-left translation left to
 // right: in the right-to-left locales the admin gets the direction their language pack would give it.

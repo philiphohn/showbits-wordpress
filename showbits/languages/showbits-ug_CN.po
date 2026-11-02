@@ -237,6 +237,11 @@ msgstr "سىزنىڭ بۇ تەڭشەكلەرنى ئۆزگەرتىش ھوقۇقى
 msgid "Connection"
 msgstr "ئۇلىنىش"
 
+#. translators: 1: the constant SHOWBITS_ENCRYPTION_KEY, 2: the file wp-config.php (both stay as they are)
+#: showbits/includes/class-settings-page.php
+msgid "Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards."
+msgstr "تور بېكىتىڭىزنىڭ بىخەتەرلىك ئاچقۇچلىرى %2$s دا يوق، شۇڭا ShowBits بىلەن بولغان ئۇلىنىشنى قوغدايدىغان ئاچقۇچ سانداندا ساقلىنىدۇ. %1$s نى ئۇزۇن ئىختىيارى قىممەت بىلەن %2$s غا قوشۇڭ؛ ئەگەر تور بېكەت ئاللىقاچان ئۇلانغان بولسا، ئۇنىڭدىن كېيىن قايتا ئۇلاڭ."
+
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."

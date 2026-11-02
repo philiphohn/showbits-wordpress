@@ -4,7 +4,8 @@
 // of its pairing value, the library with the site's own key, imports that come as signed pushes with a ticket, file
 // links only with that ticket (files from a "bucket" that must never see the key), reports and the disconnect. A
 // browser signs into WordPress, connects both ways, imports from the library; then ShowBits pushes, WP-Cron imports,
-// and the plugin reports back. Last, WordPress reads every translation the plugin brings, and the settings and the
+// and the plugin reports back (a report lost on the way goes again); a download cut short fails; a clip another
+// process imports waits its turn. Last, WordPress reads every translation the plugin brings, and the settings and the
 // library are looked at in right-to-left and long-text languages.
 
 import { createHash, createHmac, randomBytes } from "node:crypto";
@@ -25,6 +26,8 @@ const CLIP = "5b0b0000-0000-4000-8006-000000000004";
 const CARD = "5b0b0000-0000-4000-8006-000000000009";
 const LOCKED = "5b0b0000-0000-4000-8006-000000000005";
 const PUSHED = "5b0b0000-0000-4000-8006-000000000006";
+const LARGE = "5b0b0000-0000-4000-8006-000000000007";
+const BUSY = "5b0b0000-0000-4000-8006-000000000008";
 const SITE_ID = "7a7a0000-0000-4000-8000-000000000001";
 
 const failures = [];
@@ -45,6 +48,9 @@ const state = {
   fileRequests: [],
   keyOnFiles: false,
   wrongTickets: 0,
+  pairings: [], // the pairing values connect requests carried
+  dropReports: new Set(), // pushes whose next report is lost on the way (503)
+  droppedReports: 0,
 };
 const item = (id, kind, title, extra = {}) => ({
   id, kind, title, caption: kind === "quote" ? "Lokale Nachrichten werden wirklich geteilt." : "Ehrlich gesagt: Lokales wird geteilt.",
@@ -61,6 +67,8 @@ const LIBRARY = [
   item(CARD, "quote", "Lokales wird geteilt"),
   item(LOCKED, "highlight", "Noch unter Embargo", { embargoUntil: "2027-01-01T06:00:00Z" }),
   item(PUSHED, "meme", "Der Moment danach"),
+  item(LARGE, "highlight", "Zu groß für diese Website"),
+  item(BUSY, "highlight", "Gerade woanders im Import"),
 ];
 const json = (res, status, body) => {
   res.writeHead(status, { "content-type": "application/json", "cache-control": "no-store" });
@@ -73,6 +81,8 @@ const read = (req) => new Promise((resolve) => {
   req.on("end", () => resolve(body));
 });
 const proofOf = (pairing, challenge) => createHmac("sha256", pairing).update(`showbits-site-verify:${challenge}`).digest("base64url");
+/** How ShowBits names a pairing value in its check (lib/wordpress-verify.ts pairingId). */
+const pairingIdOf = (pairing) => createHash("sha256").update(pairing).digest("base64url");
 
 /** A site key as an admin makes it on ShowBits' WordPress page. */
 function makeKey(host) {
@@ -125,11 +135,12 @@ const server = https.createServer({ cert: readFileSync(E2E_CERT), key: readFileS
     state.keys.delete(body.key);
     if (!key) return refuse(res, 400, "key");
     if (key.challenge && createHash("sha256").update(body.verifier ?? "").digest("base64url") !== key.challenge) return refuse(res, 400, "key");
-    check(body.site === WP && body.push === PUSH_URL && body.version === "1.0.0" && /^[A-Za-z0-9_-]{43}$/.test(body.pairing ?? ""), "connecting names the site, its push address, the plugin's version and a pairing value");
+    check(body.site === WP && body.push === PUSH_URL && body.version === "1.0.1" && /^[A-Za-z0-9_-]{43}$/.test(body.pairing ?? ""), "connecting names the site, its push address, the plugin's version and a pairing value");
+    state.pairings.push(body.pairing);
     if (new URL(body.site).host !== key.host) return refuse(res, 400, "otherSite");
-    // The site proves it is the plugin that asked: the HMAC of a fresh challenge under the pairing value.
+    // The site proves it is the plugin that asked: the HMAC of a fresh challenge under the pairing value it names.
     const challenge = randomBytes(32).toString("base64url");
-    const answer = await fetch(body.push, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ type: "site.verify", challenge }) });
+    const answer = await fetch(body.push, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ type: "site.verify", challenge, pairingId: pairingIdOf(body.pairing) }) });
     const proof = answer.ok ? (await answer.json().catch(() => ({}))).proof : null;
     state.verifications.push({ status: answer.status, verified: proof === proofOf(body.pairing, challenge), consent: !!key.challenge });
     if (proof !== proofOf(body.pairing, challenge)) return refuse(res, 409, "notVerified");
@@ -177,7 +188,12 @@ const server = https.createServer({ cert: readFileSync(E2E_CERT), key: readFileS
   }
   const result = route.match(/^\/pushes\/([^/]+)\/result$/);
   if (result && req.method === "POST") {
-    state.results.push({ push: result[1], ...JSON.parse(await read(req)) });
+    const reported = JSON.parse(await read(req));
+    if (state.dropReports.delete(result[1])) {
+      state.droppedReports++;
+      return refuse(res, 503, "failed");
+    }
+    state.results.push({ push: result[1], ...reported });
     res.writeHead(204);
     return res.end();
   }
@@ -188,6 +204,8 @@ await new Promise((resolve) => server.listen(Number(API_PORT), "0.0.0.0", resolv
 // ---- Helpers: WP-CLI in its container
 
 const wp = (...args) => execFileSync("bash", [new URL("./wp.sh", import.meta.url).pathname, ...args], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+/** One run of the import queue, as WP-Cron's would, right now (the next scheduled one may be minutes away). */
+const runQueue = () => wp("eval", "ShowBits\\WordPress\\Importer::process_queue();");
 /** WP-CLI where failing is an answer (no such option, plugin not active): null then. */
 const wpMaybe = (...args) => {
   try {
@@ -228,13 +246,14 @@ try {
   await page.waitForURL(/showbits=connected/);
   check(await page.locator("text=Verbunden mit dem Arbeitsbereich „Talk am Abend“").count() > 0, "connected with a pasted site key: the settings name the workspace");
   check(state.verifications.at(-1)?.verified === true && state.verifications.at(-1)?.status === 200, "ShowBits checked the site at its push address and it proved its pairing value");
-  check(!wpMaybe("transient", "get", "showbits_pairing"), "the pairing value is gone after connecting");
+  check(state.pairings.length === 3 && !wpMaybe("transient", "get", `showbits_pairing_${pairingIdOf(state.pairings.at(-1))}`), "the pairing value is gone after connecting");
+  check((await page.locator("text=SHOWBITS_ENCRYPTION_KEY").count()) === 0 && wp("eval", "echo ShowBits\\WordPress\\Crypto::key_in_config() ? 'config' : 'database';") === "config", "with salts of its own in wp-config.php the settings page warns of nothing");
   const stored = wp("option", "get", "showbits_connection", "--format=json");
   check(!stored.includes(state.connection.siteKey) && !stored.includes(state.connection.secret), "the site's key and push secret are stored sealed, not in clear");
   await page.screenshot({ path: `${E2E_SHOTS}/settings.png`, fullPage: true });
 
-  // A check while this site is not connecting gets no proof.
-  const forged = await fetch(PUSH_URL, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ type: "site.verify", challenge: "c".repeat(43) }) });
+  // A check while this site is not connecting gets no proof, not for an earlier attempt's value either.
+  const forged = await fetch(PUSH_URL, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ type: "site.verify", challenge: "c".repeat(43), pairingId: pairingIdOf(state.pairings.at(-1)) }) });
   check(forged.status === 404 && !(await forged.json()).proof, "without a connect attempt the site proves nothing");
 
   // Again, through ShowBits' consent page (PKCE): the same site renews in place.
@@ -245,7 +264,7 @@ try {
 
   await page.goto(`${WP}/wp-admin/upload.php?page=showbits`);
   await page.waitForSelector(".showbits-card");
-  check(await page.locator(".showbits-card").count() === 3, "the library lists the released clips");
+  check(await page.locator(".showbits-card").count() === LIBRARY.filter((i) => !i.embargoUntil).length, "the library lists the released clips");
   const cardOf = (id) => page.locator(".showbits-card").filter({ has: page.locator(`#showbits-${id}`) });
   check(await cardOf(LOCKED).count() === 0, "a clip under embargo is not in the library at all");
   check(await page.locator(".showbits-card", { hasText: "<b>Lokaljournalismus</b>" }).count() === 1 && await page.locator(".showbits-card b").count() === 0, "markup in a title shows as text in the library, never as markup");
@@ -274,8 +293,10 @@ try {
   await page.waitForSelector(".showbits-card");
   check(await cardOf(CLIP).locator(".showbits-badge.is-done").count() === 1, "the library knows what this site has already");
 
-  // ShowBits pushes; WP-Cron imports and reports.
+  // ShowBits pushes; WP-Cron imports and reports. The first report is lost on the way (ShowBits answers 503).
   const pushId = "9c9c0000-0000-4000-8000-000000000001";
+  const imports = (where) => wp("db", "query", `SELECT ${where} FROM wp_showbits_imports WHERE push_id = '${pushId}'`, "--skip-column-names");
+  state.dropReports.add(pushId);
   const first = await push(pushId, PUSHED);
   check(first.status === 202 && first.body?.accepted === true, "a signed push is accepted (202)");
   const again = await push(pushId, PUSHED);
@@ -283,10 +304,45 @@ try {
   check((await push("9c9c0000-0000-4000-8000-000000000002", PUSHED, { secret: "whsec_wrong" })).status === 401, "a push with another secret is refused (401)");
   // WP-Cron may have run already (the push endpoint spawns it); whatever is still due runs now.
   wp("cron", "event", "run", "--due-now");
+  for (let i = 0; i < 30 && !state.droppedReports; i++) await new Promise((resolve) => setTimeout(resolve, 1000));
+  check(state.droppedReports === 1 && imports("status") === "imported" && imports("report IS NOT NULL") === "1", "a report ShowBits did not take waits in the import log");
+  // The next run (WP-Cron has one scheduled for it) sends it again.
+  runQueue();
   for (let i = 0; i < 30 && !state.results.some((r) => r.push === pushId); i++) await new Promise((resolve) => setTimeout(resolve, 1000));
   const report = state.results.find((r) => r.push === pushId);
-  check(report?.state === "imported" && /^https:\/\//.test(report.attachmentUrl ?? ""), "after WP-Cron the plugin reported the import with the attachment's https address");
-  check(wp("db", "query", "SELECT status FROM wp_showbits_imports WHERE push_id = '" + pushId + "'", "--skip-column-names") === "imported", "the import log shows the push as imported");
+  check(report?.state === "imported" && /^https:\/\//.test(report.attachmentUrl ?? ""), "after WP-Cron the plugin reported the import with the attachment's https address, the lost report again");
+  check(imports("status") === "imported" && imports("report IS NULL") === "1", "the import log shows the push as imported and reported");
+
+  // A download cut short at the site's size limit (WordPress still answers 200) is no import.
+  wp("option", "update", "showbits_e2e_max_bytes", "200");
+  const largeId = "9c9c0000-0000-4000-8000-000000000004";
+  check((await push(largeId, LARGE)).status === 202, "a push of a clip larger than the site takes is accepted");
+  runQueue();
+  for (let i = 0; i < 30 && !state.results.some((r) => r.push === largeId); i++) await new Promise((resolve) => setTimeout(resolve, 1000));
+  wp("option", "delete", "showbits_e2e_max_bytes");
+  check(state.results.find((r) => r.push === largeId)?.state === "failed" && state.results.find((r) => r.push === largeId)?.reason === "download", "a download cut short at the size limit is reported as failed (download), not imported");
+  check(JSON.parse(wp("post", "list", "--post_type=attachment", "--meta_key=_showbits_clip_id", `--meta_value=${LARGE}`, "--format=json")).length === 0, "and nothing of it is in the media library");
+
+  // Another process imports a clip right now (its lock): an import of the same clip waits its turn, then runs once.
+  const lock = `showbits_lock_${createHash("md5").update(BUSY).digest("hex")}`;
+  wp("option", "add", lock, String(Math.floor(Date.now() / 1000)), "--autoload=no");
+  const busyId = "9c9c0000-0000-4000-8000-000000000005";
+  const filesBefore = state.fileRequests.length;
+  check((await push(busyId, BUSY)).status === 202, "a push of a clip another process imports is accepted");
+  runQueue();
+  // (A run WP-Cron started meanwhile puts it back just the same, at once.)
+  const waitingOf = () => wp("db", "query", `SELECT CONCAT(status, '/', attempts) FROM wp_showbits_imports WHERE push_id = '${busyId}'`, "--skip-column-names");
+  let waiting = waitingOf();
+  for (let i = 0; i < 10 && waiting !== "queued/0"; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    waiting = waitingOf();
+  }
+  check(waiting === "queued/0" && !state.results.some((r) => r.push === busyId) && state.fileRequests.length === filesBefore, "while the clip's lock is held the import waits in the queue, not failed and not counted");
+  wp("option", "delete", lock);
+  runQueue();
+  for (let i = 0; i < 30 && !state.results.some((r) => r.push === busyId); i++) await new Promise((resolve) => setTimeout(resolve, 1000));
+  check(state.results.find((r) => r.push === busyId)?.state === "imported" && JSON.parse(wp("post", "list", "--post_type=attachment", "--meta_key=_showbits_clip_id", `--meta_value=${BUSY}`, "--format=json")).length === 2, "once the lock is gone it is imported once (video and poster)");
+  check(!wpMaybe("option", "get", lock), "the import gave its lock back");
 
   // Translations: WordPress reads every catalog the plugin brings, as .l10n.php and as .mo, alike; right-to-left
   // locales lay out right to left, and long texts keep the settings and the library in shape, wide and narrow.

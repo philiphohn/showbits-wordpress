@@ -237,6 +237,11 @@ msgstr "Tú hevur ikki loyvi til at broyta hesar stillingar."
 msgid "Connection"
 msgstr "Samband"
 
+#. translators: 1: the constant SHOWBITS_ENCRYPTION_KEY, 2: the file wp-config.php (both stay as they are)
+#: showbits/includes/class-settings-page.php
+msgid "Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards."
+msgstr "Trygdarlyklarnir hjá heimasíðu tíni eru ikki í %2$s, so lykilin, ið verjir sambandið við ShowBits, verður goymdur í dátugrunninum. Legg %1$s við einum longum tilvildarligum virði afturat %2$s; um heimasíðan longu er knýtt í samband, so knýt samband aftur eftir hetta."
+
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."

@@ -61,6 +61,7 @@ return array (
     'Settings' => '설정',
     'You may not change these settings.' => '이 설정을 변경할 권한이 없습니다.',
     'Connection' => '연결',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => '사이트의 보안 키가 %2$s에 없으므로 ShowBits 연결을 보호하는 키가 데이터베이스에 저장되어 있습니다. %2$s에 긴 임의의 값으로 %1$s을(를) 추가하세요. 사이트가 이미 연결되어 있다면 그 후에 다시 연결하세요.',
     'Connected to the workspace “%s”.' => '워크스페이스 “%s”에 연결되었습니다.',
     'Imports today: %1$d of %2$d.' => '오늘 가져오기 횟수: %1$d/%2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => '%1$s 님이 %2$s에 %3$s 주소로 연결했습니다.',

@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Ynstellingen',
     'You may not change these settings.' => 'Jo hawwe gjin tastimming om dizze ynstellingen te wizigjen.',
     'Connection' => 'Ferbining',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'De befeiligingskaaien fan jo webside steane net yn %2$s, dêrom wurdt de kaai dy\'t de ferbining mei ShowBits beskermet yn de databank bewarre. Foegje %1$s mei in lange willekeurige wearde ta oan %2$s; as de webside al ferbûn is, ferbyn him dêrnei opnij.',
     'Connected to the workspace “%s”.' => 'Ferbûn mei de wurkromte “%s”.',
     'Imports today: %1$d of %2$d.' => 'Ymporten hjoed: %1$d fan %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Ferbûn mei %3$s troch %1$s op %2$s.',

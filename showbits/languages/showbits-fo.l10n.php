@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Stillingar',
     'You may not change these settings.' => 'Tú hevur ikki loyvi til at broyta hesar stillingar.',
     'Connection' => 'Samband',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Trygdarlyklarnir hjá heimasíðu tíni eru ikki í %2$s, so lykilin, ið verjir sambandið við ShowBits, verður goymdur í dátugrunninum. Legg %1$s við einum longum tilvildarligum virði afturat %2$s; um heimasíðan longu er knýtt í samband, so knýt samband aftur eftir hetta.',
     'Connected to the workspace “%s”.' => 'Samband er knýtt við arbeiðsøkið „%s“.',
     'Imports today: %1$d of %2$d.' => 'Innflutningar í dag: %1$d av %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Samband knýtt við %3$s av %1$s tann %2$s.',

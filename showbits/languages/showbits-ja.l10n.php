@@ -61,6 +61,7 @@ return array (
     'Settings' => '設定',
     'You may not change these settings.' => 'これらの設定を変更する権限がありません。',
     'Connection' => '接続',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'サイトのセキュリティキーが %2$s にないため、ShowBits との接続を保護するキーがデータベースに保存されています。%2$s に長いランダムな値で %1$s を追加してください。サイトがすでに接続されている場合は、その後に再接続してください。',
     'Connected to the workspace “%s”.' => 'ワークスペース「%s」に接続済みです。',
     'Imports today: %1$d of %2$d.' => '本日のインポート: %1$d / %2$d件。',
     'Connected by %1$s on %2$s, at %3$s.' => '%1$s さんが %2$s に接続しました (接続先: %3$s)。',

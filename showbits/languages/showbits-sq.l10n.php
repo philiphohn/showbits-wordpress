@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Rregullime',
     'You may not change these settings.' => 'S’keni leje t’i ndryshoni këto rregullime.',
     'Connection' => 'Lidhje',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Kyçet e sigurisë së sajtit tuaj nuk janë te %2$s, ndaj kyçi që mbron lidhjen me ShowBits-in ruhet në bazën e të dhënave. Shtoni %1$s me një vlerë të gjatë të rastësishme te %2$s; nëse sajti është tashmë i lidhur, lidheni sërish më pas.',
     'Connected to the workspace “%s”.' => 'Lidhur me hapësirën e punës “%s”.',
     'Imports today: %1$d of %2$d.' => 'Importime sot: %1$d nga %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Lidhur nga %1$s më %2$s, te %3$s.',

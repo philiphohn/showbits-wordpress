@@ -16,14 +16,16 @@ defined( 'ABSPATH' ) || exit;
  * - or go to ShowBits' consent page, where an admin or owner agrees and the browser comes back with a site key, valid
  *   ten minutes and only with this attempt's PKCE verifier.
  *
- * Then this site exchanges the key once. It keeps a random pairing value meanwhile; ShowBits asks at the push address
- * for proof of it (Push_Endpoint), so a key copied anywhere else connects nothing, and answers with the site's own key
- * and the push secret, which are stored sealed.
+ * Then this site exchanges the key once. It keeps a random pairing value meanwhile, one for each attempt (two admins,
+ * or a form sent twice, do not take each other's); ShowBits asks at the push address for proof of it (Push_Endpoint),
+ * naming it by its hash, so a key copied anywhere else connects nothing, and answers with the site's own key and the
+ * push secret, which are stored sealed.
  */
 final class Connection {
 	private const FLOW    = 'showbits_connect_';
 	private const STATUS  = 'showbits_status';
-	public const PAIRING  = 'showbits_pairing';
+	/** Each attempt's pairing value, under the transient this and its id (pairing_id()) name. */
+	public const PAIRING  = 'showbits_pairing_';
 	public const SITE_KEY = '/^sbsk_[A-Za-z0-9_-]{43}$/';
 
 	/** admin-post.php?action=showbits_paste (a form with a nonce): connects with a site key made in ShowBits. */
@@ -108,7 +110,8 @@ final class Connection {
 	 */
 	private static function exchange( string $app_url, string $key, ?string $verifier ): void {
 		$pairing = Pkce::random();
-		set_transient( self::PAIRING, $pairing, 10 * MINUTE_IN_SECONDS );
+		$waiting = self::PAIRING . self::pairing_id( $pairing );
+		set_transient( $waiting, $pairing, 10 * MINUTE_IN_SECONDS );
 		$previous = Options::connection();
 		$answer   = Api_Client::connect(
 			$app_url,
@@ -122,7 +125,7 @@ final class Connection {
 				'pairing'  => $pairing,
 			)
 		);
-		delete_transient( self::PAIRING );
+		delete_transient( $waiting );
 		if ( is_wp_error( $answer ) ) {
 			self::back( 'connect_' . Api_Client::reason( $answer ) );
 		}
@@ -205,6 +208,11 @@ final class Connection {
 		}
 		set_transient( self::STATUS, $status, 5 * MINUTE_IN_SECONDS );
 		return $status;
+	}
+
+	/** How ShowBits names a pairing value when it asks for proof: base64url(SHA-256), as lib/wordpress-verify.ts. */
+	public static function pairing_id( string $pairing ): string {
+		return rtrim( strtr( base64_encode( hash( 'sha256', $pairing, true ) ), '+/', '-_' ), '=' ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- base64url of a hash, not obfuscation
 	}
 
 	/** This site's address as ShowBits keeps it (home_url without a trailing slash). */

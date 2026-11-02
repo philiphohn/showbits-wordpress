@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Mga Setting',
     'You may not change these settings.' => 'Wala kang pahintulot na baguhin ang mga setting na ito.',
     'Connection' => 'Koneksyon',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Wala sa %2$s ang mga security key ng iyong site, kaya nakaimbak sa database ang key na nagpoprotekta sa koneksyon sa ShowBits. Idagdag ang %1$s na may mahabang random na value sa %2$s; kung nakakonekta na ang site, ikonekta itong muli pagkatapos.',
     'Connected to the workspace “%s”.' => 'Nakakonekta sa workspace na “%s”.',
     'Imports today: %1$d of %2$d.' => 'Mga import ngayong araw: %1$d sa %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Ikinonekta ni %1$s noong %2$s, sa %3$s.',

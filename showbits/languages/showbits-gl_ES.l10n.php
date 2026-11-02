@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Axustes',
     'You may not change these settings.' => 'Non tes permiso para cambiar estes axustes.',
     'Connection' => 'Conexión',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'As claves de seguranza do teu sitio non están en %2$s, polo que a clave que protexe a conexión con ShowBits gárdase na base de datos. Engade %1$s cun valor aleatorio longo a %2$s; se o sitio xa está conectado, conéctao de novo despois.',
     'Connected to the workspace “%s”.' => 'Conectado ao espazo de traballo «%s».',
     'Imports today: %1$d of %2$d.' => 'Importacións de hoxe: %1$d de %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Conectado por %1$s o %2$s, no enderezo %3$s.',

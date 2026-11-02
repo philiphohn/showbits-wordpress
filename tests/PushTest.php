@@ -6,6 +6,7 @@
 declare( strict_types=1 );
 
 use PHPUnit\Framework\TestCase;
+use ShowBits\WordPress\Connection;
 use ShowBits\WordPress\Importer;
 use ShowBits\WordPress\Push_Endpoint;
 use ShowBits\WordPress\Signature;
@@ -85,17 +86,60 @@ final class PushTest extends TestCase {
 	public function test_while_connecting_the_site_proves_its_pairing_value_and_nothing_else(): void {
 		$pairing   = str_repeat( 'p', 43 );
 		$challenge = str_repeat( 'c', 43 );
-		$check     = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => $challenge ) );
-		$answer    = Push_Endpoint::handle( $check, '', null, $pairing );
+		$waiting   = array( Connection::pairing_id( $pairing ) => $pairing );
+		$lookup    = static fn( string $id ): ?string => $waiting[ $id ] ?? null;
+		$check     = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => $challenge, 'pairingId' => Connection::pairing_id( $pairing ) ) );
+		$answer    = Push_Endpoint::handle( $check, '', null, $lookup );
 		$this->assertSame( 200, $answer['status'] );
 		// As ShowBits computes it (lib/wordpress-verify.ts): base64url(HMAC-SHA256(pairing, "showbits-site-verify:" + challenge)).
 		$this->assertSame( rtrim( strtr( base64_encode( hash_hmac( 'sha256', 'showbits-site-verify:' . $challenge, $pairing, true ) ), '+/', '-_' ), '=' ), $answer['proof'] );
-		// Not connecting right now: no proof at all; a malformed challenge neither.
+		// The id is the value's hash, as ShowBits sends it (lib/wordpress-verify.ts pairingId).
+		$this->assertSame( rtrim( strtr( base64_encode( hash( 'sha256', $pairing, true ) ), '+/', '-_' ), '=' ), Connection::pairing_id( $pairing ) );
+		// Not connecting right now, or another attempt's id: no proof at all; a malformed check neither.
 		$this->assertSame( 404, Push_Endpoint::handle( $check, '', self::CONNECTION, null )['status'] );
 		$this->assertArrayNotHasKey( 'proof', Push_Endpoint::handle( $check, '', self::CONNECTION, null ) );
-		$odd = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => 'x' ) );
-		$this->assertSame( 422, Push_Endpoint::handle( $odd, '', null, $pairing )['status'] );
+		$other = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => $challenge, 'pairingId' => Connection::pairing_id( str_repeat( 'q', 43 ) ) ) );
+		$this->assertSame( 404, Push_Endpoint::handle( $other, '', null, $lookup )['status'] );
+		foreach ( array( array( 'challenge' => 'x' ), array( 'pairingId' => 'x' ), array( 'pairingId' => null ) ) as $odd ) {
+			$malformed = (string) json_encode( array_replace( array( 'type' => 'site.verify', 'challenge' => $challenge, 'pairingId' => Connection::pairing_id( $pairing ) ), $odd ) );
+			$this->assertSame( 422, Push_Endpoint::handle( $malformed, '', null, $lookup )['status'], (string) json_encode( $odd ) );
+		}
 		$this->assertSame( array(), $GLOBALS['wpdb']->push_ids, 'a check queues nothing' );
+	}
+
+	public function test_two_attempts_at_once_each_prove_their_own_pairing_value(): void {
+		$first   = str_repeat( 'a', 43 );
+		$second  = str_repeat( 'b', 43 );
+		$waiting = array(
+			Connection::pairing_id( $first )  => $first,
+			Connection::pairing_id( $second ) => $second,
+		);
+		$lookup  = static fn( string $id ): ?string => $waiting[ $id ] ?? null;
+		foreach ( array( $first, $second ) as $pairing ) {
+			$check = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => str_repeat( 'c', 43 ), 'pairingId' => Connection::pairing_id( $pairing ) ) );
+			$this->assertSame( Push_Endpoint::proof( $pairing, str_repeat( 'c', 43 ) ), Push_Endpoint::handle( $check, '', null, $lookup )['proof'] );
+		}
+		// A stored value under someone else's id proves nothing.
+		$swapped = static fn( string $id ): ?string => $second;
+		$check   = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => str_repeat( 'c', 43 ), 'pairingId' => Connection::pairing_id( $first ) ) );
+		$this->assertSame( 404, Push_Endpoint::handle( $check, '', null, $swapped )['status'] );
+	}
+
+	public function test_a_download_cut_short_is_no_file(): void {
+		$file = (string) tempnam( sys_get_temp_dir(), 'showbits-test' );
+		try {
+			file_put_contents( $file, str_repeat( 'x', 1000 ) );
+			$this->assertTrue( Importer::complete( $file, Stubs::response( 200, '', array( 'content-length' => '1000' ) ), 5000 ) );
+			$this->assertTrue( Importer::complete( $file, Stubs::response( 200 ), 5000 ), 'without a length, the limit decides' );
+			// WordPress stops writing at the limit and still answers 200.
+			$this->assertFalse( Importer::complete( $file, Stubs::response( 200 ), 1000 ) );
+			// A connection that broke off.
+			$this->assertFalse( Importer::complete( $file, Stubs::response( 200, '', array( 'content-length' => '4000' ) ), 5000 ) );
+			file_put_contents( $file, '' );
+			$this->assertFalse( Importer::complete( $file, Stubs::response( 200 ), 5000 ) );
+		} finally {
+			unlink( $file );
+		}
 	}
 
 	public function test_a_video_and_its_poster_and_a_quote_card_get_their_texts(): void {

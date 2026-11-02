@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Indstillinger',
     'You may not change these settings.' => 'Du har ikke tilladelse til at ændre disse indstillinger.',
     'Connection' => 'Forbindelse',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Dit websteds sikkerhedsnøgler er ikke i %2$s, så nøglen, der beskytter forbindelsen til ShowBits, gemmes i databasen. Tilføj %1$s med en lang tilfældig værdi i %2$s; hvis webstedet allerede er forbundet, skal du forbinde det igen bagefter.',
     'Connected to the workspace “%s”.' => 'Forbundet med arbejdsområdet »%s«.',
     'Imports today: %1$d of %2$d.' => 'Importer i dag: %1$d af %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Forbundet med %3$s af %1$s den %2$s.',

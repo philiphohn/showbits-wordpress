@@ -13,7 +13,8 @@ defined( 'ABSPATH' ) || exit;
  * POST /wp-json/showbits/v1/push (docs/wordpress.md §2, §4), open to anyone, so it believes nothing unproven:
  *
  * - `site.verify` while this site connects: ShowBits sends a challenge and gets the HMAC of it under the pairing value
- *   the connect request carried. Only this site has that value, and only for a few seconds; nothing changes here.
+ *   the connect request carried (named by its hash: each attempt has its own). Only this site has that value, and only
+ *   for a few seconds; nothing changes here.
  * - `clip.push`: only what ShowBits signed with this site's secret, within five minutes, for this site and workspace,
  *   each push once (by its id; a later delivery brings a new ticket). It comes with a ticket for the clip's files; the
  *   answer comes at once (202), the import in the background, the result goes to ShowBits.
@@ -40,8 +41,11 @@ final class Push_Endpoint {
 	 * @param \WP_REST_Request $request The request.
 	 */
 	public static function receive( \WP_REST_Request $request ): \WP_REST_Response {
-		$pairing = get_transient( Connection::PAIRING );
-		$result  = self::handle( $request->get_body(), (string) $request->get_header( 'showbits_signature' ), Options::connection(), is_string( $pairing ) ? $pairing : null );
+		$pairing = static function ( string $id ): ?string {
+			$value = get_transient( Connection::PAIRING . $id );
+			return is_string( $value ) ? $value : null;
+		};
+		$result = self::handle( $request->get_body(), (string) $request->get_header( 'showbits_signature' ), Options::connection(), $pairing );
 		if ( isset( $result['proof'] ) ) {
 			return new \WP_REST_Response( array( 'proof' => $result['proof'] ), 200 );
 		}
@@ -60,10 +64,11 @@ final class Push_Endpoint {
 	 * @param string                    $body       The raw body, as signed.
 	 * @param string                    $header     ShowBits-Signature.
 	 * @param array<string, mixed>|null $connection The stored connection.
-	 * @param string|null               $pairing    The pairing value while this site connects.
+	 * @param callable|null             $pairing    The pairing value of a connect attempt by its id, while one runs
+	 *                                              (string|null).
 	 * @return array{status: int, reason?: string, queued?: bool, proof?: string}
 	 */
-	public static function handle( string $body, string $header, ?array $connection, ?string $pairing = null ): array {
+	public static function handle( string $body, string $header, ?array $connection, ?callable $pairing = null ): array {
 		if ( strlen( $body ) > self::MAX_BODY ) {
 			return array(
 				'status' => 413,
@@ -113,21 +118,24 @@ final class Push_Endpoint {
 	}
 
 	/**
-	 * ShowBits' check while connecting: the HMAC of its challenge under the pairing value, or nothing (no attempt here).
+	 * ShowBits' check while connecting: the HMAC of its challenge under the pairing value it names, or nothing (no such
+	 * attempt here).
 	 *
 	 * @param array<string, mixed> $message The check.
-	 * @param string|null          $pairing The pairing value, while this site connects.
+	 * @param callable|null        $pairing The pairing value of an attempt by its id.
 	 * @return array{status: int, reason?: string, proof?: string}
 	 */
-	private static function verify( array $message, ?string $pairing ): array {
+	private static function verify( array $message, ?callable $pairing ): array {
 		$challenge = (string) ( $message['challenge'] ?? '' );
-		if ( ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $challenge ) ) {
+		$id        = (string) ( $message['pairingId'] ?? '' );
+		if ( ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $challenge ) || ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $id ) ) {
 			return array(
 				'status' => 422,
 				'reason' => 'invalid',
 			);
 		}
-		if ( null === $pairing || ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $pairing ) ) {
+		$pairing = null === $pairing ? null : $pairing( $id );
+		if ( ! is_string( $pairing ) || ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $pairing ) || ! hash_equals( Connection::pairing_id( $pairing ), $id ) ) {
 			return array(
 				'status' => 404,
 				'reason' => 'notConnecting',

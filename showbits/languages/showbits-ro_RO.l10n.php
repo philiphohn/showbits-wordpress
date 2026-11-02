@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Setări',
     'You may not change these settings.' => 'Nu ai permisiunea să modifici aceste setări.',
     'Connection' => 'Conexiune',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Cheile de securitate ale site-ului tău nu sunt în %2$s, așa că cheia care protejează conexiunea cu ShowBits este stocată în baza de date. Adaugă %1$s cu o valoare aleatorie lungă în %2$s; dacă site-ul este deja conectat, conectează-l din nou după aceea.',
     'Connected to the workspace “%s”.' => 'Conectat la spațiul de lucru „%s”.',
     'Imports today: %1$d of %2$d.' => 'Importuri azi: %1$d din %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Conectat de %1$s pe %2$s, la adresa %3$s.',

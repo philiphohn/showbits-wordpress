@@ -4,7 +4,7 @@ Tags: video, media library, clips, podcast, editorial
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,13 @@ It ends the connection in ShowBits (if ShowBits can be reached) and removes its 
 English and 68 other languages and variants of WordPress, from Albanian to Yorùbá, including formal and informal German and Dutch, and European Portuguese in both spellings. The translations come with the plugin: WordPress shows it in the language of your profile, and imported files get their titles and alternative texts in the site's language. They were machine-translated and are not yet reviewed by native speakers; corrections are welcome on translate.wordpress.org.
 
 == Changelog ==
+
+= 1.0.1 =
+* A download cut short (the site's size limit, a connection that broke off) fails instead of importing a broken file.
+* What an import tells ShowBits is sent again until ShowBits has it.
+* One import of a clip at a time: a push and an import picked in WordPress at the same moment no longer make two attachments.
+* Each connect attempt has its own pairing value: two at once no longer spoil each other.
+* The settings page warns when the site's security keys are not in wp-config.php (the connection's key would be stored in the database).
 
 = 1.0.0 =
 * Connect to a ShowBits workspace with a site key (or through ShowBits with PKCE).

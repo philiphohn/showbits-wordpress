@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Cài đặt',
     'You may not change these settings.' => 'Bạn không có quyền thay đổi các cài đặt này.',
     'Connection' => 'Kết nối',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Các khóa bảo mật của trang web không nằm trong %2$s, vì vậy khóa bảo vệ kết nối với ShowBits được lưu trong cơ sở dữ liệu. Hãy thêm %1$s với một giá trị ngẫu nhiên dài vào %2$s; nếu trang web đã được kết nối, hãy kết nối lại sau đó.',
     'Connected to the workspace “%s”.' => 'Đã kết nối với không gian làm việc “%s”.',
     'Imports today: %1$d of %2$d.' => 'Lượt nhập hôm nay: %1$d trên %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Do %1$s kết nối vào %2$s, tới %3$s.',

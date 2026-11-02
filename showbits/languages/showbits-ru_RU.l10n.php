@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Настройки',
     'You may not change these settings.' => 'У вас нет прав на изменение этих настроек.',
     'Connection' => 'Подключение',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Ключи безопасности вашего сайта не заданы в %2$s, поэтому ключ, защищающий подключение к ShowBits, хранится в базе данных. Добавьте %1$s с длинным случайным значением в %2$s; если сайт уже подключён, затем подключите его заново.',
     'Connected to the workspace “%s”.' => 'Подключено к рабочему пространству «%s».',
     'Imports today: %1$d of %2$d.' => 'Импортов сегодня: %1$d из %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Подключено к %3$s пользователем %1$s, %2$s.',

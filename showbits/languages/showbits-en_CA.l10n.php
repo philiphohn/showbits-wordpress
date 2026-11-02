@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Settings',
     'You may not change these settings.' => 'You may not change these settings.',
     'Connection' => 'Connection',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.',
     'Connected to the workspace “%s”.' => 'Connected to the workspace “%s”.',
     'Imports today: %1$d of %2$d.' => 'Imports today: %1$d of %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Connected by %1$s on %2$s, at %3$s.',

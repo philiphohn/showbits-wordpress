@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Beállítások',
     'You may not change these settings.' => 'Nincs jogosultság ezeknek a beállításoknak a módosításához.',
     'Connection' => 'Kapcsolat',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'A honlap biztonsági kulcsai nincsenek a %2$s fájlban, ezért a ShowBitshez fűződő kapcsolatot védő kulcs az adatbázisban van tárolva. A %2$s fájlhoz hozzá kell adni a %1$s állandót egy hosszú, véletlenszerű értékkel; ha a honlap már csatlakoztatva van, utána újra kell csatlakoztatni.',
     'Connected to the workspace “%s”.' => 'Csatlakoztatva ehhez a munkaterülethez: „%s”.',
     'Imports today: %1$d of %2$d.' => 'Mai importálások: %1$d/%2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Csatlakoztatta: %1$s (%2$s), cím: %3$s.',

@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Asetukset',
     'You may not change these settings.' => 'Sinulla ei ole oikeutta muuttaa näitä asetuksia.',
     'Connection' => 'Yhteys',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Sivustosi suojausavaimet eivät ole tiedostossa %2$s, joten ShowBitsin yhteyttä suojaava avain on tallennettu tietokantaan. Lisää tiedostoon %2$s %1$s pitkällä satunnaisella arvolla; jos sivusto on jo yhdistetty, yhdistä se sen jälkeen uudelleen.',
     'Connected to the workspace “%s”.' => 'Yhdistetty työtilaan ”%s”.',
     'Imports today: %1$d of %2$d.' => 'Tuonnit tänään: %1$d/%2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => '%1$s yhdisti sivuston %2$s osoitteeseen %3$s.',

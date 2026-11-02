@@ -14,13 +14,17 @@ defined( 'ABSPATH' ) || exit;
  * its push in ShowBits, taken once. An import picked here waits as requested until ShowBits' push brings the ticket for
  * the clip's files; then it is queued until the library page or WP-Cron imports it. The queue is read fresh each time
  * (one process takes each push); the list on the settings page comes from the object cache, emptied by every change.
+ * What a finished import tells ShowBits waits in its row (report) until ShowBits has it: a report lost on the way is
+ * sent again with the next run, for a week.
  */
 final class Imports {
-	public const DB_VERSION = 2;
+	public const DB_VERSION = 3;
 	private const OPTION    = 'showbits_db_version';
 	private const CACHE     = 'showbits_imports';
 	/** A push stuck in running this long (the request died) is tried again, three times in all. */
 	private const STALE = 15 * MINUTE_IN_SECONDS;
+	/** A report ShowBits has not taken is sent again this long (ShowBits keeps a push 30 days). */
+	private const REPORT_DAYS = 7;
 
 	public static function table(): string {
 		global $wpdb;
@@ -47,6 +51,7 @@ final class Imports {
 				error varchar(60) DEFAULT NULL,
 				user_id bigint(20) unsigned DEFAULT NULL,
 				attempts tinyint(3) unsigned NOT NULL DEFAULT 0,
+				report text DEFAULT NULL,
 				created_at datetime NOT NULL,
 				updated_at datetime NOT NULL,
 				PRIMARY KEY  (id),
@@ -164,18 +169,28 @@ final class Imports {
 	/**
 	 * The next queued push, marked running (one process gets it); null when there is none.
 	 *
+	 * @param array<int, int> $skip Rows this run put back (requeue()): the next run takes them.
 	 * @return array<string, mixed>|null
 	 */
-	public static function claim(): ?array {
+	public static function claim( array $skip = array() ): ?array {
 		global $wpdb;
 		$table = self::table();
 		$now   = current_time( 'mysql', true );
 		$stale = gmdate( 'Y-m-d H:i:s', time() - self::STALE );
+		$skip  = array_map( 'intval', $skip );
 		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- the queue is read fresh: a cached row could hand one push to two processes
 		$wpdb->query( $wpdb->prepare( "UPDATE %i SET status = 'queued', updated_at = %s WHERE status = 'running' AND updated_at < %s AND attempts < 3", $table, $now, $stale ) );
 		$claimed = null;
 		for ( $tries = 0; $tries < 3 && null === $claimed; $tries++ ) {
-			$row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM %i WHERE status = 'queued' ORDER BY id LIMIT 1", $table ), ARRAY_A );
+			// The first queued row this run did not put back (those come first at most count($skip) times).
+			$rows = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM %i WHERE status = 'queued' ORDER BY id LIMIT %d", $table, count( $skip ) + 1 ), ARRAY_A );
+			$row  = null;
+			foreach ( is_array( $rows ) ? $rows : array() as $candidate ) {
+				if ( ! in_array( (int) $candidate['id'], $skip, true ) ) {
+					$row = $candidate;
+					break;
+				}
+			}
 			if ( ! $row ) {
 				break;
 			}
@@ -190,30 +205,91 @@ final class Imports {
 	}
 
 	/**
-	 * Imports whose request died three times (stuck in running): failed, as interrupted. Returns their pushes, each
-	 * once, so ShowBits learns of it (the process whose update took the row tells it).
-	 *
-	 * @return array<int, string>
+	 * Imports whose request died three times (stuck in running): failed, as interrupted, with the report that tells
+	 * ShowBits, so the site can ask for the clip again. Returns how many.
 	 */
-	public static function give_up_interrupted(): array {
+	public static function give_up_interrupted(): int {
 		global $wpdb;
-		$table  = self::table();
 		$now    = current_time( 'mysql', true );
 		$stale  = gmdate( 'Y-m-d H:i:s', time() - self::STALE );
-		$pushes = array();
-		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- the queue is read fresh
-		$rows = $wpdb->get_results( $wpdb->prepare( "SELECT id, push_id FROM %i WHERE status = 'running' AND updated_at < %s AND attempts >= 3", $table, $stale ), ARRAY_A );
-		foreach ( is_array( $rows ) ? $rows : array() as $row ) {
-			$taken = $wpdb->query( $wpdb->prepare( "UPDATE %i SET status = 'failed', error = 'interrupted', ticket = NULL, updated_at = %s WHERE id = %d AND status = 'running'", $table, $now, $row['id'] ) );
-			if ( 1 === $taken && $row['push_id'] ) {
-				$pushes[] = (string) $row['push_id'];
-			}
-		}
-		// phpcs:enable
-		if ( $pushes ) {
+		$report = (string) wp_json_encode(
+			array(
+				'state'  => 'failed',
+				'reason' => 'interrupted',
+			)
+		);
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- the queue is read fresh
+		$given_up = (int) $wpdb->query( $wpdb->prepare( "UPDATE %i SET status = 'failed', error = 'interrupted', ticket = NULL, report = IF(push_id IS NULL, NULL, %s), updated_at = %s WHERE status = 'running' AND updated_at < %s AND attempts >= 3", self::table(), $report, $now, $stale ) );
+		if ( $given_up ) {
 			wp_cache_delete( 'recent', self::CACHE );
 		}
-		return $pushes;
+		return $given_up;
+	}
+
+	/**
+	 * A running import back in the queue, not counted as an attempt: another process imports the same clip right now,
+	 * or a delivery again (ShowBits retried) brought a new ticket while this one ran with the old.
+	 *
+	 * @param int $id The row.
+	 */
+	public static function requeue( int $id ): void {
+		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- the plugin's own table
+		$wpdb->query( $wpdb->prepare( "UPDATE %i SET status = 'queued', attempts = GREATEST(attempts, 1) - 1, updated_at = %s WHERE id = %d AND status = 'running'", self::table(), current_time( 'mysql', true ), $id ) );
+		wp_cache_delete( 'recent', self::CACHE );
+	}
+
+	/**
+	 * The row's ticket now (a delivery again replaces it while the import runs).
+	 *
+	 * @param int $id The row.
+	 */
+	public static function ticket_of( int $id ): ?string {
+		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- read fresh
+		$ticket = $wpdb->get_var( $wpdb->prepare( 'SELECT ticket FROM %i WHERE id = %d', self::table(), $id ) );
+		return is_string( $ticket ) ? $ticket : null;
+	}
+
+	/**
+	 * Reports ShowBits has not taken yet, oldest first; those older than a week are dropped.
+	 *
+	 * @param int $limit How many.
+	 * @return array<int, array{id: int, push_id: string, report: array<string, mixed>}>
+	 */
+	public static function pending_reports( int $limit = 20 ): array {
+		global $wpdb;
+		$table = self::table();
+		$since = gmdate( 'Y-m-d H:i:s', time() - self::REPORT_DAYS * DAY_IN_SECONDS );
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- read fresh
+		$wpdb->query( $wpdb->prepare( 'UPDATE %i SET report = NULL WHERE report IS NOT NULL AND updated_at < %s', $table, $since ) );
+		$rows = $wpdb->get_results( $wpdb->prepare( 'SELECT id, push_id, report FROM %i WHERE report IS NOT NULL AND push_id IS NOT NULL ORDER BY id LIMIT %d', $table, $limit ), ARRAY_A );
+		// phpcs:enable
+		$pending = array();
+		foreach ( is_array( $rows ) ? $rows : array() as $row ) {
+			$report = json_decode( (string) $row['report'], true );
+			if ( is_array( $report ) ) {
+				$pending[] = array(
+					'id'      => (int) $row['id'],
+					'push_id' => (string) $row['push_id'],
+					'report'  => $report,
+				);
+			} else {
+				self::reported( (int) $row['id'] );
+			}
+		}
+		return $pending;
+	}
+
+	/**
+	 * ShowBits has the row's report (or will never take it).
+	 *
+	 * @param int $id The row.
+	 */
+	public static function reported( int $id ): void {
+		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- the plugin's own table
+		$wpdb->query( $wpdb->prepare( 'UPDATE %i SET report = NULL WHERE id = %d', self::table(), $id ) );
 	}
 
 	/**
@@ -232,26 +308,29 @@ final class Imports {
 	}
 
 	/**
-	 * Finishes a push.
+	 * Finishes a push, with what ShowBits is to hear (sent by the importer, kept until ShowBits has it).
 	 *
 	 * @param int                  $id     The row.
-	 * @param array<string, mixed> $result status imported or failed, attachment_id, error, title, variant (its ticket ends).
+	 * @param array<string, mixed> $result status imported or failed, attachment_id, error, report; title and variant
+	 *                                     when known (a failure keeps those the row has). Its ticket ends.
 	 */
 	public static function finish( int $id, array $result ): void {
 		global $wpdb;
-		$wpdb->update( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- the plugin's own table
-			self::table(),
-			array(
-				'status'        => (string) $result['status'],
-				'attachment_id' => $result['attachment_id'] ?? null,
-				'error'         => $result['error'] ?? null,
-				'title'         => mb_substr( (string) ( $result['title'] ?? '' ), 0, 200 ),
-				'variant'       => (string) ( $result['variant'] ?? '' ),
-				'ticket'        => null,
-				'updated_at'    => current_time( 'mysql', true ),
-			),
-			array( 'id' => $id )
+		$row = array(
+			'status'        => (string) $result['status'],
+			'attachment_id' => $result['attachment_id'] ?? null,
+			'error'         => $result['error'] ?? null,
+			'ticket'        => null,
+			'report'        => isset( $result['report'] ) ? (string) wp_json_encode( $result['report'] ) : null,
+			'updated_at'    => current_time( 'mysql', true ),
 		);
+		if ( '' !== (string) ( $result['title'] ?? '' ) ) {
+			$row['title'] = mb_substr( (string) $result['title'], 0, 200 );
+		}
+		if ( '' !== (string) ( $result['variant'] ?? '' ) ) {
+			$row['variant'] = (string) $result['variant'];
+		}
+		$wpdb->update( self::table(), $row, array( 'id' => $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- the plugin's own table
 		wp_cache_delete( 'recent', self::CACHE );
 	}
 

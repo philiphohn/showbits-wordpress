@@ -237,6 +237,11 @@ msgstr "Nincs jogosultság ezeknek a beállításoknak a módosításához."
 msgid "Connection"
 msgstr "Kapcsolat"
 
+#. translators: 1: the constant SHOWBITS_ENCRYPTION_KEY, 2: the file wp-config.php (both stay as they are)
+#: showbits/includes/class-settings-page.php
+msgid "Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards."
+msgstr "A honlap biztonsági kulcsai nincsenek a %2$s fájlban, ezért a ShowBitshez fűződő kapcsolatot védő kulcs az adatbázisban van tárolva. A %2$s fájlhoz hozzá kell adni a %1$s állandót egy hosszú, véletlenszerű értékkel; ha a honlap már csatlakoztatva van, utána újra kell csatlakoztatni."
+
 #. translators: %s: the ShowBits workspace's name
 #: showbits/includes/class-settings-page.php
 msgid "Connected to the workspace “%s”."

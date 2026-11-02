@@ -61,6 +61,7 @@ return array (
     'Settings' => 'تەڭشەكلەر',
     'You may not change these settings.' => 'سىزنىڭ بۇ تەڭشەكلەرنى ئۆزگەرتىش ھوقۇقىڭىز يوق.',
     'Connection' => 'ئۇلىنىش',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'تور بېكىتىڭىزنىڭ بىخەتەرلىك ئاچقۇچلىرى %2$s دا يوق، شۇڭا ShowBits بىلەن بولغان ئۇلىنىشنى قوغدايدىغان ئاچقۇچ سانداندا ساقلىنىدۇ. %1$s نى ئۇزۇن ئىختىيارى قىممەت بىلەن %2$s غا قوشۇڭ؛ ئەگەر تور بېكەت ئاللىقاچان ئۇلانغان بولسا، ئۇنىڭدىن كېيىن قايتا ئۇلاڭ.',
     'Connected to the workspace “%s”.' => '«%s» ناملىق خىزمەت بوشلۇقىغا ئۇلانغان.',
     'Imports today: %1$d of %2$d.' => 'بۈگۈنكى ئەكىرىشلەر: %1$d / %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'ئۇلىغۇچى: %1$s، ۋاقىت: %2$s، ئادرېس: %3$s.',

@@ -61,6 +61,7 @@ return array (
     'Settings' => 'ການຕັ້ງຄ່າ',
     'You may not change these settings.' => 'ທ່ານບໍ່ມີສິດປ່ຽນການຕັ້ງຄ່າເຫຼົ່ານີ້.',
     'Connection' => 'ການເຊື່ອມຕໍ່',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'ກະແຈຄວາມປອດໄພຂອງເວັບໄຊທ່ານບໍ່ໄດ້ຢູ່ໃນ %2$s, ດັ່ງນັ້ນກະແຈທີ່ປົກປ້ອງການເຊື່ອມຕໍ່ກັບ ShowBits ຈຶ່ງຖືກເກັບໄວ້ໃນຖານຂໍ້ມູນ. ກະລຸນາເພີ່ມ %1$s ດ້ວຍຄ່າສຸ່ມທີ່ຍາວເຂົ້າໃນ %2$s; ຖ້າເວັບໄຊເຊື່ອມຕໍ່ແລ້ວ, ກະລຸນາເຊື່ອມຕໍ່ໃໝ່ຫຼັງຈາກນັ້ນ.',
     'Connected to the workspace “%s”.' => 'ເຊື່ອມຕໍ່ກັບພື້ນທີ່ເຮັດວຽກ “%s” ແລ້ວ.',
     'Imports today: %1$d of %2$d.' => 'ການນຳເຂົ້າມື້ນີ້: %1$d ຈາກ %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'ເຊື່ອມຕໍ່ໂດຍ %1$s ເມື່ອ %2$s ທີ່ %3$s.',

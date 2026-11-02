@@ -61,6 +61,7 @@ return array (
     'Settings' => 'Paràmetres',
     'You may not change these settings.' => 'No teniu permís per a canviar aquests paràmetres.',
     'Connection' => 'Connexió',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'Les claus de seguretat del vostre lloc web no són a %2$s, de manera que la clau que protegeix la connexió amb ShowBits es desa a la base de dades. Afegiu %1$s amb un valor aleatori llarg a %2$s; si el lloc web ja està connectat, torneu-lo a connectar després.',
     'Connected to the workspace “%s”.' => 'Connectat a l\'espai de treball «%s».',
     'Imports today: %1$d of %2$d.' => 'Importacions d\'avui: %1$d de %2$d.',
     'Connected by %1$s on %2$s, at %3$s.' => 'Connectat per %1$s el %2$s, a l\'adreça %3$s.',

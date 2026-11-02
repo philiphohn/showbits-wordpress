@@ -61,6 +61,7 @@ return array (
     'Settings' => 'သတ်မှတ်ချက်များ',
     'You may not change these settings.' => 'ဤသတ်မှတ်ချက်များကို ပြောင်းလဲခွင့် သင့်တွင် မရှိပါ။',
     'Connection' => 'ချိတ်ဆက်မှု',
+    'Your site’s security keys are not in %2$s, so the key that protects the connection to ShowBits is stored in the database. Add %1$s with a long random value to %2$s; if the site is connected already, connect it again afterwards.' => 'သင့်ဆိုဒ်၏ လုံခြုံရေးကီးများသည် %2$s တွင် မရှိသောကြောင့် ShowBits နှင့် ချိတ်ဆက်မှုကို ကာကွယ်သည့် ကီးကို ဒေတာဘေ့စ်တွင် သိမ်းထားသည်။ %2$s တွင် ရှည်လျားသော ကျပန်းတန်ဖိုးဖြင့် %1$s ကို ထည့်ပါ၊ ဆိုဒ်ကို ချိတ်ဆက်ပြီးသားဖြစ်ပါက ထို့နောက် ပြန်လည် ချိတ်ဆက်ပါ။',
     'Connected to the workspace “%s”.' => 'လုပ်ငန်းခွင် “%s” နှင့် ချိတ်ဆက်ထားသည်။',
     'Imports today: %1$d of %2$d.' => 'ယနေ့ တင်သွင်းမှု: %2$d ခုအနက် %1$d ခု။',
     'Connected by %1$s on %2$s, at %3$s.' => '%1$s က %2$s တွင် %3$s နှင့် ချိတ်ဆက်ခဲ့သည်။',
