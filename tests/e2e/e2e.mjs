@@ -96,11 +96,19 @@ async function push(pushId, clipId, { secret = state.connection.secret, variant 
   const ticket = randomBytes(32).toString("hex");
   state.pushes.set(pushId, { clip: clipId, ticket, variant });
   const body = JSON.stringify({ id: pushId, type: "clip.push", occurredAt: new Date().toISOString(), workspace: { id: WS.id, slug: WS.slug }, site: { id: SITE_ID }, object: { type: "clip", id: clipId, kind: LIBRARY.find((i) => i.id === clipId)?.kind ?? "highlight" }, from, variant, ticket });
-  const t = Math.floor(Date.now() / 1000);
-  const response = await fetch(PUSH_URL, {
-    method: "POST",
-    headers: { "content-type": "application/json", "showbits-event": "wordpress.push", "showbits-delivery": pushId, "showbits-signature": `t=${t},v1=${createHmac("sha256", secret).update(`${t}.${body}`).digest("hex")}` },
-    body,
+  const send = () => {
+    const t = Math.floor(Date.now() / 1000);
+    return fetch(PUSH_URL, {
+      method: "POST",
+      headers: { "content-type": "application/json", "showbits-event": "wordpress.push", "showbits-delivery": pushId, "showbits-signature": `t=${t},v1=${createHmac("sha256", secret).update(`${t}.${body}`).digest("hex")}` },
+      body,
+    });
+  };
+  // A kept-alive connection Apache closes just then fails the request ("other side closed"): ShowBits delivers again,
+  // and the plugin takes a push once.
+  const response = await send().catch((error) => {
+    if (error?.cause?.code !== "UND_ERR_SOCKET") throw error;
+    return send();
   });
   return { status: response.status, body: await response.json().catch(() => null) };
 }
