@@ -5,19 +5,27 @@
 #
 #   bash tests/e2e/plugin-check.sh [path to an unpacked plugin-check]     (from wordpress/)
 #
-# Without a path it downloads the release build named below from GitHub (wordpress.org's own download works too:
-# https://downloads.wordpress.org/plugin/plugin-check.<version>.zip).
+# Without a path it downloads the release build named below from GitHub and checks it against its SHA-256 (another
+# version: PLUGIN_CHECK_VERSION with PLUGIN_CHECK_SHA256; wordpress.org's own build of the same version is a
+# different ZIP: https://downloads.wordpress.org/plugin/plugin-check.<version>.zip).
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 source tests/e2e/wordpress.sh
 
 VERSION="${PLUGIN_CHECK_VERSION:-2.1.0}"
+SHA256="${PLUGIN_CHECK_SHA256:-}"
+if [ "$VERSION" = 2.1.0 ] && [ -z "$SHA256" ]; then SHA256=592699f503cd8ef843ca12162a89a225930870085f751d33c5f2c623edbda58c; fi
 WORK=$(mktemp -d)
 trap 'wordpress_down; rm -rf "$WORK"' EXIT
 
 CHECKER="${1:-}"
 if [ -z "$CHECKER" ]; then
   curl -fsSL -o "$WORK/plugin-check.zip" "https://github.com/WordPress/plugin-check/releases/download/$VERSION/plugin-check.zip"
+  if [ -z "$SHA256" ]; then
+    echo "No SHA-256 for Plugin Check $VERSION: set PLUGIN_CHECK_SHA256." >&2
+    exit 1
+  fi
+  echo "$SHA256  $WORK/plugin-check.zip" | sha256sum --check --quiet -
   unzip -q "$WORK/plugin-check.zip" -d "$WORK"
   CHECKER="$WORK/plugin-check"
 fi
