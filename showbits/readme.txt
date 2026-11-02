@@ -121,5 +121,8 @@ English and 68 other languages and variants of WordPress, from Albanian to Yorù
 
 == Upgrade Notice ==
 
+= 1.0.1 =
+Imports no longer keep a file cut short, and their results reach ShowBits even after a hiccup on the way.
+
 = 1.0.0 =
 First release.
