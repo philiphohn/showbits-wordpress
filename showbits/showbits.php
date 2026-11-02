@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name:       ShowBits
- * Plugin URI:        https://showbits.ai
+ * Plugin URI:        https://showbits.ai/en/integrations#cms
  * Description:       Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send.
  * Version:           1.0.0
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            HBC Hohn Business Consulting UG
- * Author URI:        https://showbits.ai
+ * Author URI:        https://www.hbc-berlin.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       showbits

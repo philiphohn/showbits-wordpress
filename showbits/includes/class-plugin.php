@@ -32,8 +32,9 @@ final class Plugin {
 	}
 
 	/**
-	 * The plugin's own translations (languages/, German included). It is handed out as a ZIP, not from WordPress.org:
-	 * translate.wordpress.org has none of its strings, so WordPress would find no translation by itself.
+	 * The plugin's bundled translations (languages/, 68 locales). WordPress loads translations by itself only from
+	 * wp-content/languages/plugins (translate.wordpress.org); those still come first, the bundled ones fill in for
+	 * locales that have none there, and for copies of the plugin installed from a ZIP.
 	 */
 	public static function translations(): void {
 		// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- bundled translations, see above
