@@ -41,8 +41,8 @@ final class Push_Endpoint {
 	 * @param \WP_REST_Request $request The request.
 	 */
 	public static function receive( \WP_REST_Request $request ): \WP_REST_Response {
-		$pairing = static function ( string $id ): ?string {
-			$value = get_transient( Connection::PAIRING . $id );
+		$pairing = static function ( ?string $id ): ?string {
+			$value = get_transient( null === $id ? Connection::LATEST : Connection::PAIRING . $id );
 			return is_string( $value ) ? $value : null;
 		};
 		$result = self::handle( $request->get_body(), (string) $request->get_header( 'showbits_signature' ), Options::connection(), $pairing );
@@ -64,8 +64,8 @@ final class Push_Endpoint {
 	 * @param string                    $body       The raw body, as signed.
 	 * @param string                    $header     ShowBits-Signature.
 	 * @param array<string, mixed>|null $connection The stored connection.
-	 * @param callable|null             $pairing    The pairing value of a connect attempt by its id, while one runs
-	 *                                              (string|null).
+	 * @param callable|null             $pairing    The pairing value of a connect attempt by its id (null: the
+	 *                                              latest attempt's), while one runs (string|null).
 	 * @return array{status: int, reason?: string, queued?: bool, proof?: string}
 	 */
 	public static function handle( string $body, string $header, ?array $connection, ?callable $pairing = null ): array {
@@ -119,7 +119,7 @@ final class Push_Endpoint {
 
 	/**
 	 * ShowBits' check while connecting: the HMAC of its challenge under the pairing value it names, or nothing (no such
-	 * attempt here).
+	 * attempt here). A ShowBits that names none (before pairingId: an older OnPremise) gets the latest attempt's.
 	 *
 	 * @param array<string, mixed> $message The check.
 	 * @param callable|null        $pairing The pairing value of an attempt by its id.
@@ -127,15 +127,15 @@ final class Push_Endpoint {
 	 */
 	private static function verify( array $message, ?callable $pairing ): array {
 		$challenge = (string) ( $message['challenge'] ?? '' );
-		$id        = (string) ( $message['pairingId'] ?? '' );
-		if ( ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $challenge ) || ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $id ) ) {
+		$id        = isset( $message['pairingId'] ) ? (string) $message['pairingId'] : null;
+		if ( ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $challenge ) || ( null !== $id && ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $id ) ) ) {
 			return array(
 				'status' => 422,
 				'reason' => 'invalid',
 			);
 		}
 		$pairing = null === $pairing ? null : $pairing( $id );
-		if ( ! is_string( $pairing ) || ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $pairing ) || ! hash_equals( Connection::pairing_id( $pairing ), $id ) ) {
+		if ( ! is_string( $pairing ) || ! preg_match( '/^[A-Za-z0-9_-]{43}$/', $pairing ) || ( null !== $id && ! hash_equals( Connection::pairing_id( $pairing ), $id ) ) ) {
 			return array(
 				'status' => 404,
 				'reason' => 'notConnecting',

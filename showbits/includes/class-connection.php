@@ -26,6 +26,8 @@ final class Connection {
 	private const STATUS  = 'showbits_status';
 	/** Each attempt's pairing value, under the transient this and its id (pairing_id()) name. */
 	public const PAIRING  = 'showbits_pairing_';
+	/** The latest attempt's value, for a ShowBits that does not name the value in its check (before pairingId). */
+	public const LATEST   = 'showbits_pairing';
 	public const SITE_KEY = '/^sbsk_[A-Za-z0-9_-]{43}$/';
 
 	/** admin-post.php?action=showbits_paste (a form with a nonce): connects with a site key made in ShowBits. */
@@ -112,6 +114,7 @@ final class Connection {
 		$pairing = Pkce::random();
 		$waiting = self::PAIRING . self::pairing_id( $pairing );
 		set_transient( $waiting, $pairing, 10 * MINUTE_IN_SECONDS );
+		set_transient( self::LATEST, $pairing, 10 * MINUTE_IN_SECONDS );
 		$previous = Options::connection();
 		$answer   = Api_Client::connect(
 			$app_url,
@@ -126,6 +129,10 @@ final class Connection {
 			)
 		);
 		delete_transient( $waiting );
+		// Only while it is still this attempt's (another may have started meanwhile).
+		if ( get_transient( self::LATEST ) === $pairing ) {
+			delete_transient( self::LATEST );
+		}
 		if ( is_wp_error( $answer ) ) {
 			self::back( 'connect_' . Api_Client::reason( $answer ) );
 		}

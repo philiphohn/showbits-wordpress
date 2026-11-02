@@ -87,7 +87,7 @@ final class PushTest extends TestCase {
 		$pairing   = str_repeat( 'p', 43 );
 		$challenge = str_repeat( 'c', 43 );
 		$waiting   = array( Connection::pairing_id( $pairing ) => $pairing );
-		$lookup    = static fn( string $id ): ?string => $waiting[ $id ] ?? null;
+		$lookup    = static fn( ?string $id ): ?string => null === $id ? null : ( $waiting[ $id ] ?? null );
 		$check     = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => $challenge, 'pairingId' => Connection::pairing_id( $pairing ) ) );
 		$answer    = Push_Endpoint::handle( $check, '', null, $lookup );
 		$this->assertSame( 200, $answer['status'] );
@@ -100,7 +100,7 @@ final class PushTest extends TestCase {
 		$this->assertArrayNotHasKey( 'proof', Push_Endpoint::handle( $check, '', self::CONNECTION, null ) );
 		$other = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => $challenge, 'pairingId' => Connection::pairing_id( str_repeat( 'q', 43 ) ) ) );
 		$this->assertSame( 404, Push_Endpoint::handle( $other, '', null, $lookup )['status'] );
-		foreach ( array( array( 'challenge' => 'x' ), array( 'pairingId' => 'x' ), array( 'pairingId' => null ) ) as $odd ) {
+		foreach ( array( array( 'challenge' => 'x' ), array( 'pairingId' => 'x' ), array( 'pairingId' => 123 ) ) as $odd ) {
 			$malformed = (string) json_encode( array_replace( array( 'type' => 'site.verify', 'challenge' => $challenge, 'pairingId' => Connection::pairing_id( $pairing ) ), $odd ) );
 			$this->assertSame( 422, Push_Endpoint::handle( $malformed, '', null, $lookup )['status'], (string) json_encode( $odd ) );
 		}
@@ -114,13 +114,18 @@ final class PushTest extends TestCase {
 			Connection::pairing_id( $first )  => $first,
 			Connection::pairing_id( $second ) => $second,
 		);
-		$lookup  = static fn( string $id ): ?string => $waiting[ $id ] ?? null;
+		$lookup  = static fn( ?string $id ): ?string => null === $id ? null : ( $waiting[ $id ] ?? null );
 		foreach ( array( $first, $second ) as $pairing ) {
 			$check = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => str_repeat( 'c', 43 ), 'pairingId' => Connection::pairing_id( $pairing ) ) );
 			$this->assertSame( Push_Endpoint::proof( $pairing, str_repeat( 'c', 43 ) ), Push_Endpoint::handle( $check, '', null, $lookup )['proof'] );
 		}
+		// A ShowBits that names no value (before pairingId) gets the latest attempt's, as plugins up to 1.0.0 answered.
+		$latest = static fn( ?string $id ): ?string => null === $id ? $second : ( $waiting[ $id ] ?? null );
+		$check  = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => str_repeat( 'c', 43 ) ) );
+		$this->assertSame( Push_Endpoint::proof( $second, str_repeat( 'c', 43 ) ), Push_Endpoint::handle( $check, '', null, $latest )['proof'] );
+		$this->assertSame( 404, Push_Endpoint::handle( $check, '', null, static fn( ?string $id ): ?string => null )['status'] );
 		// A stored value under someone else's id proves nothing.
-		$swapped = static fn( string $id ): ?string => $second;
+		$swapped = static fn( ?string $id ): ?string => $second;
 		$check   = (string) json_encode( array( 'type' => 'site.verify', 'challenge' => str_repeat( 'c', 43 ), 'pairingId' => Connection::pairing_id( $first ) ) );
 		$this->assertSame( 404, Push_Endpoint::handle( $check, '', null, $swapped )['status'] );
 	}

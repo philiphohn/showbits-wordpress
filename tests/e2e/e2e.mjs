@@ -251,7 +251,7 @@ try {
   await page.waitForURL(/showbits=connected/);
   check(await page.locator("text=Verbunden mit dem Arbeitsbereich „Talk am Abend“").count() > 0, "connected with a pasted site key: the settings name the workspace");
   check(state.verifications.at(-1)?.verified === true && state.verifications.at(-1)?.status === 200, "ShowBits checked the site at its push address and it proved its pairing value");
-  check(state.pairings.length > 0 && !wpMaybe("transient", "get", `showbits_pairing_${pairingIdOf(state.pairings.at(-1))}`), "the pairing value is gone after connecting");
+  check(state.pairings.length > 0 && !wpMaybe("transient", "get", `showbits_pairing_${pairingIdOf(state.pairings.at(-1))}`) && !wpMaybe("transient", "get", "showbits_pairing"), "the pairing value is gone after connecting");
   check((await page.locator("text=SHOWBITS_ENCRYPTION_KEY").count()) === 0 && wp("eval", "echo ShowBits\\WordPress\\Crypto::key_in_config() ? 'config' : 'database';") === "config", "with salts of its own in wp-config.php the settings page warns of nothing");
   const stored = wp("option", "get", "showbits_connection", "--format=json");
   check(!stored.includes(state.connection.siteKey) && !stored.includes(state.connection.secret), "the site's key and push secret are stored sealed, not in clear");
