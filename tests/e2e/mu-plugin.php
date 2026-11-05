@@ -37,14 +37,14 @@ add_action(
 	}
 );
 
-// wp showbits-e2e-translations: how WordPress itself reads each translation the plugin brings, from the PHP file
-// (.l10n.php, what WordPress 6.5+ prefers) and from the MO file: entries, language, plural forms, and the texts the
-// browser checks look for.
+// wp showbits-e2e-translations: how WordPress itself reads each of the plugin's translations where language packs land
+// (run.sh mounts languages/ there), from the PHP file (.l10n.php, what WordPress 6.5+ prefers) and from the MO file:
+// entries, language, plural forms, and the texts the browser checks look for.
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	WP_CLI::add_command(
 		'showbits-e2e-translations',
 		static function (): void {
-			$dir     = WP_PLUGIN_DIR . '/showbits/languages';
+			$dir     = WP_LANG_DIR . '/plugins';
 			$strings = preg_match_all( '/^msgid "(?!")/m', (string) file_get_contents( $dir . '/showbits.pot' ) );
 			$report  = array();
 			foreach ( glob( $dir . '/showbits-*.po' ) as $po ) {

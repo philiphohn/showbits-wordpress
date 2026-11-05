@@ -19,6 +19,6 @@ composer check
 mkdir -p dist
 zip_file="dist/showbits-${version}.zip"
 rm -f "$zip_file"
-# Only the plugin: no tests, no tools; the .po stays next to its compiled .l10n.php for translators.
+# Only the plugin: no tests, no tools, no translations (language packs from translate.wordpress.org bring them).
 zip -qr -X "$zip_file" showbits -x '*.DS_Store'
 echo "$zip_file ($(du -h "$zip_file" | cut -f1))"

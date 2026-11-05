@@ -4,7 +4,7 @@ Tags: video, media library, clips, podcast, editorial
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,6 @@ Import released clips and quote cards from your ShowBits workspace into the Word
 * Nothing leaves ShowBits before the episode's embargo ends, and only released clips at all: ShowBits checks this for every file.
 * Imported files are ordinary WordPress attachments. They stay when a clip changes in ShowBits; importing a new version adds a new attachment, so posts that show the old one do not break.
 * Everyone who may upload media can use the library; people who manage the site connect it.
-* Translated into 68 languages and variants of WordPress, including right-to-left languages.
 
 = Connecting =
 
@@ -102,9 +101,12 @@ It ends the connection in ShowBits (if ShowBits can be reached) and removes its 
 
 = In which languages is the plugin? =
 
-English and 68 other languages and variants of WordPress, from Albanian to Yorùbá, including formal and informal German and Dutch, and European Portuguese in both spellings. The translations come with the plugin: WordPress shows it in the language of your profile, and imported files get their titles and alternative texts in the site's language. They were machine-translated and are not yet reviewed by native speakers; corrections are welcome on translate.wordpress.org.
+English, and the languages translated on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/showbits/): WordPress installs the translation for the language of your profile by itself and keeps it up to date, and imported files get their titles and alternative texts in the site's language. Right-to-left languages are laid out right to left. Translations are welcome there.
 
 == Changelog ==
+
+= 1.0.2 =
+* Translations come from translate.wordpress.org as language packs; the plugin no longer brings its own.
 
 = 1.0.1 =
 * A download cut short (the site's size limit, a connection that broke off) fails instead of importing a broken file.
@@ -120,6 +122,9 @@ English and 68 other languages and variants of WordPress, from Albanian to Yorù
 * Translations into 68 languages and variants.
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+Translations now come from translate.wordpress.org; until your language is translated there, the plugin is in English.
 
 = 1.0.1 =
 Imports no longer keep a file cut short, and their results reach ShowBits even after a hiccup on the way.

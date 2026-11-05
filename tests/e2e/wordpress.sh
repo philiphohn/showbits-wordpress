@@ -35,8 +35,8 @@ wordpress_up() {
   done
   bash tests/e2e/wp.sh core install --url="http://$HOST:$WP_PORT" --title="Blog E2E" --admin_user=admin --admin_password=e2e-password \
     --admin_email=e2e@example.com --skip-email >/dev/null
-  # Pretty permalinks (the image writes WordPress' .htaccess); German for the admin (the plugin brings its own
-  # translation; WordPress' own language pack is not installed, so the site language cannot be German).
+  # Pretty permalinks (the image writes WordPress' .htaccess); German for the admin (run.sh mounts the plugin's
+  # translations as language packs; WordPress' own language pack is not installed, so the site language cannot be German).
   bash tests/e2e/wp.sh rewrite structure '/%postname%/' >/dev/null
   bash tests/e2e/wp.sh user meta update admin locale de_DE >/dev/null
 }

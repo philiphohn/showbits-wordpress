@@ -3,8 +3,12 @@
  * The plugin's translations (composer i18n): collects every string of the text domain from the PHP sources and the
  * plugin header into languages/showbits.pot, brings every showbits-<locale>.po next to it up to date (new strings
  * empty, gone ones out, the order and the translators' notes of the .pot), checks each translation, and compiles each
- * .po into the files WordPress loads: showbits-<locale>.l10n.php (WordPress 6.5+, preferred) and showbits-<locale>.mo
- * (what WordPress reads when a site sets translation_file_format to mo, and what gettext tools read).
+ * .po into the files a language pack brings: showbits-<locale>.l10n.php (WordPress 6.5+, preferred) and
+ * showbits-<locale>.mo (what WordPress reads when a site sets translation_file_format to mo, and what gettext tools read).
+ *
+ * languages/ is not part of the plugin: the WordPress.org directory delivers translations as language packs from
+ * translate.wordpress.org, and the .po files here are what gets imported there. The real-WordPress run
+ * (tests/e2e/run.sh) puts the compiled files where language packs land, wp-content/languages/plugins.
  *
  * Fails when a .po misses a translation, marks one fuzzy, or breaks one: placeholders, the brand names, addresses and
  * codes, HTML, menu arrows, whitespace, headers (Language, UTF-8, the locale's plural forms of translate.wordpress.org).
@@ -67,7 +71,7 @@ const VERBATIM = '~https?://(?:[A-Za-z0-9.\-/]*[A-Za-z0-9/])?|(?<![A-Za-z0-9.])/
 const PLACEHOLDER = '/%(?:[0-9]+\$)?[-+ 0#]*(?:\'.)?[0-9]*(?:\.[0-9]+)?[bcdeEfFgGosuxX]/';
 
 $plugin    = dirname( __DIR__ ) . '/showbits';
-$languages = $plugin . '/languages';
+$languages = dirname( __DIR__ ) . '/languages';
 $check     = in_array( '--check', $argv, true );
 $lint      = in_array( '--lint', $argv, true ) ? array_values( array_filter( array_slice( $argv, 1 ), static fn( string $arg ): bool => ! str_starts_with( $arg, '--' ) ) ) : array();
 if ( in_array( '--lint', $argv, true ) && ! $lint ) {

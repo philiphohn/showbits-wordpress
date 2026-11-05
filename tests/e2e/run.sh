@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # The plugin in a real WordPress (tests/e2e/wordpress.sh) against a stand-in ShowBits (tests/e2e/e2e.mjs): activate,
 # connect with PKCE, the library, imports with poster and alternative text, a signed push imported by WP-Cron and
-# reported, the translations as WordPress reads them and laid out (right to left, long texts), disconnect. Needs Docker,
+# reported, the translations as WordPress reads them from language packs and laid out (right to left, long texts), disconnect. Needs Docker,
 # openssl, ffmpeg and Node with Playwright.
 #
 #   bash tests/e2e/run.sh                 (from wordpress/)
@@ -24,7 +24,9 @@ openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes -days 1 -su
 ffmpeg -nostdin -v error -f lavfi -i color=c=0x002F2F:s=360x640:d=1 -c:v libx264 -pix_fmt yuv420p -movflags +faststart "$WORK/clip.mp4"
 ffmpeg -nostdin -v error -f lavfi -i color=c=0xBFCEDD:s=720x1280:d=1 -frames:v 1 "$WORK/picture.jpg"
 
-wordpress_up -e SHOWBITS_E2E_ORIGIN="$SHOWBITS_E2E_ORIGIN" -v "$PWD/tests/e2e/mu-plugin.php:/var/www/html/wp-content/mu-plugins/showbits-e2e.php:ro"
+# The translations where language packs from translate.wordpress.org land (the plugin brings none).
+wordpress_up -e SHOWBITS_E2E_ORIGIN="$SHOWBITS_E2E_ORIGIN" -v "$PWD/tests/e2e/mu-plugin.php:/var/www/html/wp-content/mu-plugins/showbits-e2e.php:ro" \
+  -v "$PWD/languages:/var/www/html/wp-content/languages/plugins:ro"
 bash tests/e2e/wp.sh plugin activate showbits >/dev/null
 
 mkdir -p tests/e2e/shots

@@ -14,7 +14,6 @@ final class Plugin {
 	public const CRON = 'showbits_process_imports';
 
 	public static function boot(): void {
-		add_action( 'init', array( self::class, 'translations' ) );
 		Imports::maybe_upgrade();
 
 		add_action( 'rest_api_init', array( Push_Endpoint::class, 'register' ) );
@@ -29,16 +28,6 @@ final class Plugin {
 		add_action( 'admin_post_showbits_disconnect', array( Connection::class, 'disconnect' ) );
 		add_action( 'admin_post_showbits_settings', array( Settings_Page::class, 'save' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( SHOWBITS_FILE ), array( Settings_Page::class, 'action_links' ) );
-	}
-
-	/**
-	 * The plugin's bundled translations (languages/, 68 locales). WordPress loads translations by itself only from
-	 * wp-content/languages/plugins (translate.wordpress.org); those still come first, the bundled ones fill in for
-	 * locales that have none there, and for copies of the plugin installed from a ZIP.
-	 */
-	public static function translations(): void {
-		// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- bundled translations, see above
-		load_plugin_textdomain( 'showbits', false, dirname( plugin_basename( SHOWBITS_FILE ) ) . '/languages' );
 	}
 
 	public static function activate(): void {

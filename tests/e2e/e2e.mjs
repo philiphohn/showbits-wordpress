@@ -5,7 +5,7 @@
 // links only with that ticket (files from a "bucket" that must never see the key), reports and the disconnect. A
 // browser signs into WordPress, connects both ways, imports from the library; then ShowBits pushes, WP-Cron imports,
 // and the plugin reports back (a report lost on the way goes again); a download cut short fails; a clip another
-// process imports waits its turn. Last, WordPress reads every translation the plugin brings, and the settings and the
+// process imports waits its turn. Last, WordPress reads every translation as a language pack brings it, and the settings and the
 // library are looked at in right-to-left and long-text languages.
 
 import { createHash, createHmac, randomBytes } from "node:crypto";
@@ -357,7 +357,7 @@ try {
   check(state.results.find((r) => r.push === busyId)?.state === "imported" && JSON.parse(wp("post", "list", "--post_type=attachment", "--meta_key=_showbits_clip_id", `--meta_value=${BUSY}`, "--format=json")).length === 2, "once the lock is gone it is imported once (video and poster)");
   check(!wpMaybe("option", "get", lock), "the import gave its lock back");
 
-  // Translations: WordPress reads every catalog the plugin brings, as .l10n.php and as .mo, alike; right-to-left
+  // Translations: WordPress reads every catalog as a language pack brings it, as .l10n.php and as .mo, alike; right-to-left
   // locales lay out right to left, and long texts keep the settings and the library in shape, wide and narrow.
   const catalogs = JSON.parse(wp("showbits-e2e-translations"));
   const locales = Object.keys(catalogs.locales);
