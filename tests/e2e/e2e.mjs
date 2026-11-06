@@ -29,6 +29,8 @@ const PUSHED = "5b0b0000-0000-4000-8006-000000000006";
 const LARGE = "5b0b0000-0000-4000-8006-000000000007";
 const BUSY = "5b0b0000-0000-4000-8006-000000000008";
 const SITE_ID = "7a7a0000-0000-4000-8000-000000000001";
+// The version the plugin should name when it connects: its header (run.sh starts from wordpress/).
+const VERSION = /^ \* Version:\s*(\S+)$/m.exec(readFileSync("showbits/showbits.php", "utf8"))[1];
 
 const failures = [];
 const check = (ok, what) => {
@@ -143,7 +145,7 @@ const server = https.createServer({ cert: readFileSync(E2E_CERT), key: readFileS
     state.keys.delete(body.key);
     if (!key) return refuse(res, 400, "key");
     if (key.challenge && createHash("sha256").update(body.verifier ?? "").digest("base64url") !== key.challenge) return refuse(res, 400, "key");
-    check(body.site === WP && body.push === PUSH_URL && body.version === "1.0.1" && /^[A-Za-z0-9_-]{43}$/.test(body.pairing ?? ""), "connecting names the site, its push address, the plugin's version and a pairing value");
+    check(body.site === WP && body.push === PUSH_URL && body.version === VERSION && /^[A-Za-z0-9_-]{43}$/.test(body.pairing ?? ""), "connecting names the site, its push address, the plugin's version and a pairing value");
     state.pairings.push(body.pairing);
     if (new URL(body.site).host !== key.host) return refuse(res, 400, "otherSite");
     // The site proves it is the plugin that asked: the HMAC of a fresh challenge under the pairing value it names.
