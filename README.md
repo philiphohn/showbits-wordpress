@@ -2,14 +2,14 @@
 
 Das WordPress-Plugin von ShowBits: freigegebene Clips und Zitatkarten eines Workspace in der Mediathek – in WordPress ausgewählt oder von Admins und Ownern aus ShowBits geschickt. Plan, Sicherheitsmodell und Entscheidungen: [`docs/wordpress.md`](../docs/wordpress.md) (D-Int-15).
 
-Ein eigenes Teil-Repository des App-Repositorys: eigene Tests, eigener CI-Job (`wordpress`), eigenes ZIP. Öffentlich als Kopie unter [github.com/philiphohn/showbits-wordpress](https://github.com/philiphohn/showbits-wordpress) (D-Int-21); dort fehlen die Dokumente des App-Repositorys, auf die dieses README verweist (`docs/wordpress.md`). Gearbeitet wird im App-Repository; nach jedem Merge mit Änderungen in `wordpress/` nach `main` zieht dort `npm run wordpress:public-copy` die Kopie nach (`-- --dry` zeigt nur, was hinausginge). Das bleibt ein Fast-Forward, solange solche Änderungen mit einem Merge-Commit nach `main` kommen (nicht Squash, nicht Rebase): Sonst bekommen die Commits neue Hashes, und das Skript bricht ab. Nie mit `--force`.
+Ein eigenes Teil-Repository des App-Repositorys: eigene Tests, eigener CI-Job (`wordpress`), eigenes ZIP. Öffentlich als Kopie unter [github.com/philiphohn/showbits-wordpress](https://github.com/philiphohn/showbits-wordpress) (D-Int-22); dort fehlen die Dokumente des App-Repositorys, auf die dieses README verweist (`docs/wordpress.md`). Gearbeitet wird im App-Repository; nach jedem Merge mit Änderungen in `wordpress/` nach `main` zieht dort `npm run wordpress:public-copy` die Kopie nach (`-- --dry` zeigt nur, was hinausginge). Das bleibt ein Fast-Forward, solange solche Änderungen mit einem Merge-Commit nach `main` kommen (nicht Squash, nicht Rebase): Sonst bekommen die Commits neue Hashes, und das Skript bricht ab. Nie mit `--force`.
 
 ## Aufbau
 
 | Pfad | Inhalt |
 |---|---|
 | `showbits/` | das Plugin, so wie es ins ZIP geht (`showbits.php`, `includes/`, `assets/`, `uninstall.php`, `readme.txt`), ohne Übersetzungen |
-| `languages/` | die Übersetzungen, nicht im Plugin (D-Int-20): je Locale `showbits-<locale>.po`, daraus `.l10n.php` und `.mo`, Vorlage `showbits.pot`; der Bestand für translate.wordpress.org, im echten WordPress dort, wo Sprachpakete landen |
+| `languages/` | die Übersetzungen, nicht im Plugin (D-Int-21): je Locale `showbits-<locale>.po`, daraus `.l10n.php` und `.mo`, Vorlage `showbits.pot`; der Bestand für translate.wordpress.org, im echten WordPress dort, wo Sprachpakete landen |
 | `tests/` | PHPUnit gegen schlanke WordPress-Stubs (`tests/bootstrap.php`): Signatur, PKCE, Verschlüsselung und eigene Salts, Adressen, API-Aufrufe, Push-Endpunkt mit Paarungswerten je Versuch, Import-Texte, ganze Downloads |
 | `bin/i18n.php` | sammelt die Texte (auch die Beschreibung im Kopf von `showbits.php`) in `languages/showbits.pot`, bringt jede `showbits-<locale>.po` auf diesen Stand und macht daraus `*.l10n.php` (WordPress 6.5+) und `*.mo`; prüft jede Übersetzung (Platzhalter, Namen, Adressen, Pfeile, Kopf mit den Pluralformen von translate.wordpress.org) und scheitert, solange etwas fehlt oder nicht stimmt |
 | `bin/build.sh` | prüft (Versionen, Syntax, Übersetzungen, Tests) und schreibt `dist/showbits-<version>.zip` |
@@ -36,7 +36,7 @@ composer build
 
 `composer check` = `php -l` über alle Dateien, Übersetzungen aktuell, vollständig und heil, PHPUnit (10.5, für PHP 8.1 gesperrt).
 
-**Übersetzungen:** 68 Sprachen und Varianten mit den Locale-Codes von WordPress, je eine `languages/showbits-<locale>.po` ([`docs/wordpress.md`](../docs/wordpress.md) §5.4: Anrede, Menüpfade, Schreibweisen). Das Plugin bringt sie nicht mit: WordPress holt Übersetzungen als Sprachpakete von translate.wordpress.org, und diese Dateien sind der Bestand, der dort eingespielt wird (D-Int-20). Neue Texte: `__( '…', 'showbits' )` im Code, `composer i18n` (der neue Text steht dann leer in jeder `.po`), in allen `.po` übersetzen, noch einmal `composer i18n`. Eine einzelne Datei prüfen, ohne etwas zu schreiben:
+**Übersetzungen:** 68 Sprachen und Varianten mit den Locale-Codes von WordPress, je eine `languages/showbits-<locale>.po` ([`docs/wordpress.md`](../docs/wordpress.md) §5.4: Anrede, Menüpfade, Schreibweisen). Das Plugin bringt sie nicht mit: WordPress holt Übersetzungen als Sprachpakete von translate.wordpress.org, und diese Dateien sind der Bestand, der dort eingespielt wird (D-Int-21). Neue Texte: `__( '…', 'showbits' )` im Code, `composer i18n` (der neue Text steht dann leer in jeder `.po`), in allen `.po` übersetzen, noch einmal `composer i18n`. Eine einzelne Datei prüfen, ohne etwas zu schreiben:
 
 ```bash
 php bin/i18n.php --lint languages/showbits-fr_FR.po
