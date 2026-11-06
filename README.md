@@ -2,11 +2,17 @@
 
 Das WordPress-Plugin von ShowBits: freigegebene Clips und Zitatkarten eines Workspace in der Mediathek – in WordPress ausgewählt oder von Admins und Ownern aus ShowBits geschickt. Plan, Sicherheitsmodell und Entscheidungen: [`docs/wordpress.md`](../docs/wordpress.md) (D-Int-15).
 
-Ein eigenes Teil-Repository dieses Repos: eigene Tests, eigener CI-Job (`wordpress`), eigenes ZIP. Abspalten, wenn es ein eigenes Repository werden soll:
+Ein eigenes Teil-Repository des App-Repositorys: eigene Tests, eigener CI-Job (`wordpress`), eigenes ZIP. Öffentlich als Kopie unter [github.com/philiphohn/showbits-wordpress](https://github.com/philiphohn/showbits-wordpress) (D-Int-21); dort fehlen die Dokumente des App-Repositorys, auf die dieses README verweist (`docs/wordpress.md`). Gearbeitet wird im App-Repository; nach jedem Merge mit Änderungen in `wordpress/` dort auf `main`:
 
 ```bash
 git subtree split --prefix=wordpress -b wordpress-plugin
 ```
+
+```bash
+git push git@github.com:philiphohn/showbits-wordpress.git wordpress-plugin:main
+```
+
+Der Push ist immer ein Fast-Forward, solange Änderungen an `wordpress/` mit einem Merge-Commit nach `main` kommen (nicht Squash, nicht Rebase): Sonst bekommen die Commits neue Hashes und die Kopie passt nicht mehr. Nie mit `--force`.
 
 ## Aufbau
 
@@ -17,6 +23,8 @@ git subtree split --prefix=wordpress -b wordpress-plugin
 | `tests/` | PHPUnit gegen schlanke WordPress-Stubs (`tests/bootstrap.php`): Signatur, PKCE, Verschlüsselung und eigene Salts, Adressen, API-Aufrufe, Push-Endpunkt mit Paarungswerten je Versuch, Import-Texte, ganze Downloads |
 | `bin/i18n.php` | sammelt die Texte (auch die Beschreibung im Kopf von `showbits.php`) in `languages/showbits.pot`, bringt jede `showbits-<locale>.po` auf diesen Stand und macht daraus `*.l10n.php` (WordPress 6.5+) und `*.mo`; prüft jede Übersetzung (Platzhalter, Namen, Adressen, Pfeile, Kopf mit den Pluralformen von translate.wordpress.org) und scheitert, solange etwas fehlt oder nicht stimmt |
 | `bin/build.sh` | prüft (Versionen, Syntax, Übersetzungen, Tests) und schreibt `dist/showbits-<version>.zip` |
+| `.wordpress-org/` | Bilder für die Seite im WordPress-Verzeichnis, nicht im Plugin: `icon-128x128.png` und `icon-256x256.png` (aus `public/icon-512.png` der Website); nach der Freigabe ins SVN des Plugins unter `assets/`, Banner und Screenshots kommen dazu |
+| `LICENSE` | GPL-2.0, der Text zur Lizenz im Kopf jeder Datei |
 
 ## Befehle
 
