@@ -2,17 +2,7 @@
 
 Das WordPress-Plugin von ShowBits: freigegebene Clips und Zitatkarten eines Workspace in der Mediathek – in WordPress ausgewählt oder von Admins und Ownern aus ShowBits geschickt. Plan, Sicherheitsmodell und Entscheidungen: [`docs/wordpress.md`](../docs/wordpress.md) (D-Int-15).
 
-Ein eigenes Teil-Repository des App-Repositorys: eigene Tests, eigener CI-Job (`wordpress`), eigenes ZIP. Öffentlich als Kopie unter [github.com/philiphohn/showbits-wordpress](https://github.com/philiphohn/showbits-wordpress) (D-Int-21); dort fehlen die Dokumente des App-Repositorys, auf die dieses README verweist (`docs/wordpress.md`). Gearbeitet wird im App-Repository; nach jedem Merge mit Änderungen in `wordpress/` dort auf `main`:
-
-```bash
-git subtree split --prefix=wordpress -b wordpress-plugin
-```
-
-```bash
-git push git@github.com:philiphohn/showbits-wordpress.git wordpress-plugin:main
-```
-
-Der Push ist immer ein Fast-Forward, solange Änderungen an `wordpress/` mit einem Merge-Commit nach `main` kommen (nicht Squash, nicht Rebase): Sonst bekommen die Commits neue Hashes und die Kopie passt nicht mehr. Nie mit `--force`.
+Ein eigenes Teil-Repository des App-Repositorys: eigene Tests, eigener CI-Job (`wordpress`), eigenes ZIP. Öffentlich als Kopie unter [github.com/philiphohn/showbits-wordpress](https://github.com/philiphohn/showbits-wordpress) (D-Int-21); dort fehlen die Dokumente des App-Repositorys, auf die dieses README verweist (`docs/wordpress.md`). Gearbeitet wird im App-Repository; nach jedem Merge mit Änderungen in `wordpress/` nach `main` zieht dort `npm run wordpress:public-copy` die Kopie nach (`-- --dry` zeigt nur, was hinausginge). Das bleibt ein Fast-Forward, solange solche Änderungen mit einem Merge-Commit nach `main` kommen (nicht Squash, nicht Rebase): Sonst bekommen die Commits neue Hashes, und das Skript bricht ab. Nie mit `--force`.
 
 ## Aufbau
 
