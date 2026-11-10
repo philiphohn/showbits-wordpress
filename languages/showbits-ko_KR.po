@@ -182,6 +182,11 @@ msgstr "편집"
 msgid "Format"
 msgstr "비율"
 
+#. translators: %s: a quote card's format, such as 9:16 or "9:16 (stories)" (its animated video with the speaker's voice)
+#: showbits/includes/class-library-page.php showbits/includes/class-settings-page.php
+msgid "Animated %s"
+msgstr "애니메이션 %s"
+
 #: showbits/includes/class-library-page.php
 msgid "Video"
 msgstr "비디오"

@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Datņu bibliotēkā ir vecāka versija',
     'Edit' => 'Labot',
     'Format' => 'Formāts',
+    'Animated %s' => 'Animēta %s',
     'Video' => 'Video',
     'Quote card' => 'Citāta kartīte',
     'Meme' => 'Mēms',

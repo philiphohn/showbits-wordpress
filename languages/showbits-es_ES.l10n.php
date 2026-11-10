@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Hay una versión anterior en la biblioteca de medios',
     'Edit' => 'Editar',
     'Format' => 'Formato',
+    'Animated %s' => 'Animada %s',
     'Video' => 'Vídeo',
     'Quote card' => 'Tarjeta con cita',
     'Meme' => 'Meme',

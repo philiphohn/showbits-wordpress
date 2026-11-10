@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Mae fersiwn hŷn yn y llyfrgell cyfryngau',
     'Edit' => 'Golygu',
     'Format' => 'Fformat',
+    'Animated %s' => 'Animeiddiedig %s',
     'Video' => 'Fideo',
     'Quote card' => 'Cerdyn dyfyniad',
     'Meme' => 'Meme',

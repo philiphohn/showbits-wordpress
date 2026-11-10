@@ -3,7 +3,7 @@
  * Plugin Name:       ShowBits
  * Plugin URI:        https://showbits.ai/en/integrations#cms
  * Description:       Released clips and quote cards from ShowBits in the media library: pick them in WordPress, or receive what your ShowBits admins send.
- * Version:           1.0.2
+ * Version:           1.1.0
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            HBC Hohn Business Consulting UG
@@ -23,7 +23,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const SHOWBITS_VERSION = '1.0.2';
+const SHOWBITS_VERSION = '1.1.0';
 const SHOWBITS_FILE    = __FILE__;
 
 spl_autoload_register(

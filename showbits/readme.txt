@@ -4,7 +4,7 @@ Tags: video, media library, clips, podcast, editorial
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,7 +19,7 @@ Import released clips and quote cards from your ShowBits workspace into the Word
 = What it does =
 
 * **Media → ShowBits** lists the released clips and quote cards of the connected workspace, newest first, with search and a filter. Pick some and import them.
-* A clip arrives as an MP4 video, with its thumbnail as the poster image. A quote card arrives as a picture in 4:5, 1:1 or 9:16, with the quote as alternative text.
+* A clip arrives as an MP4 video, with its thumbnail as the poster image. A quote card arrives as a picture in 4:5, 1:1 or 9:16, with the quote as alternative text, or, where your editors animated it in ShowBits, as an MP4 video in 4:5 or 9:16 with the speaker's voice and the card's picture as the poster image.
 * Admins and owners in ShowBits can also **send a released clip to the site**; it lands in the media library by itself.
 * Nothing leaves ShowBits before the episode's embargo ends, and only released clips at all: ShowBits checks this for every file.
 * Imported files are ordinary WordPress attachments. They stay when a clip changes in ShowBits; importing a new version adds a new attachment, so posts that show the old one do not break.
@@ -105,6 +105,9 @@ English, and the languages translated on [translate.wordpress.org](https://trans
 
 == Changelog ==
 
+= 1.1.0 =
+* Animated quote cards: a card your editors animated in ShowBits can be imported as an MP4 video in 4:5 or 9:16, with the speaker's voice and the card's picture as the poster image. Pick "Animated" as a card's format in the library, or as the format pushes bring under Settings → ShowBits (a card without an animation then comes as the picture of that ratio).
+
 = 1.0.2 =
 * Translations come from translate.wordpress.org as language packs; the plugin no longer brings its own.
 
@@ -122,6 +125,9 @@ English, and the languages translated on [translate.wordpress.org](https://trans
 * Translations into 68 languages and variants.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Quote cards your editors animated in ShowBits can now be imported as videos with the speaker's voice.
 
 = 1.0.2 =
 Translations now come from translate.wordpress.org; until your language is translated there, the plugin is in English.

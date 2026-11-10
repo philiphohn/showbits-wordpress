@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'V knihovně médií je starší verze',
     'Edit' => 'Upravit',
     'Format' => 'Formát',
+    'Animated %s' => 'Animovaná %s',
     'Video' => 'Video',
     'Quote card' => 'Obrázek s citátem',
     'Meme' => 'Mem',

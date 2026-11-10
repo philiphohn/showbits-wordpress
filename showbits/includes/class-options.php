@@ -19,7 +19,8 @@ final class Options {
 
 	public const DEFAULT_APP_URL = 'https://app.showbits.ai';
 	/** A quote card's pictures; 4:5 is what feeds and most article layouts take. */
-	public const CARD_FORMATS = array( '4x5', '1x1', '9x16' );
+	/** A quote card's format for pushes: a picture, or its animation where the card has one (else the picture of that ratio). */
+	public const CARD_FORMATS = array( '4x5', '1x1', '9x16', 'motion-4x5', 'motion-9x16' );
 
 	/**
 	 * The settings, with their defaults.

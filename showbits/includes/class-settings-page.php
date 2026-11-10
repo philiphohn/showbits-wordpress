@@ -110,6 +110,10 @@ final class Settings_Page {
 			'1x1'  => __( '1:1 (square)', 'showbits' ),
 			'9x16' => __( '9:16 (stories)', 'showbits' ),
 		);
+		/* translators: %s: a quote card's format, such as 9:16 or "9:16 (stories)" (its animated video with the speaker's voice) */
+		$animated               = __( 'Animated %s', 'showbits' );
+		$labels['motion-4x5']  = sprintf( $animated, $labels['4x5'] );
+		$labels['motion-9x16'] = sprintf( $animated, $labels['9x16'] );
 		foreach ( Options::CARD_FORMATS as $format ) {
 			echo '<label><input type="radio" name="card_format" value="' . esc_attr( $format ) . '"' . checked( $settings['card_format'], $format, false ) . '> ' . esc_html( $labels[ $format ] ) . '</label><br>';
 		}

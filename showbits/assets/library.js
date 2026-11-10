@@ -17,6 +17,10 @@
 	const apiFetch = window.wp.apiFetch;
 	const s = config.strings;
 	const FORMATS = [ '4x5', '1x1', '9x16' ];
+	/** An animated quote card's videos, offered where the card has them. */
+	const MOTION = [ 'motion-4x5', 'motion-9x16' ];
+	const isMotion = ( value ) => MOTION.includes( value );
+	const has = ( item, variant ) => item.files.some( ( file ) => file.variant === variant );
 
 	const state = { kind: '', q: '', items: [], cursor: null, loading: false, busy: false, selected: new Set(), formats: new Map(), results: new Map(), error: '' };
 
@@ -55,8 +59,16 @@
 		const total = Math.round( value );
 		return total >= 60 ? `${ Math.floor( total / 60 ) }:${ String( total % 60 ).padStart( 2, '0' ) }` : `0:${ String( total ).padStart( 2, '0' ) }`;
 	};
-	const variantOf = ( item ) => ( item.kind === 'quote' ? state.formats.get( item.id ) || config.cardFormat : 'video' );
-	const available = ( item ) => ! item.embargoUntil && item.files.some( ( file ) => file.variant === variantOf( item ) );
+	/** A quote card's format: picked here, else the site's default (its picture while the card has no animation). */
+	const variantOf = ( item ) => {
+		if ( item.kind !== 'quote' ) {
+			return 'video';
+		}
+		const picked = state.formats.get( item.id ) || config.cardFormat;
+		return isMotion( picked ) && ! has( item, picked ) ? picked.slice( 7 ) : picked;
+	};
+	const available = ( item ) => ! item.embargoUntil && has( item, variantOf( item ) );
+	const formatLabel = ( value ) => ( isMotion( value ) ? format( s.animated, value.slice( 7 ).replace( 'x', ':' ) ) : value.replace( 'x', ':' ) );
 
 	async function load( more ) {
 		if ( state.loading ) {
@@ -205,7 +217,7 @@
 						state.formats.set( item.id, event.target.value );
 						render();
 					} },
-					FORMATS.map( ( value ) => el( 'option', { value, selected: value === variant, text: value.replace( 'x', ':' ) } ) )
+					FORMATS.concat( MOTION.filter( ( value ) => has( item, value ) ) ).map( ( value ) => el( 'option', { value, selected: value === variant, text: formatLabel( value ) } ) )
 				),
 			] )
 			: null;

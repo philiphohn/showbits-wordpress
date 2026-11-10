@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => '미디어 라이브러리에 이전 버전이 있음',
     'Edit' => '편집',
     'Format' => '비율',
+    'Animated %s' => '애니메이션 %s',
     'Video' => '비디오',
     'Quote card' => '인용 카드',
     'Meme' => '밈',

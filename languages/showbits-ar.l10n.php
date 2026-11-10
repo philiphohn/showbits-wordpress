@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'توجد نسخة أقدم في مكتبة الوسائط',
     'Edit' => 'تحرير',
     'Format' => 'التنسيق',
+    'Animated %s' => 'متحركة %s',
     'Video' => 'فيديو',
     'Quote card' => 'بطاقة اقتباس',
     'Meme' => 'ميم',

@@ -14,13 +14,18 @@ defined( 'ABSPATH' ) || exit;
  * ticket for the clip's files, whether it was picked here (request) or sent from ShowBits: the files go only to this
  * site. Asks ShowBits for each file's link with the ticket (refused before the embargo ends), downloads it without the
  * key, and sideloads it: a clip's video with its thumbnail as the video's featured image (the poster in the video
- * block), a quote card's picture with the quote as alternative text. A clip, variant and version already in the
+ * block), a quote card's picture with the quote as alternative text, an animated quote card's video (from 1.1.0) with
+ * the card's picture of its ratio as the poster. A clip, variant and version already in the
  * library stay the one attachment; a new cut (a new version) becomes a new one. One process at a time imports a clip
  * (a lock): a push from ShowBits and an import picked here at the same moment do not make two attachments.
  */
 final class Importer {
-	public const CLIP_VARIANTS  = array( 'video', '16x9', '9x16' );
-	public const QUOTE_VARIANTS = array( '4x5', '9x16', '1x1' );
+	public const CLIP_VARIANTS   = array( 'video', '16x9', '9x16' );
+	public const QUOTE_VARIANTS  = array( '4x5', '9x16', '1x1' );
+	/** An animated quote card's videos, MP4 with the speaker's voice (ShowBits makes them on request per card). */
+	public const MOTION_VARIANTS = array( 'motion-9x16', 'motion-4x5' );
+	/** Everything a quote card may come as. */
+	public const CARD_VARIANTS = array( '4x5', '9x16', '1x1', 'motion-9x16', 'motion-4x5' );
 	/** No file ShowBits makes is near this; filterable for sites that know better (showbits_max_download_bytes). */
 	private const MAX_BYTES = 2 * GB_IN_BYTES;
 	/** A clip's lock held this long belongs to a request that died (two downloads of five minutes at most, and more). */
@@ -47,8 +52,8 @@ final class Importer {
 			return 'notFound' === Api_Client::reason( $item ) ? self::error( 'notReleased' ) : $item;
 		}
 		$quote   = 'quote' === ( $item['kind'] ?? '' );
-		$variant = $quote ? ( $variant ?? Options::settings()['card_format'] ) : 'video';
-		if ( ! in_array( $variant, $quote ? self::QUOTE_VARIANTS : array( 'video' ), true ) ) {
+		$variant = $quote ? ( $variant ?? self::card_default( $item ) ) : 'video';
+		if ( ! in_array( $variant, $quote ? self::CARD_VARIANTS : array( 'video' ), true ) ) {
 			return self::error( 'invalid' );
 		}
 		if ( ! empty( $item['embargoUntil'] ) ) {
@@ -257,7 +262,7 @@ final class Importer {
 		}
 		$quote   = 'quote' === ( $item['kind'] ?? '' );
 		$picked  = (string) ( $row['variant'] ?? '' );
-		$variant = $quote ? ( in_array( $picked, self::QUOTE_VARIANTS, true ) ? $picked : Options::settings()['card_format'] ) : 'video';
+		$variant = $quote ? ( in_array( $picked, self::CARD_VARIANTS, true ) ? $picked : self::card_default( $item ) ) : 'video';
 		if ( ! self::has_file( $item, $variant ) ) {
 			return self::error( 'noFile' );
 		}
@@ -267,8 +272,10 @@ final class Importer {
 		if ( is_wp_error( $id ) ) {
 			return $id;
 		}
-		if ( 'video' === $variant && Options::settings()['import_poster'] && ! has_post_thumbnail( $id ) ) {
-			$poster = '16x9' === ( $item['format'] ?? '' ) ? '16x9' : '9x16';
+		$motion = self::is_motion( $variant );
+		if ( ( 'video' === $variant || $motion ) && Options::settings()['import_poster'] && ! has_post_thumbnail( $id ) ) {
+			// A clip's thumbnail of its frame; an animated card's picture of its ratio (where the animation ends).
+			$poster = $motion ? substr( $variant, 7 ) : ( '16x9' === ( $item['format'] ?? '' ) ? '16x9' : '9x16' );
 			if ( self::has_file( $item, $poster ) ) {
 				$poster_id = self::existing( $clip_id, $poster, $version ) ?? self::fetch( $client, $item, $poster, $user_id, $push, $ticket );
 				// The video counts without its poster.
@@ -338,6 +345,22 @@ final class Importer {
 		$reason = Api_Client::reason( $error );
 		$known  = array( 'embargo', 'notReleased', 'noFile', 'download', 'media', 'invalid', 'unauthorized', 'unreachable', 'ticket', 'inactive', 'limit' );
 		return in_array( $reason, $known, true ) ? $reason : 'failed';
+	}
+
+	/** Whether a variant is an animated quote card's video. */
+	public static function is_motion( string $variant ): bool {
+		return in_array( $variant, self::MOTION_VARIANTS, true );
+	}
+
+	/**
+	 * A quote card's format when none was picked (a push from ShowBits): the site's setting, and for an animated
+	 * format the card's picture of that ratio while the card has no animation.
+	 *
+	 * @param array<string, mixed> $item The library's entry.
+	 */
+	public static function card_default( array $item ): string {
+		$format = Options::settings()['card_format'];
+		return self::is_motion( $format ) && ! self::has_file( $item, $format ) ? substr( $format, 7 ) : $format;
 	}
 
 	/**
@@ -525,7 +548,7 @@ final class Importer {
 		// it on the site.
 		$title  = sanitize_text_field( (string) ( $item['title'] ?? '' ) );
 		$source = trim( implode( ' · ', array_filter( array( sanitize_text_field( (string) ( $item['show']['name'] ?? '' ) ), sanitize_text_field( (string) ( $item['episode']['title'] ?? '' ) ) ) ) ) );
-		$poster = 'video' !== $variant && 'quote' !== ( $item['kind'] ?? '' );
+		$poster = 'video' !== $variant && ! self::is_motion( $variant ) && 'quote' !== ( $item['kind'] ?? '' );
 		return array(
 			/* translators: %s: the clip's title */
 			'post_title'   => $poster ? sprintf( __( '%s (thumbnail)', 'showbits' ), $title ) : $title,
@@ -555,13 +578,14 @@ final class Importer {
 	}
 
 	/**
-	 * A quote card's alternative text: what it says and who said it. null for videos and thumbnails.
+	 * A quote card's alternative text: what it says and who said it. null for videos (an animated card's too) and
+	 * thumbnails.
 	 *
 	 * @param array<string, mixed> $item    The library's entry.
 	 * @param string               $variant Which file.
 	 */
 	public static function alt_text( array $item, string $variant ): ?string {
-		if ( 'quote' !== ( $item['kind'] ?? '' ) || 'video' === $variant ) {
+		if ( 'quote' !== ( $item['kind'] ?? '' ) || 'video' === $variant || self::is_motion( $variant ) ) {
 			return null;
 		}
 		$text = sanitize_text_field( (string) ( $item['caption'] ?? '' ) );
@@ -574,11 +598,14 @@ final class Importer {
 		return sprintf( __( '“%1$s” – %2$s', 'showbits' ), $text, $name );
 	}
 
-	/** The file's name in the media library: the title as a slug, the format for pictures. */
+	/** The file's name in the media library: the title as a slug, the format for pictures and animated cards. */
 	public static function file_name( string $title, string $variant ): string {
 		$slug = sanitize_title( $title );
 		$slug = '' === $slug ? 'showbits-clip' : substr( $slug, 0, 80 );
-		return 'video' === $variant ? "{$slug}.mp4" : "{$slug}-{$variant}.jpg";
+		if ( 'video' === $variant ) {
+			return "{$slug}.mp4";
+		}
+		return self::is_motion( $variant ) ? $slug . '-' . substr( $variant, 7 ) . '.mp4' : "{$slug}-{$variant}.jpg";
 	}
 
 	/**

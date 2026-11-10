@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'نسخه‌ای قدیمی‌تر در کتابخانه رسانه است',
     'Edit' => 'ویرایش',
     'Format' => 'فرمت',
+    'Animated %s' => 'متحرک %s',
     'Video' => 'ویدیو',
     'Quote card' => 'کارت نقل‌قول',
     'Meme' => 'میم',

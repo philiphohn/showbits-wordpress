@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'メディアライブラリに旧バージョンがあります',
     'Edit' => '編集',
     'Format' => 'フォーマット',
+    'Animated %s' => 'アニメーション %s',
     'Video' => '動画',
     'Quote card' => '引用カード',
     'Meme' => 'ミーム',

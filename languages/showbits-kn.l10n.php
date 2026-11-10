@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'ಹಳೆಯ ಆವೃತ್ತಿ ಮಾಧ್ಯಮ ಲೈಬ್ರರಿಯಲ್ಲಿದೆ',
     'Edit' => 'ಸಂಪಾದಿಸಿ',
     'Format' => 'ಫಾರ್ಮ್ಯಾಟ್',
+    'Animated %s' => 'ಅನಿಮೇಟೆಡ್ %s',
     'Video' => 'ವೀಡಿಯೊ',
     'Quote card' => 'ಉಲ್ಲೇಖ ಕಾರ್ಡ್',
     'Meme' => 'ಮೀಮ್',

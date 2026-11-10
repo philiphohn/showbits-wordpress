@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Μια παλαιότερη έκδοση υπάρχει στη βιβλιοθήκη πολυμέσων',
     'Edit' => 'Επεξεργασία',
     'Format' => 'Μορφή',
+    'Animated %s' => 'Κινούμενη %s',
     'Video' => 'Βίντεο',
     'Quote card' => 'Κάρτα παράθεσης',
     'Meme' => 'Meme',

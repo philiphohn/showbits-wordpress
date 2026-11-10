@@ -182,6 +182,11 @@ msgstr "ફેરફાર કરો"
 msgid "Format"
 msgstr "ફોર્મેટ"
 
+#. translators: %s: a quote card's format, such as 9:16 or "9:16 (stories)" (its animated video with the speaker's voice)
+#: showbits/includes/class-library-page.php showbits/includes/class-settings-page.php
+msgid "Animated %s"
+msgstr "એનિમેટેડ %s"
+
 #: showbits/includes/class-library-page.php
 msgid "Video"
 msgstr "વિડિઓ"

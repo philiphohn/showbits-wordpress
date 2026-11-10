@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Vanhempi versio on mediakirjastossa',
     'Edit' => 'Muokkaa',
     'Format' => 'Muoto',
+    'Animated %s' => 'Animoitu %s',
     'Video' => 'Video',
     'Quote card' => 'Lainauskortti',
     'Meme' => 'Meemi',

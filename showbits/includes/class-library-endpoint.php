@@ -56,7 +56,7 @@ final class Library_Endpoint {
 					),
 					'variant' => array(
 						'type' => 'string',
-						'enum' => array( 'video', '4x5', '9x16', '1x1' ),
+						'enum' => array( 'video', '4x5', '9x16', '1x1', 'motion-9x16', 'motion-4x5' ),
 					),
 				),
 			)

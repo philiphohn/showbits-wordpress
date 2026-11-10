@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'وەشانێکی کۆنتر لە کتێبخانەی میدیادایە',
     'Edit' => 'دەستکاری',
     'Format' => 'فۆرمات',
+    'Animated %s' => 'جووڵاو %s',
     'Video' => 'ڤیدیۆ',
     'Quote card' => 'کارتی وتە',
     'Meme' => 'میم',

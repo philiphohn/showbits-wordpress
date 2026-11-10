@@ -61,6 +61,11 @@ final class PushTest extends TestCase {
 		$this->assertSame( str_repeat( 'b', 64 ), $GLOBALS['wpdb']->push_ids['0b5f8c5e-1111-4000-8000-000000000001'] );
 		$card = self::push( array( 'id' => '0b5f8c5e-1111-4000-8000-000000000002', 'variant' => '1x1', 'from' => 'site' ) );
 		$this->assertSame( 202, Push_Endpoint::handle( $card, Signature::header( 'whsec_site', $card ), self::CONNECTION )['status'] );
+		// An animated card's video, picked here (1.1.0); a variant ShowBits does not make is turned away.
+		$animated = self::push( array( 'id' => '0b5f8c5e-1111-4000-8000-000000000003', 'variant' => 'motion-9x16', 'from' => 'site' ) );
+		$this->assertSame( 202, Push_Endpoint::handle( $animated, Signature::header( 'whsec_site', $animated ), self::CONNECTION )['status'] );
+		$unknown = self::push( array( 'id' => '0b5f8c5e-1111-4000-8000-000000000004', 'variant' => 'motion-1x1', 'from' => 'site' ) );
+		$this->assertSame( 422, Push_Endpoint::handle( $unknown, Signature::header( 'whsec_site', $unknown ), self::CONNECTION )['status'] );
 	}
 
 	public function test_anything_else_is_turned_away(): void {
@@ -175,6 +180,23 @@ final class PushTest extends TestCase {
 		$this->assertSame( '“Lokales wird geteilt.” – Lena Hoffmann', Importer::alt_text( $card, '4x5' ) );
 		$this->assertSame( '“Lokales wird geteilt.”', Importer::alt_text( array( 'quote' => array( 'name' => null ) ) + $card, '4x5' ) );
 		$this->assertSame( 'Lokales wird geteilt.', Importer::attachment_post( $card, '4x5', 1 )['post_excerpt'] );
+
+		// An animated card is a video: named by its ratio, the quote as its caption, no alternative text.
+		$this->assertSame( 'warum-wohnen-so-teuer-ist-9x16.mp4', Importer::file_name( $card['title'], 'motion-9x16' ) );
+		$this->assertNull( Importer::alt_text( $card, 'motion-4x5' ) );
+		$this->assertSame( array( 'Warum Wohnen so teuer ist', 'Lokales wird geteilt.' ), array_values( array_intersect_key( Importer::attachment_post( $card, 'motion-4x5', 1 ), array_flip( array( 'post_title', 'post_excerpt' ) ) ) ) );
+	}
+
+	public function test_an_animated_default_falls_back_to_the_picture_of_its_ratio(): void {
+		update_option( 'showbits_settings', array( 'card_format' => 'motion-9x16' ) );
+		$animated = array( 'kind' => 'quote', 'files' => array( array( 'variant' => '9x16' ), array( 'variant' => 'motion-9x16' ) ) );
+		$this->assertSame( 'motion-9x16', Importer::card_default( $animated ) );
+		$this->assertSame( '9x16', Importer::card_default( array( 'kind' => 'quote', 'files' => array( array( 'variant' => '9x16' ) ) ) ) );
+		update_option( 'showbits_settings', array( 'card_format' => '1x1' ) );
+		$this->assertSame( '1x1', Importer::card_default( $animated ) );
+		update_option( 'showbits_settings', array( 'card_format' => 'motion-16x9' ) );
+		$this->assertSame( '4x5', Importer::card_default( $animated ) );
+		update_option( 'showbits_settings', array() );
 	}
 
 	public function test_texts_from_showbits_arrive_as_plain_text(): void {

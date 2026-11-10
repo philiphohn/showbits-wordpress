@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Një version më i vjetër gjendet në mediatekë',
     'Edit' => 'Përpunoni',
     'Format' => 'Format',
+    'Animated %s' => 'E animuar %s',
     'Video' => 'Video',
     'Quote card' => 'Kartë citimi',
     'Meme' => 'Meme',

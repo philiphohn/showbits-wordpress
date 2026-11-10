@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'მედიაბიბლიოთეკაში ძველი ვერსიაა',
     'Edit' => 'რედაქტირება',
     'Format' => 'ფორმატი',
+    'Animated %s' => 'ანიმირებული %s',
     'Video' => 'ვიდეო',
     'Quote card' => 'ციტატის ბარათი',
     'Meme' => 'მემი',

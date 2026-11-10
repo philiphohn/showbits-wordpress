@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Ein eldri útgáva er í miðlasavninum',
     'Edit' => 'Rætta',
     'Format' => 'Snið',
+    'Animated %s' => 'Animerað %s',
     'Video' => 'Video',
     'Quote card' => 'Sitatkort',
     'Meme' => 'Meme',

@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => '媒体库中有旧版本',
     'Edit' => '编辑',
     'Format' => '比例',
+    'Animated %s' => '动态 %s',
     'Video' => '视频',
     'Quote card' => '金句卡片',
     'Meme' => '梗图',

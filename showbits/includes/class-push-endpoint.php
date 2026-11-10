@@ -98,7 +98,7 @@ final class Push_Endpoint {
 		$variant = is_array( $message ) ? ( $message['variant'] ?? null ) : null;
 		if ( ! is_array( $message ) || 'clip.push' !== ( $message['type'] ?? '' ) || 'clip' !== ( $message['object']['type'] ?? '' )
 			|| ! preg_match( '/^[A-Za-z0-9-]{1,64}$/', $id ) || ! preg_match( '/^[A-Za-z0-9-]{1,64}$/', $clip ) || ! preg_match( '/^[0-9a-f]{64}$/', $ticket )
-			|| ( null !== $variant && ! in_array( $variant, Importer::QUOTE_VARIANTS, true ) ) ) {
+			|| ( null !== $variant && ! in_array( $variant, Importer::CARD_VARIANTS, true ) ) ) {
 			return array(
 				'status' => 422,
 				'reason' => 'invalid',

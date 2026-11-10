@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'ഒരു പഴയ പതിപ്പ് മീഡിയ ലൈബ്രറിയിലുണ്ട്',
     'Edit' => 'തിരുത്തുക',
     'Format' => 'ഫോർമാറ്റ്',
+    'Animated %s' => 'ആനിമേറ്റഡ് %s',
     'Video' => 'വീഡിയോ',
     'Quote card' => 'ഉദ്ധരണി കാർഡ്',
     'Meme' => 'മീം',

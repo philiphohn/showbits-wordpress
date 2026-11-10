@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'O versiune mai veche este în biblioteca media',
     'Edit' => 'Editează',
     'Format' => 'Format',
+    'Animated %s' => 'Animat %s',
     'Video' => 'Video',
     'Quote card' => 'Card cu citat',
     'Meme' => 'Meme',

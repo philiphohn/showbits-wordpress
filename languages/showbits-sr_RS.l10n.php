@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Старије издање је у библиотеци садржаја',
     'Edit' => 'Уреди',
     'Format' => 'Формат',
+    'Animated %s' => 'Анимирана %s',
     'Video' => 'Видео',
     'Quote card' => 'Слика са цитатом',
     'Meme' => 'Мим',

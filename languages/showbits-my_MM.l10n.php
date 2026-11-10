@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'မီဒီယာ လိုက်ဘရယ်ရီတွင် ဗားရှင်းအဟောင်း ရှိသည်',
     'Edit' => 'ပြုပြင်ရန်',
     'Format' => 'ပုံအချိုး',
+    'Animated %s' => 'လှုပ်ရှားပုံ %s',
     'Video' => 'ဗွီဒီယို',
     'Quote card' => 'ကိုးကားချက်ကတ်',
     'Meme' => 'Meme',

@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'ۋاسىتە ئامبىرىدا كونا نەشرى بار',
     'Edit' => 'تەھرىرلەش',
     'Format' => 'فورمات',
+    'Animated %s' => 'ھەرىكەتچان %s',
     'Video' => 'سىن',
     'Quote card' => 'نەقىل كارتىسى',
     'Meme' => 'مېم',

@@ -63,6 +63,8 @@ final class Library_Page {
 				'outdated'    => __( 'An older version is in the media library', 'showbits' ),
 				'edit'        => __( 'Edit', 'showbits' ),
 				'format'      => __( 'Format', 'showbits' ),
+				/* translators: %s: a quote card's format, such as 9:16 or "9:16 (stories)" (its animated video with the speaker's voice) */
+				'animated'    => __( 'Animated %s', 'showbits' ),
 				'video'       => __( 'Video', 'showbits' ),
 				'quote'       => __( 'Quote card', 'showbits' ),
 				'meme'        => __( 'Meme', 'showbits' ),

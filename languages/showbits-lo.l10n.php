@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'ມີສະບັບເກົ່າຢູ່ໃນຄັງສື່',
     'Edit' => 'ແກ້ໄຂ',
     'Format' => 'ອັດຕາສ່ວນ',
+    'Animated %s' => 'ພາບເຄື່ອນໄຫວ %s',
     'Video' => 'ວິດີໂອ',
     'Quote card' => 'ບັດຄຳເວົ້າ',
     'Meme' => 'ມີມ',

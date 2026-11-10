@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Thư viện Media đang có phiên bản cũ hơn',
     'Edit' => 'Chỉnh sửa',
     'Format' => 'Định dạng',
+    'Animated %s' => 'Hoạt hình %s',
     'Video' => 'Video',
     'Quote card' => 'Thẻ trích dẫn',
     'Meme' => 'Meme',

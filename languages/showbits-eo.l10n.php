@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Pli malnova versio estas en la aŭdovida biblioteko',
     'Edit' => 'Redakti',
     'Format' => 'Formato',
+    'Animated %s' => 'Animaciita %s',
     'Video' => 'Video',
     'Quote card' => 'Citaĵkarto',
     'Meme' => 'Memeo',

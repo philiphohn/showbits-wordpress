@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'May mas lumang bersyon sa media library',
     'Edit' => 'I-edit',
     'Format' => 'Format',
+    'Animated %s' => 'May animasyon %s',
     'Video' => 'Video',
     'Quote card' => 'Quote card',
     'Meme' => 'Meme',

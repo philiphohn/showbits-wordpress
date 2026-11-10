@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Ẹ̀dà àtijọ́ kan wà nínú ilé-ìkàwé mídíà',
     'Edit' => 'Ṣàtúnṣe',
     'Format' => 'Ìrísí',
+    'Animated %s' => 'Àwòrán ìṣípòpadà %s',
     'Video' => 'Fídíò',
     'Quote card' => 'Káàdì àyọkà',
     'Meme' => 'Meme',

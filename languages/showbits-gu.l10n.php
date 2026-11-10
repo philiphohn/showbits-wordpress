@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'જૂનું સંસ્કરણ મીડિયા લાઇબ્રેરીમાં છે',
     'Edit' => 'ફેરફાર કરો',
     'Format' => 'ફોર્મેટ',
+    'Animated %s' => 'એનિમેટેડ %s',
     'Video' => 'વિડિઓ',
     'Quote card' => 'અવતરણ કાર્ડ',
     'Meme' => 'મીમ',

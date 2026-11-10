@@ -28,6 +28,8 @@ const LOCKED = "5b0b0000-0000-4000-8006-000000000005";
 const PUSHED = "5b0b0000-0000-4000-8006-000000000006";
 const LARGE = "5b0b0000-0000-4000-8006-000000000007";
 const BUSY = "5b0b0000-0000-4000-8006-000000000008";
+/** A quote card the editors animated (plugin 1.1.0): its pictures and its two videos. */
+const ANIMATED = "5b0b0000-0000-4000-8006-00000000000a";
 const SITE_ID = "7a7a0000-0000-4000-8000-000000000001";
 // The version the plugin should name when it connects: its header (run.sh starts from wordpress/).
 const VERSION = /^ \* Version:\s*(\S+)$/m.exec(readFileSync("showbits/showbits.php", "utf8"))[1];
@@ -71,6 +73,12 @@ const LIBRARY = [
   item(PUSHED, "meme", "Der Moment danach"),
   item(LARGE, "highlight", "Zu groß für diese Website"),
   item(BUSY, "highlight", "Gerade woanders im Import"),
+  item(ANIMATED, "quote", "Mut heißt anfangen", {
+    files: [
+      ...["4x5", "9x16", "1x1"].map((variant) => ({ variant, contentType: "image/jpeg", width: 1080, height: 1080, size: null })),
+      ...["motion-9x16", "motion-4x5"].map((variant) => ({ variant, contentType: "video/mp4", width: 720, height: variant === "motion-9x16" ? 1280 : 900, size: null, durationSec: 9.7 })),
+    ],
+  }),
 ];
 const json = (res, status, body) => {
   res.writeHead(status, { "content-type": "application/json", "cache-control": "no-store" });
@@ -194,7 +202,8 @@ const server = https.createServer({ cert: readFileSync(E2E_CERT), key: readFileS
       state.wrongTickets++;
       return refuse(res, 403, "ticket");
     }
-    return json(res, 200, { url: `${API}/files/${pushed.clip}-${body.variant}.${body.variant === "video" ? "mp4" : "jpg"}?X-Amz-Signature=e2e`, name: "file" });
+    const video = body.variant === "video" || String(body.variant).startsWith("motion-");
+    return json(res, 200, { url: `${API}/files/${pushed.clip}-${body.variant}.${video ? "mp4" : "jpg"}?X-Amz-Signature=e2e`, name: "file" });
   }
   const result = route.match(/^\/pushes\/([^/]+)\/result$/);
   if (result && req.method === "POST") {
@@ -302,6 +311,18 @@ try {
   check(wp("post", "meta", "get", String(picture?.ID), "_showbits_variant") === "1x1" && wp("post", "meta", "get", String(video?.ID), "_showbits_clip_id") === CLIP, "attachments remember clip and variant");
   check(!state.keyOnFiles && state.fileRequests.length === 3 && state.wrongTickets === 0, "files came with each push's ticket, from the bucket without the key");
   check(state.results.filter((r) => r.state === "imported").length === 2, "both imports were reported to ShowBits");
+
+  // An animated card (1.1.0): offered as "Animated 9:16", imported as its video with the 9:16 picture as the poster.
+  check(await cardOf(CARD).locator("option").count() === 3 && await cardOf(ANIMATED).locator("option").count() === 5, "only an animated card offers its animations as formats");
+  await cardOf(ANIMATED).locator("select").selectOption("motion-9x16");
+  await page.locator(`#showbits-${ANIMATED}`).check();
+  await page.click("text=Auswahl importieren (1)");
+  await page.waitForSelector("text=Importiert: 1", { timeout: 90_000 });
+  const animated = JSON.parse(wp("post", "list", "--post_type=attachment", "--meta_key=_showbits_clip_id", `--meta_value=${ANIMATED}`, "--fields=ID,post_title,post_mime_type,post_excerpt", "--format=json"));
+  const motion = animated.find((a) => a.post_mime_type === "video/mp4");
+  const still = animated.find((a) => a.post_mime_type === "image/jpeg");
+  check(!!motion && wp("post", "meta", "get", String(motion.ID), "_showbits_variant") === "motion-9x16" && motion.post_excerpt === "Lokale Nachrichten werden wirklich geteilt." && !wpMaybe("post", "meta", "get", String(motion.ID), "_wp_attachment_image_alt"), "the animated card is a video attachment with the quote as its caption");
+  check(!!still && wp("post", "meta", "get", String(motion?.ID), "_thumbnail_id") === String(still.ID) && wp("post", "meta", "get", String(still.ID), "_showbits_variant") === "9x16", "the card's 9:16 picture is its poster image");
 
   // Importing the same version again keeps the one attachment.
   await page.reload();

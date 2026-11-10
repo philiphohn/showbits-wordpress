@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Ortam kütüphanesinde eski bir sürümü var',
     'Edit' => 'Düzenle',
     'Format' => 'Biçim',
+    'Animated %s' => 'Animasyonlu %s',
     'Video' => 'Video',
     'Quote card' => 'Alıntı kartı',
     'Meme' => 'Mim',

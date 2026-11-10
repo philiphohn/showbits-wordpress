@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'Egy régebbi változat van a médiatárban',
     'Edit' => 'Szerkesztés',
     'Format' => 'Formátum',
+    'Animated %s' => 'Animált %s',
     'Video' => 'Videó',
     'Quote card' => 'Idézetkártya',
     'Meme' => 'Mém',

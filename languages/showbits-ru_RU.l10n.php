@@ -48,6 +48,7 @@ return array (
     'An older version is in the media library' => 'В библиотеке файлов есть более старая версия',
     'Edit' => 'Изменить',
     'Format' => 'Формат',
+    'Animated %s' => 'Анимированная %s',
     'Video' => 'Видео',
     'Quote card' => 'Карточка с цитатой',
     'Meme' => 'Мем',
